@@ -5,19 +5,27 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# History
+HISTCONTROL=ignoredups
+HISTSIZE=2000
+HISTFILESIZE=2000
+
+PS1='[\u@\h \W]\$ '
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-PS1='[\u@\h \W]\$ '
+
+DIR=$HOME/.dotfiles/scripts
 
 # custom aliases 
-alias ll='ls -lh --color=auto'
-alias weather='curl wttr.in/:Chelyabinsk' 
-alias up='yay && echo Pacman/aur updated > /dev/pts/0 && flatpak update && plasma-discover-update 2>/dev/null && echo -e "\nDiscover packages updated!" && echo Flatpacks/Discover updated > /dev/pts/0' 
-alias upmesh='tailscale up --operator=$USER --accept-routes --accept-dns --reset && echo "VPN DISABLED" > /dev/pts/0' 
-alias upvpn='tailscale up --operator=$USER --accept-routes --exit-node-allow-lan-access --accept-dns --exit-node=100.85.223.148 --reset && echo "VPN ENABLED" > /dev/pts/0' 
-alias Lid-disable='sed -i "s/lidAction=1/lidAction=64/g" ~/.config/powermanagementprofilesrc' && sed -i "/^\[Battery\]\[SuspendSession\]/ s/^/#/" ~/.config/powermanagementprofilesrc && sed -i "/^\[AC\]\[SuspendSession\]/ s/^/#/" ~/.config/powermanagementprofilesrc && sed -i "/^\[LowBattery\]\[SuspendSession\]/ s/^/#/" ~/.config/powermanagementprofilesrc && sed -i "/^idleTime=900000/ s/^/#/" ~/.config/powermanagementprofilesrc && sed -i "/^idleTime=600000/ s/^/#/" ~/.config/powermanagementprofilesrc && sed -i "/^idleTime=480000/ s/^/#/" ~/.config/powermanagementprofilesrc && sed -i "/^suspendThenHibernate=false/ s/^/#/" ~/.config/powermanagementprofilesrc &&  sed -i "/^suspendType=1/ s/^/#/" ~/.config/powermanagementprofilesrc && sed -i "/^suspendThenHibernate=true/ s/^/#/" ~/.config/powermanagementprofilesrc
-alias Lid-enable='sed -i "s/lidAction=64/lidAction=1/g" ~/.config/powermanagementprofilesrc' 
+alias la='ls -lha --color=auto'
+alias code='com.visualstudio.code'
+alias weather='curl wttr.in/:Chelyabinsk'
 alias CombineAudio='pactl load-module module-combine-sink'
 alias CombineAudioOff='pactl unload-module module-combine-sink'
+alias up='$DIR/update.sh'
+alias upmesh='$DIR/vpn_off.sh' 
+alias upvpn='$DIR/vpn_on.sh' 
+alias Lid-disable='$DIR/lid_disable.sh'
+alias Lid-enable='$DIR/lid_enable.sh'
 
 eval "$(zoxide init --cmd cd bash)"
