@@ -9,12 +9,6 @@ pacman -S git
 apt-get install git
 ```
 
-### GNU stow
-```
-pacman -S stow
-apt-get install stow
-```
-
 ## Installation 
 
 Clone and run install script
