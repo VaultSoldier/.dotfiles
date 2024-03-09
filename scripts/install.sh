@@ -32,6 +32,7 @@ remove() {
 		pacman -Rns $packages github-cli
 	elif [[ -f /etc/debian_version ]]; then
 		apt-get purge $packages gh
+		apt-get autoremove
 	else
 		echo 'Unsuported system'
 	fi
