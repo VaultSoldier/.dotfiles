@@ -24,6 +24,12 @@ git clone https://github.com/VaultSoldier/dotfiles.git
 sudo ~/.dotfiles/scripts/install.sh
 ```
 
+Backup .bashrc
+
+```
+mv ~/.bashrc ~/.bashrc.bak 
+```
+
 Use GNU stow to create symlinks
 
 ```
