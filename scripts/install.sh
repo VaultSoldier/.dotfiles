@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 echo -e '[1]Full Install | [2]Install deps | [3]Remove'
 read choice
 
@@ -6,37 +6,26 @@ packages='stow wl-clipboard neovim tmux htop tldr man-db zoxide fzf ncdu'
 minimalPackages='stow neovim'
 
 fullInstall() {
-	if [[ -f /etc/arch-release ]]; then
-		pacman -Sy --needed $packages github-cli
-	elif [[ -f /etc/debian_version ]]; then
-		apt-get update
-		apt-get install $packages gh
-	else
-		echo 'Unsuported system'
-	fi
+	echo -e 'Install tailscale? [Y/N]'
+	read tailscaleInstall
+	[ "$tailscaleInstall" == "Y" ] || [ "$tailscaleInstall" == "y" ] && curl -fsSL https://tailscale.com/install.sh | sh
+	[ -f /etc/arch-release ] && pacman -Sy --needed $packages github-cli
+	[ -f /etc/debian_version ] && apt-get update && apt-get install $packages gh
+	[ ! -f /etc/arch-release ] && [ ! -f /etc/debian_version ] && echo 'Unsuported system'
 }
 
 install() {
-	if [[ -f /etc/arch-release ]]; then
-		pacman -Sy --needed $minimalPackages
-	elif [[ -f /etc/debian_version ]]; then
-		apt-get update
-		apt-get install $minimalPackages
-	else
-		echo 'Unsuported system'
-	fi
+	[ -f /etc/arch-release ] && pacman -Sy --needed $minimalPackages
+	[ -f /etc/debian_version ] && apt-get update && apt-get install $minimalPackages
+	[ ! -f /etc/arch-release ] && [ ! -f /etc/debian_version ] && echo 'Unsuported system'
 }
 
 remove() {
-	if [[ -f /etc/arch-release ]]; then
-		pacman -Rns $packages github-cli
-	elif [[ -f /etc/debian_version ]]; then
-		apt-get purge $packages gh
-		apt-get autoremove
-	else
-		echo 'Unsuported system'
-	fi
+	[ -f /etc/arch-release ] && pacman -Rns $packages github-cli
+	[ -f /etc/debian_version ] && apt-get purge $packages gh && apt-get autoremove
+	[ ! -f /etc/arch-release ] && [ ! -f /etc/debian_version ] && echo 'Unsuported system'
 }
+
 
 case $choice in
 	"1")
