@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 echo -e '[1]Full Install | [2]Install deps | [3]Remove'
 read choice
 
