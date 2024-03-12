@@ -1,14 +1,18 @@
 #!/bin/bash
-echo -e '[1]Full Install | [2]Install deps | [3]Remove'
-read choice
+while
+	echo "[1]Full Install | [2]Install deps | [3]Remove" && read choice
+	[[ -z $choice || $choice != [1-4] ]]
+do true; done
 
 packages='stow wl-clipboard neovim tmux htop tldr man-db zoxide fzf ncdu'
 minimalPackages='stow neovim'
 
 fullInstall() {
-	echo -e 'Install tailscale? [Y/N]'
-	read tailscaleInstall
-	[ "$tailscaleInstall" == "Y" ] || [ "$tailscaleInstall" == "y" ] && curl -fsSL https://tailscale.com/install.sh | sh
+	while 
+		read -p "Install tailscale? [Y/n]: " tailscaleInstall
+		[[ -z $tailscaleInstall || ! $tailscaleInstall =~ ^[yYnN]$ ]]  
+	do true; done
+	[[ "$tailscaleInstall" == "Y" || "$tailscaleInstall" == "y" ]] && curl -fsSL https://tailscale.com/install.sh | sh
 	[ -f /etc/arch-release ] && pacman -Sy --needed $packages github-cli
 	[ -f /etc/debian_version ] && apt-get update && apt-get install $packages gh
 	[ ! -f /etc/arch-release ] && [ ! -f /etc/debian_version ] && echo 'Unsuported system'
