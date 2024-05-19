@@ -32,9 +32,9 @@ autoload -U compinit && compinit
 # hotkeys
 bindkey -e
 
-
-DIR=$HOME/.dotfiles/scripts
 # custom aliases 
+DIR=$HOME/.dotfiles/scripts
+alias ls='ls --color=auto'
 alias la='ls -lha --color=auto'
 alias code='com.visualstudio.code'
 alias weather='curl wttr.in/:Chelyabinsk'
@@ -46,5 +46,23 @@ alias upvpn='$DIR/vpn_on.sh'
 alias Lid-disable='$DIR/lid_disable.sh'
 alias Lid-enable='$DIR/lid_enable.sh'
 
-# load zoxide
-eval "$(zoxide init zsh)"
+# history
+HISTSIZE=3000
+SAVEHIST=$HISTSIZE
+HISTFILE=~/.zsh_history
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
+# load zoxide and fzf
+eval "$(zoxide init --cmd cd zsh)"
+eval "$(fzf --zsh)"
