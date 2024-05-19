@@ -31,6 +31,11 @@ autoload -U compinit && compinit
 
 # hotkeys
 bindkey -e
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+bindkey "^[[1;3D" backward-word
+bindkey "^[[1;3C" forward-word
+bindkey "^H" backward-kill-word
 
 # custom aliases 
 DIR=$HOME/.dotfiles/scripts
