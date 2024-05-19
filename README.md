@@ -35,7 +35,7 @@ mv ~/.bashrc ~/.bashrc.bak
 Use GNU stow to create symlinks
 ```
 cd ~/.dotfiles
-stow .
+stow --no-folding .
 ```
 
 *Optional<sup>TM</sup>*<br>
