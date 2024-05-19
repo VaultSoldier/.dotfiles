@@ -87,7 +87,8 @@ alias upmesh='$DIR/vpn_off.sh'
 alias upvpn='$DIR/vpn_on.sh' 
 alias Lid-disable='$DIR/lid_disable.sh'
 alias Lid-enable='$DIR/lid_enable.sh'
-
+alias b='xdg-open'
+alias bs='$DIR/browser_search'
 
 #########################################################################
 #  ________  _________    ___    ___ ___       _______   ________       #
@@ -99,7 +100,6 @@ alias Lid-enable='$DIR/lid_enable.sh'
 #    |\_________\   \|__|\___/ /        \|_______|\|_______|\_________\ #
 #    \|_________|       \|___|/                            \|_________| #
 #########################################################################
-
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
