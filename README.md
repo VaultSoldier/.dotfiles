@@ -18,7 +18,7 @@ apt-get install stow
 ```
 
 ### Zoxide and fzf
-Install zoxide for a better cd command or remove `eval "$(zoxide init --cmd cd bash)"` line from .bashrc/.zshrc
+Install zoxide and fzf
 ```
 pacman -S zoxide fzf
 apt-get install zoxide fzf
