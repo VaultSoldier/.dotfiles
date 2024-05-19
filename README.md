@@ -18,7 +18,7 @@ apt-get install stow
 ```
 
 ### Zoxide and fzf
-Install zoxide for a better cd command or remove `eval "$(zoxide init --cmd cd bash)"` line from .bashrc
+Install zoxide for a better cd command or remove `eval "$(zoxide init --cmd cd bash)"` line from .bashrc/.zshrc
 ```
 pacman -S zoxide fzf
 apt-get install zoxide fzf
@@ -30,9 +30,10 @@ Clone
 git clone https://github.com/VaultSoldier/dotfiles.git
 ```
 
-Backup .bashrc
+Backup .bashrc/.zshrc
 ```
-mv ~/.bashrc ~/.bashrc.bak 
+mv ~/.bashrc ~/.bashrc.bak
+mv ~/.zshrc ~/.zshrc.bak
 ```
 
 Use GNU stow to create symlinks
