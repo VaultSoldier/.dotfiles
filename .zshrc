@@ -29,15 +29,52 @@ autoload -U compinit && compinit
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# hotkeys
+
+######################################################################################
+#  ___  ___  ________  _________  ___  __    _______       ___    ___ ________       #
+# |\  \|\  \|\   __  \|\___   ___\\  \|\  \ |\  ___ \     |\  \  /  /|\   ____\      #
+# \ \  \\\  \ \  \|\  \|___ \  \_\ \  \/  /|\ \   __/|    \ \  \/  / | \  \___|_     #
+#  \ \   __  \ \  \\\  \   \ \  \ \ \   ___  \ \  \_|/__   \ \    / / \ \_____  \    #
+#   \ \  \ \  \ \  \\\  \   \ \  \ \ \  \\ \  \ \  \_|\ \   \/  /  /   \|____|\  \   #
+#    \ \__\ \__\ \_______\   \ \__\ \ \__\\ \__\ \_______\__/  / /       ____\_\  \  #
+#     \|__|\|__|\|_______|    \|__|  \|__| \|__|\|_______|\___/ /       |\_________\ #
+#                                                        \|___|/        \|_________| #
+######################################################################################
+
+# emacs mode
 bindkey -e
-bindkey "^[[1;5C" forward-word
+
+# ctrl + ←→
 bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word
+
+# alt + ←→
 bindkey "^[[1;3D" backward-word
 bindkey "^[[1;3C" forward-word
+
+# PG up/PG down
+bindkey "^[[5~" backward-word
+bindkey "^[[6~" forward-word
+
+# ctrl + backspace
 bindkey "^H" backward-kill-word
 
-# custom aliases 
+# home/end
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+
+
+##########################################################################
+#  ________  ___       ___  ________  ________  _______   ________       #
+# |\   __  \|\  \     |\  \|\   __  \|\   ____\|\  ___ \ |\   ____\      #
+# \ \  \|\  \ \  \    \ \  \ \  \|\  \ \  \___|\ \   __/|\ \  \___|_     #
+#  \ \   __  \ \  \    \ \  \ \   __  \ \_____  \ \  \_|/_\ \_____  \    #
+#   \ \  \ \  \ \  \____\ \  \ \  \ \  \|____|\  \ \  \_|\ \|____|\  \   #
+#    \ \__\ \__\ \_______\ \__\ \__\ \__\____\_\  \ \_______\____\_\  \  #
+#     \|__|\|__|\|_______|\|__|\|__|\|__|\_________\|_______|\_________\ #
+#                                       \|_________|        \|_________| #
+##########################################################################
+
 DIR=$HOME/.dotfiles/scripts
 alias ls='ls --color=auto'
 alias la='ls -lha --color=auto'
@@ -50,6 +87,23 @@ alias upmesh='$DIR/vpn_off.sh'
 alias upvpn='$DIR/vpn_on.sh' 
 alias Lid-disable='$DIR/lid_disable.sh'
 alias Lid-enable='$DIR/lid_enable.sh'
+
+
+#########################################################################
+#  ________  _________    ___    ___ ___       _______   ________       #
+# |\   ____\|\___   ___\ |\  \  /  /|\  \     |\  ___ \ |\   ____\      #
+# \ \  \___|\|___ \  \_| \ \  \/  / | \  \    \ \   __/|\ \  \___|_     #
+#  \ \_____  \   \ \  \   \ \    / / \ \  \    \ \  \_|/_\ \_____  \    #
+#   \|____|\  \   \ \  \   \/  /  /   \ \  \____\ \  \_|\ \|____|\  \   #
+#     ____\_\  \   \ \__\__/  / /      \ \_______\ \_______\____\_\  \  #
+#    |\_________\   \|__|\___/ /        \|_______|\|_______|\_________\ #
+#    \|_________|       \|___|/                            \|_________| #
+#########################################################################
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
 
 # history
 HISTSIZE=3000
@@ -64,10 +118,9 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # load zoxide and fzf
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(fzf --zsh)"
+
+# ASCII - asciiart.eu
