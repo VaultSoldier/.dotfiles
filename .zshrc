@@ -90,6 +90,7 @@ alias Lid-enable='$DIR/lid_enable.sh'
 alias b='xdg-open'
 alias bs='$DIR/browser_search'
 alias spicetify-update='spicetify update && spicetify restore backup apply'
+alias vi='nvim'
 
 #########################################################################
 #  ________  _________    ___    ___ ___       _______   ________       #
