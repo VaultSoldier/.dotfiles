@@ -91,6 +91,7 @@ alias b='xdg-open'
 alias bs='$DIR/browser_search'
 alias spicetify-update='spicetify update && spicetify restore backup apply'
 alias vi='nvim'
+alias ssh-list="grep -E '^\s*Host\s+' ~/.ssh/config | awk '{print $2}'"
 
 #########################################################################
 #  ________  _________    ___    ___ ___       _______   ________       #
