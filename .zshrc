@@ -29,6 +29,13 @@ autoload -U compinit && compinit
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Load dircolors and set LS_COLORS
+if [ -f ~/.dircolors ]; then
+    eval "$(dircolors -b ~/.dircolors)"
+fi
+
+# ENV vars
+export EDITOR=nvim
 
 ######################################################################################
 #  ___  ___  ________  _________  ___  __    _______       ___    ___ ________       #
@@ -104,9 +111,13 @@ alias ssh-list="grep -E '^\s*Host\s+' ~/.ssh/config | awk '{print $2}'"
 #    \|_________|       \|___|/                            \|_________| #
 #########################################################################
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+#zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
+zstyle ':completion:*' list-colors "=(#b)${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu-select=1
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:default' format '%F{blue}%B%d%b%f'
 
 # history
 HISTSIZE=3000
