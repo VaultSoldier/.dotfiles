@@ -3,6 +3,9 @@ vim.api.nvim_set_keymap("n", "<S-Tab>", "<<", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<Tab>", ">gv", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<S-Tab>", "<gv", { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap("i", "<Tab>", "<C-t>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<S-Tab>", "<C-d>", { noremap = true, silent = true })
+
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 
@@ -23,6 +26,7 @@ vim.g.maplocalleader = " "
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+vim.keymap.set("i", "jj", "<Esc>")
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })

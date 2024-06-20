@@ -1,6 +1,6 @@
 -- NOTE: For more options, you can see `:help option-list`
 
-vim.opt.showmode = true
+vim.opt.showmode = false
 vim.opt.signcolumn = "yes"
 
 vim.opt.number = true
