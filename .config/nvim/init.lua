@@ -2,37 +2,24 @@ require("custom.settings")
 require("custom.keymaps")
 require("custom.autocommands")
 
--- [[ Install `lazy.nvim` plugin manager ]]
---    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-end ---@diagnostic disable-next-line: undefined-field
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"--branch=stable",
+		"https://github.com/folke/lazy.nvim.git",
+		lazypath,
+	})
+end
 vim.opt.rtp:prepend(lazypath)
-
--- [[ Configure and install plugins ]]
 
 -- NOTE: Here is where you install your plugins.
 require("lazy").setup({
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 
 	{ "numToStr/Comment.nvim", opts = {} },
-
-	-- NOTE: Plugins can also be configured to run Lua code when they are loaded.
-	--
-	-- This is often very useful to both group configuration, as well as handle
-	-- lazy loading plugins that don't need to be loaded immediately at startup.
-	--
-	-- For example, in the following configuration, we use:
-	--  event = 'VimEnter'
-	--
-	-- which loads which-key before all the UI elements are loaded. Events can be
-	-- normal autocommands events (`:help autocmd-events`).
-	--
-	-- Then, because we use the `config` key, the configuration only runs
-	-- after the plugin has been loaded:
-	--  config = function() ... end
 
 	{ -- Useful plugin to show you pending keybinds.
 		"folke/which-key.nvim",
@@ -108,9 +95,6 @@ require("lazy").setup({
 	},
 
 	-- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
-	--
-	--  Here are some example plugins that I've included in the Kickstart repository.
-	--  Uncomment any of the lines below to enable them (you will need to restart nvim).
 	--
 	-- require 'kickstart.plugins.debug',
 	-- require 'kickstart.plugins.indent_line',

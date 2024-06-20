@@ -1,22 +1,17 @@
+vim.g.have_nerd_font = true
+
 vim.api.nvim_set_keymap("n", "<Tab>", ">>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<S-Tab>", "<<", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<Tab>", ">gv", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<S-Tab>", "<gv", { noremap = true, silent = true })
-
 vim.api.nvim_set_keymap("i", "<Tab>", "<C-t>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("i", "<S-Tab>", "<C-d>", { noremap = true, silent = true })
 
--- Set to true if you have a Nerd Font installed
-vim.g.have_nerd_font = true
-
--- TIP: Disable arrow keys in normal mode
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
 vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
 vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
--- Set <space> as the leader key
--- See `:help mapleader`
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
