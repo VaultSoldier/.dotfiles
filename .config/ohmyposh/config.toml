@@ -31,13 +31,6 @@ console_title_template = '{{ .Folder }}|{{.HostName}}'
       commit_icon = '@'
       fetch_upstream_icon = true
   
-  [[blocks.segments]]
-    type = "session"
-    foreground = "grey"
-    background = "transparent"
-    style = "flat"
-    template = "{{ if .SSHSession }} {{ end }}{{ .UserName }}"
-
 [[blocks]]
   type = 'rprompt'
   overflow = 'hidden'
@@ -66,6 +59,13 @@ console_title_template = '{{ .Folder }}|{{.HostName}}'
     ]
     background = 'transparent'
     template = '{{ if .Env.TMUX  }} tmux {{end}}❯'
+
+  [[blocks.segments]]
+    type = "session"
+    foreground = "grey"
+    background = "transparent"
+    style = "flat"
+    template = "{{ if .SSHSession }} {{ end }}{{ .UserName }}"
 
 [transient_prompt]
   foreground_templates = [
