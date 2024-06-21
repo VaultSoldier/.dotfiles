@@ -27,10 +27,16 @@ console_title_template = '{{ .Folder }}|{{.HostName}}'
     template = " {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>"
 
     [properties]
-    fetch_status = true
-    commit_icon = '@'
-    fetch_upstream_icon = true
-
+      fetch_status = true
+      commit_icon = '@'
+      fetch_upstream_icon = true
+  
+  [[blocks.segments]]
+    type = "session"
+    foreground = "grey"
+    background = "transparent"
+    style = "flat"
+    template = "{{ if .SSHSession }} {{ end }}{{ .UserName }}"
 
 [[blocks]]
   type = 'rprompt'

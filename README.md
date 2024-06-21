@@ -17,10 +17,11 @@ pacman -S stow
 apt-get install stow
 ```
 
-### Zoxide and fzf
+### Zoxide, fzf and oh-my-posh
 ```
 pacman -S zoxide fzf
 apt-get install zoxide fzf
+https://ohmyposh.dev/docs/installation/linux
 ```
 ## Installation 
 
