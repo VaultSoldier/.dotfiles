@@ -4,8 +4,8 @@ while
 	[[ -z $choice || $choice != [1-4] ]] && echo "Incorrect input"
 do true; done
 
-packages='stow wl-clipboard neovim tmux htop tldr man-db zoxide fzf ncdu ripgrep'
-minimalPackages='stow neovim'
+packages='stow wl-clipboard neovim tmux htop tldr man-db zoxide fzf ncdu ripgrep kitty'
+minimalPackages='stow neovim ripgrep fzf'
 
 fullInstall() {
 	while 
