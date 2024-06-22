@@ -2,7 +2,6 @@
 
 version = 2
 final_space = true
-console_title_template = '{{ .Folder }}|{{.HostName}}'
 
 [[blocks]]
   type = 'prompt'
@@ -59,13 +58,6 @@ console_title_template = '{{ .Folder }}|{{.HostName}}'
     ]
     background = 'transparent'
     template = '{{ if .Env.TMUX  }} tmux {{end}}❯'
-
-  [[blocks.segments]]
-    type = "session"
-    foreground = "grey"
-    background = "transparent"
-    style = "flat"
-    template = "{{ if .SSHSession }} {{ end }}{{ .UserName }}"
 
 [transient_prompt]
   foreground_templates = [

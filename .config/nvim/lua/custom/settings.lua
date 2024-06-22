@@ -1,4 +1,6 @@
--- NOTE: For more options, you can see `:help option-list`
+-- NOTE: For more options, see `:help option-list`
+
+vim.opt.mouse = ""
 
 vim.opt.showmode = false
 vim.opt.signcolumn = "yes"
