@@ -5,6 +5,9 @@
            _/_/_/      _/_/        _/      _/        _/_/_/  _/_/_/_/  _/_/_/_/  _/_/_/        
 ## Requirements
 
+### Oh-My-Posh
+[Installation guide](https://ohmyposh.dev/docs/installation/linux)
+
 ### Git
 ```
 pacman -S git 
@@ -17,12 +20,12 @@ pacman -S stow
 apt-get install stow
 ```
 
-### Zoxide, fzf and oh-my-posh
+### Zoxide, fzf
 ```
 pacman -S zoxide fzf
 apt-get install zoxide fzf
-https://ohmyposh.dev/docs/installation/linux
 ```
+
 ## Installation 
 
 Clone
