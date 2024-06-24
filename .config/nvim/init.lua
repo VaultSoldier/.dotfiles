@@ -1,6 +1,6 @@
-require("config.settings")
-require("config.keymaps")
-require("config.autocommands")
+require("custom.settings")
+require("custom.keymaps")
+require("custom.autocommands")
 
 -- Load Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -34,7 +34,7 @@ require("lazy").setup({
 		end,
 	},
 
-	{ import = "config.plugins" },
+	{ import = "custom.plugins" },
 }, {
 	ui = {
 		icons = vim.g.have_nerd_font and {} or {
