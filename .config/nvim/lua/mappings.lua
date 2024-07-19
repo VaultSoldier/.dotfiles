@@ -8,8 +8,6 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 
 map("i", "jj", "<Esc>")
 
-map("n", "<Tab>", ">>", { noremap = true, silent = true })
-map("n", "<S-Tab>", "<<", { noremap = true, silent = true })
 map("v", "<Tab>", ">gv", { noremap = true, silent = true })
 map("v", "<S-Tab>", "<gv", { noremap = true, silent = true })
 map("i", "<Tab>", "<C-t>", { noremap = true, silent = true })
@@ -33,6 +31,7 @@ map("n", "<leader>C", "<cmd>Telescope themes<CR>", { desc = "[C]hange Theme" })
 
 map("n", "<leader>ct", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
 map("n", "<leader>sm", "<cmd>Telescope marks<CR>", { desc = "[S]earch [M]arks" })
+map("n", "<leader>sb", "<cmd>Telescope buffers<CR>", { desc = "[S]earch [B]uffers}" })
 
 map("n", "<leader>tt", "<cmd>Telescope terms<CR>", { desc = "[T]erminal [T]erminals" })
 
@@ -43,6 +42,8 @@ end, { desc = "[T]erminal [H]orizontal" })
 map("n", "<leader>tv", function()
   require("nvchad.term").new { pos = "vsp" }
 end, { desc = "[T]erminal [V]ertical" })
+
+map("n", "<leader>wh", "<cmd>NvCheatsheet<CR>", { desc = "Toggle nvcheatsheet" }) -- toggle cheatsheet
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
@@ -63,3 +64,4 @@ nomap("n", "<leader>pt") -- pick hidden terminal
 nomap("n", "<leader>v")  -- terminal new vertical window
 nomap("n", "<leader>h")  -- terminal new horizontal window
 nomap("n", "<leader>n") -- toggle line number
+nomap("n", "<leader>ch") -- toggle cheatsheet
