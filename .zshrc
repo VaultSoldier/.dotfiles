@@ -40,7 +40,11 @@ export EDITOR=nvim
 ######################################################################################
 
 # emacs mode
-bindkey -e
+# bindkey -e
+
+# escape for backward-kill-word
+# https://superuser.com/questions/1421423/how-to-bind-option-delete-to-backward-delete-word-in-zsh-vi-mode-in-tmux-and-ala
+WORDCHARS=${WORDCHARS/\/}
 
 # ctrl + ←→
 bindkey "^[[1;5D" backward-word
