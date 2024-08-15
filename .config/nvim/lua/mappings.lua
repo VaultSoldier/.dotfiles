@@ -22,6 +22,17 @@ map("v", "<right>", '<cmd>echo "Use l to move!!"<CR>')
 map("v", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 map("v", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '<-2<CR>gv=gv")
+
+map("n", "J", "mzJ`z")
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
+
+map("x", "<leader>p", "\"_dP")
+
 map("n", "<leader>E", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })

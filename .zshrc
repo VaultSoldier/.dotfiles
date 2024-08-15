@@ -43,8 +43,9 @@ export EDITOR=nvim
 # emacs mode
 # bindkey -e
 
-# escape for backward-kill-word
-WORDCHARS=${WORDCHARS/\/}
+# exceptions for backward-kill-word
+# removes [/ . $ -] from $WORDCHARS
+WORDCHARS=${WORDCHARS//[\/\.\$\-]}
 
 # ctrl + ←→
 bindkey "^[[1;5D" backward-word
