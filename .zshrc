@@ -12,6 +12,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
+
 zinit light MichaelAquilina/zsh-autoswitch-virtualenv
 
 # load completions
@@ -43,7 +44,6 @@ export EDITOR=nvim
 # bindkey -e
 
 # escape for backward-kill-word
-# https://superuser.com/questions/1421423/how-to-bind-option-delete-to-backward-delete-word-in-zsh-vi-mode-in-tmux-and-ala
 WORDCHARS=${WORDCHARS/\/}
 
 # ctrl + ←→
@@ -78,22 +78,23 @@ bindkey "^[[F" end-of-line
 ##########################################################################
 
 DIR=$HOME/.dotfiles/scripts
+
 alias ls='ls --color=auto'
 alias la='ls -lha --color=auto'
-alias code='com.visualstudio.code'
-alias weather='curl wttr.in/:Chelyabinsk'
 alias CombineAudio='pactl load-module module-combine-sink'
 alias CombineAudioOff='pactl unload-module module-combine-sink'
 alias up='$DIR/update.sh'
 alias upmesh='$DIR/vpn_off.sh' 
 alias upvpn='$DIR/vpn_on.sh' 
-alias b='xdg-open'
-alias bs='$DIR/browser_search'
-alias spicetify-update='spicetify update && spicetify restore backup apply'
-alias vi='nvim'
 alias ssh-list="grep -E '^\s*Host\s+' ~/.ssh/config | awk '{print $2}'"
 alias ssh-open='cryfs "$HOME/.local/share/plasma-vault/ssh.enc/" "$HOME/.ssh/ssh_keys"'
 alias ssh-close='cryfs-unmount $HOME/.ssh/ssh_keys/'
+alias spicetify-update='spicetify update && spicetify restore backup apply'
+alias code='com.visualstudio.code'
+alias weather='curl wttr.in/:Chelyabinsk'
+alias b='xdg-open'
+alias bs='$DIR/browser_search'
+alias vi='nvim'
 
 #########################################################################
 #  ________  _________    ___    ___ ___       _______   ________       #
@@ -105,10 +106,9 @@ alias ssh-close='cryfs-unmount $HOME/.ssh/ssh_keys/'
 #    |\_________\   \|__|\___/ /        \|_______|\|_______|\_________\ #
 #    \|_________|       \|___|/                            \|_________| #
 #########################################################################
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-#zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "=(#b)${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu-select=1
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
