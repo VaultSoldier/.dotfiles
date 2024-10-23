@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# URL encode the search query
+encoded_query=$(echo "$*" | jq -sRr @uri)
+
+xdg-open "https://duckduckgo.com/?q=$encoded_query"

@@ -1,0 +1,7 @@
+.git
+.gitignore
+README.md
+scripts
+images
+known_hosts
+known_hosts.old
