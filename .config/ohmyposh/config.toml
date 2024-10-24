@@ -57,7 +57,7 @@ final_space = true
       "{{if eq .Code 0}}magenta{{end}}",
     ]
     background = 'transparent'
-    template = '{{ if .Env.TMUX  }} tmux {{end}}❯'
+    template = '{{ if .Env.TMUX  }}TX{{end}}❯'
 
 [transient_prompt]
   foreground_templates = [
