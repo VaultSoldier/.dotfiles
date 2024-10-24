@@ -41,7 +41,7 @@ export EDITOR=nvim
 ######################################################################################
 
 # emacs mode
-# bindkey -e
+bindkey -e
 
 # exceptions for backward-kill-word
 # removes [/ . $ -] from $WORDCHARS
