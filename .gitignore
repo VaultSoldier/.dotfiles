@@ -1,2 +1,4 @@
 .config/nvim/lazy-lock.json
 .ssh/ssh_keys
+known_hosts
+known_hosts.old
