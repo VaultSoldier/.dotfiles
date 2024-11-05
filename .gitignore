@@ -2,3 +2,4 @@
 .ssh/ssh_keys
 known_hosts
 known_hosts.old
+authorized_keys
