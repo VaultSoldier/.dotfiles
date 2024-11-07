@@ -88,7 +88,11 @@ filepos_max_saved_entries=1024
 
 [Layout]
 output_lines=0
+<<<<<<< HEAD
 left_panel_size=65
+=======
+left_panel_size=52
+>>>>>>> 8b2efd9 (save)
 top_panel_size=0
 message_visible=true
 keybar_visible=true
@@ -118,6 +122,7 @@ xterm-256color=
 color_terminals=
 tmux-256color=
 xterm-kitty=
+screen-256color=
 
 [Panels]
 show_mini_info=true
