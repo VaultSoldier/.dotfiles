@@ -47,10 +47,6 @@ bindkey -e
 # removes [/ . $ -] from $WORDCHARS
 WORDCHARS=${WORDCHARS//[\/\.\$\-]}
 
-# ctrl + ←→
-bindkey "^[[1;5D" backward-word
-bindkey "^[[1;5C" forward-word
-
 # alt + ←→
 bindkey "^[[1;3D" backward-word
 bindkey "^[[1;3C" forward-word
@@ -58,9 +54,6 @@ bindkey "^[[1;3C" forward-word
 # PG up/PG down
 bindkey "^[[5~" backward-word
 bindkey "^[[6~" forward-word
-
-# ctrl + backspace
-bindkey "^H" backward-kill-word
 
 # home/end
 bindkey "^[[H" beginning-of-line
