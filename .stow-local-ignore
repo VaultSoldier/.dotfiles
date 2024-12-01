@@ -5,3 +5,4 @@ scripts
 images
 known_hosts
 known_hosts.old
+ssh_keys

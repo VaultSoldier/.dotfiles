@@ -33,12 +33,36 @@ map("n", "N", "Nzzzv")
 
 map("x", "<leader>p", "\"_dP")
 
+-- Comment
+map("n", "<C-_>", "gcc", { desc = "toggle comment" })
+map("v", "<C-_>", "gc", { desc = "toggle comment" })
+
+-- Buffers
+map("n", "<leader>b", "<cmd>enew<CR>", { desc = "buffer new" })
+
+map("n", "<leader>x", function()
+  require("nvchad.tabufline").close_buffer()
+end, { desc = "buffer close" })
+
+map("n", "<tab>", function()
+  require("nvchad.tabufline").next()
+end, { desc = "buffer goto next" })
+
+map("n", "<S-tab>", function()
+  require("nvchad.tabufline").prev()
+end, { desc = "buffer goto prev" })
+
 map("n", "<leader>E", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+map("n", "<leader>a", "<cmd>lua require('nvchad.lsp.renamer')()<CR>", { desc = "LSP rename" })
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+map("n", "<leader>r", ":!python %<CR>", { desc = "Run Python code" })
 
-map("n", "<leader>C", "<cmd>Telescope themes<CR>", { desc = "[C]hange Theme" })
+map("n", "<leader>C", function()
+  require("nvchad.themes").open()
+end, { desc = "telescope nvchad themes" })
+
 map("n", "<leader>ct", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
 map("n", "<leader>sm", "<cmd>Telescope marks<CR>", { desc = "[S]earch [M]arks" })
 map("n", "<leader>sb", "<cmd>Telescope buffers<CR>", { desc = "[S]earch [B]uffers" })
@@ -80,6 +104,12 @@ map("n", "<leader>sn", function()
   builtin.find_files({ cwd = vim.fn.stdpath("config") })
 end, { desc = "[S]earch [N]eovim files" })
 
+-- buffer change with alt + 1 to 9
+for i = 1, 9, 1 do
+  map("n", string.format("<A-%s>", i), function()
+    vim.api.nvim_set_current_buf(vim.t.bufs[i])
+  end)
+end
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 -- Disable mappinge
@@ -100,3 +130,5 @@ nomap("n", "<leader>h")  -- terminal new horizontal window
 nomap("n", "<leader>n") -- toggle line number
 nomap("n", "<leader>ch") -- toggle cheatsheet
 nomap("n", "<leader>th") -- change theme
+nomap("n", "<leader>ds") -- go to LSP type definition
+nomap("n", "<leader>rn") -- toggle relative number 

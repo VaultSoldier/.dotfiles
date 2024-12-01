@@ -57,8 +57,7 @@ return {
 
   {
     "neovim/nvim-lspconfig",
-      config = function()
-      require("nvchad.configs.lspconfig").defaults()
+    config = function()
       require "configs.lspconfig"
     end,
   },
@@ -77,9 +76,21 @@ return {
   	"nvim-treesitter/nvim-treesitter",
   	opts = {
   		ensure_installed = {
-  			"vim", "lua", "vimdoc", "html", "css"
+  			"vim", "lua", "vimdoc", "html", "css", "c", "markdown", "markdown_inline", "python"
       },
     },
+  },
+
+  {
+    'numToStr/Comment.nvim',
+    config = function ()
+      require('Comment').setup({
+        mappings = {
+          ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
+          basic = true,
+        },
+      })
+    end,
   },
 
   {
@@ -108,11 +119,8 @@ return {
 
       require("which-key").add {
         { '<leader>c', group = '[C]ode' },
-        { '<leader>d', group = '[D]ocument' },
-        { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
-        { '<leader>t', group = '[T]erminal' },
       }
     end,
   },

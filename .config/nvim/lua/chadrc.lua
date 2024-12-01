@@ -1,13 +1,13 @@
 local options = {
 
   base46 = {
-    theme = "kanagawa", -- default theme
+    theme = "github_dark", -- default theme
     hl_add = {},
     hl_override = {},
     integrations = {},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { "kanagawa", "one_light" },
+    theme_toggle = { "github_dark", "one_light" },
   },
 
   ui = {
