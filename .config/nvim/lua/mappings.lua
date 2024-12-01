@@ -42,19 +42,10 @@ map("n", "<leader>C", "<cmd>Telescope themes<CR>", { desc = "[C]hange Theme" })
 map("n", "<leader>ct", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
 map("n", "<leader>sm", "<cmd>Telescope marks<CR>", { desc = "[S]earch [M]arks" })
 map("n", "<leader>sb", "<cmd>Telescope buffers<CR>", { desc = "[S]earch [B]uffers" })
-map("n", "<leader>tt", "<cmd>Telescope terms<CR>", { desc = "[T]erminal [T]erminals" })
-
-map("n", "<leader>th", function()
-  require("nvchad.term").new { pos = "sp" }
-end, { desc = "[T]erminal [H]orizontal" })
-
-map("n", "<leader>tv", function()
-  require("nvchad.term").new { pos = "vsp" }
-end, { desc = "[T]erminal [V]ertical" })
-
-map("n", "<leader>wh", "<cmd>NvCheatsheet<CR>", { desc = "Toggle nvcheatsheet" }) -- toggle cheatsheet
+map("n", "<leader>st", "<cmd>Telescope terms<CR>", { desc = "[S]erminal [T]erminals" })
 
 -- See `:help telescope.builtin`
+map("n", "<leader>sv", "<cmd>VenvSelect<CR>", { desc = "[S]elect [V]envs"}) -- VenvSelector.
 map("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 map("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 map("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
@@ -108,3 +99,4 @@ nomap("n", "<leader>v")  -- terminal new vertical window
 nomap("n", "<leader>h")  -- terminal new horizontal window
 nomap("n", "<leader>n") -- toggle line number
 nomap("n", "<leader>ch") -- toggle cheatsheet
+nomap("n", "<leader>th") -- change theme

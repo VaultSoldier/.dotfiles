@@ -45,7 +45,7 @@ bindkey -e
 
 # exceptions for backward-kill-word
 # removes [/ . $ -] from $WORDCHARS
-WORDCHARS=${WORDCHARS//[\/\.\$\-]}
+WORDCHARS=${WORDCHARS//[\/\.\$\-\=\"]}
 
 # alt + ←→
 bindkey "^[[1;3D" backward-word

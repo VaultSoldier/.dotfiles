@@ -1,21 +1,24 @@
 return {
+  "nvim-lua/plenary.nvim",
+
+  {
+    "nvchad/ui",
+    config = function()
+      require "nvchad"
+    end
+  },
+
   {
     "nvchad/base46",
+    lazy = true,
     build = function()
       require("base46").load_all_highlights()
     end,
   },
 
-  {
-    "nvchad/ui",
-    lazy = false,
-    config = function()
-      require "nvchad"
-    end,
-  },
-
   "nvchad/volt",
   "nvchad/menu",
+
   { "nvchad/minty", cmd = { "Huefy", "Shades" } },
 
   {
@@ -43,6 +46,7 @@ return {
       dofile(vim.g.base46_cache .. "blankline")
     end,
   },
+
   {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
@@ -64,8 +68,7 @@ return {
   	opts = {
   		ensure_installed = {
   		  "lua-language-server", "stylua",
-  			"html-lsp", "css-lsp" , "prettier",
-        "pyright"
+  			"html-lsp", "css-lsp" , "prettier", "pyright"
   		},
     },
   },
@@ -74,16 +77,33 @@ return {
   	"nvim-treesitter/nvim-treesitter",
   	opts = {
   		ensure_installed = {
-  			"vim", "lua", "vimdoc",
-        "html", "css"
+  			"vim", "lua", "vimdoc", "html", "css"
       },
     },
   },
 
   {
+    "linux-cultist/venv-selector.nvim",
+      dependencies = {
+        "neovim/nvim-lspconfig",
+        "mfussenegger/nvim-dap", "mfussenegger/nvim-dap-python", --optional
+        { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
+      },
+    lazy = false,
+    branch = "regexp", -- This is the regexp branch, use this for the new version
+    config = function()
+        require("venv-selector").setup()
+      end,
+  },
+
+  {
     "folke/which-key.nvim",
-    event = "VimEnter", -- Sets the loading event to 'VimEnter'
-    config = function() -- This is the function that runs, AFTER loading
+    event = "VimEnter",
+    opts = function()
+        dofile(vim.g.base46_cache .. "whichkey")
+        return {}
+    end,
+    config = function()
       require("which-key").setup()
 
       require("which-key").add {
@@ -124,10 +144,6 @@ return {
     config = function()
       -- The easiest way to use Telescope, is to start by doing something like:
       --  :Telescope help_tags
-      -- Two important keymaps to use while in Telescope are:
-      --  - Insert mode: <c-/>
-      --  - Normal mode: ?
-      --
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
       require("telescope").setup({
@@ -138,7 +154,6 @@ return {
         },
       })
 
-      -- Enable Telescope extensions if they are installed
       pcall(require("telescope").load_extension, "fzf")
       pcall(require("telescope").load_extension, "ui-select")
     end,

@@ -54,7 +54,7 @@ final_space = true
 
   [[blocks.segments]]
     style = 'plain'
-    template = '{{ if .Env.TMUX  }}TX{{end}}❯'
+    template = '{{ if .Env.TMUX  }}!{{end}}❯'
     background = 'transparent'
     type = 'text'
     foreground_templates = ['{{if qt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']

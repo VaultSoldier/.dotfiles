@@ -1,24 +1,56 @@
-require "nvchad.options"
+local opt = vim.opt
+local o = vim.o
+local g = vim.g
 
--- add yours here!
+-------------------------------------- options ------------------------------------------
+o.laststatus = 3
+o.showmode = false
+o.termguicolors = true
 
--- local o = vim.o
--- o.cursorlineopt ='both' -- to enable cursorline!
+o.clipboard = "unnamedplus"
+o.cursorline = true
+o.cursorlineopt = "number"
+o.scrolloff = 8
 
-vim.opt.number = true
-vim.opt.relativenumber = true
+-- Numbers
+o.number = true
+o.relativenumber = true
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+-- Indenting
+o.tabstop = 2
+o.softtabstop = 2
+o.shiftwidth = 2
+o.expandtab = true
+o.smartindent = true
 
-vim.opt.smartindent = true
+-- Search
+o.hlsearch = false
+o.incsearch = true
 
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
+-- disable nvim intro
+opt.shortmess:append "sI"
 
-vim.opt.termguicolors = true
+o.signcolumn = "yes"
+o.splitbelow = true
+o.splitright = true
+o.timeoutlen = 400
+o.undofile = true
 
-vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
+-- interval for writing swap file to disk, also used by gitsigns
+o.updatetime = 250
+
+-- go to previous/next line with h,l,left arrow and right arrow
+-- when cursor reaches end/beginning of line
+opt.whichwrap:append "<>[]hl"
+
+-- disable some default providers
+g.loaded_node_provider = 0
+g.loaded_python3_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0
+
+-- add binaries installed by mason.nvim to path
+local is_windows = vim.fn.has "win32" ~= 0
+local sep = is_windows and "\\" or "/"
+local delim = is_windows and ";" or ":"
+vim.env.PATH = table.concat({ vim.fn.stdpath "data", "mason", "bin" }, sep) .. delim .. vim.env.PATH
