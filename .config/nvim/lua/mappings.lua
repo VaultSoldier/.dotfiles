@@ -54,7 +54,7 @@ end, { desc = "buffer goto prev" })
 
 map("n", "<leader>E", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
-map("n", "<leader>a", "<cmd>lua require('nvchad.lsp.renamer')()<CR>", { desc = "LSP rename" })
+map("n", "<leader>a", "<cmd>lua require('configs.lsp.renamer')()<CR>", { desc = "LSP rename" })
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
 map("n", "<leader>r", ":!python %<CR>", { desc = "Run Python code" })
