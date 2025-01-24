@@ -58,6 +58,7 @@ map("n", "<leader>a", "<cmd>lua require('configs.lsp.renamer')()<CR>", { desc = 
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
 map("n", "<leader>r", ":!python %<CR>", { desc = "Run Python code" })
+map("n", "<C-x>", ":q!<CR>", { desc = "Exit" })
 
 map("n", "<leader>C", function()
   require("nvchad.themes").open()
