@@ -84,6 +84,7 @@ alias up='$DIR/update.sh'
 alias upmesh='$DIR/vpn_off.sh' 
 alias upvpn='$DIR/vpn_on.sh' 
 alias ssh-list="grep -E '^\s*Host\s+' ~/.ssh/config | awk '{print $2}'"
+alias ssh-list-work="grep -E '^\s*Host\s+' ~/.ssh/ssh_keys/work/config | awk '{print $2}'"
 alias ssh-open='cryfs "$HOME/.local/share/plasma-vault/ssh_keys.enc/" "$HOME/.ssh/ssh_keys"'
 alias ssh-close='cryfs-unmount $HOME/.ssh/ssh_keys/'
 alias spicetify-update='spicetify restore backup apply'
