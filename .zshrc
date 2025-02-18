@@ -87,7 +87,6 @@ alias ssh-list="grep -E '^\s*Host\s+' ~/.ssh/config | awk '{print $2}'"
 alias ssh-list-work="grep -E '^\s*Host\s+' ~/.ssh/ssh_keys/work/config | awk '{print $2}'"
 alias ssh-open='cryfs "$HOME/.local/share/plasma-vault/ssh_keys.enc/" "$HOME/.ssh/ssh_keys"'
 alias ssh-close='cryfs-unmount $HOME/.ssh/ssh_keys/'
-alias spicetify-update='spicetify restore backup apply'
 alias weather='curl wttr.in/:Chelyabinsk'
 alias open='xdg-open'
 alias browser="$DIR/browser_search"
