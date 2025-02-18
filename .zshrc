@@ -89,7 +89,6 @@ alias ssh-open='cryfs "$HOME/.local/share/plasma-vault/ssh_keys.enc/" "$HOME/.ss
 alias ssh-close='cryfs-unmount $HOME/.ssh/ssh_keys/'
 alias weather='curl wttr.in/:Chelyabinsk'
 alias open='xdg-open'
-alias browser="$DIR/browser_search"
 alias vi='nvim'
 
 #########################################################################
