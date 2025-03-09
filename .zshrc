@@ -81,7 +81,8 @@ alias la='ls -lha --color=auto'
 alias CombineAudio='pactl load-module module-combine-sink'
 alias CombineAudioOff='pactl unload-module module-combine-sink'
 alias up="$DIR/update.sh"
-alias upmesh="$DIR/vpn_off.sh"
+alias upmesh="$DIR/vpn_mesh.sh"
+alias uphome="$DIR/vpn_home.sh"
 alias upvpn="$DIR/vpn_on.sh"
 alias ssh-list="grep -E '^\s*Host\s+' ~/.ssh/config | awk '{print $2}'"
 alias ssh-work-list="grep -E '^\s*Host\s+' ~/.ssh/ssh_keys/work/config | awk '{print $2}'"
