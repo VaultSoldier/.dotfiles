@@ -1,10 +1,10 @@
 #!/bin/bash
 while
-	echo "[1]Full Install | [2]Install deps | [3]Remove | [4]Exit" && read choice
+	echo "[1]Full Install | [2]Minimal install | [3]Remove | [4]Exit" && read choice
 	[[ -z $choice || $choice != [1-4] ]] && echo "Incorrect input"
 do true; done
 
-packages='stow wl-clipboard neovim tmux htop tealdeer man-db zoxide fzf ncdu ripgrep kitty'
+packages='stow wl-clipboard neovim tmux htop btop tealdeer man-db zoxide fzf ncdu ripgrep kitty flatpak'
 minimalPackages='stow neovim ripgrep fzf'
 
 fullInstall() {
@@ -14,7 +14,8 @@ fullInstall() {
 	do true; done
 	[[ "$tailscaleInstall" == "Y" || "$tailscaleInstall" == "y" ]] && curl -fsSL https://tailscale.com/install.sh | sh
 	[ -f /etc/arch-release ] && pacman -Sy --needed $packages github-cli
-	[ -f /etc/debian_version ] && apt-get update && apt-get install $packages gh
+	[ -f /etc/debian_version ] && apt-get update && apt-get install $packages gh && 
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 	systemSupport
 }
 
