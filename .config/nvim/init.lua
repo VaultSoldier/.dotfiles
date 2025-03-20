@@ -2,23 +2,6 @@ vim.g.have_nerd_font = true
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-local plugins = {
-  'init',
-  'kickstart',
-  'which-key',
-  'telescope',
-  'autopairs',
-  'debug',
-  'gitsigns',
-  'indent-line',
-  'lint',
-  'neo-tree',
-  'nvim-cmp',
-  'scope-nvim',
-  'theme',
-  'venv-selector',
-}
-
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -34,10 +17,6 @@ vim.opt.rtp:prepend(lazypath)
 require 'configs.lazy'
 require 'options'
 require 'autocmds'
-
-for _, plugin in ipairs(plugins) do
-  require('plugins.' .. plugin)
-end
 
 vim.schedule(function()
   require 'mappings'

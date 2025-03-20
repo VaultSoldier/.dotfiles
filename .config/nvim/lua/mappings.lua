@@ -27,7 +27,6 @@ map('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 map('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 map('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-
 map('v', 'J', ":m '>+1<CR>gv=gv")
 map('v', 'K', ":m '<-2<CR>gv=gv")
 
@@ -43,9 +42,10 @@ map('x', '<leader>p', '"_dP')
 map('n', '<C-_>', 'gcc', { desc = 'toggle comment' })
 map('v', '<C-_>', 'gc', { desc = 'toggle comment' })
 
--- Save file
+-- File operations
 map('n', '<C-s>', '<cmd>w<CR>', { desc = 'Save' })
 map('n', '<C-q>', '<cmd>wq<CR>', { desc = 'Save and exit' })
+map('n', '<C-x>', ':q!<CR>', { desc = 'Exit' })
 
 -- Buffers
 map('n', '<leader>b', '<cmd>tabnew<CR>', { desc = 'buffer new' })
@@ -58,25 +58,20 @@ map('n', '<leader>E', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rr
 map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-map('n', '<C-x>', ':q!<CR>', { desc = 'Exit' })
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "python",
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'python',
   callback = function()
-    map("n", "<leader>cr", ":!python %<CR>", { noremap = true, silent = true, buffer = true })
+    map('n', '<leader>cr', ':!python %<CR>', { noremap = true, silent = true, buffer = true })
   end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "html",
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'html',
   callback = function()
-    map("n", "<leader>cr", ":!open %<CR>", { noremap = true, silent = true, buffer = true })
+    map('n', '<leader>cr', ':!open %<CR>', { noremap = true, silent = true, buffer = true })
   end,
 })
-
--- map('n', '<leader>C', function()
---   require('nvchad.themes').open()
--- end, { desc = 'telescope nvchad themes' })
 
 map('n', '<leader>ct', '<cmd>Telescope git_status<CR>', { desc = 'telescope git status' })
 map('n', '<leader>fm', '<cmd>Telescope marks<CR>', { desc = '[F]ind [M]arks' })
@@ -93,21 +88,21 @@ map('n', '<leader>fw', builtin.grep_string, { desc = '[F]ind current [W]ord' })
 map('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind [G]rep' })
 map('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
 map('n', '<leader>fr', builtin.resume, { desc = '[F]ind [R]esume' })
-  map('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
-  map('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+map('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
+map('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
-  -- Slightly advanced example of overriding default behavior and theme
-  map('n', '<leader>/', function()
-    -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-    builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-      winblend = 10,
-      previewer = false,
-    })
-  end, { desc = '[/] Fuzzily search in current buffer' })
+-- Slightly advanced example of overriding default behavior and theme
+map('n', '<leader>/', function()
+  -- You can pass additional configuration to Telescope to change the theme, layout, etc.
+  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+    winblend = 10,
+    previewer = false,
+  })
+end, { desc = '[/] Fuzzily search in current buffer' })
 
-  -- It's also possible to pass additional configuration options.
-  --  See `:help telescope.builtin.live_grep()` for information about particular keys
-  map('n', '<leader>f/', function()
+-- It's also possible to pass additional configuration options.
+--  See `:help telescope.builtin.live_grep()` for information about particular keys
+map('n', '<leader>f/', function()
   builtin.live_grep {
     grep_open_files = true,
     prompt_title = 'Live Grep in Open Files',
@@ -125,7 +120,3 @@ for i = 1, 9, 1 do
     vim.api.nvim_set_current_buf(vim.t.bufs[i])
   end)
 end
-
--- Disable mappinge
--- local nomap = vim.keymap.del
--- nomap('n', '<leader>rn') -- toggle relative number
