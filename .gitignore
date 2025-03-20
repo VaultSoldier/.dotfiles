@@ -1,5 +1,12 @@
-.config/nvim/lazy-lock.json
+# ssh
 .ssh/ssh_keys
 known_hosts
 known_hosts.old
 authorized_keys
+
+# kickstart nvim
+tags
+test.sh
+.config/nvim/lazy-lock.json
+.luarc.json
+spell/

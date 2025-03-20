@@ -1,37 +1,44 @@
-vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46_cache/"
-vim.g.mapleader = " "
+vim.g.have_nerd_font = true
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
--- bootstrap lazy and all plugins
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+local plugins = {
+  'init',
+  'kickstart',
+  'which-key',
+  'telescope',
+  'autopairs',
+  'debug',
+  'gitsigns',
+  'indent-line',
+  'lint',
+  'neo-tree',
+  'nvim-cmp',
+  'scope-nvim',
+  'theme',
+  'venv-selector',
+}
 
-if not vim.loop.fs_stat(lazypath) then
-  local repo = "https://github.com/folke/lazy.nvim.git"
-  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
-end
-
+-- [[ Install `lazy.nvim` plugin manager ]]
+--    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
+  local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
+  if vim.v.shell_error ~= 0 then
+    error('Error cloning lazy.nvim:\n' .. out)
+  end
+end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
-local lazy_config = require "configs.lazy"
+require 'configs.lazy'
+require 'options'
+require 'autocmds'
 
--- load plugins
-require("lazy").setup({
-  {
-    "NvChad/NvChad",
-    lazy = false,
-    branch = "v2.5",
-    import = "nvchad.plugins",
-  },
-
-  { import = "plugins" },
-}, lazy_config)
-
--- load theme
-dofile(vim.g.base46_cache .. "defaults")
-dofile(vim.g.base46_cache .. "statusline")
-
-require "options"
-require "autocmds"
+for _, plugin in ipairs(plugins) do
+  require('plugins.' .. plugin)
+end
 
 vim.schedule(function()
-  require "mappings"
+  require 'mappings'
 end)

@@ -1,0 +1,1 @@
+../../../nvim/lua/kickstart/plugins/gitsigns.lua

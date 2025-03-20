@@ -1,22 +1,26 @@
-local nvlsp = require "nvchad.configs.lspconfig"
-local lspconfig = require "lspconfig"
+local lspconfig = require('lspconfig')
+local map = vim.keymap.set
 
-local function custom_on_attach(client, bufnr)
-  -- Call the original NvChad on_attach
-  if nvlsp.on_attach then
-    nvlsp.on_attach(client, bufnr)
-  end
+-- Define the language servers you want to use
+local servers = {
+  pyright = {},         -- Python
+  ts_ls = {},           -- JavaScript/TypeScript
+  lua_ls = {},          -- Lua
+  clangd = {},          -- C/C++
+  rust_analyzer = {},   -- Rust
+}
 
-  -- Unmap <leader>ra
-  vim.keymap.del("n", "<leader>ra", { buffer = bufnr })
+-- Common on_attach function (optional)
+local on_attach = function(client, bufnr)
+  -- Keybindings for LSP
+  local opts = { noremap = true, silent = true, buffer = bufnr }
+  map('n', 'gd', vim.lsp.buf.definition, opts)
+  map('n', 'K', vim.lsp.buf.hover, opts)
+  map('n', '<leader>ca', vim.lsp.buf.rename, vim.tbl_extend("force", opts, {desc = 'LSP renamer'}))
 end
 
-local servers = { "html", "cssls", "clangd", "pyright" }
--- lsps with default config
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = custom_on_attach,
-    on_init = nvlsp.on_init,
-    capabilities = nvlsp.capabilities,
-  }
+-- Loop through each server and setup
+for server, config in pairs(servers) do
+  config.on_attach = on_attach
+  lspconfig[server].setup(config)
 end

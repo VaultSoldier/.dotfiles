@@ -1,0 +1,1 @@
+../../nvim/lua/configs/conform.lua
