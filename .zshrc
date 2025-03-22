@@ -47,28 +47,32 @@ bindkey -e
 # removes [/ . $ -] from $WORDCHARS
 WORDCHARS=${WORDCHARS//[\/\.\$\-\=\"]}
 
-# alt + ←→
-bindkey "^[[1;3D" backward-word
-bindkey "^[[1;3C" forward-word
-
-# alt + jk
-bindkey '^[j' backward-word
-bindkey '^[k' forward-word
-
-# alt+del forward delete word
-bindkey '^[[3;3~' kill-word
+# home/end
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
 
 # PG up/PG down
 bindkey "^[[5~" backward-word
 bindkey "^[[6~" forward-word
 
-# home/end
-bindkey "^[[H" beginning-of-line
-bindkey "^[[F" end-of-line
+# alt + ←→
+bindkey "^[[1;3D" backward-word
+bindkey "^[[1;3C" forward-word
 
-# ctrl + jk
-bindkey '^J' down-history
-bindkey '^K' up-history
+# alt + hl
+bindkey '^[h' backward-char
+bindkey '^[l' forward-char
+
+# alt + jk
+bindkey '^[j' down-history
+bindkey '^[k' up-history
+
+# alt + ctrl + jk
+bindkey '^[^H' backward-word
+bindkey '^[^L' forward-word
+
+# alt+del forward delete word
+bindkey '^[[3;3~' kill-word
 
 # del forward char 
 bindkey '^[[3~' delete-char
