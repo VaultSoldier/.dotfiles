@@ -13,10 +13,10 @@ local servers = {
 -- Common on_attach function (optional)
 local on_attach = function(client, bufnr)
   -- Keybindings for LSP
-  local opts = { noremap = true, buffer = bufnr }
-  map('n', 'gd', vim.lsp.buf.definition, opts)
-  map('n', 'K', vim.lsp.buf.hover, opts)
-  map('n', '<leader>ca', vim.lsp.buf.rename, vim.tbl_extend('force', opts, { desc = 'LSP renamer' }))
+  local opts = { noremap = true, true, buffer = bufnr }
+  -- map('n', 'gd', vim.lsp.buf.definition, opts)
+  -- map('n', 'K', vim.lsp.buf.hover, opts)
+  -- map('n', '<leader>ca', vim.lsp.buf.rename, vim.tbl_extend('force', opts, { desc = 'LSP renamer' }))
 end
 
 -- Loop through each server and setup

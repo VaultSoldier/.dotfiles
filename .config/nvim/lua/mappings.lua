@@ -1,7 +1,7 @@
 local map = vim.keymap.set
 local builtin = require 'telescope.builtin'
-map('n', ';', ':', { desc = 'CMD enter command mode' })
 
+map('n', ';', ':', { desc = 'CMD enter command mode' })
 map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 map('i', 'jj', '<Esc>')
 
@@ -10,22 +10,17 @@ map('v', '<S-Tab>', '<gv', { noremap = true, silent = true })
 map('i', '<Tab>', '<C-t>', { noremap = true, silent = true })
 map('i', '<S-Tab>', '<C-d>', { noremap = true, silent = true })
 
-map('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
-map('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
-map('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
-map('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
-map('v', '<left>', '<cmd>echo "Use h to move!!"<CR>')
-map('v', '<right>', '<cmd>echo "Use l to move!!"<CR>')
-map('v', '<up>', '<cmd>echo "Use k to move!!"<CR>')
-map('v', '<down>', '<cmd>echo "Use j to move!!"<CR>')
-
--- Keybinds to make split navigation easier.
---  Use CTRL+<hjkl> to switch between windows
---  See `:help wincmd` for a list of all window commands
+-- CTRL+<hjkl> to switch between windows
+-- See `:help wincmd` for a list of all window commands
 map('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 map('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 map('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 map('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+map('i', '<C-h>', '<Left>', { noremap = true, silent = true })
+map('i', '<C-j>', '<Down>', { noremap = true, silent = true })
+map('i', '<C-k>', '<Up>', { noremap = true, silent = true })
+map('i', '<C-l>', '<Right>', { noremap = true, silent = true })
 
 map('v', 'J', ":m '>+1<CR>gv=gv")
 map('v', 'K', ":m '<-2<CR>gv=gv")
@@ -37,10 +32,6 @@ map('n', 'n', 'nzzzv')
 map('n', 'N', 'Nzzzv')
 
 map('x', '<leader>p', '"_dP')
-
--- Comment
-map('n', '<C-_>', 'gcc', { desc = 'toggle comment' })
-map('v', '<C-_>', 'gc', { desc = 'toggle comment' })
 
 -- File operations
 map('n', '<C-s>', '<cmd>w<CR>', { desc = 'Save' })
@@ -120,3 +111,12 @@ for i = 1, 9, 1 do
     vim.api.nvim_set_current_buf(vim.t.bufs[i])
   end)
 end
+
+map('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+map('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+map('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+map('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+map('v', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+map('v', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+map('v', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+map('v', '<down>', '<cmd>echo "Use j to move!!"<CR>')
