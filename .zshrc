@@ -59,6 +59,10 @@ bindkey "^[[6~" forward-word
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 
+# ctrl + jk
+bindkey '^J' down-history
+bindkey '^K' up-history
+
 # unbind beginning-of-line
 bindkey -r '^A'
 
