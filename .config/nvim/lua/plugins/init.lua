@@ -16,19 +16,6 @@ return {
     },
   },
 
-  { -- Adds git related signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-    },
-  },
-
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     config = function()
@@ -117,12 +104,4 @@ return {
       },
     },
   },
-
-  {
-    'neovim/nvim-lspconfig',
-    config = function()
-      require 'configs.lsp.init'
-    end,
-  },
-  { 'williamboman/mason-lspconfig.nvim' },
 }
