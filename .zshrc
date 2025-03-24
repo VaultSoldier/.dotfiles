@@ -29,6 +29,7 @@ fi
 # ENV vars
 export EDITOR=nvim
 export GOPATH="$HOME/.local/share/go"
+export FZF_CTRL_R_OPTS="--bind 'ctrl-j:ignore,ctrl-k:ignore,alt-j:down,alt-k:up'"
 
 ######################################################################################
 #  ___  ___  ________  _________  ___  __    _______       ___    ___ ________       #
@@ -143,7 +144,6 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 
-# load zoxide and fzf
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(fzf --zsh)"
 
