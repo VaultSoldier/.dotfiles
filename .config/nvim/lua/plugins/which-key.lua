@@ -9,8 +9,11 @@ return {
     require('which-key').add {
       { '<leader>c', group = 'Code' },
       { '<leader>f', group = 'Find' },
+      { '<leader>s', group = 'Search' },
       { '<leader>w', group = 'Workspace' },
-      { '<leader>h', group = 'Git' },
+      { '<leader>D', group = 'Document' },
+      { '<leader>d', group = 'Debug' },
+      { '<leader>g', group = 'Git' },
       { '<leader>t', group = 'Toggle' },
     }
   end,

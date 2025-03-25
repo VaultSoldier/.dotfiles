@@ -1,6 +1,11 @@
 local map = vim.keymap.set
 local builtin = require 'telescope.builtin'
 
+map({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { desc = 'Down', expr = true, silent = true })
+map({ 'n', 'x' }, '<Down>', "v:count == 0 ? 'gj' : 'j'", { desc = 'Down', expr = true, silent = true })
+map({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { desc = 'Up', expr = true, silent = true })
+map({ 'n', 'x' }, '<Up>', "v:count == 0 ? 'gk' : 'k'", { desc = 'Up', expr = true, silent = true })
+
 map('n', ';', ':', { desc = 'CMD enter command mode' })
 map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 map('i', 'jj', '<Esc>')
@@ -36,13 +41,23 @@ map('x', '<leader>p', '"_dP')
 -- File operations
 map('n', '<C-s>', '<cmd>w<CR>', { desc = 'Save' })
 map('n', '<C-q>', '<cmd>wq<CR>', { desc = 'Save and exit' })
-map('n', '<C-x>', ':q!<CR>', { desc = 'Exit' })
+map('n', '<C-x>', ':confirm q<CR>', { desc = 'Exit' })
 
 -- Buffers
-map('n', '<leader>b', '<cmd>tabnew<CR>', { desc = 'buffer new' })
-map('n', '<leader>x', '<cmd>tabclose<CR>', { desc = 'buffer close' })
-map('n', '<tab>', '<cmd>tabnext<CR>', { desc = 'buffer goto next' })
-map('n', '<S-tab>', '<cmd>tabprevious<CR>', { desc = 'buffer goto prev' })
+-- map('n', '<leader>b', '<cmd>tabnew<CR>', { desc = 'tab new' })
+map('n', '<leader>x', '<cmd>tabclose<CR>', { desc = 'tab close' })
+map('n', '<Tab>', ':bnext<CR>', { silent = true })
+map('n', '<S-Tab>', ':bprev<CR>', { silent = true })
+
+-- Buffer Navigation
+map('n', '[b', ':bprevious<CR>', { desc = 'Previous buffer' })
+map('n', ']b', ':bnext<CR>', { desc = 'Next buffer' })
+map('n', '<S-h>', ':bprevious<CR>', { desc = 'Previous buffer' })
+map('n', '<S-l>', ':bnext<CR>', { desc = 'Next buffer' })
+
+-- Buffer Movement (requires plugin like 'famiu/bufdelete.nvim' or custom function)
+map('n', '[B', ':BufMoveLeft<CR>', { desc = 'Move buffer left' }) -- Requires plugin
+map('n', ']B', ':BufMoveRight<CR>', { desc = 'Move buffer right' }) -- Requires plugin
 
 -- Code
 map('n', '<leader>E', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
@@ -50,27 +65,7 @@ map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]ui
 map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'python',
-  callback = function()
-    map('n', '<leader>cr', ':!python %<CR>', { noremap = true, silent = true, buffer = true })
-  end,
-})
-
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'html',
-  callback = function()
-    map('n', '<leader>cr', ':!open %<CR>', { noremap = true, silent = true, buffer = true })
-  end,
-})
-
-map('n', '<leader>ct', '<cmd>Telescope git_status<CR>', { desc = 'telescope git status' })
-map('n', '<leader>fm', '<cmd>Telescope marks<CR>', { desc = '[F]ind [M]arks' })
-map('n', '<leader>fb', '<cmd>Telescope buffers<CR>', { desc = '[F]ind [B]uffers' })
-map('n', '<leader>ft', '<cmd>Telescope terms<CR>', { desc = '[F]ind [T]erminals' })
-
 -- See `:help telescope.builtin`
-map('n', '<leader>fv', '<cmd>VenvSelect<CR>', { desc = '[S]elect [V]envs' }) -- VenvSelector.
 map('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
 map('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
 map('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
@@ -105,12 +100,23 @@ map('n', '<leader>fn', function()
   builtin.find_files { cwd = vim.fn.stdpath 'config' }
 end, { desc = '[F]ind [N]eovim files' })
 
--- buffer change with alt + 1 to 9
-for i = 1, 9, 1 do
+-- Switch to buffer 1-9 with Alt+1-9
+for i = 1, 9 do
   map('n', string.format('<A-%s>', i), function()
-    vim.api.nvim_set_current_buf(vim.t.bufs[i])
+    require('bufferline').go_to(i)
   end)
 end
+
+-- Switch to tab 1-9 with Ctrl+1-9
+for i = 1, 9 do
+  map('n', string.format('<C-%s>', i), '<cmd>' .. i .. 'tabnext<CR>')
+end
+
+map('t', '<C-x>', '<C-\\><C-N>', { desc = 'terminal escape terminal mode' })
+
+-- command mode alt+jk
+map('c', '<A-j>', '<Down>')
+map('c', '<A-k>', '<Up>')
 
 map('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 map('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')

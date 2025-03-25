@@ -60,7 +60,7 @@ return {
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'python', 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -80,28 +80,25 @@ return {
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
 
-  {
-    'stevearc/conform.nvim',
-    -- event = 'BufWritePre', -- uncomment for format on save
-    config = function()
-      require 'configs.conform'
-    end,
-  },
-
-  {
-    'nvim-treesitter/nvim-treesitter',
-    opts = {
-      ensure_installed = {
-        'vim',
-        'lua',
-        'vimdoc',
-        'html',
-        'css',
-        'c',
-        'markdown',
-        'markdown_inline',
-        'python',
-      },
-    },
-  },
+  -- {
+  --   'stevearc/conform.nvim',
+  --   -- event = 'BufWritePre', -- uncomment for format on save
+  --   config = function()
+  --     local options = {
+  --       formatters_by_ft = {
+  --         lua = { 'stylua' },
+  --         css = { 'prettier' },
+  --         html = { 'prettier' },
+  --       },
+  --
+  --       format_on_save = {
+  --         -- These options will be passed to conform.format()
+  --         timeout_ms = 500,
+  --         lsp_fallback = true,
+  --       },
+  --     }
+  --
+  --     require('conform').setup(options)
+  --   end,
+  -- },
 }
