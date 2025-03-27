@@ -56,6 +56,4 @@ local delim = is_windows and ';' or ':'
 vim.env.PATH = table.concat({ vim.fn.stdpath 'data', 'mason', 'bin' }, sep) .. delim .. vim.env.PATH
 
 ------------- lazyvim -------------
-g.lazyvim_picker = 'neo-tree'
 g.lazyvim_python_lsp = 'pyright'
-g.lazyvim_picker = 'telescope'

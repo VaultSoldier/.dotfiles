@@ -11,8 +11,8 @@ return {
       { '<leader>f', group = 'Find' },
       { '<leader>s', group = 'Search' },
       { '<leader>w', group = 'Workspace' },
-      { '<leader>D', group = 'Document' },
-      { '<leader>d', group = 'Debug' },
+      { '<leader>D', group = 'Debug' },
+      { '<leader>a', group = 'Document Action' },
       { '<leader>g', group = 'Git' },
       { '<leader>t', group = 'Toggle' },
     }

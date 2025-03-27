@@ -1,12 +1,11 @@
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
-    { 'williamboman/mason.nvim', opts = {} },
+    { 'williamboman/mason.nvim', opts = {} }, -- Useful status updates for LSP.
+    { 'j-hui/fidget.nvim', opts = {} },
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-
-    -- Useful status updates for LSP.
-    { 'j-hui/fidget.nvim', opts = {} },
+    'saghen/blink.cmp',
   },
   config = function()
     --  This function gets run when an LSP attaches to a particular buffer.
@@ -26,13 +25,13 @@ return {
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
-        vim.api.nvim_create_autocmd('FileType', {
-          pattern = 'python',
-          callback = function()
-            map('n', '<leader>cr', ':!python %<CR>', { desc = '[R]un python', noremap = true, silent = true, buffer = true })
-            map('n', '<leader>cv', '<cmd>VenvSelect<CR>', { desc = 'Select [V]envs' }) -- VenvSelector.
-          end,
-        })
+        -- vim.api.nvim_create_autocmd('FileType', {
+        --   pattern = 'python',
+        --   callback = function()
+        --     map('n', '<leader>cr', ':!python %<CR>', { desc = '[R]un python', noremap = true, silent = true, buffer = true })
+        --     map('n', '<leader>cv', '<cmd>VenvSelect<CR>', { desc = 'Select [V]envs' }) -- VenvSelector.
+        --   end,
+        -- })
 
         map('<leader>cr', function()
           local filetype = vim.bo.filetype
@@ -49,10 +48,10 @@ return {
         map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
         map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
         map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-        map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-        map('<leader>cs', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-        map('<leader>cn', vim.lsp.buf.rename, '[R]e[n]ame')
+        map('<leader>as', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+        map('<leader>as', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
+        map('<leader>cn', vim.lsp.buf.rename, '[R]e[n]ame')
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
         -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
@@ -109,7 +108,7 @@ return {
       end,
     })
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
 
     local servers = {
       pyright = {},
