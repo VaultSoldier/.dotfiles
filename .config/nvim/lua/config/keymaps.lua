@@ -78,7 +78,7 @@ map('n', '<leader>gs',  picker.git_status, { desc = '[G]it [S]tatus' })
 map('n', '<leader>gS',  picker.git_stash, { desc = '[G]it [S]tash' })
 map('n', '<leader>gd',  picker.git_diff, { desc = '[G]it [D]iff' })
 map('n', '<leader>gf',  picker.git_log_file, { desc = '[G]it Log [F]ile' })
-map({ 'n', 'v' }, '<leader>gB',  snacks.gitbrowse, { desc = '[G]it [B]rowse' })
+map({'n', 'v'}, '<leader>gB',  function() snacks.gitbrowse() end, { desc = '[G]it [B]rowse' })
 
 -- Code --
 map('n', '<leader>E', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
