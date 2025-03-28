@@ -15,7 +15,7 @@ fullInstall() {
 		[[ -z $tailscaleInstall || ! $tailscaleInstall =~ ^[yYnN]$ ]]  
 	do true; done
 	[[ "$tailscaleInstall" == "Y" || "$tailscaleInstall" == "y" ]] && curl -fsSL https://tailscale.com/install.sh | sh
-	[ -f /etc/arch-release ] && pacman -Sy --needed $packages $arch
+	[ -f /etc/arch-release ] && pacman -Sy --needed $packages $arch_pkgs
 	[ -f /etc/debian_version ] && apt-get update && apt-get install $packages $debian_pkgs && 
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 	systemSupport
