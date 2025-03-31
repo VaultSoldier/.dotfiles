@@ -11,7 +11,7 @@ RUN reflector \
 
 ENV GOPATH="/home/vs/.local/share/go"
 RUN pacman -Syu --needed --noconfirm base-devel sudo unzip go github-cli man-db tealdeer \ 
-tmux git git-zsh-completion neovim ripgrep zoxide fzf stow tmux
+tmux git git-zsh-completion neovim ripgrep zoxide fzf stow tmux npm
 
 FROM base as user
 RUN useradd -m vs && \
@@ -21,7 +21,7 @@ RUN useradd -m vs && \
 USER vs
 WORKDIR /home/vs
 
-RUN pacman -Syu --needed --noconfirm wl-clipboard htop btop \ 
+RUN sudo pacman -Syu --needed --noconfirm wl-clipboard htop btop \ 
 ncdu flatpak podman podman-docker podman-compose 
 
 FROM user as build
@@ -41,7 +41,7 @@ RUN git clone https://github.com/VaultSoldier/.dotfiles.git ~/.dotfiles && \
     cd ~/.dotfiles && \
     rm /home/vs/.bashrc && \
     rm /home/vs/.zshrc && \
-    stow . --no-folding && \
+    stow . --no-folding
 
 RUN zsh -c 'zinit self-update' && \
     zsh -c 'zinit light zsh-users/zsh-syntax-highlighting' && \
