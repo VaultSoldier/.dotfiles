@@ -4,7 +4,7 @@ while
 	[[ -z $choice || $choice != [1-4] ]] && echo "Incorrect input"
 do true; done
 
-packages='stow wl-clipboard neovim tmux htop btop tealdeer man-db zoxide fzf ncdu ripgrep kitty flatpak gnupg pass'
+packages='stow wl-clipboard neovim tmux htop btop tealdeer man-db zoxide fzf ncdu ripgrep kitty flatpak base-devel npm gnupg unzip go'
 minimalPackages='stow neovim ripgrep fzf git'
 arch_pkgs='github-cli git-zsh-completion pass man-db podman podman-desktop podman-docker podman-compose'
 debian_pkgs='gh'
