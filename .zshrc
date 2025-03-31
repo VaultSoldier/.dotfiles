@@ -111,6 +111,7 @@ alias ssh-close='cryfs-unmount $HOME/.ssh/ssh_keys/'
 alias weather='curl wttr.in/:Chelyabinsk'
 alias open='xdg-open'
 alias vi='nvim'
+alias arch='docker run --rm -it arch-dotfiles'
 
 #########################################################################
 #  ________  _________    ___    ___ ___       _______   ________       #
