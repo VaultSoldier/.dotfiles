@@ -7,14 +7,16 @@ return {
   config = function()
     require('which-key').setup()
     require('which-key').add {
-      { '<leader>c', group = 'Code' },
-      { '<leader>f', group = 'Find' },
-      { '<leader>s', group = 'Search' },
-      { '<leader>w', group = 'Workspace' },
-      { '<leader>D', group = 'Debug' },
-      { '<leader>a', group = 'Document Action' },
-      { '<leader>g', group = 'Git' },
-      { '<leader>t', group = 'Toggle' },
+      { '<leader>c', group = '[C]ode', icon = { icon = '', color = 'green'}},
+      { '<leader>f', group = '[F]ind', icon = { icon = '', color = 'green' }},
+      { '<leader>a', group = 'Document [A]ction', icon = { icon = '󰈙', color = 'green' }},
+      { '<leader>g', group = '[G]it', icon = { icon = '', color = 'yellow' }},
+      { '<leader>h', group = 'Git [H]unk', icon = { icon = '', color = 'yellow' }},
+      { '<leader>t', group = '[T]oggle', icon = { icon = '', color = 'green' }},
+
+      { '<leader>n', icon = { icon = '󰂚 ', color = 'green' }},
+      { '<leader>x', icon = { icon = '', color = 'red' }},
+      { '<leader>e', icon = { icon = '󰪶', color = 'green' }},
     }
   end,
 }

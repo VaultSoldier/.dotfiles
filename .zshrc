@@ -96,6 +96,7 @@ bindkey -r '^A'
 DIR=$HOME/.dotfiles/scripts
 
 alias t='tmux'
+alias g='git'
 alias ls='ls --color=auto'
 alias la='ls -lha --color=auto'
 alias CombineAudio='pactl load-module module-combine-sink'
@@ -111,7 +112,7 @@ alias ssh-close='cryfs-unmount $HOME/.ssh/ssh_keys/'
 alias weather='curl wttr.in/:Chelyabinsk'
 alias open='xdg-open'
 alias vi='nvim'
-alias arch='docker run --rm -it arch-dotfiles'
+alias arch='docker run --rm -it vaultsoldier/arch-dotfiles:latest'
 
 #########################################################################
 #  ________  _________    ___    ___ ___       _______   ________       #

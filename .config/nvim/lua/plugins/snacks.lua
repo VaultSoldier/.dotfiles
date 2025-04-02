@@ -30,7 +30,7 @@ return {
       pattern = 'VeryLazy',
       callback = function()
         -- Setup some globals for debugging (lazy-loaded)
-        local snacks = Snacks
+        local snacks = require('snacks')
         _G.dd = function(...)
           snacks.debug.inspect(...)
         end
@@ -39,7 +39,7 @@ return {
         end
         vim.print = _G.dd -- Override print to use snacks for `:=` command
 
-        require('config.keymaps').toggle()
+        require('config.keymaps').toggle(snacks.toggle)
       end,
     })
   end,

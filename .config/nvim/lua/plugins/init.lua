@@ -2,7 +2,6 @@ return {
   'nvim-lua/plenary.nvim',
   'numToStr/Comment.nvim',
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
   { -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
     -- used for completion, annotations and signatures of Neovim apis
@@ -79,28 +78,6 @@ return {
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
-
-  -- {
-  --   'stevearc/conform.nvim',
-  --   -- event = 'BufWritePre', -- uncomment for format on save
-  --   config = function()
-  --     local options = {
-  --       formatters_by_ft = {
-  --         lua = { 'stylua' },
-  --         css = { 'prettier' },
-  --         html = { 'prettier' },
-  --       },
-  --
-  --       format_on_save = {
-  --         -- These options will be passed to conform.format()
-  --         timeout_ms = 500,
-  --         lsp_fallback = true,
-  --       },
-  --     }
-  --
-  --     require('conform').setup(options)
-  --   end,
-  -- },
 
   {
     'nvim-telescope/telescope.nvim',
