@@ -115,6 +115,7 @@ return {
       html = {},
       clangd = {},
       gopls = {},
+      hadolint = {},
       lua_ls = {
         -- cmd = { ... },
         -- filetypes = { ... },
