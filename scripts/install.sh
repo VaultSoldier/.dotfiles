@@ -6,7 +6,7 @@ do true; done
 
 packages='stow wl-clipboard neovim tmux htop btop tealdeer man-db zoxide fzf ncdu ripgrep kitty flatpak base-devel npm gnupg unzip go'
 minimalPackages='stow neovim ripgrep fzf git'
-arch_pkgs='github-cli git-zsh-completion pass man-db podman podman-desktop podman-docker podman-compose'
+arch_pkgs='github-cli git-zsh-completion man-db podman podman-desktop podman-docker podman-compose'
 debian_pkgs='gh'
 
 full_install() {
@@ -18,7 +18,8 @@ full_install() {
 	[ -f /etc/debian_version ] && flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 	if [ -f /etc/arch-release ]; then
-		source ./yay_install_script.sh
+		SCRIPT_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+		source "${SCRIPT_DIR}/yay_install_script.sh"
 		sudo pacman -Syu --needed $packages $arch_pkgs && yay_install 
 		rm -rf /tmp/yay-install-*
 	fi
