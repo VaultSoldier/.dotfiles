@@ -11,7 +11,7 @@ services:
       - SUDO_PASSWORD=${SUDO_PASSWORD} #optional
       - SUDO_PASSWORD_HASH=${SUDO_PASSWORD_HASH} #optional
       - PROXY_DOMAIN=${PROXY_DOMAIN} #optional
-      - DEFAULT_WORKSPACE=$DEFAULT_WORKSPACE #optional
+      - DEFAULT_WORKSPACE=${DEFAULT_WORKSPACE} #optional
     volumes:
       - ./data/config:/config
     ports:
