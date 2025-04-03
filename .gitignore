@@ -3,10 +3,10 @@
 known_hosts
 known_hosts.old
 authorized_keys
-
-# kickstart nvim
+.env
 tags
 test.sh
 .config/nvim/lazy-lock.json
 .luarc.json
 spell/
+Containers/*/data 
