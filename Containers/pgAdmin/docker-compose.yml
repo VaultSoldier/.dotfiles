@@ -1,0 +1,18 @@
+services:
+  pgadmin:
+    image: elestio/pgadmin:latest
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_LISTEN_PORT: ${PGADMIN_LISTEN_PORT}
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data/pgadmin/servers.json:/pgadmin4/servers.json
+    networks:
+      - pgadmin
+ 
+networks:
+  pgadmin:
+    external: true
