@@ -51,7 +51,7 @@ RUN zsh -c 'zinit self-update' && \
 RUN nvim --headless "+Lazy! sync" +qa && \
     nvim --headless -c 'MasonToolsInstallSync' -c 'quitall'
 
-RUN tldr -u
+RUN tldr -u && history -c
 
 from build as final
 ENV LANG=C.UTF-8
