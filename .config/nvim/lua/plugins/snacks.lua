@@ -5,8 +5,31 @@ return {
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
-    dashboard = { enabled = true },
-    explorer = { enabled = false },
+    dashboard = {
+      enabled = true,
+      sections = {
+        { section = 'header' },
+        { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
+        { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
+        { icon = ' ', key = 'g', desc = 'Find Text', action = ":lua Snacks.dashboard.pick('live_grep')" },
+        { icon = ' ', key = 'r', desc = 'Recent Files', action = ":lua Snacks.dashboard.pick('oldfiles')" },
+        {
+          icon = ' ',
+          key = 's',
+          desc = 'Sessions',
+          action = function()
+            require('nvim-possession').list()
+          end,
+        },
+        { icon = '󰒲 ', key = 'l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
+        { icon = '', key = 'm', desc = 'Mason', action = ':Mason', enabled = package.loaded.lazy ~= nil },
+        { icon = ' ', key = 'q', desc = 'Quit', action = ':qa', padding = 1 },
+        { icon = ' ', title = 'Projects', section = 'projects', indent = 2, padding = 1 },
+        { icon = ' ', title = 'Recent Files', section = 'recent_files', indent = 2, padding = 1 },
+        { section = 'startup' },
+      },
+    },
+    explorer = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true },
     notifier = {
@@ -30,7 +53,7 @@ return {
       pattern = 'VeryLazy',
       callback = function()
         -- Setup some globals for debugging (lazy-loaded)
-        local snacks = require('snacks')
+        local snacks = require 'snacks'
         _G.dd = function(...)
           snacks.debug.inspect(...)
         end

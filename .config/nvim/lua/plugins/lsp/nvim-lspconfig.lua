@@ -15,44 +15,12 @@ return {
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
       callback = function(event)
-        -- NOTE: Remember that Lua is a real programming language, and as such it is possible
-        -- to define small helper and utility functions so you don't have to repeat yourself.
-        --
-        -- In this case, we create a function that lets us more easily define mappings specific
-        -- for LSP related items. It sets the mode, buffer and description for us each time.
         local map = function(keys, func, desc, mode)
           mode = mode or 'n'
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
-        -- vim.api.nvim_create_autocmd('FileType', {
-        --   pattern = 'python',
-        --   callback = function()
-        --     map('n', '<leader>cr', ':!python %<CR>', { desc = '[R]un python', noremap = true, silent = true, buffer = true })
-        --     map('n', '<leader>cv', '<cmd>VenvSelect<CR>', { desc = 'Select [V]envs' }) -- VenvSelector.
-        --   end,
-        -- })
-
-        map('<leader>cr', function()
-          local filetype = vim.bo.filetype
-          if filetype == 'python' then
-            vim.cmd '!python3 %'
-          elseif filetype == 'html' then
-            vim.cmd '!live-server .'
-          else
-            print 'Unsupported file type'
-          end
-        end, 'Run [C]ode')
-
-        map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-        map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-        map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-        map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-        map('<leader>as', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-        map('<leader>as', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-        map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
-        map('<leader>cn', vim.lsp.buf.rename, '[R]e[n]ame')
-        map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+        require('config.keymaps').lsp(map)
 
         -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
         ---@param client vim.lsp.Client
@@ -111,11 +79,11 @@ return {
     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
     local servers = {
+      ruff = {},
       pyright = {},
       html = {},
       clangd = {},
       gopls = {},
-      hadolint = {},
       lua_ls = {
         -- cmd = { ... },
         -- filetypes = { ... },
@@ -142,8 +110,13 @@ return {
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua',
-      'markdownlint',
       'prettier',
+      'markdownlint',
+      'hadolint',
+      'prettierd',
+      'shfmt',
+      'jsonlint',
+      'vale',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

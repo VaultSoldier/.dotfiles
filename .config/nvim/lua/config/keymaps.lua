@@ -1,10 +1,10 @@
 local M = {}
 local snacks = require 'snacks'
 local picker = snacks.picker
-local map = vim.keymap.set
 
 function M.global()
   local builtin = require 'telescope.builtin'
+  local map = vim.keymap.set
   map({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { desc = 'Down', expr = true, silent = true })
   map({ 'n', 'x' }, '<Down>', "v:count == 0 ? 'gj' : 'j'", { desc = 'Down', expr = true, silent = true })
   map({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { desc = 'Up', expr = true, silent = true })
@@ -16,13 +16,20 @@ function M.global()
 
   map('v', '<Tab>', '>gv', { noremap = true, silent = true })
   map('v', '<S-Tab>', '<gv', { noremap = true, silent = true })
-  -- map('i', '<Tab>', '<C-t>', { noremap = true, silent = true })
-  -- map('i', '<S-Tab>', '<C-d>', { noremap = true, silent = true })
-  --
-  -- map('n', '<leader>z', function() snacks.zen() end, { desc = 'Toggle Zen Mode' })
-  -- map('n', '<leader>Z', function() snacks.zen.zoom() end, { desc = 'Toggle Zoom' })
-  -- map('n', '<leader>.', function() snacks.scratch() end, { desc = 'Toggle Scratch Buffer'})
-  -- map('n', '<leader>S', function() snacks.scratch.select() end, { desc = 'Select Scratch Buffer' })
+
+  map('n', '<leader>tz', function()
+    snacks.zen()
+  end, { desc = 'Toggle Zen Mode' })
+  map('n', '<leader>tZ', function()
+    snacks.zen.zoom()
+  end, { desc = 'Toggle Zoom' })
+
+  map('n', '<leader>.', function()
+    snacks.scratch()
+  end, { desc = 'Toggle Scratch Buffer' })
+  map('n', '<leader>S', function()
+    snacks.scratch.select()
+  end, { desc = 'Select Scratch Buffer' })
 
   -- See `:help wincmd` for a list of all window commands
   map('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
@@ -50,7 +57,11 @@ function M.global()
   map('n', '<C-s>', '<cmd>w<CR>', { desc = 'Save', silent = true })
   map('n', '<C-q>', '<cmd>wq<CR>', { desc = 'Save and exit', silent = true })
   map('n', '<C-x>', ':confirm q<CR>', { desc = 'Exit', silent = true })
-  map('n', '<leader>e', ':Neotree reveal<CR>', { desc = 'File [E]xplorer', silent = true })
+
+  map('n', '<leader>e', function()
+    Snacks.explorer()
+  end, { desc = 'File Explorer' })
+
   map('n', '<leader>ar', snacks.rename.rename_file, { desc = '[R]ename File' })
 
   -- Buffers --
@@ -70,7 +81,8 @@ function M.global()
   end
 
   -- Tabs --
-  -- map('n', '<leader>b', '<cmd>tabnew<CR>', { desc = 'tab new' })
+  map('n', '<leader>ab', '<cmd>tabnew<CR>', { desc = 'tab new' })
+  map('n', '<leader>ax', '<cmd>tabclose<CR>', { desc = 'tab close' })
   map('n', '<Tab>', ':tabnext<CR>', { silent = true })
   map('n', '<S-Tab>', ':tabprevious<CR>', { silent = true })
 
@@ -79,9 +91,15 @@ function M.global()
 
   -- Code --
   map('n', '<leader>E', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
-  map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-  map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-  map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+  map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Diagnostic [Q]uickfix list' })
+
+  map('n', '[d', function()
+    vim.diagnostic.jump { count = -1 }
+  end, { desc = 'Go to previous [D]iagnostic message' })
+
+  map('n', ']d', function()
+    vim.diagnostic.jump { count = 1 }
+  end, { desc = 'Go to next [D]iagnostic message' })
 
   map('n', '<leader><leader>', picker.buffers, { desc = '[ ] Find existing buffers' })
   map('n', '<leader>,', picker.smart, { desc = '[,] Smart Find Files' })
@@ -125,6 +143,47 @@ function M.global()
   map({ 'v', 'n', 'i' }, '<right>', '<cmd>echo "Use l to move!!"<CR>')
   map({ 'v', 'n', 'i' }, '<up>', '<cmd>echo "Use k to move!!"<CR>')
   map({ 'v', 'n', 'i' }, '<down>', '<cmd>echo "Use j to move!!"<CR>')
+
+  -- sessions
+  map('n', '<leader>sl', function()
+    require('nvim-possession').list()
+  end, { desc = '📌list sessions' })
+  map('n', '<leader>sn', function()
+    require('nvim-possession').new()
+  end, { desc = '📌create new session' })
+  map('n', '<leader>su', function()
+    require('nvim-possession').update()
+  end, { desc = '📌update current session' })
+  map('n', '<leader>sd', function()
+    require('nvim-possession').delete()
+  end, { desc = '📌delete selected session' })
+end
+
+function M.lsp(map)
+  -- venv-selector
+  map('<leader>cps', '<cmd>VenvSelect<cr>', 'Pick venv')
+  map('<leader>cpc', '<cmd>VenvSelectCached<cr>', 'Load venv from cache')
+
+  map('<leader>cr', function()
+    local filetype = vim.bo.filetype
+    if filetype == 'python' then
+      vim.cmd '!python3 %'
+    elseif filetype == 'html' then
+      vim.cmd '!live-server .'
+    else
+      print 'Unsupported file type'
+    end
+  end, 'Run [C]ode')
+
+  map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+  map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+  map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+  map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+  map('<leader>as', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+  map('<leader>as', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+  map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
+  map('<leader>cn', vim.lsp.buf.rename, '[R]e[n]ame')
+  map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 end
 
 function M.toggle(toggle)
@@ -139,13 +198,7 @@ function M.toggle(toggle)
   toggle.dim():map '<leader>tm'
 end
 
-function M.gitsigns(bufnr, gitsigns)
-  local function map(mode, l, r, opts)
-    opts = opts or {}
-    opts.buffer = bufnr
-    vim.keymap.set(mode, l, r, opts)
-  end
-
+function M.gitsigns(map, gitsigns)
   -- toggle git
   map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
   map('n', '<leader>tD', gitsigns.preview_hunk_inline, { desc = '[T]oggle git show [D]eleted' })
