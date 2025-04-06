@@ -29,7 +29,7 @@ return {
         { section = 'startup' },
       },
     },
-    explorer = { enabled = true },
+    explorer = { enabled = false },
     indent = { enabled = true },
     input = { enabled = true },
     notifier = {

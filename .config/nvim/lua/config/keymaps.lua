@@ -5,6 +5,7 @@ local picker = snacks.picker
 function M.global()
   local builtin = require 'telescope.builtin'
   local map = vim.keymap.set
+
   map({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { desc = 'Down', expr = true, silent = true })
   map({ 'n', 'x' }, '<Down>', "v:count == 0 ? 'gj' : 'j'", { desc = 'Down', expr = true, silent = true })
   map({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { desc = 'Up', expr = true, silent = true })
@@ -20,6 +21,7 @@ function M.global()
   map('n', '<leader>tz', function()
     snacks.zen()
   end, { desc = 'Toggle Zen Mode' })
+
   map('n', '<leader>tZ', function()
     snacks.zen.zoom()
   end, { desc = 'Toggle Zoom' })
@@ -27,6 +29,7 @@ function M.global()
   map('n', '<leader>.', function()
     snacks.scratch()
   end, { desc = 'Toggle Scratch Buffer' })
+
   map('n', '<leader>S', function()
     snacks.scratch.select()
   end, { desc = 'Select Scratch Buffer' })
@@ -56,18 +59,17 @@ function M.global()
   -- File operations --
   map('n', '<C-s>', '<cmd>w<CR>', { desc = 'Save', silent = true })
   map('n', '<C-q>', '<cmd>wq<CR>', { desc = 'Save and exit', silent = true })
-  map('n', '<C-x>', ':confirm q<CR>', { desc = 'Exit', silent = true })
-
-  map('n', '<leader>e', function()
-    Snacks.explorer()
-  end, { desc = 'File Explorer' })
-
+  map('n', '<C-x>', ':confirm quitall<CR>', { desc = 'Exit', silent = true })
+  map('n', '<leader>e', '<Cmd>Neotree reveal<CR>')
   map('n', '<leader>ar', snacks.rename.rename_file, { desc = '[R]ename File' })
 
   -- Buffers --
   map('n', '<S-h>', ':bprevious<CR>', { desc = 'Previous buffer', silent = true })
   map('n', '<S-l>', ':bnext<CR>', { desc = 'Next buffer', silent = true })
-  map('n', '<leader>x', '<cmd>bd<CR>', { desc = '[X] Buffer Close' })
+
+  map('n', '<leader>x', function()
+    snacks.bufdelete()
+  end, { desc = '[X] Buffer Close' })
 
   -- Buffer Movement (requires plugin like 'famiu/bufdelete.nvim' or custom function)
   map('n', '[B', ':BufMoveLeft<CR>', { desc = 'Move buffer left' }) -- Requires plugin
@@ -211,6 +213,7 @@ function M.gitsigns(map, gitsigns)
   map('n', '<leader>gS', picker.git_stash, { desc = '[G]it [S]tash' })
   map('n', '<leader>gd', picker.git_diff, { desc = '[G]it [D]iff' })
   map('n', '<leader>gf', picker.git_log_file, { desc = '[G]it Log [F]ile' })
+
   map({ 'n', 'v' }, '<leader>gB', function()
     snacks.gitbrowse()
   end, { desc = '[G]it [B]rowse' })

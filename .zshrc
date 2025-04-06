@@ -149,4 +149,10 @@ setopt hist_find_no_dups
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(fzf --zsh)"
 
+if [[ -z "$TMUX" ]] && command -v tmux &> /dev/null && [[ $- == *i* ]]; then
+    session_name="Term|Date_$(date '+%d-%m-%Y|Time_%H-%M')|pid_$$"
+    tmux new-session -s "$session_name"
+fi
+
+
 # ASCII - asciiart.eu
