@@ -12,7 +12,6 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-
 zinit light MichaelAquilina/zsh-autoswitch-virtualenv
 
 # load completions
@@ -52,6 +51,8 @@ WORDCHARS=${WORDCHARS//[\/\.\$\-\=\"]}
 # home/end
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
 
 # PG up/PG down
 bindkey "^[[5~" backward-word
