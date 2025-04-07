@@ -1,6 +1,11 @@
 return {
   'nvim-lualine/lualine.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  dependencies = {
+    {
+      'nvim-tree/nvim-web-devicons',
+      'gennaro-tedesco/nvim-possession',
+    },
+  },
   config = function()
     require('lualine').setup {
       -- Configuration below

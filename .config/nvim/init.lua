@@ -6,3 +6,12 @@ require 'config.lazy'
 require 'config.autocmds'
 require 'config.options'
 require('config.keymaps').global()
+
+-- session restoration options
+vim.opt.sessionoptions = { -- required
+  'buffers',
+  'tabpages',
+  'globals',
+  'curdir',
+  'folds',
+}
