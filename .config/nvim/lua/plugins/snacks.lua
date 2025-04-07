@@ -29,6 +29,9 @@ return {
         { section = 'startup' },
       },
     },
+    terminal = {
+      win = { style = 'terminal' },
+    },
     explorer = { enabled = false },
     indent = { enabled = true },
     input = { enabled = true },

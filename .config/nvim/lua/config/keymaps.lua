@@ -45,8 +45,8 @@ function M.global()
   map('i', '<C-k>', '<Up>', { noremap = true, silent = true })
   map('i', '<C-l>', '<Right>', { noremap = true, silent = true })
 
-  map('v', 'J', ":m '>+1<CR>gv=gv")
-  map('v', 'K', ":m '<-2<CR>gv=gv")
+  map('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
+  map('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
 
   map('n', 'J', 'mzJ`z')
   map('n', '<C-d>', '<C-d>zz')
@@ -58,7 +58,7 @@ function M.global()
 
   -- File operations --
   map('n', '<C-s>', '<cmd>w<CR>', { desc = 'Save', silent = true })
-  map('n', '<C-q>', '<cmd>wq<CR>', { desc = 'Save and exit', silent = true })
+  map('n', '<C-q>', '<cmd>q<CR>', { desc = 'Close', silent = true })
   map('n', '<C-x>', ':confirm quitall<CR>', { desc = 'Exit', silent = true })
   map('n', '<leader>e', '<Cmd>Neotree reveal<CR>')
   map('n', '<leader>ar', snacks.rename.rename_file, { desc = '[R]ename File' })
@@ -88,6 +88,23 @@ function M.global()
   map('n', '<Tab>', ':tabnext<CR>', { silent = true })
   map('n', '<S-Tab>', ':tabprevious<CR>', { silent = true })
 
+  map('n', '<C-/>', 'gcc', { desc = '' })
+  map('n', '<c-_>', 'gcc', { desc = '' })
+
+  -- Terminal --
+
+  map({ 'n', 't' }, '<A-v>', function()
+    snacks.terminal.toggle(nil, { env = { NVIM_TERM_ID = '0' }, win = { position = 'bottom' } })
+  end, { desc = 'Terminal toggleable vertical term' })
+
+  map({ 'n', 't' }, '<A-h>', function()
+    snacks.terminal.toggle(nil, { env = { NVIM_TERM_ID = '1' }, win = { position = 'right' } })
+  end, { desc = 'Toggle horizontal terminal' })
+
+  map({ 'n', 't' }, '<A-i>', function()
+    snacks.terminal.toggle(nil, { env = { NVIM_TERM_ID = '2' }, win = { position = 'float' } })
+  end, { desc = 'Toggle floating terminal' })
+
   -- Toggle --
   map('n', 'tn', snacks.notifier.hide, { desc = 'Dismiss All [N]otifications' })
 
@@ -110,7 +127,7 @@ function M.global()
   map('n', '<leader>fp', picker.projects, { desc = '[F]ind [P]rojects' })
   map('n', '<leader>fg', picker.grep, { desc = '[F]ind [G]rep' })
   map('n', '<leader>fj', picker.jumps, { desc = '[F]ind [J]ump' })
-  map('n', '<leader>fj', picker.loclist, { desc = '[F]ind [L]oclist' })
+  map('n', '<leader>fJ', picker.loclist, { desc = '[F]ind [L]oclist' })
   map('n', '<leader>ff', picker.files, { desc = '[F]ind [F]iles' })
   map('n', '<leader>fi', picker.icons, { desc = '[F]ind [I]cons' })
   map('n', '<leader>fk', picker.keymaps, { desc = '[F]ind [K]eymaps' })
@@ -150,12 +167,15 @@ function M.global()
   map('n', '<leader>sl', function()
     require('nvim-possession').list()
   end, { desc = '📌list sessions' })
+
   map('n', '<leader>sn', function()
     require('nvim-possession').new()
   end, { desc = '📌create new session' })
+
   map('n', '<leader>su', function()
     require('nvim-possession').update()
   end, { desc = '📌update current session' })
+
   map('n', '<leader>sd', function()
     require('nvim-possession').delete()
   end, { desc = '📌delete selected session' })
@@ -166,10 +186,10 @@ function M.lsp(map)
   map('<leader>cps', '<cmd>VenvSelect<cr>', 'Pick venv')
   map('<leader>cpc', '<cmd>VenvSelectCached<cr>', 'Load venv from cache')
 
-  map('<leader>cr', function()
+  map('<F10>', function()
     local filetype = vim.bo.filetype
     if filetype == 'python' then
-      vim.cmd '!python3 %'
+      snacks.terminal.open('python3 ' .. vim.fn.expand '%', { win = { position = 'bottom', interactive = true } })
     elseif filetype == 'html' then
       vim.cmd '!live-server .'
     else
