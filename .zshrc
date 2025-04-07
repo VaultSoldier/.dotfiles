@@ -98,6 +98,7 @@ DIR=$HOME/.dotfiles/scripts
 
 alias t='tmux'
 alias g='git'
+alias gs='git status'
 alias ls='ls --color=auto'
 alias la='ls -lha --color=auto'
 alias CombineAudio='pactl load-module module-combine-sink'
