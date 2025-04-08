@@ -10,3 +10,5 @@ test.sh
 .luarc.json
 spell/
 Containers/*/data 
+.sync*
+.nextcloud*
