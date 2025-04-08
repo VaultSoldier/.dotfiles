@@ -76,32 +76,60 @@ return {
       end,
     })
 
-    local capabilities = require('blink.cmp').get_lsp_capabilities()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
 
     local servers = {
-      ruff = {},
+      ruff = {
+        commands = {
+          RuffOrganizeImports = {
+            function()
+              vim:exec_cmd() {
+                command = 'ruff.applyOrganizeImports',
+                arguments = {
+                  { uri = vim.uri_from_bufnr(0) },
+                },
+              }
+            end,
+            description = 'Ruff: Format imports',
+          },
+        },
+      },
       pyright = {},
-      html = {},
+      jsonls = {},
+      sqlls = {},
+      terraformls = {},
+      yamlls = {},
+      bashls = {},
+      dockerls = {},
+      docker_compose_language_service = {},
+      tailwindcss = {},
+      html = { filetypes = { 'html', 'twig', 'hbs' } },
+      cssls = {},
       clangd = {},
       gopls = {},
       lua_ls = {
-        -- cmd = { ... },
-        -- filetypes = { ... },
+        -- cmd = {...},
+        -- filetypes { ...},
         -- capabilities = {},
         settings = {
           Lua = {
+            runtime = { version = 'LuaJIT' },
+            workspace = {
+              checkThirdParty = false,
+              library = {
+                '${3rd}/luv/library',
+                unpack(vim.api.nvim_get_runtime_file('', true)),
+              },
+            },
             completion = {
               callSnippet = 'Replace',
             },
+            telemetry = { enable = false },
             diagnostics = { disable = { 'missing-fields' } },
           },
         },
       },
-      -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-      --
-      -- Some languages (like typescript) have entire language plugins that can be useful:
-      --    https://github.com/pmizio/typescript-tools.nvim
-      -- But for many setups, the LSP (`ts_ls`) will work just fine
       ts_ls = {},
     }
 
@@ -114,7 +142,6 @@ return {
       'markdownlint',
       'hadolint',
       'prettierd',
-      'shfmt',
       'jsonlint',
       'vale',
     })

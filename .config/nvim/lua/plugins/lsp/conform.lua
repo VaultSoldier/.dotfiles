@@ -4,12 +4,12 @@ return {
   config = function()
     local options = {
       formatters_by_ft = {
-        python = { 'ruff' },
+        python = { 'ruff_format' },
         lua = { 'stylua' },
         javascript = { { 'prettierd', 'prettier' } },
         css = { 'prettier' },
         html = { 'prettier' },
-        sh = { 'shfmt' },
+        sh = { 'bashls' },
       },
 
       format_on_save = {
