@@ -4,7 +4,6 @@ return {
   config = function()
     local options = {
       formatters_by_ft = {
-        python = { 'ruff_format' },
         lua = { 'stylua' },
         javascript = { { 'prettierd', 'prettier' } },
         css = { 'prettier' },
