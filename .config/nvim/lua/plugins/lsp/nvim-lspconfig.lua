@@ -80,21 +80,7 @@ return {
     capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
 
     local servers = {
-      ruff = {
-        commands = {
-          RuffOrganizeImports = {
-            function()
-              vim:exec_cmd() {
-                command = 'ruff.applyOrganizeImports',
-                arguments = {
-                  { uri = vim.uri_from_bufnr(0) },
-                },
-              }
-            end,
-            description = 'Ruff: Format imports',
-          },
-        },
-      },
+      ruff = {},
       pyright = {},
       jsonls = {},
       sqlls = {},

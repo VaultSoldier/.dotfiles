@@ -97,10 +97,6 @@ function M.global()
     snacks.terminal.toggle(nil, { env = { NVIM_TERM_ID = '0' }, win = { position = 'bottom' } })
   end, { desc = 'Terminal toggleable vertical term' })
 
-  map({ 'n', 't' }, '<A-h>', function()
-    snacks.terminal.toggle(nil, { env = { NVIM_TERM_ID = '1' }, win = { position = 'right' } })
-  end, { desc = 'Toggle horizontal terminal' })
-
   map({ 'n', 't' }, '<A-i>', function()
     snacks.terminal.toggle(nil, { env = { NVIM_TERM_ID = '2' }, win = { position = 'float' } })
   end, { desc = 'Toggle floating terminal' })
