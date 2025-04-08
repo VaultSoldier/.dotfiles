@@ -1,5 +1,6 @@
 FROM archlinux:latest as base
 RUN pacman -Sy reflector --noconfirm
+
 RUN reflector \
   --country 'RU' \
   --protocol https \
@@ -11,20 +12,19 @@ RUN reflector \
 
 ENV GOPATH="/home/vs/.local/share/go"
 RUN pacman -Syu --needed --noconfirm base-devel sudo unzip go github-cli man-db tealdeer \ 
-tmux git git-zsh-completion neovim ripgrep zoxide fzf stow tmux npm
+tmux git git-zsh-completion neovim ripgrep zoxide fzf stow tmux npm imagemagick zsh
 
 FROM base as user
 RUN useradd -m vs && \
     echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/wheel && \
     usermod -aG wheel vs
 
+RUN pacman -Syu --needed --noconfirm wl-clipboard btop
+
 USER vs
 WORKDIR /home/vs
-
-RUN sudo pacman -Syu --needed --noconfirm wl-clipboard htop btop \ 
-ncdu flatpak podman podman-docker podman-compose 
-
 FROM user as build
+
 RUN git clone https://aur.archlinux.org/yay.git /tmp/yay && \
     cd /tmp/yay && \
     makepkg -si --noconfirm && \
@@ -41,7 +41,7 @@ RUN git clone https://github.com/VaultSoldier/.dotfiles.git ~/.dotfiles && \
     cd ~/.dotfiles && \
     rm /home/vs/.bashrc && \
     rm /home/vs/.zshrc && \
-    stow . --no-folding
+    stow .
 
 RUN zsh -c 'zinit self-update' && \
     zsh -c 'zinit light zsh-users/zsh-syntax-highlighting' && \
@@ -55,7 +55,9 @@ RUN tldr -u && history -c
 
 from build as final
 ENV LANG=C.UTF-8
-USER vs
 WORKDIR /home/vs
+USER root
+RUN "chsh -s $(which zsh)"
+USER vs
 CMD ["/usr/bin/zsh"]
 
