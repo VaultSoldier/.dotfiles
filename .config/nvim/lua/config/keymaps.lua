@@ -88,11 +88,7 @@ function M.global()
   map('n', '<Tab>', ':tabnext<CR>', { silent = true })
   map('n', '<S-Tab>', ':tabprevious<CR>', { silent = true })
 
-  map('n', '<C-/>', 'gcc', { desc = '' })
-  map('n', '<c-_>', 'gcc', { desc = '' })
-
   -- Terminal --
-
   map({ 'n', 't' }, '<A-v>', function()
     snacks.terminal.toggle(nil, { env = { NVIM_TERM_ID = '0' }, win = { position = 'bottom' } })
   end, { desc = 'Terminal toggleable vertical term' })
@@ -191,7 +187,27 @@ function M.lsp(map)
     else
       print 'Unsupported file type'
     end
-  end, 'Run [C]ode')
+  end, 'Run code', { 'n', 'v', 't', 'i' })
+
+  map('<F11>', function()
+    local filetype = vim.bo.filetype
+    if filetype == 'python' then
+      -- Search for main.py in project directories
+      local main_file = vim.fn.findfile('main.py', '.;')
+      if main_file ~= '' then
+        -- Get absolute path of main.py and its directory
+        local main_abs = vim.fn.fnamemodify(main_file, ':p')
+        local main_dir = vim.fn.fnamemodify(main_abs, ':h')
+        -- Construct safe shell command
+        local cmd = string.format('cd %s && python3 %s', vim.fn.shellescape(main_dir), vim.fn.shellescape(main_abs))
+        snacks.terminal.open(cmd, { win = { position = 'bottom', interactive = true } })
+      else
+        print 'Error: main.py not found in project'
+      end
+    else
+      print 'Unsupported file type'
+    end
+  end, 'Run main file', { 'n', 'v', 't', 'i' })
 
   map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
   map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')

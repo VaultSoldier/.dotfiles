@@ -26,6 +26,7 @@ if [ -f ~/.dircolors ]; then
 fi
 
 # ENV vars
+export PODMAN_COMPOSE_WARNING_LOGS=false
 export EDITOR=nvim
 export GOPATH="$HOME/.local/share/go"
 export FZF_CTRL_R_OPTS="--bind 'ctrl-j:ignore,ctrl-k:ignore,alt-j:down,alt-k:up'"
@@ -101,6 +102,7 @@ alias g='git'
 alias gs='git status'
 alias ls='ls --color=auto'
 alias la='ls -lha --color=auto'
+alias docker-compose='docker compose'
 alias CombineAudio='pactl load-module module-combine-sink'
 alias CombineAudioOff='pactl unload-module module-combine-sink'
 alias up="$DIR/update.sh"
