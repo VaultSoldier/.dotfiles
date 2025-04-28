@@ -1,6 +1,5 @@
 # dir for zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-
 # if there's no zinit, download it
 [ ! -d "$ZINIT_HOME" ] && mkdir -p "$(dirname $ZINIT_HOME)" && 
 	git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
@@ -116,6 +115,7 @@ alias ssh-close='cryfs-unmount $HOME/.ssh/ssh_keys/'
 alias weather='curl wttr.in/:Chelyabinsk'
 alias open='xdg-open'
 alias vi='nvim'
+alias hx='helix'
 alias arch='docker run --rm -it vaultsoldier/arch-dotfiles:latest'
 
 #########################################################################
