@@ -1,6 +1,9 @@
 return {
   'lewis6991/gitsigns.nvim',
   opts = {
+    -- temporary cuz of nvim: /usr/src/debug/neovim/neovim/src/nvim/decoration.c:1066: buf_signcols.count_range
+    signcolumn = false,
+
     signs = {
       add = { text = '▎' },
       change = { text = '▎' },
