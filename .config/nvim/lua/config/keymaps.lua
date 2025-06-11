@@ -57,7 +57,7 @@ function M.global()
   map('x', '<leader>p', '"_dP')
 
   -- File operations --
-  map('n', '<C-s>', '<cmd>w<CR>', { desc = 'Save', silent = true })
+  -- map('n', '<C-s>', '<cmd>w<CR>', { desc = 'Save', silent = true })
   map('n', '<C-q>', '<cmd>q<CR>', { desc = 'Close', silent = true })
   -- map('n', '<C-x>', ':confirm quitall<CR>', { desc = 'Exit', silent = true })
   map('n', '<leader>e', '<Cmd>Neotree reveal<CR>')
