@@ -5,7 +5,7 @@ return {
     local options = {
       formatters_by_ft = {
         lua = { 'stylua' },
-        javascript = { { 'prettierd', 'prettier' } },
+        javascript = { 'prettierd', 'prettier' },
         css = { 'prettier' },
         html = { 'prettier' },
         sh = { 'bashls' },

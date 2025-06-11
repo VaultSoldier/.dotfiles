@@ -27,47 +27,16 @@ return {
     },
   },
   lazy = false,
-  -----Instead of using `config`, you can use `opts` instead, if you'd like:
-  -----@module "neo-tree"
-  -----@type neotree.Config
-  --opts = {},
   config = function()
-    -- If you want icons for diagnostic errors, you'll need to define them somewhere.
-    -- In Neovim v0.10+, you can configure them in vim.diagnostic.config(), like:
-    --
-    -- vim.diagnostic.config({
-    --   signs = {
-    --     text = {
-    --       [vim.diagnostic.severity.ERROR] = '',
-    --       [vim.diagnostic.severity.WARN] = '',
-    --       [vim.diagnostic.severity.INFO] = '',
-    --       [vim.diagnostic.severity.HINT] = '󰌵',
-    --     },
-    --   }
-    -- })
-    --
-    -- In older versions, you can define the signs manually:
-    -- vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
-    -- vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
-    -- vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
-    -- vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
-
     require('neo-tree').setup {
-      close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+      close_if_last_window = true,
       popup_border_style = 'rounded',
       enable_git_status = true,
       enable_diagnostics = true,
       open_files_do_not_replace_types = { 'terminal', 'trouble', 'qf' }, -- when opening files, do not use windows containing these filetypes or buftypes
       open_files_using_relative_paths = false,
-      sort_case_insensitive = false, -- used when sorting files and directories in the tree
+      sort_case_insensitive = true, -- used when sorting files and directories in the tree
       sort_function = nil, -- use a custom function for sorting files and directories in the tree
-      -- sort_function = function (a,b)
-      --       if a.type == b.type then
-      --           return a.path > b.path
-      --       else
-      --           return a.type > b.type
-      --       end
-      --   end , -- this sorts files and directories descendantly
       default_component_configs = {
         container = {
           enable_character_fade = true,
@@ -89,7 +58,8 @@ return {
         icon = {
           folder_closed = '',
           folder_open = '',
-          folder_empty = '󰜌',
+          folder_empty = '',
+          folder_empty_open = '',
           provider = function(icon, node, state) -- default icon provider utilizes nvim-web-devicons if available
             if node.type == 'file' or node.type == 'terminal' then
               local success, web_devicons = pcall(require, 'nvim-web-devicons')
@@ -174,8 +144,6 @@ return {
           ['<2-LeftMouse>'] = 'open',
           ['<cr>'] = 'open',
           ['<esc>'] = 'cancel', -- close preview or floating neo-tree window
-          -- ['P'] = { 'toggle_preview', config = { use_float = true, use_image_nvim = true } },
-          -- Read `# Preview Mode` for more information
           ['l'] = 'focus_preview',
           ['S'] = 'open_split',
           ['s'] = 'open_vsplit',
@@ -186,6 +154,8 @@ return {
           -- ["t"] = "open_tab_drop",
           ['w'] = 'open_with_window_picker',
           ['P'] = 'toggle_preview', -- enter preview mode, which shows the current node without focusing
+          -- ['P'] = { 'toggle_preview', config = { use_float = true, use_image_nvim = true } },
+          -- Read `# Preview Mode` for more information
           ['C'] = 'close_node',
           -- ['C'] = 'close_all_subnodes',
           ['z'] = 'close_all_nodes',
@@ -219,16 +189,6 @@ return {
           ['<'] = 'prev_source',
           ['>'] = 'next_source',
           ['i'] = 'show_file_details',
-          -- ["i"] = {
-          --   "show_file_details",
-          --   -- format strings of the timestamps shown for date created and last modified (see `:h os.date()`)
-          --   -- both options accept a string or a function that takes in the date in seconds and returns a string to display
-          --   -- config = {
-          --   --   created_format = "%Y-%m-%d %I:%M %p",
-          --   --   modified_format = "relative", -- equivalent to the line below
-          --   --   modified_format = function(seconds) return require('neo-tree.utils').relative_date(seconds) end
-          --   -- }
-          -- },
         },
       },
       nesting_rules = {},
@@ -239,7 +199,7 @@ return {
           hide_gitignored = true,
           hide_hidden = true, -- only works on Windows for hidden files/directories
           hide_by_name = {
-            --"node_modules"
+            'node_modules',
           },
           hide_by_pattern = { -- uses glob style patterns
             --"*.meta",
@@ -248,8 +208,8 @@ return {
           always_show = { -- remains visible even if other settings would normally hide it
             --".gitignored",
           },
-          always_show_by_pattern = { -- uses glob style patterns
-            --".env*",
+          always_show_by_pattern = {
+            '.env*',
           },
           never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
             --".DS_Store",
@@ -365,5 +325,9 @@ return {
         },
       },
     }
+
+    vim.api.nvim_set_hl(0, 'NeoTreeNormal', { bg = 'NONE', ctermbg = 'NONE' })
+    vim.api.nvim_set_hl(0, 'NeoTreeNormalNC', { bg = 'NONE', ctermbg = 'NONE' })
+    vim.api.nvim_set_hl(0, 'NeoTreeEndOfBuffer', { bg = 'NONE', ctermbg = 'NONE' })
   end,
 }
