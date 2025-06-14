@@ -150,11 +150,6 @@ function M.global()
   map('c', '<A-j>', '<Down>')
   map('c', '<A-k>', '<Up>')
 
-  map({ 'v', 'n', 'i' }, '<left>', '<cmd>echo "Use h to move!!"<CR>')
-  map({ 'v', 'n', 'i' }, '<right>', '<cmd>echo "Use l to move!!"<CR>')
-  map({ 'v', 'n', 'i' }, '<up>', '<cmd>echo "Use k to move!!"<CR>')
-  map({ 'v', 'n', 'i' }, '<down>', '<cmd>echo "Use j to move!!"<CR>')
-
   -- sessions
   map('n', '<leader>sl', function()
     require('nvim-possession').list()
