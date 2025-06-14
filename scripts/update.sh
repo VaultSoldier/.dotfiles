@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 yay --noconfirm && echo -e "Pacman/aur updated\n"
 flatpak update -y
