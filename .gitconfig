@@ -5,3 +5,5 @@
 	autocrlf = input
 [pull]
 	rebase = true
+[safe]
+	directory = /etc/nixos
