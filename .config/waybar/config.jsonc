@@ -16,8 +16,6 @@
     ],
     "modules-right": [
       "custom/spacer1",
-      "custom/tailscale",
-      "custom/spacer1",
       "cpu",
       "custom/spacer1",
       "memory#ram",
