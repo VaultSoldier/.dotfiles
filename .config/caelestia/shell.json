@@ -5,7 +5,7 @@
     },
     "enabled": true,
     "visualiser": {
-      "enabled": false,
+      "enabled": true,
       "autoHide": true,
       "rounding": 1,
       "spacing": 1
@@ -13,7 +13,7 @@
   },
   "bar": {
     "clock": {
-      "showIcon": true
+      "showIcon": false
     },
     "dragThreshold": 20,
     "entries": [
@@ -97,14 +97,14 @@
     "actionPrefix": "Suka Blyat",
     "dragThreshold": 50,
     "vimKeybinds": false,
-    "enableDangerousActions": false,
+    "enableDangerousActions": true,
     "maxShown": 8,
     "maxWallpapers": 9,
     "specialPrefix": "@",
     "useFuzzy": {
       "apps": false,
-      "actions": false,
-      "schemes": false,
+      "actions": true,
+      "schemes": true,
       "variants": false,
       "wallpapers": false
     },
@@ -114,22 +114,22 @@
     "recolourLogo": false
   },
   "notifs": {
-    "actionOnClick": false,
+    "actionOnClick": true,
     "clearThreshold": 0.3,
-    "defaultExpireTimeout": 5000,
+    "defaultExpireTimeout": 6000,
     "expandThreshold": 20,
-    "expire": false
+    "expire": true
   },
   "osd": {
     "enabled": true,
     "enableBrightness": true,
-    "enableMicrophone": false,
+    "enableMicrophone": true,
     "hideDelay": 2000
   },
   "paths": {
-    "mediaGif": "root:/assets/bongocat.gif",
+    "mediaGif": "root:/assets/nekodance.gif",
     "sessionGif": "root:/assets/kurukuru.gif",
-    "wallpaperDir": "~/Pictures/Wallpapers"
+    "wallpaperDir": "~/Pictures/Nextcloud/Wallpapers"
   },
   "services": {
     "audioIncrement": 0.1,
@@ -141,7 +141,7 @@
         "to": "YT Music"
       }
     ],
-    "weatherLocation": "",
+    "weatherLocation": "Chelyabinsk",
     "useFahrenheit": false,
     "useTwelveHourClock": false,
     "smartScheme": true,
