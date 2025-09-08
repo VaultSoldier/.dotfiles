@@ -12,3 +12,4 @@ spell/
 Containers/*/data 
 .sync*
 .nextcloud*
+beat_log*
