@@ -8,7 +8,10 @@ return {
         javascript = { 'prettierd', 'prettier' },
         css = { 'prettier' },
         html = { 'prettier' },
-        sh = { 'bashls' },
+        bash = { 'shfmt' },
+        mksh = { 'shfmt' },
+        shell = { 'shfmt' },
+        nix = { 'nixfmt' },
       },
 
       format_on_save = {
