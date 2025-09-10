@@ -127,8 +127,8 @@
     "hideDelay": 2000
   },
   "paths": {
-    "mediaGif": "root:/assets/nekodance.gif",
-    "sessionGif": "root:/assets/kurukuru.gif",
+    "mediaGif": "~/.dotfiles/assets/nekodance.gif",
+    "sessionGif": "~/.dotfiles/assets/nekolay.gif",
     "wallpaperDir": "~/Pictures/Nextcloud/Wallpapers"
   },
   "services": {
