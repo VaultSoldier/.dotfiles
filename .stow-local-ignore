@@ -7,6 +7,7 @@ ssh_keys
 Docker
 docker
 Containers
+beat_detector
 .git
 .gitignore
 .sync.*
