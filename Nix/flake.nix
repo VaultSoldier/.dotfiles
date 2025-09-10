@@ -59,7 +59,7 @@
           ./hosts/laptop/init.nix
           ./modules/shared.nix
           ./modules/hardware/nvidia.nix
-          ./modules/packages/deps-caelestia.nix
+          ./modules/packages/caelestia.nix
           mikuboot.nixosModules.default
 
           home-manager.nixosModules.home-manager
