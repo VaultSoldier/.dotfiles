@@ -42,8 +42,10 @@
         modules = [
           ./configuration.nix
           ./hosts/desktop/init.nix
+          ./system/flatpak.nix
           ./modules/shared.nix
           ./modules/hardware/nvidia.nix
+          ./modules/packages/plasma6.nix
 
           mikuboot.nixosModules.default
           zen-browser.packages.${system}.default
@@ -57,8 +59,9 @@
         modules = [
           ./configuration.nix
           ./hosts/laptop/init.nix
-          ./modules/shared.nix
           ./modules/hardware/nvidia.nix
+          ./modules/shared.nix
+
           ./modules/packages/caelestia.nix
           mikuboot.nixosModules.default
 

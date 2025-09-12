@@ -4,7 +4,6 @@
     ./system/networking.nix
     ./system/security.nix
     ./system/locale.nix
-    ./system/flatpak.nix
 
     ./packages/cli.nix
     ./packages/gui.nix

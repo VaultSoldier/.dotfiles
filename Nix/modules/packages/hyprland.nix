@@ -8,23 +8,22 @@
   # quickshell
   qt.enable = true;
 
-  environment.variables = {
-    CAELESTIA_BD_PATH = "$HOME/.dotfiles/beat_detector";
-  };
-
   # Fix for empty "Open With" menu in Dolphin when running under Hyprland
   # This copies the plasma-applications.menu file from plasma-workspace to /etc/xdg/menus/applications.menu
   environment.etc."/xdg/menus/applications.menu".text = builtins.readFile
     "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
   services = {
-    displayManager.sddm.enable = true;
-    displayManager.sddm.wayland.enable = true;
-    desktopManager.plasma6.enable = true;
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+      theme = "sddm-astronaut-theme";
+    };
     gnome.gnome-keyring.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
+    sddm-astronaut
     kdePackages.kde-gtk-config
     kdePackages.breeze
     kdePackages.breeze-gtk

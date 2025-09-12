@@ -2,8 +2,9 @@
 
 {
   environment.systemPackages = with pkgs; [
+    qt6.qtdeclarative
+    qt6.qtbase
     kdePackages.qtdeclarative
-    kdePackages.kde-gtk-config
     kdePackages.breeze
     kdePackages.breeze-gtk
     nerd-fonts.caskaydia-cove
@@ -19,14 +20,22 @@
     app2unit
     cava
     aubio
-    fish
     file
     bluez
     swappy
     grim
     inotify-tools
+    xkeyboard-config
     libqalculate
     wl-clipboard
     cliphist
   ];
+
+  environment.variables = {
+    CAELESTIA_BD_PATH = "$HOME/.dotfiles/beat_detector";
+    CAELESTIA_LIB_DIR = "$HOME/.config/quickshell/caelestia";
+    QML2_IMPORT_PATH = "$CAELESTIA_LIB_DIR/qml:$QML2_IMPORT_PATH";
+    CAELESTIA_XKB_RULES_PATH =
+      "${pkgs.xkeyboard-config}/share/xkeyboard-config-2/rules/base.lst";
+  };
 }
