@@ -258,7 +258,7 @@
         "description": "Log out of the current session",
         "command": [
           "uwsm",
-          "exit"
+          "stop"
         ],
         "enabled": true,
         "dangerous": true
@@ -277,10 +277,10 @@
       {
         "name": "Sleep",
         "icon": "bedtime",
-        "description": "Suspend then hibernate",
+        "description": "Suspend",
         "command": [
           "systemctl",
-          "suspend-then-hibernate"
+          "suspend"
         ],
         "enabled": true,
         "dangerous": false
@@ -345,7 +345,7 @@
     "commands": {
       "logout": [
         "uwsm",
-        "exit"
+        "stop"
       ],
       "shutdown": [
         "systemctl",
