@@ -42,7 +42,7 @@
   },
   "background": {
     "desktopClock": {
-      "enabled": false
+      "enabled": true
     },
     "enabled": true,
     "visualiser": {
