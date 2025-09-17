@@ -2,8 +2,15 @@
 
 {
   # Bootloader.
+
   boot = {
-    initrd.luks.devices."luks-48cb7628-9c63-4be2-8f34-b346002bc0aa".device = "/dev/disk/by-uuid/48cb7628-9c63-4be2-8f34-b346002bc0aa";
+    initrd.systemd.enable = true;
+    initrd.kernelModules = [ "tpm_tis" "tpm_crb" "tpm" "nvme" ];
+
+    initrd.luks.devices."luks-48cb7628-9c63-4be2-8f34-b346002bc0aa" = {
+      device = "/dev/disk/by-uuid/48cb7628-9c63-4be2-8f34-b346002bc0aa";
+      crypttabExtraOpts = [ "tpm2-device=/dev/tpmrm0" ];
+    };
 
     plymouth = {
       enable = true;
@@ -11,7 +18,6 @@
       theme = "mikuboot";
     };
     loader.systemd-boot.enable = true;
-    #loader.efi.canTouchEfiVariables = true;
 
     # Enable "Silent boot"
     consoleLogLevel = 3;
