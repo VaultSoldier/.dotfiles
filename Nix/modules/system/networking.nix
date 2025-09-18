@@ -3,15 +3,10 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  services.resolved.enable = true;
   networking = {
-    wireless.iwd.enable = true;
     networkmanager.enable = true;
     networkmanager.wifi.backend = "iwd";
-
-    wireless.iwd.settings = {
-      IPv6 = { Enabled = true; };
-      Settings = { AutoConnect = true; };
-    };
   };
 
   hardware.bluetooth = {
