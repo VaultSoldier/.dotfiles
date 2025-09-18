@@ -4,34 +4,11 @@
            _/    _/  _/    _/      _/      _/          _/    _/        _/              _/     
           _/_/_/      _/_/        _/      _/        _/_/_/  _/_/_/_/  _/_/_/_/  _/_/_/        
 
-## Requirements
+### Requirements
 
-### Oh-My-Posh
+[Oh-My-Posh](https://ohmyposh.dev/docs/installation/linux), zoxide, fzf
 
-[Installation guide](https://ohmyposh.dev/docs/installation/linux)
-
-### Git
-
-```sh
-pacman -S git 
-apt-get install git
-```
-
-### GNU stow
-
-```sh
-pacman -S stow
-apt-get install stow
-```
-
-### Zoxide, fzf
-
-```sh
-pacman -S zoxide fzf
-apt-get install zoxide fzf
-```
-
-## Installation
+### Installation
 
 Clone
 ```sh
@@ -47,10 +24,10 @@ mv ~/.zshrc ~/.zshrc.bak
 Use GNU stow to create symlinks
 ```sh
 cd ~/.dotfiles
-stow --no-folding .
+stow .
 ```
 
-*Optional<sup>TM</sup>*<br>
+*Optional*<br>
 Install packages
 ```sh
 sudo ~/.dotfiles/scripts/install.sh
