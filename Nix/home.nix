@@ -51,6 +51,7 @@
         "Space" = {
           id = "8c7b765f-f42f-4270-b25b-a2d695d59551";
           icon = "⭐️";
+          container = containers."Space".id;
           position = 1000;
         };
         "Coding" = {
@@ -134,7 +135,10 @@
           "Value" = value;
           "Status" = "locked";
         };
-      in { "browser.tabs.warnOnClose" = locked false; };
+      in {
+        "browser.tabs.warnOnClose" = locked false;
+        "browser.tabs.inTitlebar" = locked 0;
+      };
     };
   };
 
