@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 let
   customized_sddm_astronaut =
@@ -7,7 +7,7 @@ in {
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-    package = pkgs.kdePackages.sddm;
+    package = lib.mkForce pkgs.kdePackages.sddm;
     extraPackages = with pkgs; [
       kdePackages.qtbase
       kdePackages.qtwayland

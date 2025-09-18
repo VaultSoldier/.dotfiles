@@ -42,7 +42,6 @@
           ./configuration.nix
           ./hosts/desktop
           ./modules
-          ./modules/system/flatpak.nix
           ./modules/hardware/nvidia.nix
           ./modules/packages/plasma6.nix
 
