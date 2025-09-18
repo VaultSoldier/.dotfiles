@@ -28,7 +28,6 @@ in {
     inotify-tools
     xkeyboard-config
     libqalculate
-    wl-clipboard
     cliphist
   ];
 
