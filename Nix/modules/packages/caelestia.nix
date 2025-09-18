@@ -1,6 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, nixpkgs, ... }:
 
-{
+let lib = nixpkgs.lib;
+in {
   environment.systemPackages = with pkgs; [
     qt6.qtdeclarative
     qt6.qtbase
@@ -38,4 +39,8 @@
     CAELESTIA_XKB_RULES_PATH =
       "${pkgs.xkeyboard-config}/share/xkeyboard-config-2/rules/base.lst";
   };
+
+  environment.sessionVariables.XDG_DATA_DIRS = lib.mkForce
+    ("${pkgs.kdePackages.breeze}/share:" + "${pkgs.material-symbols}/share:"
+      + "$XDG_DATA_DIRS");
 }

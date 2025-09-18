@@ -41,9 +41,9 @@
 
         modules = [
           ./configuration.nix
-          ./hosts/desktop/init.nix
+          ./hosts/desktop
+          ./modules
           ./system/flatpak.nix
-          ./modules/shared.nix
           ./modules/hardware/nvidia.nix
           ./modules/packages/plasma6.nix
 
@@ -58,9 +58,8 @@
 
         modules = [
           ./configuration.nix
-          ./hosts/laptop/init.nix
-          ./modules/hardware/nvidia.nix
-          ./modules/shared.nix
+          ./hosts/laptop
+          ./modules
 
           ./modules/packages/caelestia.nix
           mikuboot.nixosModules.default
@@ -83,10 +82,6 @@
                 pkgs.kdePackages.kirigami
               ])
             ];
-
-            environment.sessionVariables.XDG_DATA_DIRS = lib.mkForce
-              ("${pkgs.kdePackages.breeze}/share:"
-                + "${pkgs.material-symbols}/share:" + "$XDG_DATA_DIRS");
           }
         ];
       };
