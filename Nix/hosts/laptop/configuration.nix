@@ -22,12 +22,14 @@
     # Enable "Silent boot"
     consoleLogLevel = 3;
     initrd.verbose = false;
+    resumeDevice = "/dev/mapper/luks-48cb7628-9c63-4be2-8f34-b346002bc0aa";
     kernelParams = [
       "quiet"
       "splash"
       "boot.shell_on_fail"
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
+      "resume=/dev/mapper/luks-48cb7628-9c63-4be2-8f34-b346002bc0aa"
     ];
     # Hide the OS choice for bootloaders.
     loader.timeout = 0;

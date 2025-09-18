@@ -8,15 +8,15 @@
   };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = true;
+    powerManagement.enable = false;
     powerManagement.finegrained = false;
     open = true;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   nixpkgs.config.cudaSupport = true;
@@ -25,11 +25,6 @@
   hardware.nvidia-container-toolkit.enable = true;
 
   environment.systemPackages = with pkgs; [ btop ];
-  nixpkgs.overlays = [
-    (self: super: {
-      btop = super.btop.override {
-        cudaSupport = true;
-      };
-    })
-  ];
+  nixpkgs.overlays =
+    [ (self: super: { btop = super.btop.override { cudaSupport = true; }; }) ];
 }
