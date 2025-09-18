@@ -130,14 +130,19 @@
           installation_mode = "force_installed";
         };
       };
-      Preferences = let
+      preferences = let
         locked = value: {
-          "Value" = value;
-          "Status" = "locked";
+          "value" = value;
+          "status" = "locked";
         };
       in {
-        "browser.tabs.warnOnClose" = locked false;
-        "browser.tabs.inTitlebar" = locked 0;
+        "browser.bookmarks.addedimportbutton" = locked false;
+        "zen.welcome-screen.seen" = locked true;
+        "app.normandy.first_run" = locked false;
+        "browser.tabs.warnonclose" = locked false;
+        "browser.tabs.intitlebar" = locked 0;
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
+        "browser.toolbars.bookmarks.visibility" = "always";
       };
     };
   };
