@@ -69,12 +69,13 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.backupFileExtension = "bckp";
             home-manager.users.vs = ./home.nix;
           }
 
           {
             environment.systemPackages = with pkgs; [
-              zen-browser.packages.${system}.default
               caelestia-cli.packages.${system}.default
 
               (quickshell.packages.${system}.default.withModules [
