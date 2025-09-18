@@ -42,12 +42,19 @@
           ./configuration.nix
           ./hosts/desktop
           ./modules
-          ./system/flatpak.nix
+          ./modules/system/flatpak.nix
           ./modules/hardware/nvidia.nix
           ./modules/packages/plasma6.nix
 
           mikuboot.nixosModules.default
-          zen-browser.packages.${system}.default
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.backupFileExtension = "bckp";
+            home-manager.users.vs = ./home.nix;
+          }
         ];
       };
 
@@ -59,10 +66,10 @@
           ./configuration.nix
           ./hosts/laptop
           ./modules
-
+          ./modules/packages/hyprland.nix
           ./modules/packages/caelestia.nix
-          mikuboot.nixosModules.default
 
+          mikuboot.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
