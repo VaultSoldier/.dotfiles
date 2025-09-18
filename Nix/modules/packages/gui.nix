@@ -14,6 +14,7 @@ in {
     kitty
     mpv
     winbox4Wrapped
+    kdePackages.gwenview
     bitwarden-desktop
     filezilla
     qbittorrent
