@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     kdePackages.dolphin
     kdePackages.kio
-    kdePackages.kdf
+    kdePackages.kdf # kwikdisk
     kdePackages.kio-fuse
     kdePackages.kio-extras
     kdePackages.kio-admin
