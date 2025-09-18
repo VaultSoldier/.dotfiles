@@ -1,6 +1,9 @@
 { pkgs, ... }:
 
-{
+let
+  customized_sddm_astronaut =
+    pkgs.sddm-astronaut.override { embeddedTheme = "black_hole"; };
+in {
   # Enable XDG MIME and menu support
   xdg.mime.enable = true;
   xdg.menus.enable = true;
@@ -17,13 +20,21 @@
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
-      theme = "sddm-astronaut-theme";
+      package = pkgs.kdePackages.sddm;
+      extraPackages = with pkgs; [
+        kdePackages.qtbase
+        kdePackages.qtwayland
+        kdePackages.qtmultimedia
+        kdePackages.qtvirtualkeyboard
+      ];
+      theme = "customized_sddm_astronaut";
+      settings = { Theme = { Current = "sddm-astronaut-theme"; }; };
     };
     gnome.gnome-keyring.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
-    sddm-astronaut
+    customized_sddm_astronaut
     kdePackages.kde-gtk-config
     kdePackages.breeze
     kdePackages.breeze-gtk
