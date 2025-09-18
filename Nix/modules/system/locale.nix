@@ -21,6 +21,7 @@
     LC_TIME = "ru_RU.UTF-8";
   };
 
+  fonts.fontconfig.useEmbeddedBitmaps = true;
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
