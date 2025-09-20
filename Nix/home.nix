@@ -4,7 +4,7 @@
   home.username = "vs";
   home.homeDirectory = "/home/vs";
 
-  imports = [ ./default-apps.nix inputs.zen-browser.homeModules.beta ];
+  imports = [ ./mimeapps.nix inputs.zen-browser.homeModules.beta ];
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
