@@ -79,13 +79,32 @@
       SearchEngines = {
         Default = "DuckDuckGo";
         PreventInstalls = true; # disallow adding new engines
-        Remove = [ "Bing" ]; # remove unwanted ones
-        Add = [{
-          Name = "Startpage";
-          URLTemplate =
-            "https://www.startpage.com/sp/search?query={searchTerms}";
-          Method = "GET";
-        }];
+        Remove = [ "Bing" "Ecosia" "Google" ];
+        Add = [
+          {
+            Name = "Startpage";
+            URLTemplate = "https://www.startpage.com/sp/search?q={searchTerms}";
+            Method = "GET";
+            IconURL = "https://www.startpage.com/favicon.ico";
+            Alias = "@sp";
+          }
+          {
+            Name = "Arch Wiki";
+            URLTemplate =
+              "https://wiki.archlinux.org/index.php?search={searchTerms}";
+            Method = "GET";
+            IconURL = "https://wiki.archlinux.org/favicon.ico";
+            Alias = "@arch";
+          }
+          {
+            Name = "NixOS Packages";
+            URLTemplate =
+              "https://search.nixos.org/packages?query={searchTerms}";
+            Method = "GET";
+            IconURL = "https://nixos.org/favicon.ico";
+            Alias = "@nix";
+          }
+        ];
       };
       PictureInPicture = {
         Value = true;
