@@ -165,6 +165,18 @@
       vim_keys = true;
     };
   };
+  programs.git = {
+    enable = true;
+    userName = "VaultSoldier";
+    userEmail = "61462705+VaultSoldier@users.noreply.github.com";
+    extraConfig = {
+      commit.gpgsign = true;
+      gpg.format = "ssh";
+      user.signingkey = "~/.ssh/ssh_keys/git_id_ed25519";
+      pull.rebase = true;
+      submodule.recurse = true;
+    };
+  };
 
   home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
