@@ -9,6 +9,7 @@ docker
 Containers
 beat_detector
 .git
+.gitmodules
 .gitignore
 .sync.*
 .nextcloud.*
