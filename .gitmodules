@@ -1,0 +1,3 @@
+[submodule ".config/quickshell/caelestia"]
+	path = .config/quickshell/caelestia
+	url = git@github.com:VaultSoldier/shell.git
