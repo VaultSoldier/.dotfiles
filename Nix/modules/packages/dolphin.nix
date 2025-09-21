@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     kdePackages.dolphin
+    kdePackages.kdialog
     kdePackages.kio
     kdePackages.kdf # kwikdisk
     kdePackages.kio-fuse

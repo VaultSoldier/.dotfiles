@@ -149,16 +149,10 @@
           installation_mode = "force_installed";
         };
       };
-      Preferences = let
-        locked = value: {
-          "value" = value;
-          "status" = "locked";
-        };
-      in {
-        "browser.tabs.warnOnClose" = locked false;
-        "browser.tabs.inTitlebar" = locked 0;
-        "widget.use-xdg-desktop-portal.file-picker" = locked 1;
-        "browser.toolbars.bookmarks.visibility" = "always";
+      Preferences = {
+        "browser.tabs.warnOnClose" = false;
+        "browser.tabs.inTitlebar" = 0;
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
       };
     };
   };

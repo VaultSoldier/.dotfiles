@@ -1,6 +1,22 @@
 { pkgs, ... }:
 
 {
+  xdg.portal = {
+    xdgOpenUsePortal = true;
+    enable = true;
+    configPackages = with pkgs; [
+      xdg-desktop-portal-gtk
+      kdePackages.xdg-desktop-portal-kde
+      xdg-desktop-portal-hyprland
+    ];
+    config = {
+      common = {
+        default = [ "hyprland;gtk" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+      };
+    };
+  };
+
   # Enable XDG MIME and menu support
   xdg.mime.enable = true;
   xdg.menus.enable = true;
