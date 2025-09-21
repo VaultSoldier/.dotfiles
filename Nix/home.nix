@@ -174,7 +174,6 @@
       gpg.format = "ssh";
       user.signingkey = "~/.ssh/ssh_keys/git_id_ed25519";
       pull.rebase = true;
-      submodule.recurse = true;
     };
   };
 
