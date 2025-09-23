@@ -2,6 +2,8 @@
 
 {
   nixpkgs.config.allowUnfree = true;
+  hardware.enableAllFirmware = true;
+  hardware.enableAllHardware = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   users.users.vs = {
