@@ -12,6 +12,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,8 +33,8 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, zen-browser, quickshell
-    , caelestia-cli, mikuboot, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, zen-browser, stylix
+    , quickshell, caelestia-cli, mikuboot, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -45,14 +50,14 @@
           ./modules/hardware/nvidia.nix
           ./modules/packages/plasma6.nix
 
-          mikuboot.nixosModules.default
           home-manager.nixosModules.home-manager
+          mikuboot.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.backupFileExtension = "bckp";
-            home-manager.users.vs = ./home.nix;
+            home-manager.users.vs = ./hosts/desktop/home.nix;
           }
         ];
       };
@@ -67,19 +72,21 @@
           ./modules
           ./modules/packages/hyprland.nix
           ./modules/packages/caelestia.nix
+          ./stylix.nix
 
-          mikuboot.nixosModules.default
           home-manager.nixosModules.home-manager
+          stylix.nixosModules.stylix
+          mikuboot.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.backupFileExtension = "bckp";
-            home-manager.users.vs = ./home.nix;
+            home-manager.users.vs = ./hosts/laptop/home.nix;
           }
 
           {
-            environment.systemPackages = with pkgs; [
+            environment.systemPackages = [
               caelestia-cli.packages.${system}.default
 
               (quickshell.packages.${system}.default.withModules [

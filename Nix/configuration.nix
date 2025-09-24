@@ -20,5 +20,4 @@
     bibata-cursors
     cryfs
   ];
-
 }
