@@ -5,7 +5,7 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
-    -- { '3rd/image.nvim', opts = {} }, -- Optional image support in preview window: See `# Preview Mode` for more information
+    { '3rd/image.nvim', opts = {} }, -- Optional image support in preview window: See `# Preview Mode` for more information
     {
       's1n7ax/nvim-window-picker', -- for open_with_window_picker keymaps
       version = '2.*',
@@ -115,11 +115,13 @@ return {
           enabled = true,
           width = 20, -- width of the column
           required_width = 88, -- min width of window required to show this column
+          format = 'relative',
         },
         created = {
           enabled = true,
           width = 20, -- width of the column
           required_width = 110, -- min width of window required to show this column
+          format = 'relative',
         },
         symlink_target = {
           enabled = false,
@@ -153,13 +155,13 @@ return {
           -- ["<cr>"] = "open_drop",
           -- ["t"] = "open_tab_drop",
           ['w'] = 'open_with_window_picker',
-          ['P'] = 'toggle_preview', -- enter preview mode, which shows the current node without focusing
-          -- ['P'] = { 'toggle_preview', config = { use_float = true, use_image_nvim = true } },
+          -- ['P'] = 'toggle_preview', -- enter preview mode, which shows the current node without focusing
+          ['P'] = { 'toggle_preview', config = { use_float = true, use_image_nvim = true } },
           -- Read `# Preview Mode` for more information
-          ['C'] = 'close_node',
-          -- ['C'] = 'close_all_subnodes',
+          -- ['C'] = 'close_node',
+          ['C'] = 'close_all_subnodes',
           ['z'] = 'close_all_nodes',
-          --["Z"] = "expand_all_nodes",
+          ['Z'] = 'expand_all_nodes',
           ['a'] = {
             'add',
             -- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
@@ -195,7 +197,7 @@ return {
       filesystem = {
         filtered_items = {
           visible = false, -- when true, they will just be displayed differently than normal items
-          hide_dotfiles = true,
+          hide_dotfiles = false,
           hide_gitignored = true,
           hide_hidden = true, -- only works on Windows for hidden files/directories
           hide_by_name = {
@@ -205,13 +207,13 @@ return {
             --"*.meta",
             --"*/src/*/tsconfig.json",
           },
-          always_show = { -- remains visible even if other settings would normally hide it
-            --".gitignored",
+          always_show = {
+            '.config',
           },
           always_show_by_pattern = {
             '.env*',
           },
-          never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
+          never_show = {
             --".DS_Store",
             --"thumbs.db"
           },
