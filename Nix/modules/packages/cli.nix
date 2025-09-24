@@ -19,7 +19,6 @@
     pulseaudio # for pactl
     yt-dlp
     ffmpeg
-    spicetify-cli
     speedtest-cli
     stow
     killall
