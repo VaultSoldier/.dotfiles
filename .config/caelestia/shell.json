@@ -72,8 +72,8 @@
         },
         {
           "timeout": 300,
-          "idleAction": "hyprctl dispatch dpms off",
-          "returnAction": "hyprctl dispatch dpms on"
+          "idleAction": "dpms off",
+          "returnAction": "dpms on"
         },
         {
           "timeout": 600,
