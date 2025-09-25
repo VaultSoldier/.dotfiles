@@ -9,7 +9,6 @@
     ./packages/code.nix
     ./packages/games.nix
     ./packages/kanata.nix
-    ./packages/neovim.nix
     ./packages/podman.nix
     ./packages/dolphin.nix
     ./packages/cli.nix
