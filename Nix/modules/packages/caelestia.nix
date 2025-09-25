@@ -29,7 +29,10 @@ in {
     xkeyboard-config
     libqalculate
     cliphist
+    ydotool
   ];
+
+  programs.gpu-screen-recorder.enable = true;
 
   environment.variables = {
     CAELESTIA_BD_PATH = "$HOME/.dotfiles/beat_detector";
