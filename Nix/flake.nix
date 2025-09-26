@@ -70,9 +70,9 @@
           ./configuration.nix
           ./hosts/laptop
           ./modules
+          ./modules/stylix/sys-stylix.nix
           ./modules/packages/hyprland.nix
           ./modules/packages/caelestia.nix
-          ./stylix.nix
 
           home-manager.nixosModules.home-manager
           stylix.nixosModules.stylix

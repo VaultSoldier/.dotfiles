@@ -3,8 +3,8 @@
 {
   imports = [
     inputs.zen-browser.homeModules.beta
-    ../../home-manager
-    ../../home-manager/stylix.nix
+    ../../modules/home-manager
+    ../../stylix/hm-stylix.nix
   ];
   home.username = "vs";
   home.homeDirectory = "/home/vs";

@@ -1,7 +1,7 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports = [ inputs.zen-browser.homeModules.beta ../../home-manager ];
+  imports = [ inputs.zen-browser.homeModules.beta ../../modules/home-manager ];
   home.username = "vs";
   home.homeDirectory = "/home/vs";
 
