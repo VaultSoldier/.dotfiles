@@ -8,6 +8,7 @@
     ./packages/sddm.nix
     ./packages/code.nix
     ./packages/games.nix
+    ./packages/neovim.nix
     ./packages/kanata.nix
     ./packages/podman.nix
     ./packages/dolphin.nix
