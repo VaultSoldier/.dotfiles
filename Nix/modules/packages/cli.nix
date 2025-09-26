@@ -9,9 +9,12 @@
     wget
     curl
     zoxide
+    ripgrep
+    fzf
+    fd
+    mc
     unzip
     unrar
-    mc
     tealdeer
     xorg.xlsclients
     wineWowPackages.stable

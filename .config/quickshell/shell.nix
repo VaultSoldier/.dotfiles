@@ -9,6 +9,9 @@ pkgs.mkShell {
     kdePackages.kirigami
     kdePackages.breeze
     libqalculate
+    material-symbols
+    clazy
+    rubik
     pipewire
     aubio
     libcava

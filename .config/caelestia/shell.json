@@ -37,6 +37,12 @@
       ],
       "audio": [
         "pavucontrol"
+      ],
+      "explorer": [
+        "dolphin"
+      ],
+      "playback": [
+        "mpv"
       ]
     },
     "battery": {

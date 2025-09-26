@@ -4,7 +4,7 @@
   imports = [
     inputs.zen-browser.homeModules.beta
     ../../modules/home-manager
-    ../../stylix/hm-stylix.nix
+    ../../modules/stylix/hm-stylix.nix
   ];
   home.username = "vs";
   home.homeDirectory = "/home/vs";
