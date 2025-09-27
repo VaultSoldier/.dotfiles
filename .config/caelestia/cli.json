@@ -1,0 +1,109 @@
+{
+  "record": {
+    "extraArgs": []
+  },
+  "theme": {
+    "enableTerm": false,
+    "enableHypr": false,
+    "enableDiscord": false,
+    "enableSpicetify": false,
+    "enableFuzzel": true,
+    "enableBtop": true,
+    "enableGtk": false,
+    "enableQt": false
+  },
+  "toggles": {
+    "communication": {
+      "discord": {
+        "enable": true,
+        "match": [
+          {
+            "class": "vesktop"
+          }
+        ],
+        "move": true
+      },
+      "telegram": {
+        "enable": true,
+        "match": [
+          {
+            "class": "telegram"
+          }
+        ],
+        "command": [
+          "telegram"
+        ],
+        "move": true
+      }
+    },
+    "music": {
+      "spotify": {
+        "enable": true,
+        "match": [
+          {
+            "class": "Spotify"
+          },
+          {
+            "initialTitle": "Spotify"
+          },
+          {
+            "initialTitle": "Spotify Free"
+          }
+        ],
+        "command": [
+          "spicetify",
+          "watch",
+          "-s"
+        ],
+        "move": true
+      },
+      "feishin": {
+        "enable": true,
+        "match": [
+          {
+            "class": "feishin"
+          }
+        ],
+        "move": true
+      }
+    },
+    "sysmon": {
+      "btop": {
+        "enable": true,
+        "match": [
+          {
+            "class": "btop",
+            "title": "btop",
+            "workspace": {
+              "name": "special:sysmon"
+            }
+          }
+        ],
+        "command": [
+          "kitty",
+          "--class",
+          "btop",
+          "--title",
+          "btop",
+          "zsh",
+          "-c",
+          "exec btop"
+        ]
+      }
+    },
+    "notes": {
+      "obsidian": {
+        "enable": true,
+        "match": [
+          {
+            "class": "obsidian"
+          }
+        ],
+        "command": [
+          "obsidian"
+        ],
+        "move": true
+      }
+    }
+  }
+}
