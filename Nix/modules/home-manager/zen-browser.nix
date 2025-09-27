@@ -131,9 +131,11 @@
         };
       };
       Preferences = {
+      	"media.videocontrols.picture-in-picture.enable-when-switching-tabs.enabled" = true;
         "browser.tabs.warnOnClose" = false;
         "browser.tabs.inTitlebar" = 0;
         "widget.use-xdg-desktop-portal.file-picker" = 1;
+        "widget.disable-swipe-tracker" = true;
       };
     };
   };
