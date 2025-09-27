@@ -124,6 +124,7 @@ return {
     -- `dependencies` table for `nvim-lspconfig` above.
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
+      'black',
       'stylua',
       'prettier',
       'markdownlint',
