@@ -5,7 +5,6 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
-    { '3rd/image.nvim', opts = {} }, -- Optional image support in preview window: See `# Preview Mode` for more information
     {
       's1n7ax/nvim-window-picker', -- for open_with_window_picker keymaps
       version = '2.*',
@@ -155,16 +154,22 @@ return {
           -- ["<cr>"] = "open_drop",
           -- ["t"] = "open_tab_drop",
           ['w'] = 'open_with_window_picker',
-          -- ['P'] = 'toggle_preview', -- enter preview mode, which shows the current node without focusing
-          ['P'] = { 'toggle_preview', config = { use_float = true, use_image_nvim = true } },
-          -- Read `# Preview Mode` for more information
+          ['P'] = {
+            'toggle_preview',
+            config = {
+              use_float = true,
+              use_snacks_image = true,
+              use_image_nvim = true,
+            },
+          },
           -- ['C'] = 'close_node',
           ['C'] = 'close_all_subnodes',
           ['z'] = 'close_all_nodes',
           ['Z'] = 'expand_all_nodes',
           ['a'] = {
             'add',
-            -- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
+            -- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc).
+            -- see `:h neo-tree-file-actions` for details
             -- some commands may take optional config options, see `:h neo-tree-mappings` for details
             config = {
               show_path = 'none', -- "none", "relative", "absolute"
@@ -197,7 +202,7 @@ return {
       filesystem = {
         filtered_items = {
           visible = false, -- when true, they will just be displayed differently than normal items
-          hide_dotfiles = false,
+          hide_dotfiles = true,
           hide_gitignored = true,
           hide_hidden = true, -- only works on Windows for hidden files/directories
           hide_by_name = {
@@ -209,6 +214,7 @@ return {
           },
           always_show = {
             '.config',
+            '.dotifiles',
           },
           always_show_by_pattern = {
             '.env*',
@@ -222,7 +228,7 @@ return {
           },
         },
         follow_current_file = {
-          enabled = true, -- This will find and focus the file in the active buffer every time
+          enabled = false, -- This will find and focus the file in the active buffer every time
           --               -- the current file is changed while the tree is open.
           leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
