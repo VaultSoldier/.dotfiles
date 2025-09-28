@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 while
 	echo "[1]Full Install | [2]Minimal install | [3]Remove | [4]Exit" && read choice
 	[[ -z $choice || $choice != [1-4] ]] && echo "Incorrect input"
