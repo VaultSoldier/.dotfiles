@@ -17,8 +17,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
+    # quickshell = {
+    #   url =
+    #     "git+https://git.outfoxxed.me/outfoxxed/quickshell?ref=49646e4407fce5925920b178872ddd9f8e495218";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    caelestia-shell = {
+      url = "github:VaultSoldier/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -33,8 +45,8 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, zen-browser, stylix
-    , quickshell, caelestia-cli, mikuboot, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, plasma-manager, stylix
+    , zen-browser, caelestia-cli, caelestia-shell, mikuboot, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -57,7 +69,16 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.backupFileExtension = "bckp";
-            home-manager.users.vs = ./hosts/desktop/home.nix;
+            home-manager.users.vs = {
+              imports = [
+                inputs.zen-browser.homeModules.beta
+                inputs.plasma-manager.homeModules.plasma-manager
+
+                # configuration
+                ./home.nix
+                ./modules/home-manager
+              ];
+            };
           }
         ];
       };
@@ -74,25 +95,36 @@
           ./modules/packages/hyprland.nix
           ./modules/packages/caelestia.nix
 
-          home-manager.nixosModules.home-manager
           stylix.nixosModules.stylix
           mikuboot.nixosModules.default
+          home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.backupFileExtension = "bckp";
-            home-manager.users.vs = ./hosts/laptop/home.nix;
+            home-manager.users.vs = {
+              imports = [
+                inputs.zen-browser.homeModules.beta
+                inputs.plasma-manager.homeModules.plasma-manager
+
+                # configuration
+                ./home.nix
+                ./modules/home-manager
+                ./modules/home-manager/plasma-manager.nix
+                ./modules/stylix/hm-stylix.nix
+              ];
+            };
           }
 
           {
             environment.systemPackages = [
               caelestia-cli.packages.${system}.default
+              caelestia-shell.packages.${system}.default
 
-              (quickshell.packages.${system}.default.withModules [
-                pkgs.kdePackages.qtsvg
-                pkgs.kdePackages.kirigami
-              ])
+              # (quickshell.packages.${system}.default.withModules [
+              #   pkgs.kdePackages.qtsvg
+              #   pkgs.kdePackages.kirigami
+              # ])
             ];
           }
         ];

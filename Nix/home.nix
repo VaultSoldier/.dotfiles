@@ -1,11 +1,6 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
-  imports = [
-    inputs.zen-browser.homeModules.beta
-    ../../modules/home-manager
-    ../../modules/stylix/hm-stylix.nix
-  ];
   home.username = "vs";
   home.homeDirectory = "/home/vs";
 
