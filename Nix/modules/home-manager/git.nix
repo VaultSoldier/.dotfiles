@@ -4,6 +4,7 @@
     userName = "VaultSoldier";
     userEmail = "61462705+VaultSoldier@users.noreply.github.com";
     extraConfig = {
+      init.defaultBranch = "dev";
       pull.rebase = true;
       commit.gpgsign = true;
       gpg.format = "ssh";
