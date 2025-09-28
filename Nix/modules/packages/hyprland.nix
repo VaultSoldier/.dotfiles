@@ -22,7 +22,7 @@
   xdg.menus.enable = true;
 
   # quickshell
-  qt.enable = true;
+  # qt.enable = true;
 
   # Fix for empty "Open With" menu in Dolphin when running under Hyprland
   # This copies the plasma-applications.menu file from plasma-workspace to /etc/xdg/menus/applications.menu
@@ -32,9 +32,6 @@
   services = { gnome.gnome-keyring.enable = true; };
 
   environment.systemPackages = with pkgs; [
-    kdePackages.kde-gtk-config
-    kdePackages.breeze
-    kdePackages.breeze-gtk
     kdePackages.ark
     adwaita-icon-theme # gnome icons for apps
     adwaita-qt
