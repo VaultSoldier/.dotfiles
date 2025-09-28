@@ -1,7 +1,6 @@
-{ pkgs, nixpkgs, ... }:
+{ pkgs, ... }:
 
-let lib = nixpkgs.lib;
-in {
+{
   environment.systemPackages = with pkgs; [
     qt6.qtdeclarative
     qt6.qtbase
@@ -14,7 +13,7 @@ in {
     gtk3
     lm_sensors
     ddcutil
-    hyprpicker
+    hyprpicker # color picker
     pavucontrol
     brightnessctl
     networkmanager
@@ -42,7 +41,9 @@ in {
       "${pkgs.xkeyboard-config}/share/xkeyboard-config-2/rules/base.lst";
   };
 
-  environment.sessionVariables.XDG_DATA_DIRS = lib.mkForce
-    ("${pkgs.kdePackages.breeze}/share:" + "${pkgs.material-symbols}/share:"
-      + "$XDG_DATA_DIRS");
+  environment.sessionVariables.XDG_DATA_DIRS = [
+    "${pkgs.papirus-icon-theme}/share"
+    "${pkgs.kdePackages.breeze}/share"
+    "${pkgs.material-symbols}/share"
+  ];
 }
