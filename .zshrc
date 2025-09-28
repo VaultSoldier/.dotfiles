@@ -101,6 +101,7 @@ DIR=$HOME/.dotfiles/scripts
 alias t='tmux'
 alias g='git'
 alias gs='git status'
+alias gc='git commit'
 alias ls='ls --color=auto'
 alias la='ls -lha --color=auto'
 alias docker-compose='docker compose'
