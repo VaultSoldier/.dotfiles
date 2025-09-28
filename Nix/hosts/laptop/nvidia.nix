@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   # Enable OpenGL
@@ -8,7 +8,16 @@
   };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
+
+  hardware.nvidia.prime = {
+    offload = {
+      enable = true;
+      enableOffloadCmd = true;
+    };
+    nvidiaBusId = "PCI:1:0:0";
+    amdgpuBusId = "PCI:5:0:0";
+  };
 
   hardware.nvidia = {
     modesetting.enable = true;
