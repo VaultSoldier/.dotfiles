@@ -238,29 +238,6 @@
         "dangerous": false
       },
       {
-        "name": "Transparency",
-        "icon": "opacity",
-        "description": "Change shell transparency",
-        "command": [
-          "autocomplete",
-          "transparency"
-        ],
-        "enabled": false,
-        "dangerous": false
-      },
-      {
-        "name": "Random",
-        "icon": "casino",
-        "description": "Switch to a random wallpaper",
-        "command": [
-          "caelestia",
-          "wallpaper",
-          "-r"
-        ],
-        "enabled": true,
-        "dangerous": false
-      },
-      {
         "name": "Light",
         "icon": "light_mode",
         "description": "Change the scheme to light mode",
@@ -345,7 +322,7 @@
     "maxWallpapers": 9,
     "specialPrefix": "@",
     "useFuzzy": {
-      "apps": false,
+      "apps": true,
       "actions": false,
       "schemes": false,
       "variants": false,
@@ -373,7 +350,7 @@
   "paths": {
     "mediaGif": "~/.dotfiles/assets/nekodance.gif",
     "sessionGif": "~/.dotfiles/assets/nekolay.gif",
-    "wallpaperDir": "~/Pictures/NCSync//Wallpapers"
+    "wallpaperDir": "~/Pictures/NCSync/Wallpapers"
   },
   "services": {
     "audioIncrement": 0.1,
