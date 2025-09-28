@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     kdePackages.dolphin
+    kdePackages.konsole
     kdePackages.kdialog
     kdePackages.kio
     kdePackages.kdf # kwikdisk
