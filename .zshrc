@@ -1,3 +1,5 @@
+source $HOME/.zsh_aliases
+
 # load completions
 autoload -Uz compinit && compinit
 
@@ -84,42 +86,6 @@ bindkey '^[[3~' delete-char
 
 # unbind beginning-of-line
 bindkey -r '^A'
-
-##########################################################################
-#  ________  ___       ___  ________  ________  _______   ________       #
-# |\   __  \|\  \     |\  \|\   __  \|\   ____\|\  ___ \ |\   ____\      #
-# \ \  \|\  \ \  \    \ \  \ \  \|\  \ \  \___|\ \   __/|\ \  \___|_     #
-#  \ \   __  \ \  \    \ \  \ \   __  \ \_____  \ \  \_|/_\ \_____  \    #
-#   \ \  \ \  \ \  \____\ \  \ \  \ \  \|____|\  \ \  \_|\ \|____|\  \   #
-#    \ \__\ \__\ \_______\ \__\ \__\ \__\____\_\  \ \_______\____\_\  \  #
-#     \|__|\|__|\|_______|\|__|\|__|\|__|\_________\|_______|\_________\ #
-#                                       \|_________|        \|_________| #
-##########################################################################
-
-DIR=$HOME/.dotfiles/scripts
-
-alias t='tmux'
-alias g='git'
-alias gs='git status'
-alias gc='git commit'
-alias ls='ls --color=auto'
-alias la='ls -lha --color=auto'
-alias docker-compose='docker compose'
-alias CombineAudio='pactl load-module module-combine-sink'
-alias CombineAudioOff='pactl unload-module module-combine-sink'
-alias up="$DIR/update.sh"
-alias upmesh="$DIR/vpn_mesh.sh"
-alias uphome="$DIR/vpn_home.sh"
-alias upvpn="$DIR/vpn_on.sh"
-alias ssh-list="rg '^\s*Host\s+' ~/.ssh/config | awk '{print $2}'"
-alias ssh-work-list="rg '^\s*Host\s+' ~/.ssh/ssh_keys/work/config | awk '{print $2}'"
-alias ssh-open='cryfs "$HOME/.local/share/plasma-vault/ssh_keys.enc/" "$HOME/.ssh/ssh_keys"'
-alias ssh-close='cryfs-unmount $HOME/.ssh/ssh_keys/'
-alias weather='curl wttr.in/:Челябинск'
-alias open='xdg-open'
-alias vi='nvim'
-alias hx='helix'
-alias arch='docker run --rm -it vaultsoldier/arch-dotfiles:latest'
 
 #########################################################################
 #  ________  _________    ___    ___ ___       _______   ________       #

@@ -3,6 +3,7 @@ DIR=$HOME/.dotfiles/scripts
 alias t='tmux'
 alias g='git'
 alias gs='git status'
+alias gc='git commit'
 alias ls='ls --color=auto'
 alias la='ls -lha --color=auto'
 alias docker-compose='docker compose'
@@ -20,9 +21,6 @@ alias ssh-close='cryfs-unmount $HOME/.ssh/ssh_keys/'
 # alias upmesh="$DIR/vpn_mesh.sh"
 # alias uphome="$DIR/vpn_home.sh"
 # alias upvpn="$DIR/vpn_on.sh"
-
-# TODO: Update to distrobox
-alias arch='docker run --rm -it vaultsoldier/arch-dotfiles:latest'
 
 if command -v pacman &>/dev/null; then
   alias up="$DIR/update.sh"
