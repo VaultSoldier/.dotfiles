@@ -2,17 +2,17 @@ FROM archlinux:latest as base
 RUN pacman -Sy reflector --noconfirm
 
 RUN reflector \
-  --country 'RU' \
-  --protocol https \
-  --sort rate \
-  --latest 20 \
-  --fastest 10 \
-  --age 12 \
-  --save /etc/pacman.d/mirrorlist
+    --country 'RU' \
+    --protocol https \
+    --sort rate \
+    --latest 20 \
+    --fastest 10 \
+    --age 12 \
+    --save /etc/pacman.d/mirrorlist
 
 ENV GOPATH="/home/vs/.local/share/go"
 RUN pacman -Syu --needed --noconfirm base-devel sudo unzip go github-cli man-db tealdeer \ 
-tmux git git-zsh-completion neovim ripgrep zoxide fzf stow tmux npm imagemagick zsh
+    tmux git git-zsh-completion neovim ripgrep zoxide fzf stow tmux npm imagemagick zsh
 
 FROM base as user
 RUN useradd -m vs && \
