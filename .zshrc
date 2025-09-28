@@ -1,8 +1,13 @@
+# load completions
+autoload -Uz compinit && compinit
+
 # dir for zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 # if there's no zinit, download it
-[ ! -d "$ZINIT_HOME" ] && mkdir -p "$(dirname $ZINIT_HOME)" && 
-	git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+if [ ! -d "$ZINIT_HOME" ]; then
+   mkdir -p "$(dirname $ZINIT_HOME)"
+   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
 
 # load zinit
 source "${ZINIT_HOME}/zinit.zsh"
@@ -12,9 +17,6 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light MichaelAquilina/zsh-autoswitch-virtualenv
-
-# load completions
-autoload -U compinit && compinit
 
 # Import oh-my-posh
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
@@ -152,11 +154,5 @@ setopt hist_find_no_dups
 
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(fzf --zsh)"
-
-if [[ -z "$TMUX" ]] && command -v tmux &> /dev/null && [[ $- == *i* ]]; then
-    session_name="|$(date '+%H_%M')|pid_$$"
-    tmux new-session -s "$session_name"
-fi
-
 
 # ASCII - asciiart.eu
