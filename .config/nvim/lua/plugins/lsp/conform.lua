@@ -5,6 +5,7 @@ return {
     local options = {
       formatters_by_ft = {
         python = { 'black' },
+        dart = { 'dcm' },
         toml = { 'tombi' },
         lua = { 'stylua' },
         javascript = { 'prettierd', 'prettier' },

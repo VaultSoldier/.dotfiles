@@ -82,7 +82,8 @@ return {
 
     local servers = {
       pyright = {},
-      tombi = {},
+      dcm = {}, -- dart
+      tombi = {}, -- toml
       jsonls = {},
       sqlls = {},
       terraformls = {},
@@ -125,7 +126,9 @@ return {
     -- `dependencies` table for `nvim-lspconfig` above.
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
-      'black',
+      'dcm', -- dart
+      'black', -- Python Formatter
+      'flake8', -- Python Linter
       'stylua',
       'tombi',
       'prettier',
