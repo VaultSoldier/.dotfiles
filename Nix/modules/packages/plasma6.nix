@@ -9,7 +9,7 @@
     ];
 
   environment.systemPackages = with pkgs; [
-    kdePackages.discover # Optional: Install if you use Flatpak or fwupd firmware update sevice
+    #kdePackages.discover # Optional: Install if you use Flatpak or fwupd firmware update sevice
     kdePackages.kcolorchooser # A small utility to select a color
     kdePackages.kolourpaint # Easy-to-use paint program
     kdePackages.ksystemlog # KDE SystemLog Application
