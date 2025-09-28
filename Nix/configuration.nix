@@ -9,10 +9,11 @@
   users.users.vs = {
     isNormalUser = true;
     description = "David";
-    extraGroups = [ "networkmanager" "wheel" "podman" ];
+    extraGroups = [ "networkmanager" "wheel" "podman" "adbuser" "kvm" ];
   };
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
+  programs.adb.enable = true;
 
   services.udisks2.enable = true;
   environment.systemPackages = with pkgs; [
