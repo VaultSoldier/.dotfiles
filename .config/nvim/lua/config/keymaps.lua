@@ -211,6 +211,13 @@ function M.lsp(map)
   map('<leader>as', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
   map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
   map('<leader>cn', vim.lsp.buf.rename, '[R]e[n]ame')
+  map('<leader>cf', function()
+    require('conform').format {
+      lsp_format = 'fallback',
+      timeout_ms = 500,
+    }
+  end, 'Format code with conform', { 'n', 'v' })
+
   map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 end
 

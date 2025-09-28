@@ -82,6 +82,7 @@ return {
 
     local servers = {
       pyright = {},
+      tombi = {},
       jsonls = {},
       sqlls = {},
       terraformls = {},
@@ -126,6 +127,7 @@ return {
     vim.list_extend(ensure_installed, {
       'black',
       'stylua',
+      'tombi',
       'prettier',
       'markdownlint',
       'hadolint',
