@@ -35,12 +35,4 @@ in {
   # Nekoray
   programs.nekoray.enable = true;
   programs.nekoray.tunMode.enable = true;
-
-  # VirtualBox
-  users.extraGroups.vboxusers.members = [ "vs" ];
-  virtualisation.virtualbox = {
-    host.enable = true;
-    host.enableKvm = true;
-    host.addNetworkInterface = false;
-  };
 }

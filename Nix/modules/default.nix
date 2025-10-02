@@ -12,6 +12,7 @@
     ./packages/kanata.nix
     ./packages/podman.nix
     ./packages/dolphin.nix
+    ./packages/virt-manager.nix
     ./packages/cli.nix
     ./packages/gui.nix
   ];
