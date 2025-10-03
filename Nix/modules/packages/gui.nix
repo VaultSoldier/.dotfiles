@@ -31,8 +31,4 @@ in {
   ];
 
   programs.amnezia-vpn.enable = true;
-
-  # Nekoray
-  programs.nekoray.enable = true;
-  programs.nekoray.tunMode.enable = true;
 }
