@@ -214,7 +214,7 @@ function M.lsp(map)
   map('<leader>cf', function()
     require('conform').format {
       lsp_format = 'fallback',
-      timeout_ms = 500,
+      timeout_ms = 1000,
     }
   end, 'Format code with conform', { 'n', 'v' })
 

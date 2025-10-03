@@ -82,7 +82,6 @@ return {
 
     local servers = {
       pyright = {},
-      dcm = {}, -- dart
       tombi = {}, -- toml
       jsonls = {},
       sqlls = {},
@@ -97,6 +96,25 @@ return {
       clangd = {},
       gopls = {},
       nil_ls = {},
+      -- Dart / Flutter
+      dartls = {
+        cmd = { 'dart', 'language-server', '--protocol=lsp' },
+        filetypes = { 'dart' },
+        init_options = {
+          closingLabels = true,
+          flutterOutline = true,
+          onlyAnalyzeProjectsWithOpenFiles = true,
+          outline = true,
+          suggestFromUnimportedLibraries = true,
+        },
+        settings = {
+          dart = {
+            completeFunctionCalls = true,
+            showTodos = true,
+          },
+        },
+      },
+
       lua_ls = {
         -- cmd = {...},
         -- filetypes { ...},
@@ -124,9 +142,11 @@ return {
 
     -- `mason` had to be setup earlier: to configure its options see the
     -- `dependencies` table for `nvim-lspconfig` above.
-    local ensure_installed = vim.tbl_keys(servers or {})
+    local ensure_installed = vim.tbl_filter(function(name)
+      return name ~= 'dartls' -- exclude Dart, since it's bundled
+    end, vim.tbl_keys(servers or {}))
+
     vim.list_extend(ensure_installed, {
-      'dcm', -- dart
       'black', -- Python Formatter
       'flake8', -- Python Linter
       'stylua',

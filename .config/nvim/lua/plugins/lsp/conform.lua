@@ -5,7 +5,7 @@ return {
     local options = {
       formatters_by_ft = {
         python = { 'black' },
-        dart = { 'dcm' },
+        dart = { 'dart_format' },
         toml = { 'tombi' },
         lua = { 'stylua' },
         javascript = { 'prettierd', 'prettier' },
@@ -17,6 +17,13 @@ return {
         mksh = { 'shfmt' },
         shell = { 'shfmt' },
         nix = { 'nixfmt' },
+      },
+      formatters = {
+        dart_format = {
+          command = 'dart',
+          args = { 'format' },
+          stdin = true,
+        },
       },
 
       -- format_on_save = {

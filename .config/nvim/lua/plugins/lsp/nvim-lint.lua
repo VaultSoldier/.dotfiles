@@ -6,11 +6,9 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         python = { 'flake8' },
-        dart = { 'dcm' },
         markdown = { 'markdownlint' },
         dockerfile = { 'hadolint' },
         json = { 'jsonlint' },
-        toml = { 'tombi' },
         text = { 'vale' },
       }
       lint.linters_by_ft = lint.linters_by_ft or {}
