@@ -59,11 +59,16 @@
           ./configuration.nix
           ./hosts/desktop
           ./modules
+          ./modules/stylix/sys-stylix.nix
           ./modules/hardware/nvidia.nix
-          ./modules/packages/plasma6.nix
 
-          home-manager.nixosModules.home-manager
+          ./modules/packages/plasma6.nix
+          # ./modules/packages/hyprland.nix
+          # ./modules/packages/caelestia.nix
+
+          stylix.nixosModules.stylix
           mikuboot.nixosModules.default
+          home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -71,15 +76,23 @@
             home-manager.backupFileExtension = "bckp";
             home-manager.users.vs = {
               imports = [
-                inputs.zen-browser.homeModules.beta
-                inputs.plasma-manager.homeModules.plasma-manager
+                zen-browser.homeModules.beta
+                plasma-manager.homeModules.plasma-manager
 
                 # configuration
                 ./home.nix
                 ./modules/home-manager
+                ./modules/home-manager/plasma-manager.nix
+                ./modules/stylix/hm-stylix.nix
               ];
             };
           }
+          # {
+          #   environment.systemPackages = [
+          #     caelestia-cli.packages.${system}.default
+          #     caelestia-shell.packages.${system}.default
+          #   ];
+          # }
         ];
       };
 
@@ -104,8 +117,8 @@
             home-manager.backupFileExtension = "bckp";
             home-manager.users.vs = {
               imports = [
-                inputs.zen-browser.homeModules.beta
-                inputs.plasma-manager.homeModules.plasma-manager
+                zen-browser.homeModules.beta
+                plasma-manager.homeModules.plasma-manager
 
                 # configuration
                 ./home.nix
