@@ -8,7 +8,7 @@
     ./packages/sddm.nix
     ./packages/code.nix
     ./packages/games.nix
-    ./packages/nekoray.nix
+    ./packages/clash-verge.nix
     ./packages/neovim.nix
     ./packages/kanata.nix
     ./packages/podman.nix
