@@ -6,6 +6,9 @@
   environment.plasma6.excludePackages = with pkgs;
     [
       kdePackages.elisa # Simple music player aiming to provide a nice experience for its users
+      kdePackages.kate # Advanced text editor
+      kdePackages.okular # KDE document viewer
+      kdePackages.khelpcenter # Software documentation viewer
     ];
 
   environment.systemPackages = with pkgs; [
