@@ -2,6 +2,7 @@
   imports = [
     ./system/audio.nix
     ./system/networking.nix
+    ./system/zapret.nix
     ./system/security.nix
     ./system/locale.nix
 
