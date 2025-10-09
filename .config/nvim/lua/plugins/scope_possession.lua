@@ -16,7 +16,8 @@ return {
       require('nvim-possession').setup {
         autoload = true,
         autoswitch = {
-          enable = true,
+          enable = true, -- whether to enable autoswitch
+          exclude_ft = {}, -- list of filetypes to exclude from autoswitch
         },
         plugins = {
           delete_hidden_buffers = true,
@@ -43,6 +44,12 @@ return {
           preview = {
             vertical = 'right:30%',
           },
+        },
+        ---@type possession.Mapopts
+        mappings = { -- configure action keymaps on possession.list() picker
+          action_delete = 'ctrl-d', -- remap from ctrl+x cuz of global ctrl+x escape keymap
+          action_rename = 'ctrl-r',
+          action_new = 'ctrl-n',
         },
         sort = require('nvim-possession.sorting').alpha_sort,
       }
