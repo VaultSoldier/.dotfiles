@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -46,7 +47,8 @@
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, plasma-manager, stylix
-    , zen-browser, caelestia-cli, caelestia-shell, mikuboot, ... }:
+    , spicetify-nix, zen-browser, caelestia-cli, caelestia-shell, mikuboot, ...
+    }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -61,10 +63,7 @@
           ./modules
           ./modules/stylix/sys-stylix.nix
           ./modules/hardware/nvidia.nix
-
           ./modules/packages/plasma6.nix
-          # ./modules/packages/hyprland.nix
-          # ./modules/packages/caelestia.nix
 
           stylix.nixosModules.stylix
           mikuboot.nixosModules.default
@@ -76,23 +75,12 @@
             home-manager.backupFileExtension = "bckp";
             home-manager.users.vs = {
               imports = [
-                zen-browser.homeModules.beta
-                plasma-manager.homeModules.plasma-manager
-
-                # configuration
                 ./home.nix
                 ./modules/home-manager
-                ./modules/home-manager/plasma-manager.nix
                 ./modules/stylix/hm-stylix.nix
               ];
             };
           }
-          # {
-          #   environment.systemPackages = [
-          #     caelestia-cli.packages.${system}.default
-          #     caelestia-shell.packages.${system}.default
-          #   ];
-          # }
         ];
       };
 
@@ -117,13 +105,8 @@
             home-manager.backupFileExtension = "bckp";
             home-manager.users.vs = {
               imports = [
-                zen-browser.homeModules.beta
-                plasma-manager.homeModules.plasma-manager
-
-                # configuration
                 ./home.nix
                 ./modules/home-manager
-                ./modules/home-manager/plasma-manager.nix
                 ./modules/stylix/hm-stylix.nix
               ];
             };

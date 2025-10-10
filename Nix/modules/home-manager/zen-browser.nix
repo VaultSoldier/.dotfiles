@@ -1,4 +1,5 @@
-{ config, ... }: {
+{ inputs, config, ... }: {
+  imports = [ inputs.zen-browser.homeModules.beta ];
   programs.zen-browser = {
     enable = true;
     profiles."default" = {
@@ -131,7 +132,8 @@
         };
       };
       Preferences = {
-      	"media.videocontrols.picture-in-picture.enable-when-switching-tabs.enabled" = true;
+        "media.videocontrols.picture-in-picture.enable-when-switching-tabs.enabled" =
+          true;
         "browser.tabs.warnOnClose" = false;
         "browser.tabs.inTitlebar" = 0;
         "widget.use-xdg-desktop-portal.file-picker" = 1;
