@@ -7,8 +7,8 @@
     "enableHypr": false,
     "enableDiscord": false,
     "enableSpicetify": false,
-    "enableFuzzel": true,
-    "enableBtop": true,
+    "enableFuzzel": false,
+    "enableBtop": false,
     "enableGtk": false,
     "enableQt": false
   },
