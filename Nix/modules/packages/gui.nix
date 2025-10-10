@@ -21,7 +21,6 @@ in {
     sqlitebrowser
     dbeaver-bin
     chromium
-    vesktop
     telegram-desktop
     nextcloud-talk-desktop
     nextcloud-client
