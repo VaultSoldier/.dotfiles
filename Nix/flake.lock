@@ -146,11 +146,11 @@
         "quickshell": "quickshell_2"
       },
       "locked": {
-        "lastModified": 1759831711,
-        "narHash": "sha256-6iXzofNfOzQJ6dpo2D5VN8Tnqpyatg4rAfWO44B255U=",
+        "lastModified": 1759890778,
+        "narHash": "sha256-DzxhtmepaYmtDNI5LZUI6SroMn5XPV4wv8w83aVyeBo=",
         "owner": "VaultSoldier",
         "repo": "shell",
-        "rev": "54b2a5f49b01d37f50357a747b1cbc43a8dd24d2",
+        "rev": "7e878fd3731993ef693a163d17f03bf5415639a5",
         "type": "github"
       },
       "original": {
