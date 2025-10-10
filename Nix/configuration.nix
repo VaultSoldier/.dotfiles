@@ -16,9 +16,9 @@
   programs.adb.enable = true;
 
   services.udisks2.enable = true;
-  environment.systemPackages = with pkgs; [
-    xdg-user-dirs
-    bibata-cursors
-    cryfs
-  ];
+  environment.systemPackages = with pkgs; [ xdg-user-dirs cryfs ];
+  environment.variables = {
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+    NIXOS_OZONE_WL = "1";
+  };
 }
