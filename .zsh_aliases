@@ -18,6 +18,10 @@ alias ssh-work-list="rg '^\s*Host\s+' ~/.ssh/ssh_keys/work/config | awk '{print 
 alias ssh-open='cryfs "$HOME/.local/share/plasma-vault/ssh_keys.enc/" "$HOME/.ssh/ssh_keys"'
 alias ssh-close='cryfs-unmount $HOME/.ssh/ssh_keys/'
 
+# INFO: F*CK RKN with love ❤️
+alias zapret='sudo systemctl start zapret.service'
+alias zapretOff='sudo systemctl stop zapret.service'
+
 # alias upmesh="$DIR/vpn_mesh.sh"
 # alias uphome="$DIR/vpn_home.sh"
 # alias upvpn="$DIR/vpn_on.sh"
