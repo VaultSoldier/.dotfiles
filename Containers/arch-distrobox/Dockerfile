@@ -3,7 +3,6 @@ RUN pacman -Sy reflector --noconfirm
 
 RUN reflector \
     --country 'RU' \
-    --protocol https \
     --sort rate \
     --latest 20 \
     --fastest 10 \
@@ -29,7 +28,8 @@ RUN git clone https://aur.archlinux.org/yay.git /tmp/yay && \
     makepkg -si --noconfirm && \
     rm -rf /tmp/yay
 
-RUN yay -S --noconfirm oh-my-posh spicetify-cli spotify-launcher
+# install packages
+RUN yay -S --noconfirm oh-my-posh
 
 
 FROM build as final
