@@ -1,11 +1,15 @@
 { ... }: {
   services.zapret = {
     enable = true;
+    udpSupport = true;
+    udpPorts = [ "50000:50099" ];
     params = [
-      "--filter-udp=50000-50099 --filter-l7=discord,stun --dpi-desync=fake --new" # For Discord voice chats
-      "--dpi-desync=fake,disorder2"
+      "--dpi-desync-any-protocol=1" # udp support
+      "--filter-l7=discord,stun --dpi-desync=fake --new" # For Discord voice chats
+      "--dpi-desync=disorder"
       "--dpi-desync-ttl=1"
       "--dpi-desync-autottl=2"
+      "--dpi-desync-repeats=2"
     ];
   };
 }
