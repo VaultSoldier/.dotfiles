@@ -51,9 +51,7 @@
           }
         ],
         "command": [
-          "spicetify",
-          "watch",
-          "-s"
+          "spotify"
         ],
         "move": true
       },
