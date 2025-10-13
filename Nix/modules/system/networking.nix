@@ -6,8 +6,7 @@
   services.resolved.enable = true;
   networking = {
     networkmanager.enable = true;
-    # TODO: FIX
-    # networkmanager.wifi.backend = "iwd"; Received Deauthentication event, reason: 3
+    networkmanager.wifi.backend = "iwd"; 
   };
 
   hardware.bluetooth = {
