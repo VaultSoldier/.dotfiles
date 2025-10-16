@@ -6,7 +6,7 @@
   services.resolved.enable = true;
   networking = {
     networkmanager.enable = true;
-    networkmanager.wifi.backend = "iwd"; 
+    # networkmanager.wifi.backend = "iwd"; 
   };
 
   hardware.bluetooth = {
