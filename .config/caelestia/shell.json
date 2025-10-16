@@ -346,6 +346,7 @@
       "configLoaded": true,
       "dndChanged": true,
       "gameModeChanged": true,
+      "kbLayoutChanged": true,
       "numLockChanged": true,
       "vpnChanged": true,
       "nowPlaying": false
@@ -355,7 +356,7 @@
       "provider": [
         {
           "name": "wireguard",
-          "interface": "your-connection-name",
+          "interface": "amn0",
           "displayName": "Wireguard (Your VPN)"
         }
       ]
