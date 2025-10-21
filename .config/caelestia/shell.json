@@ -2,7 +2,7 @@
   "appearance": {
     "anim": {
       "durations": {
-        "scale": 1
+        "scale": 0.8
       }
     },
     "font": {
@@ -88,6 +88,7 @@
     "enabled": true,
     "visualiser": {
       "enabled": false,
+      "blur": false,
       "autoHide": true,
       "rounding": 1,
       "spacing": 1
@@ -101,7 +102,7 @@
     "entries": [
       {
         "id": "logo",
-        "enabled": false
+        "enabled": true
       },
       {
         "id": "workspaces",
@@ -176,7 +177,7 @@
   },
   "border": {
     "rounding": 25,
-    "thickness": 5
+    "thickness": 2
   },
   "dashboard": {
     "enabled": true,
@@ -278,7 +279,7 @@
     ],
     "dragThreshold": 50,
     "vimKeybinds": true,
-    "enableDangerousActions": false,
+    "enableDangerousActions": true,
     "maxShown": 8,
     "maxWallpapers": 9,
     "specialPrefix": "@",
@@ -290,7 +291,18 @@
       "wallpapers": false
     },
     "showOnHover": false,
-    "hiddenApps": []
+    "hiddenApps": [
+      "nvidia-settings",
+      "org.kde.konsole",
+      "org.kde.kwikdisk",
+      "org.kde.kdf",
+      "qt5ct",
+      "qt6ct",
+      "uuctl",
+      "htop",
+      "btop",
+      "nvim"
+    ]
   },
   "lock": {
     "recolourLogo": false
