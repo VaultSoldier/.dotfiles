@@ -96,25 +96,6 @@ return {
       clangd = {},
       gopls = {},
       nil_ls = {},
-      -- Dart / Flutter
-      dartls = {
-        cmd = { 'dart', 'language-server', '--protocol=lsp' },
-        filetypes = { 'dart' },
-        init_options = {
-          closingLabels = true,
-          flutterOutline = true,
-          onlyAnalyzeProjectsWithOpenFiles = true,
-          outline = true,
-          suggestFromUnimportedLibraries = true,
-        },
-        settings = {
-          dart = {
-            completeFunctionCalls = true,
-            showTodos = true,
-          },
-        },
-      },
-
       lua_ls = {
         -- cmd = {...},
         -- filetypes { ...},
