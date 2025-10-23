@@ -6,8 +6,6 @@
     lutris
     osu-lazer
     prismlauncher
-    nexusmods-app-unfree
-    protontricks
     protonplus
   ];
 

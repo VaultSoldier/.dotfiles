@@ -63,6 +63,7 @@
           ./modules
           ./modules/stylix/sys-stylix.nix
           ./modules/hardware/nvidia.nix
+          ./modules/packages/games
           ./modules/packages/plasma6.nix
 
           stylix.nixosModules.stylix
@@ -95,6 +96,7 @@
           ./modules/stylix/sys-stylix.nix
           ./modules/packages/hyprland.nix
           ./modules/packages/caelestia.nix
+          ./modules/packages/games/general.nix
 
           stylix.nixosModules.stylix
           mikuboot.nixosModules.default
