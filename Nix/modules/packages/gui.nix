@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     # TODO: Temporary fix. Remove later
     (import (fetchTarball {

@@ -60,11 +60,12 @@
         modules = [
           ./configuration.nix
           ./hosts/desktop
-          ./modules
-          ./modules/stylix/sys-stylix.nix
-          ./modules/hardware/nvidia.nix
+          ./modules/system
+          ./modules/packages
           ./modules/packages/games
-          ./modules/packages/plasma6.nix
+          ./modules/hardware/nvidia.nix
+          ./modules/stylix/sys-stylix.nix
+          ./modules/desktop-environments/plasma6.nix
 
           stylix.nixosModules.stylix
           mikuboot.nixosModules.default
@@ -92,11 +93,12 @@
         modules = [
           ./configuration.nix
           ./hosts/laptop
-          ./modules
-          ./modules/stylix/sys-stylix.nix
-          ./modules/packages/hyprland.nix
-          ./modules/packages/caelestia.nix
+          ./modules/system
+          ./modules/packages
           ./modules/packages/games/general.nix
+          ./modules/stylix/sys-stylix.nix
+          ./modules/desktop-environments/hyprland.nix
+          ./modules/desktop-environments/caelestia.nix
 
           stylix.nixosModules.stylix
           mikuboot.nixosModules.default

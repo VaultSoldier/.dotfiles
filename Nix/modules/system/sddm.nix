@@ -18,5 +18,5 @@ in {
     settings = { Theme = { Current = "sddm-astronaut-theme"; }; };
   };
 
-  environment.systemPackages = with pkgs; [ customized_sddm_astronaut ];
+  environment.systemPackages = [ customized_sddm_astronaut ];
 }
