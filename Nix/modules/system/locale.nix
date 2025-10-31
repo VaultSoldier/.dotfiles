@@ -25,9 +25,9 @@
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
-    liberation_ttf
+    noto-fonts-color-emoji
     nerd-fonts.jetbrains-mono
     nerd-fonts.caskaydia-cove
+    liberation_ttf
   ];
 }
