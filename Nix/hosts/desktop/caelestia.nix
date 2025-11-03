@@ -5,8 +5,10 @@
     hyprpicker # color picker
     cava # audio visualizer
     aubio # audio analysis 
+    bluez # bluetooth
     pavucontrol # audio control
     brightnessctl # brightness control
+    cliphist # clipboard history
     ddcutil
     app2unit
     file
@@ -72,16 +74,16 @@
           inhibitWhenAudio = true;
           timeouts = [
             {
-              timeout = 180;
+              timeout = 600;
               idleAction = "lock";
             }
             {
-              timeout = 300;
+              timeout = 350;
               idleAction = "dpms off";
               returnAction = "dpms on";
             }
             {
-              timeout = 600;
+              timeout = 1000;
               idleAction = [ "systemctl" "suspend" ];
             }
           ];
@@ -155,11 +157,11 @@
         showOnHover = true;
         status = {
           showAudio = true;
-          showBattery = true;
+          showBattery = false;
           showBluetooth = true;
-          showKbLayout = true;
+          showKbLayout = false;
           showMicrophone = false;
-          showNetwork = true;
+          showNetwork = false;
           showLockStatus = true;
         };
         tray = {
@@ -373,7 +375,7 @@
           configLoaded = true;
           dndChanged = true;
           gameModeChanged = true;
-          kbLayoutChanged = true;
+          kbLayoutChanged = false;
           numLockChanged = true;
           vpnChanged = true;
           nowPlaying = false;

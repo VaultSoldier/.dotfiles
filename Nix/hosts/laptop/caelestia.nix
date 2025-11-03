@@ -4,8 +4,11 @@
   home.packages = with pkgs; [
     hyprpicker # color picker
     cava # audio visualizer
+    aubio # audio analysis 
+    bluez # bluetooth
     pavucontrol # audio control
     brightnessctl # brightness control
+    cliphist # clipboard history
     ddcutil
     app2unit
     file
@@ -71,11 +74,11 @@
           inhibitWhenAudio = true;
           timeouts = [
             {
-              timeout = 180;
+              timeout = 200;
               idleAction = "lock";
             }
             {
-              timeout = 300;
+              timeout = 250;
               idleAction = "dpms off";
               returnAction = "dpms on";
             }
