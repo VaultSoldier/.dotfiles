@@ -2,15 +2,15 @@
 
 {
   programs.tmux.enable = true;
-
+  programs.gpu-screen-recorder.enable = true;
   environment.systemPackages = with pkgs; [
     oh-my-posh
+    zoxide
+    fzf
+    ripgrep
     git
     wget
     curl
-    zoxide
-    ripgrep
-    fzf
     fd
     mc
     unzip

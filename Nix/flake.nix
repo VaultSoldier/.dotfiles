@@ -35,11 +35,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    caelestia-cli = {
-      url = "github:caelestia-dots/cli";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     mikuboot = {
       url = "gitlab:evysgarden/mikuboot";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,7 +42,7 @@
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, plasma-manager, stylix
-    , spicetify-nix, zen-browser, caelestia-cli, caelestia-shell, mikuboot, ...
+    , spicetify-nix, zen-browser, caelestia-shell, mikuboot, ...
     }:
     let
       system = "x86_64-linux";
@@ -65,7 +60,7 @@
           ./modules/packages/games
           ./modules/hardware/nvidia.nix
           ./modules/stylix/sys-stylix.nix
-          ./modules/desktop-environments/plasma6.nix
+          ./modules/desktop-environments/hyprland.nix
 
           stylix.nixosModules.stylix
           mikuboot.nixosModules.default
@@ -77,9 +72,9 @@
             home-manager.backupFileExtension = "bckp";
             home-manager.users.vs = {
               imports = [
-                ./home.nix
                 ./modules/home-manager
                 ./modules/stylix/hm-stylix.nix
+                ./hosts/desktop/caelestia.nix
               ];
             };
           }
@@ -98,7 +93,6 @@
           ./modules/packages/games/general.nix
           ./modules/stylix/sys-stylix.nix
           ./modules/desktop-environments/hyprland.nix
-          ./modules/desktop-environments/caelestia.nix
 
           stylix.nixosModules.stylix
           mikuboot.nixosModules.default
@@ -110,23 +104,11 @@
             home-manager.backupFileExtension = "bckp";
             home-manager.users.vs = {
               imports = [
-                ./home.nix
                 ./modules/home-manager
                 ./modules/stylix/hm-stylix.nix
+                ./hosts/laptop/caelestia.nix
               ];
             };
-          }
-
-          {
-            environment.systemPackages = [
-              caelestia-cli.packages.${system}.default
-              caelestia-shell.packages.${system}.default
-
-              # (quickshell.packages.${system}.default.withModules [
-              #   pkgs.kdePackages.qtsvg
-              #   pkgs.kdePackages.kirigami
-              # ])
-            ];
           }
         ];
       };
