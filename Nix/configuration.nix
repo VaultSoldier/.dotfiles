@@ -8,7 +8,7 @@
 
   users.users.vs = {
     isNormalUser = true;
-    description = "David";
+    description = "John";
     extraGroups = [ "networkmanager" "wheel" "podman" "adbuser" "kvm" ];
   };
   users.defaultUserShell = pkgs.zsh;
