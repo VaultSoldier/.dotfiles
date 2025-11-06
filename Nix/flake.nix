@@ -69,13 +69,11 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.backupFileExtension = "bckp";
-            home-manager.users.vs = {
-              imports = [
-                ./modules/home-manager
-                ./modules/stylix/hm-stylix.nix
-                ./hosts/desktop/caelestia.nix
-              ];
-            };
+            home-manager.users.vs.imports = [
+              ./modules/home-manager
+              ./modules/stylix/hm-stylix.nix
+              ./hosts/desktop/caelestia.nix
+            ];
           }
         ];
       };
@@ -104,13 +102,11 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.backupFileExtension = "bckp";
-            home-manager.users.vs = {
-              imports = [
-                ./modules/home-manager
-                ./modules/stylix/hm-stylix.nix
-                ./hosts/laptop/caelestia.nix
-              ];
-            };
+            home-manager.users.vs.imports = [
+              ./modules/home-manager
+              ./modules/stylix/hm-stylix.nix
+              ./hosts/laptop/caelestia.nix
+            ];
           }
         ];
       };
