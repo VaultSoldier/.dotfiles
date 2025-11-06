@@ -112,7 +112,7 @@
       ExtensionSettings = {
         "uBlock0@raymondhill.net" = {
           install_url =
-            "https://addons.mozilla.org/firefox/downloads/file/4573289/ublock_origin-1.66.0.xpi";
+            "https://addons.mozilla.org/firefox/downloads/file/4598854/ublock_origin-1.67.0.xpi";
           installation_mode = "force_installed";
         };
         "sponsorBlocker@ajay.app" = {
