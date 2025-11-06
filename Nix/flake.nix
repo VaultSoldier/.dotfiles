@@ -42,8 +42,7 @@
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, plasma-manager, stylix
-    , spicetify-nix, zen-browser, caelestia-shell, mikuboot, ...
-    }:
+    , spicetify-nix, zen-browser, caelestia-shell, mikuboot, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -61,10 +60,10 @@
           ./modules/hardware/nvidia.nix
           ./modules/stylix/sys-stylix.nix
           ./modules/desktop-environments/hyprland.nix
-
           stylix.nixosModules.stylix
           mikuboot.nixosModules.default
           home-manager.nixosModules.home-manager
+
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -90,14 +89,17 @@
           ./hosts/laptop
           ./modules/system
           ./modules/packages
-          ./modules/packages/games/general.nix
+          ./modules/packages/games
           ./modules/stylix/sys-stylix.nix
           ./modules/desktop-environments/hyprland.nix
-
           stylix.nixosModules.stylix
           mikuboot.nixosModules.default
           home-manager.nixosModules.home-manager
+
           {
+            games.nexusmods.enable = false;
+            games.osu-lazer.enable = false;
+
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
