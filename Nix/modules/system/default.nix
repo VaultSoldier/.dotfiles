@@ -5,6 +5,7 @@
     ./networking.nix
     ./sddm.nix
     ./security.nix
+    ./flatpak.nix
     ./zapret.nix
   ];
 }
