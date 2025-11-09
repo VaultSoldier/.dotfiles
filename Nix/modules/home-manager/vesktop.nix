@@ -33,6 +33,7 @@
       };
       FakeNitro.enabled = true;
       FixYoutubeEmbeds.enabled = true;
+      YoutubeAdblock.enable = true;
       SpotifyCrack.enabled = true;
       ReverseImageSearch.enabled = true;
       NoF1.enabled = true;
