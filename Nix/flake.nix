@@ -65,6 +65,8 @@
           home-manager.nixosModules.home-manager
 
           {
+            games.lutris.enable = false;
+
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
