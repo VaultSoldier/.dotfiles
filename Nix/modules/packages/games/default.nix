@@ -4,7 +4,6 @@
   environment.systemPackages = with pkgs; [ mangohud ];
 
   games.steam.enable = lib.mkDefault true;
-
   games.lutris.enable = lib.mkDefault true;
   games.osu-lazer.enable = lib.mkDefault true;
   games.prismlauncher.enable = lib.mkDefault true;
