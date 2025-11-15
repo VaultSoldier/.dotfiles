@@ -58,15 +58,13 @@
           ./modules/packages
           ./modules/packages/games
           ./modules/hardware/nvidia.nix
-          ./modules/stylix/sys-stylix.nix
           ./modules/desktop-environments/hyprland.nix
+          ./modules/stylix/sys-stylix.nix
           stylix.nixosModules.stylix
           mikuboot.nixosModules.default
           home-manager.nixosModules.home-manager
 
           {
-            games.lutris.enable = false;
-
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
@@ -90,8 +88,8 @@
           ./modules/system
           ./modules/packages
           ./modules/packages/games
-          ./modules/stylix/sys-stylix.nix
           ./modules/desktop-environments/hyprland.nix
+          ./modules/stylix/sys-stylix.nix
           stylix.nixosModules.stylix
           mikuboot.nixosModules.default
           home-manager.nixosModules.home-manager
@@ -99,6 +97,7 @@
           {
             games.nexusmods.enable = false;
             games.osu-lazer.enable = false;
+            games.lutris.enable = false;
 
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
