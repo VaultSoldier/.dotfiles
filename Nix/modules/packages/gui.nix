@@ -13,7 +13,7 @@
     telegram-desktop
     nextcloud-talk-desktop
     onlyoffice-desktopeditors
-    rustdesk-flutter
+    # rustdesk-flutter
     obsidian
   ];
 
