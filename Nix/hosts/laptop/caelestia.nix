@@ -4,7 +4,7 @@
   home.packages = with pkgs; [
     hyprpicker # color picker
     cava # audio visualizer
-    aubio # audio analysis 
+    aubio # audio analysis
     bluez # bluetooth
     pavucontrol # audio control
     brightnessctl # brightness control
@@ -381,11 +381,13 @@
           nowPlaying = false;
         };
         vpn = {
-          enabled = false;
+          enabled = true;
           provider = [{
             name = "wireguard";
-            interface = "amn0";
-            displayName = "Wireguard (Your VPN)";
+            interface = "wg-home";
+            displayName = "Wireguard (HOME)";
+            connectCmd = [ "nmcli" "connection" "up" "wg-home" ];
+            disconnectCmd = [ "nmcli" "connection" "down" "wg-home" ];
           }];
         };
       };
