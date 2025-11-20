@@ -13,6 +13,7 @@
     curl
     fd
     mc
+    whois
     unzip
     unrar
     tealdeer
