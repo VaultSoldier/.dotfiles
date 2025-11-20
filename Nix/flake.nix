@@ -58,6 +58,8 @@
           ./modules/packages
           ./modules/packages/games
           ./modules/hardware/nvidia.nix
+          ./modules/stylix/sys-stylix.nix
+          ./modules/desktop-environments/plasma6.nix
           ./modules/desktop-environments/hyprland.nix
           ./modules/stylix/sys-stylix.nix
           stylix.nixosModules.stylix
