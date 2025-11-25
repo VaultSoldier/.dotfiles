@@ -13,6 +13,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    affinity-nix = {
+      url = "github:mrshmllow/affinity-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,7 +47,8 @@
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, plasma-manager, stylix
-    , spicetify-nix, zen-browser, caelestia-shell, mikuboot, ... }:
+    , spicetify-nix, zen-browser, affinity-nix, caelestia-shell, mikuboot, ...
+    }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -76,6 +82,9 @@
               ./modules/stylix/hm-stylix.nix
               ./hosts/desktop/caelestia.nix
             ];
+
+            environment.systemPackages =
+              [ affinity-nix.packages.x86_64-linux.v3 ];
           }
         ];
       };
