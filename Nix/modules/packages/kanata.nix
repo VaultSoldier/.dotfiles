@@ -34,6 +34,7 @@
           "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
           # keyboards
           "/dev/input/by-path/pci-0000:06:00.3-usbv2-0:1:1.0-event-kbd"
+          "/dev/input/by-id/usb-05ac_LT75PRO-2.4G-event-kbd"
         ];
         extraDefCfg = "process-unmapped-keys yes";
         config = ''
