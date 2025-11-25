@@ -27,13 +27,10 @@
     keyboards = {
       internalKeyboard = {
         devices = [
-          # Replace the paths below with the appropriate device paths for your setup.
-          # Use `ls /dev/input/by-path/` to find your keyboard devices.
-          "/dev/input/by-path/pci-0000:0f:00.4-usb-0:1:1.0-event-kbd"
           # Laptop
           "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
-          # keyboards
-          "/dev/input/by-path/pci-0000:06:00.3-usbv2-0:1:1.0-event-kbd"
+          # Langtu LT75
+          "/dev/input/by-id/usb-SONiX_LT75PR0-USB-event-kbd"
           "/dev/input/by-id/usb-05ac_LT75PRO-2.4G-event-kbd"
         ];
         extraDefCfg = "process-unmapped-keys yes";
