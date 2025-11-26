@@ -31,8 +31,6 @@
     kdePackages.ark
     adwaita-icon-theme # gnome icons for apps
     adwaita-qt
-    playerctl
-    wl-clipboard
   ];
 
   programs.uwsm.enable = true;

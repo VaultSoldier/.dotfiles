@@ -3,12 +3,14 @@
 
   home.packages = with pkgs; [
     hyprpicker # color picker
+    playerctl
     cava # audio visualizer
     aubio # audio analysis
     bluez # bluetooth
     pavucontrol # audio control
     brightnessctl # brightness control
     cliphist # clipboard history
+    wl-clipboard # clipboard support
     ddcutil
     app2unit
     file
