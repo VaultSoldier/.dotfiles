@@ -5,13 +5,12 @@
     xdgOpenUsePortal = true;
     enable = true;
     configPackages = with pkgs; [
-      xdg-desktop-portal-gtk
-      kdePackages.xdg-desktop-portal-kde
       xdg-desktop-portal-hyprland
+      kdePackages.xdg-desktop-portal-kde
     ];
     config = {
       common = {
-        default = [ "hyprland;gtk" ];
+        default = [ "hyprland;kde" ];
         "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
       };
     };
@@ -20,9 +19,6 @@
   # Enable XDG MIME and menu support
   xdg.mime.enable = true;
   xdg.menus.enable = true;
-
-  # quickshell
-  # qt.enable = true;
 
   # Fix for empty "Open With" menu in Dolphin when running under Hyprland
   # This copies the plasma-applications.menu file from plasma-workspace to /etc/xdg/menus/applications.menu
@@ -40,6 +36,7 @@
   ];
 
   programs.uwsm.enable = true;
+  programs.gpu-screen-recorder.enable = true;
   programs.hyprland = {
     enable = true;
     withUWSM = true;

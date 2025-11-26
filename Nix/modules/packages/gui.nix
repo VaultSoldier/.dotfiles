@@ -1,19 +1,19 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    nextcloud-client
-    kitty
     mpv
+    kitty
     kdePackages.gwenview
-    bitwarden-desktop
     filezilla
     qbittorrent
     sqlitebrowser
     dbeaver-bin
     chromium
     telegram-desktop
+    bitwarden-desktop
+    nextcloud-client
     nextcloud-talk-desktop
     onlyoffice-desktopeditors
-    # rustdesk-flutter
+    rustdesk-flutter
     obsidian
   ];
 
