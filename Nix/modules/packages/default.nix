@@ -22,7 +22,7 @@
     unrar
     tealdeer
     xorg.xlsclients
-    wineWowPackages.stable 
+    wineWowPackages.waylandFull
     pulseaudio # pactl
     yt-dlp
     ffmpeg
