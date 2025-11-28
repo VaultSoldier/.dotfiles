@@ -73,6 +73,9 @@
           home-manager.nixosModules.home-manager
 
           {
+            system.flatpak.enable = true;
+            games.lutris.enable = false;
+
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
@@ -106,6 +109,7 @@
           home-manager.nixosModules.home-manager
 
           {
+            system.flatpak.enable = true;
             games.nexusmods.enable = false;
             games.osu-lazer.enable = false;
             games.lutris.enable = false;
