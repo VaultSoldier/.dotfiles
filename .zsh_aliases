@@ -3,7 +3,9 @@ DIR=$HOME/.dotfiles/scripts
 alias t='tmux'
 alias g='git'
 alias gs='git status'
+alias gl='git log'
 alias gc='git commit'
+alias gd='git diff'
 alias ls='ls --color=auto'
 alias la='ls -lha --color=auto'
 alias docker-compose='docker compose'
@@ -18,7 +20,7 @@ alias ssh-work-list="rg '^\s*Host\s+' ~/.ssh/ssh_keys/work/config | awk '{print 
 alias ssh-open='cryfs "$HOME/.local/share/plasma-vault/ssh_keys.enc/" "$HOME/.ssh/ssh_keys"'
 alias ssh-close='cryfs-unmount $HOME/.ssh/ssh_keys/'
 
-# INFO: F*CK RKN with love ❤️
+# INFO: F*CK RKN with ❤️
 alias zapret='sudo systemctl start zapret.service'
 alias zapretOff='sudo systemctl stop zapret.service'
 
