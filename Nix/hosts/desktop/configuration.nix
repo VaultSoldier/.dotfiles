@@ -1,22 +1,21 @@
-{ config, pkgs, ... }:
-
-{
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # Bootloader.
+{ pkgs, ... }: {
   boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+
     plymouth = {
       enable = true;
       themePackages = [ pkgs.mikuboot ];
       theme = "mikuboot";
     };
+
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
+      timeout = 0; # Hide the OS choice for bootloaders.
     };
-    # Enable "Silent boot"
-    consoleLogLevel = 3;
+
     initrd.verbose = false;
+    consoleLogLevel = 3;
     kernelParams = [
       "quiet"
       "splash"
@@ -24,8 +23,6 @@
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
     ];
-    # Hide the OS choice for bootloaders.
-    loader.timeout = 0;
   };
 
   # This value determines the NixOS release from which the default

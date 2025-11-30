@@ -181,21 +181,24 @@
           perMonitorWorkspaces = true;
           showWindows = true;
           shown = 5;
+          specialWorkspaceIcons = [{
+            name = "notes";
+            icon = "sticky_note";
+          }];
         };
+        excludedScreens = [ "" ];
+        activeWindow = { inverted = false; };
       };
-
       border = {
         rounding = 25;
         thickness = 2;
       };
-
       dashboard = {
         enabled = true;
         dragThreshold = 50;
         mediaUpdateInterval = 500;
         showOnHover = true;
       };
-
       launcher = {
         actionPrefix = ">";
         actions = [
@@ -455,11 +458,11 @@
               ];
             };
           };
-          todo = {
+          notes = {
             obsidian = {
               enable = true;
               match = [{ class = "obsidian"; }];
-              command = [ "obsidian" ];
+              command = [ "app2unit" "obsidian" ];
               move = true;
             };
           };

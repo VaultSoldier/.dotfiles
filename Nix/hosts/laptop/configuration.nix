@@ -1,8 +1,4 @@
-{ config, pkgs, ... }:
-
-{
-  # Bootloader.
-
+{ pkgs, ... }: {
   boot = {
     initrd.systemd.enable = true;
     initrd.kernelModules = [ "tpm_tis" "tpm_crb" "tpm" "nvme" ];

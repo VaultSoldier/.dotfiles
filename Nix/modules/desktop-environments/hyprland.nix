@@ -1,6 +1,5 @@
-{ pkgs, ... }:
-
-{
+{ config, lib, pkgs, ... }:
+lib.mkIf config.desktop.hyprland.enable {
   xdg.portal = {
     xdgOpenUsePortal = true;
     enable = true;
