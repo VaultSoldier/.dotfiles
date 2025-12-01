@@ -11,6 +11,8 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  # fix for LANGTU LT75PRO-2.4G FN being always active
+  boot.kernelParams = [ "hid_apple.fnmode=2" "hid_apple.swap_fn_leftctrl=0" ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/bcdacb9e-41da-4ccf-ac90-9c5aaba8504d";
