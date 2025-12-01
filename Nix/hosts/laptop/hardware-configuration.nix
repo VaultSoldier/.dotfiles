@@ -4,31 +4,30 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules =
+    [ "nvme" "xhci_pci" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/bcdacb9e-41da-4ccf-ac90-9c5aaba8504d";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/bcdacb9e-41da-4ccf-ac90-9c5aaba8504d";
+    fsType = "ext4";
+  };
 
-  boot.initrd.luks.devices."luks-678fc83a-ce6f-4f90-bed9-8d3080abcd56".device = "/dev/disk/by-uuid/678fc83a-ce6f-4f90-bed9-8d3080abcd56";
+  boot.initrd.luks.devices."luks-678fc83a-ce6f-4f90-bed9-8d3080abcd56".device =
+    "/dev/disk/by-uuid/678fc83a-ce6f-4f90-bed9-8d3080abcd56";
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/3421-9D67";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/3421-9D67";
+    fsType = "vfat";
+    options = [ "fmask=0077" "dmask=0077" ];
+  };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/f59332aa-68eb-4b90-91ed-5c4797961f21"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/f59332aa-68eb-4b90-91ed-5c4797961f21"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -39,5 +38,8 @@
   # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  services.fstrim.enable = lib.mkDefault true; # ssd TRIM
 }
