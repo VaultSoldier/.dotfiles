@@ -351,7 +351,7 @@
           from = "com.github.th_ch.youtube_music";
           to = "YT Music";
         }];
-        weatherLocation = "";
+        weatherLocation = "Chelyabinsk";
         useFahrenheit = false;
         useTwelveHourClock = false;
         smartScheme = true;
