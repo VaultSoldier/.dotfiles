@@ -29,9 +29,10 @@ if [ -f ~/.dircolors ]; then
 fi
 
 # ENV vars
-export PODMAN_COMPOSE_WARNING_LOGS=false
 export EDITOR=nvim
-export GOPATH="$HOME/.local/share/go"
+export PODMAN_COMPOSE_WARNING_LOGS=false
+export GOPATH="$XDG_DATA_HOME/go"
+export PYTHON_HISTORY="$XDG_STATE_HOME/python_history"
 export FZF_CTRL_R_OPTS="--bind 'ctrl-j:ignore,ctrl-k:ignore,alt-j:down,alt-k:up'"
 
 ######################################################################################
