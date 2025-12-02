@@ -29,5 +29,7 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.caskaydia-cove
     liberation_ttf
+    corefonts
+    vista-fonts
   ];
 }
