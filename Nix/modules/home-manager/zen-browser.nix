@@ -112,7 +112,7 @@
       ExtensionSettings = {
         "uBlock0@raymondhill.net" = {
           install_url =
-            "https://addons.mozilla.org/firefox/downloads/file/4598854/ublock_origin-1.67.0.xpi";
+            "https://addons.mozilla.org/firefox/downloads/file/4629131/ublock_origin-1.68.0.xpi";
           installation_mode = "force_installed";
         };
         "sponsorBlocker@ajay.app" = {
@@ -128,6 +128,16 @@
         "{85860b32-02a8-431a-b2b1-40fbd64c9c69}" = {
           install_url =
             "https://addons.mozilla.org/firefox/downloads/file/4238111/github_file_icons-1.5.2.xpi";
+          installation_mode = "force_installed";
+        };
+        "CanvasBlocker@kkapsner.de" = {
+          install_url =
+            "https://addons.mozilla.org/firefox/downloads/file/4413485/canvasblocker-1.11.xpi";
+          installation_mode = "force_installed";
+        };
+        "{55f61747-c3d3-4425-97f9-dfc19a0be23c}" = {
+          install_url =
+            "https://addons.mozilla.org/firefox/downloads/file/4627749/spoof_timezone-0.4.8.xpi";
           installation_mode = "force_installed";
         };
       };
