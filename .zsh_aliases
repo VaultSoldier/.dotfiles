@@ -12,6 +12,7 @@ alias docker-compose='docker compose'
 alias weather='curl wttr.in/:Челябинск'
 alias CombineAudio='pactl load-module module-combine-sink'
 alias CombineAudioOff='pactl unload-module module-combine-sink'
+alias get-extension-id="$DIR/firefox-extract-extension-id.sh"
 alias open='xdg-open'
 alias hx='helix'
 alias vi='nvim'
@@ -19,8 +20,6 @@ alias ssh-list="rg '^\s*Host\s+' ~/.ssh/config | awk '{print $2}'"
 alias ssh-work-list="rg '^\s*Host\s+' ~/.ssh/ssh_keys/work/config | awk '{print $2}'"
 alias ssh-open='cryfs "$HOME/.local/share/plasma-vault/ssh_keys.enc/" "$HOME/.ssh/ssh_keys"'
 alias ssh-close='cryfs-unmount $HOME/.ssh/ssh_keys/'
-
-# INFO: F*CK RKN with ❤️
 alias zapret='sudo systemctl start zapret.service'
 alias zapretOff='sudo systemctl stop zapret.service'
 
