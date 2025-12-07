@@ -58,6 +58,7 @@
           ./modules/packages
           ./modules/packages/games
           ./modules/hardware/nvidia.nix
+          ./modules/hardware/fifine-am8.nix
           ./modules/desktop-environments
           ./modules/stylix
           mikuboot.nixosModules.default
