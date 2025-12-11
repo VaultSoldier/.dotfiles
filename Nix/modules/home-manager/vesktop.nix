@@ -12,6 +12,7 @@
       splashTheming = true;
       staticTitle = true;
       hardwareAcceleration = true;
+      hardwareVideoAcceleration = false;
       discordBranch = "stable";
     };
   };
