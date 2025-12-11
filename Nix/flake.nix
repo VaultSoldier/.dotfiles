@@ -66,8 +66,8 @@
 
           {
             desktop.plasma6.enable = true;
-            desktop.hyprland.enable = true;
-            desktop.caelestia.enable = true;
+            desktop.hyprland.enable = false;
+            desktop.caelestia.enable = false;
             system.flatpak.enable = true;
             games.lutris.enable = false;
 
