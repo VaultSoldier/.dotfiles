@@ -10,5 +10,26 @@
     };
     workspace.theme = "breeze-dark";
     workspace.lookAndFeel = "org.kde.breezedark.desktop";
+
+    configFile.kdeglobals = {
+      Shortcuts.Help = "";
+      Shortcuts.SaveAs = "Ctrl+Alt+S";
+    };
+    shortcuts = {
+      kwin."Window Close" = [ "Meta+C" "Alt+F4" ];
+      mediacontrol.previousmedia = [ "Meta+F2" "Media Previous" ];
+      mediacontrol.nextmedia = [ "Meta+F3" "Media Next" ];
+      mediacontrol.playpausemedia = [ "Media Play" "Meta+F1" ];
+      mediacontrol.mediavolumedown = [ ];
+      mediacontrol.mediavolumeup = [ ];
+
+      plasmashell."manage activities" = "";
+      "services/kitty.desktop"._launch = "Meta+Q";
+      "services/org.kde.konsole.desktop"._launch = [ ];
+      "services/org.kde.spectacle.desktop".RectangularRegionScreenShot =
+        [ "Meta+Shift+Print" "Ctrl+Shift+S" ];
+      "services/org.kde.spectacle.desktop"._launch = "Print";
+      "services/systemsettings.desktop"._launch = [ "Meta+I" "Tools" ];
+    };
   };
 }
