@@ -12,16 +12,16 @@
   programs.tmux.enable = true;
   environment.systemPackages = with pkgs; [
     oh-my-posh
-    zoxide
+    zoxide # cd alternative
     fzf
-    ripgrep
-    fd
-    mc
+    ripgrep # faster grep alternative
+    fd # fast alternative to find
     whois
     unzip
     unrar
+    ansible
     tealdeer
-    xorg.xlsclients
+    xorg.xlsclients # tool for checking xwayland clients
     wineWowPackages.waylandFull
     pulseaudio # pactl
     yt-dlp
@@ -29,7 +29,7 @@
     speedtest-cli
     stow
     htop
-    ncdu
+    ncdu # gui du
     fastfetch
     ipfetch
   ];
