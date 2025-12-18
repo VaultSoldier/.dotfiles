@@ -7,6 +7,8 @@
   nix.settings.use-xdg-base-directories = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  xdg.menus.enable = true;
+
   users.users.vs = {
     isNormalUser = true;
     description = "John";
