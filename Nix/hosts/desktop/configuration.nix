@@ -10,6 +10,11 @@
 
     loader = {
       systemd-boot.enable = true;
+      systemd-boot.windows."11" = {
+        title = "Windows 11";
+        efiDeviceHandle = "HD0b65535a1";
+      };
+
       efi.canTouchEfiVariables = true;
       timeout = 0; # Hide the OS choice for bootloaders.
     };
