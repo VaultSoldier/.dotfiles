@@ -107,11 +107,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764813773,
-        "narHash": "sha256-vpgjBAER+aoMjq6z9xuv/jvniXkRRgP/xfZMP2LbNlk=",
+        "lastModified": 1765332282,
+        "narHash": "sha256-4VQn4aZ7eziRCVNVIYveglrMh6IAyCNOl+4IyhCgX3k=",
         "owner": "caelestia-dots",
         "repo": "cli",
-        "rev": "1eead8615108e1977ac09ed428e1329adbb80f00",
+        "rev": "b1e4e92e98645a1908d7d0a8581e59b2cd1e52df",
         "type": "github"
       },
       "original": {
@@ -129,11 +129,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1765071049,
-        "narHash": "sha256-HIJtxkYaGxUFZ03wOzF4pWhKWAvFuYBN9jAdhCzZvnI=",
+        "lastModified": 1765675511,
+        "narHash": "sha256-o8Ok+UaDRDUhONI9JqytO//RlWOf6LAPnEQ7vA8f+qw=",
         "owner": "VaultSoldier",
         "repo": "shell",
-        "rev": "982d64d5e5b9295d12dec37d45442ed6a05fe284",
+        "rev": "d819bf2fc3ded72ad4fa116c4f06c3afb7d59153",
         "type": "github"
       },
       "original": {
@@ -811,11 +811,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765946036,
-        "narHash": "sha256-R/qaIkzqm00qBMr8onM6ZZFX49lvsQLZ79adVubqjts=",
+        "lastModified": 1766032508,
+        "narHash": "sha256-7MHR94mOoa5/s4NBrpsXWaNNzrZyRC0OwRwEobp1wzI=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "7db019a64483743a8d92319baafbbe71b687d0a1",
+        "rev": "a7f58a9e3481804915d75a9c86527bca6d9dafb3",
         "type": "github"
       },
       "original": {
