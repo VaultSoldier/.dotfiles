@@ -26,6 +26,7 @@
     pulseaudio # pactl
     yt-dlp
     ffmpeg
+    trash-cli
     speedtest-cli
     stow
     htop
