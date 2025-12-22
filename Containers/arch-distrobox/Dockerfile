@@ -10,7 +10,7 @@ RUN reflector \
     --save /etc/pacman.d/mirrorlist
 
 ENV GOPATH="/home/vs/.local/share/go"
-RUN pacman -Syu --needed --noconfirm base-devel sudo-rs git neovim htop zoxide fzf noto-fonts-cjk
+RUN pacman -Syu --needed --noconfirm base-devel sudo-rs git neovim htop zoxide ripgrep fzf noto-fonts-cjk
 
 FROM base as user
 RUN useradd -m vs && \
