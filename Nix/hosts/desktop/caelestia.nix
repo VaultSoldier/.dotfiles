@@ -326,6 +326,7 @@
         clearThreshold = 0.3;
         defaultExpireTimeout = 5000;
         expandThreshold = 20;
+        openExpanded = false;
         expire = true;
       };
 
