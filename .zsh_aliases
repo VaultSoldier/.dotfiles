@@ -16,6 +16,7 @@ alias get-extension-id="$DIR/firefox-extract-extension-id.sh"
 alias open='xdg-open'
 alias hx='helix'
 alias vi='nvim'
+alias distrobox-arch='distrobox enter arch'
 alias ssh-list="rg '^\s*Host\s+' ~/.ssh/config | awk '{print $2}'"
 alias ssh-work-list="rg '^\s*Host\s+' ~/.ssh/ssh_keys/work/config | awk '{print $2}'"
 alias ssh-open='cryfs "$HOME/.local/share/plasma-vault/ssh_keys.enc/" "$HOME/.ssh/ssh_keys"'
