@@ -20,7 +20,8 @@ return {
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
-        require('config.keymaps').lsp(map)
+        require('config.keymaps.lsp').Init(map)
+        require('config.keymaps.terminal').Lsp(map)
 
         -- This function resolves a difference between neovim
         -- nightly (version 0.11) and stable (version 0.10)
@@ -29,11 +30,7 @@ return {
         ---@param bufnr? integer some lsp support methods only in specific files
         ---@return boolean
         local function client_supports_method(client, method, bufnr)
-          if vim.fn.has 'nvim-0.11' == 1 then
-            return client:supports_method(method, bufnr)
-          else
-            return client.supports_method({ bufnr = bufnr }, method)
-          end
+          return client:supports_method(method, bufnr)
         end
 
         -- The following two autocommands are used to highlight references of the
@@ -42,6 +39,11 @@ return {
         --
         -- When you move your cursor, the highlights will be cleared (the second autocommand).
         local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+        if client and client.name == 'ruff' then
+          client.server_capabilities.hoverProvider = false
+        end
+
         if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
           local highlight_augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
           vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
@@ -81,7 +83,28 @@ return {
     capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
 
     local servers = {
-      pyright = {},
+      pyright = {
+        settings = {
+          pyright = {
+            disableOrganizeImports = true,
+          },
+          python = {
+            analysis = {
+              typeCheckingMode = 'basic',
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
+              diagnosticMode = 'workspace',
+            },
+          },
+        },
+      },
+      ruff = {
+        init_options = {
+          settings = {
+            logLevel = 'info',
+          },
+        },
+      },
       tombi = {}, -- toml
       jsonls = {},
       sqlls = {},
@@ -128,8 +151,8 @@ return {
     end, vim.tbl_keys(servers or {}))
 
     vim.list_extend(ensure_installed, {
-      'black', -- Python Formatter
-      'flake8', -- Python Linter
+      'pyright',
+      'ruff', -- Python Formatter/Linter/LSP
       'stylua',
       'tombi',
       'prettier',

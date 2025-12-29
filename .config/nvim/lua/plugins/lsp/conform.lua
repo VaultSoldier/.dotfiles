@@ -4,7 +4,14 @@ return {
   config = function()
     local options = {
       formatters_by_ft = {
-        python = { 'black' },
+        python = {
+          -- To fix auto-fixable lint errors.
+          'ruff_fix',
+          -- To run the Ruff formatter.
+          'ruff_format',
+          -- To organize the imports.
+          'ruff_organize_imports',
+        },
         dart = { 'dart_format' },
         toml = { 'tombi' },
         lua = { 'stylua' },
@@ -13,6 +20,8 @@ return {
         html = { 'prettier' },
         json = { 'prettier' },
         yaml = { 'prettier' },
+        markdown = { 'markdownlint' },
+        sh = { 'shfmt' },
         bash = { 'shfmt' },
         mksh = { 'shfmt' },
         shell = { 'shfmt' },
