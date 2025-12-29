@@ -3,7 +3,7 @@ return {
   cmd = { 'TodoTrouble', 'TodoTelescope' },
   event = 'VeryLazy',
   opts = {},
-    -- stylua: ignore
-    keys = require('config.keymaps').todo_keys()
-,
+  init = function()
+    require 'config.keymaps.todo'
+  end,
 }

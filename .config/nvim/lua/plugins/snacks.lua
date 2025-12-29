@@ -65,7 +65,7 @@ return {
         end
         vim.print = _G.dd -- Override print to use snacks for `:=` command
 
-        require('config.keymaps').toggle(snacks.toggle)
+        require('config.keymaps.global').Toggle()
       end,
     })
   end,
