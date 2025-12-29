@@ -33,13 +33,13 @@ full_install() {
 install() {
 	[ -f /etc/arch-release ] && sudo pacman -Syu --needed $minimalPackages
 	[ -f /etc/debian_version ] && sudo apt-get update && apt-get install $minimalPackages
-	systemSupport
+	system_support
 }
 
 remove() {
 	[ -f /etc/arch-release ] && sudo pacman -Rns $packages $arch_pkgs
 	[ -f /etc/debian_version ] && sudo apt-get purge $packages $debian_pkgs && apt-get autoremove
-	systemSupport
+	system_support
 }
 
 system_support() {
