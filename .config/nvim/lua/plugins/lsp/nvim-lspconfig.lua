@@ -161,7 +161,7 @@ return {
       'prettierd',
       'jsonlint',
       'vale',
-      'nixfmt',
+      -- 'nixfmt', -- https://github.com/mason-org/mason.nvim/issues/2050
       'shfmt',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
