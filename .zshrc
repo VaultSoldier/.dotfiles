@@ -23,11 +23,6 @@ zinit light MichaelAquilina/zsh-autoswitch-virtualenv
 # Import oh-my-posh
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
 
-# Load dircolors and set LS_COLORS
-if [ -f ~/.dircolors ]; then
-    eval "$(dircolors -b ~/.dircolors)"
-fi
-
 # ENV vars
 export EDITOR=nvim
 export PODMAN_COMPOSE_WARNING_LOGS=false
