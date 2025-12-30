@@ -1,5 +1,8 @@
-{ lib, config, ... }: {
-  options.system = { zapret.enable = lib.mkEnableOption "Enable zapret"; };
+{ lib, config, ... }:
+{
+  options.system = {
+    zapret.enable = lib.mkEnableOption "Enable zapret";
+  };
 
   config = lib.mkIf config.system.zapret.enable {
     services.zapret = {

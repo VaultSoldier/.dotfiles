@@ -1,6 +1,13 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 lib.mkIf config.desktop.plasma6.enable {
-  services = { desktopManager.plasma6.enable = true; };
+  services = {
+    desktopManager.plasma6.enable = true;
+  };
 
   environment.plasma6.excludePackages = with pkgs; [
     kdePackages.elisa # Simple music player

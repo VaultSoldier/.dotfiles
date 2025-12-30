@@ -1,8 +1,11 @@
-{ lib, config, ... }: {
-  imports = [ ./hardware-configuration.nix ./configuration.nix ];
+{ lib, config, ... }:
+{
+  imports = [
+    ./hardware-configuration.nix
+    ./configuration.nix
+  ];
 
-  options.desktop.caelestia.enable =
-    lib.mkEnableOption "Enable caelestia";
+  options.desktop.caelestia.enable = lib.mkEnableOption "Enable caelestia";
 
   config = {
     desktop.caelestia.enable = lib.mkDefault false;

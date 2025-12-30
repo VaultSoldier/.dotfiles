@@ -1,5 +1,13 @@
-{ pkgs, lib, config, ... }: {
-  options.system = { flatpak.enable = lib.mkEnableOption "Enable flatpak"; };
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
+  options.system = {
+    flatpak.enable = lib.mkEnableOption "Enable flatpak";
+  };
 
   config = lib.mkIf config.system.flatpak.enable {
     services.flatpak.enable = true;

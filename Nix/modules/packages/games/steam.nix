@@ -1,5 +1,13 @@
-{ pkgs, lib, config, ... }: {
-  options.games = { steam.enable = lib.mkEnableOption "Enable steam"; };
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
+  options.games = {
+    steam.enable = lib.mkEnableOption "Enable steam";
+  };
 
   config = lib.mkIf config.games.steam.enable {
     environment.systemPackages = with pkgs; [ protonplus ];

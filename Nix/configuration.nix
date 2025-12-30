@@ -5,14 +5,23 @@
   hardware.enableAllFirmware = true;
   hardware.enableAllHardware = true;
   nix.settings.use-xdg-base-directories = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   xdg.menus.enable = true;
 
   users.users.vs = {
     isNormalUser = true;
     description = "John";
-    extraGroups = [ "networkmanager" "wheel" "podman" "adbuser" "kvm" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "podman"
+      "adbuser"
+      "kvm"
+    ];
   };
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;

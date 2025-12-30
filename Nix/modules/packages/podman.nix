@@ -3,7 +3,9 @@
 {
   virtualisation = {
     containers.enable = true;
-    containers.registries = { search = [ "docker.io" ]; };
+    containers.registries = {
+      search = [ "docker.io" ];
+    };
     podman = {
       enable = true;
       dockerCompat = true;

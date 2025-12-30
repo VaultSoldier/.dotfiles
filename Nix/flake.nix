@@ -40,13 +40,25 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, plasma-manager, stylix
-    , spicetify-nix, zen-browser, affinity-nix, caelestia-shell, mikuboot, ...
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      plasma-manager,
+      stylix,
+      spicetify-nix,
+      zen-browser,
+      affinity-nix,
+      caelestia-shell,
+      mikuboot,
+      ...
     }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
-    in {
+    in
+    {
       nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = inputs;
@@ -77,8 +89,7 @@
             home-manager.backupFileExtension = "bckp";
             home-manager.users.vs.imports = [ ./modules/home-manager ];
 
-            environment.systemPackages =
-              [ affinity-nix.packages.x86_64-linux.v3 ];
+            environment.systemPackages = [ affinity-nix.packages.x86_64-linux.v3 ];
           }
         ];
       };

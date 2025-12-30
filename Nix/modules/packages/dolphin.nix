@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   services.gvfs.enable = true; # mtp
 
   environment.systemPackages = with pkgs; [

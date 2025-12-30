@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 lib.mkIf config.desktop.hyprland.enable {
   xdg.portal = {
     xdgOpenUsePortal = true;
@@ -21,10 +26,12 @@ lib.mkIf config.desktop.hyprland.enable {
 
   # Fix for empty "Open With" menu in Dolphin when running under Hyprland
   # This copies the plasma-applications.menu file from plasma-workspace to /etc/xdg/menus/applications.menu
-  environment.etc."/xdg/menus/applications.menu".text = builtins.readFile
-    "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+  environment.etc."/xdg/menus/applications.menu".text =
+    builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
-  services = { gnome.gnome-keyring.enable = true; };
+  services = {
+    gnome.gnome-keyring.enable = true;
+  };
 
   environment.systemPackages = with pkgs; [
     kdePackages.ark

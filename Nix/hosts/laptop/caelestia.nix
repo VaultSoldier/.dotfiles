@@ -1,4 +1,5 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+{
   imports = [ inputs.caelestia-shell.homeManagerModules.default ];
 
   home.packages = with pkgs; [
@@ -18,7 +19,9 @@
 
   programs.caelestia = {
     enable = true;
-    systemd = { enable = false; };
+    systemd = {
+      enable = false;
+    };
     settings = {
       appearance = {
         anim.durations.scale = 0.8;
@@ -86,7 +89,10 @@
             }
             {
               timeout = 600;
-              idleAction = [ "systemctl" "suspend-then-hibernate" ];
+              idleAction = [
+                "systemctl"
+                "suspend-then-hibernate"
+              ];
             }
           ];
         };
@@ -181,13 +187,17 @@
           perMonitorWorkspaces = true;
           showWindows = true;
           shown = 5;
-          specialWorkspaceIcons = [{
-            name = "notes";
-            icon = "sticky_note";
-          }];
+          specialWorkspaceIcons = [
+            {
+              name = "notes";
+              icon = "sticky_note";
+            }
+          ];
         };
         excludedScreens = [ "" ];
-        activeWindow = { inverted = false; };
+        activeWindow = {
+          inverted = false;
+        };
       };
       border = {
         rounding = 25;
@@ -206,7 +216,10 @@
             name = "Calculator";
             icon = "calculate";
             description = "Do simple math equations (powered by Qalc)";
-            command = [ "autocomplete" "calc" ];
+            command = [
+              "autocomplete"
+              "calc"
+            ];
             enabled = true;
             dangerous = false;
           }
@@ -214,7 +227,10 @@
             name = "Scheme";
             icon = "palette";
             description = "Change the current colour scheme";
-            command = [ "autocomplete" "scheme" ];
+            command = [
+              "autocomplete"
+              "scheme"
+            ];
             enabled = true;
             dangerous = false;
           }
@@ -222,7 +238,10 @@
             name = "Wallpaper";
             icon = "image";
             description = "Change the current wallpaper";
-            command = [ "autocomplete" "wallpaper" ];
+            command = [
+              "autocomplete"
+              "wallpaper"
+            ];
             enabled = true;
             dangerous = false;
           }
@@ -230,7 +249,10 @@
             name = "Variant";
             icon = "colors";
             description = "Change the current scheme variant";
-            command = [ "autocomplete" "variant" ];
+            command = [
+              "autocomplete"
+              "variant"
+            ];
             enabled = true;
             dangerous = false;
           }
@@ -238,7 +260,10 @@
             name = "Light";
             icon = "light_mode";
             description = "Change the scheme to light mode";
-            command = [ "setMode" "light" ];
+            command = [
+              "setMode"
+              "light"
+            ];
             enabled = true;
             dangerous = false;
           }
@@ -246,7 +271,10 @@
             name = "Dark";
             icon = "dark_mode";
             description = "Change the scheme to dark mode";
-            command = [ "setMode" "dark" ];
+            command = [
+              "setMode"
+              "dark"
+            ];
             enabled = true;
             dangerous = false;
           }
@@ -254,7 +282,10 @@
             name = "Shutdown";
             icon = "power_settings_new";
             description = "Shutdown the system";
-            command = [ "systemctl" "poweroff" ];
+            command = [
+              "systemctl"
+              "poweroff"
+            ];
             enabled = true;
             dangerous = true;
           }
@@ -262,7 +293,10 @@
             name = "Reboot";
             icon = "cached";
             description = "Reboot the system";
-            command = [ "systemctl" "reboot" ];
+            command = [
+              "systemctl"
+              "reboot"
+            ];
             enabled = true;
             dangerous = true;
           }
@@ -270,7 +304,10 @@
             name = "Logout";
             icon = "exit_to_app";
             description = "Log out of the current session";
-            command = [ "uwsm" "stop" ];
+            command = [
+              "uwsm"
+              "stop"
+            ];
             enabled = true;
             dangerous = true;
           }
@@ -278,7 +315,10 @@
             name = "Lock";
             icon = "lock";
             description = "Lock the current session";
-            command = [ "loginctl" "lock-session" ];
+            command = [
+              "loginctl"
+              "lock-session"
+            ];
             enabled = true;
             dangerous = false;
           }
@@ -286,7 +326,10 @@
             name = "Sleep";
             icon = "bedtime";
             description = "Suspend";
-            command = [ "systemctl" "suspend" ];
+            command = [
+              "systemctl"
+              "suspend"
+            ];
             enabled = true;
             dangerous = false;
           }
@@ -348,10 +391,12 @@
         maxVolume = 1.0;
         defaultPlayer = "Spotify";
         gpuType = "";
-        playerAliases = [{
-          from = "com.github.th_ch.youtube_music";
-          to = "YT Music";
-        }];
+        playerAliases = [
+          {
+            from = "com.github.th_ch.youtube_music";
+            to = "YT Music";
+          }
+        ];
         weatherLocation = "Chelyabinsk";
         useFahrenheit = false;
         useTwelveHourClock = false;
@@ -363,10 +408,22 @@
         dragThreshold = 30;
         vimKeybinds = true;
         commands = {
-          logout = [ "uwsm" "stop" ];
-          shutdown = [ "systemctl" "poweroff" ];
-          hibernate = [ "systemctl" "hibernate" ];
-          reboot = [ "systemctl" "reboot" ];
+          logout = [
+            "uwsm"
+            "stop"
+          ];
+          shutdown = [
+            "systemctl"
+            "poweroff"
+          ];
+          hibernate = [
+            "systemctl"
+            "hibernate"
+          ];
+          reboot = [
+            "systemctl"
+            "reboot"
+          ];
         };
       };
 
@@ -388,13 +445,25 @@
         };
         vpn = {
           enabled = true;
-          provider = [{
-            name = "wireguard";
-            interface = "wg-home";
-            displayName = "Wireguard (HOME)";
-            connectCmd = [ "nmcli" "connection" "up" "wg-home" ];
-            disconnectCmd = [ "nmcli" "connection" "down" "wg-home" ];
-          }];
+          provider = [
+            {
+              name = "wireguard";
+              interface = "wg-home";
+              displayName = "Wireguard (HOME)";
+              connectCmd = [
+                "nmcli"
+                "connection"
+                "up"
+                "wg-home"
+              ];
+              disconnectCmd = [
+                "nmcli"
+                "connection"
+                "down"
+                "wg-home"
+              ];
+            }
+          ];
         };
       };
     };
@@ -402,7 +471,9 @@
       enable = true; # Also add caelestia-cli to path
       settings = {
 
-        record = { extraArgs = [ ]; };
+        record = {
+          extraArgs = [ ];
+        };
         theme = {
           enableTerm = false;
           enableHypr = false;
@@ -417,12 +488,12 @@
           communication = {
             discord = {
               enable = true;
-              match = [{ class = "vesktop"; }];
+              match = [ { class = "vesktop"; } ];
               move = true;
             };
             telegram = {
               enable = true;
-              match = [{ class = "telegram"; }];
+              match = [ { class = "telegram"; } ];
               command = [ "telegram" ];
               move = true;
             };
@@ -442,11 +513,15 @@
           sysmon = {
             btop = {
               enable = true;
-              match = [{
-                class = "btop";
-                title = "btop";
-                workspace = { name = "special:sysmon"; };
-              }];
+              match = [
+                {
+                  class = "btop";
+                  title = "btop";
+                  workspace = {
+                    name = "special:sysmon";
+                  };
+                }
+              ];
               command = [
                 "kitty"
                 "--class"
@@ -462,8 +537,11 @@
           notes = {
             obsidian = {
               enable = true;
-              match = [{ class = "obsidian"; }];
-              command = [ "app2unit" "obsidian" ];
+              match = [ { class = "obsidian"; } ];
+              command = [
+                "app2unit"
+                "obsidian"
+              ];
               move = true;
             };
           };

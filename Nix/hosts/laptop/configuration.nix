@@ -1,7 +1,13 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   boot = {
     initrd.systemd.enable = true;
-    initrd.kernelModules = [ "tpm_tis" "tpm_crb" "tpm" "nvme" ];
+    initrd.kernelModules = [
+      "tpm_tis"
+      "tpm_crb"
+      "tpm"
+      "nvme"
+    ];
 
     initrd.luks.devices."luks-48cb7628-9c63-4be2-8f34-b346002bc0aa" = {
       device = "/dev/disk/by-uuid/48cb7628-9c63-4be2-8f34-b346002bc0aa";

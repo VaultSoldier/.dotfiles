@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   imports = [ ./general-stylix.nix ];
 
   stylix.enable = true;

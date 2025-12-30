@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./code.nix
     ./neovim.nix
@@ -8,7 +9,7 @@
     ./virt-manager.nix
     ./gui.nix
   ];
-  
+
   programs.tmux.enable = true;
   environment.systemPackages = with pkgs; [
     oh-my-posh

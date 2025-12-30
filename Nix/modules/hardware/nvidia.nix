@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   # Enable OpenGL
@@ -25,6 +30,5 @@
   hardware.nvidia-container-toolkit.enable = true;
 
   environment.systemPackages = with pkgs; [ btop ];
-  nixpkgs.overlays =
-    [ (self: super: { btop = super.btop.override { cudaSupport = true; }; }) ];
+  nixpkgs.overlays = [ (self: super: { btop = super.btop.override { cudaSupport = true; }; }) ];
 }

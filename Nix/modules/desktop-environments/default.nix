@@ -1,5 +1,9 @@
-{ lib, ... }: {
-  imports = [ ./plasma6.nix ./hyprland.nix ];
+{ lib, ... }:
+{
+  imports = [
+    ./plasma6.nix
+    ./hyprland.nix
+  ];
 
   config = {
     desktop.plasma6.enable = lib.mkDefault false;
