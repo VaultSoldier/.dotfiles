@@ -8,6 +8,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    nixfmt # nix language formatter
     lua5_1
     imagemagick
     readline
@@ -27,4 +28,3 @@
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [ stylua ];
 }
-
