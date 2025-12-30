@@ -13,6 +13,7 @@ function M.Init()
   map('n', ';', ':', { desc = 'CMD enter command mode' })
   map('n', '<Esc>', '<cmd>nohlsearch<CR>')
   map('i', 'jj', '<Esc>')
+  map('i', '<A-BS>', '<C-w>')
 
   map('v', '<Tab>', '>gv', { noremap = true, silent = true })
   map('v', '<S-Tab>', '<gv', { noremap = true, silent = true })
