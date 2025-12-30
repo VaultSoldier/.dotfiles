@@ -1,8 +1,11 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+{
   imports = [ inputs.spicetify-nix.homeManagerModules.default ];
   programs.spicetify =
-    let spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
-    in {
+    let
+      spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
+    in
+    {
       enable = true;
       wayland = true;
 
@@ -10,6 +13,7 @@
         adblockify
         hidePodcasts
         shuffle # shuffle+ (special characters are sanitized out of extension names)
+        aiBandBlocker
       ];
       enabledCustomApps = with spicePkgs.apps; [
         newReleases
