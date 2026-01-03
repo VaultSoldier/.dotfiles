@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   imports = [
     ./mimeapps.nix
     ./plasma-manager.nix
@@ -42,7 +43,7 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    "Nix".source = ../../../Nix;
+    # "Nix".source = ../../../Nix;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
