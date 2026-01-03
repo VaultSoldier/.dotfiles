@@ -14,7 +14,7 @@
     nextcloud-client
     nextcloud-talk-desktop
     onlyoffice-desktopeditors
-    rustdesk-flutter
+    # rustdesk
     obsidian
   ];
 
