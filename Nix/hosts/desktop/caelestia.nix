@@ -1,4 +1,17 @@
 { inputs, pkgs, ... }:
+let # Fixes launching with Kde Plasma installed
+  kirigami = pkgs.kdePackages.kirigami.unwrapped;
+  wrappedCaelestia =
+    inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs
+      (old: {
+        nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.makeWrapper ];
+        postFixup = (old.postFixup or "") + ''
+          wrapProgram $out/bin/caelestia-shell \
+            --set QT_QML_IMPORT_PATH "${kirigami}/lib/qt-6/qml" \
+            --set QML2_IMPORT_PATH ""
+        '';
+      });
+in
 {
   imports = [ inputs.caelestia-shell.homeManagerModules.default ];
 
@@ -19,9 +32,9 @@
 
   programs.caelestia = {
     enable = true;
-    systemd = {
-      enable = false;
-    };
+    systemd.enable = false;
+    package = wrappedCaelestia;
+
     settings = {
       appearance = {
         anim.durations.scale = 0.8;
