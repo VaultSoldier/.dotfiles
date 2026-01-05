@@ -17,6 +17,7 @@ in
 
   home.packages = with pkgs; [
     hyprpicker # color picker
+    hyprsunset # night mode
     playerctl
     cava # audio visualizer
     aubio # audio analysis
@@ -443,7 +444,7 @@ in
 
       utilities = {
         enabled = true;
-        maxToasts = 4;
+        maxToasts = 3;
         toasts = {
           audioInputChanged = true;
           audioOutputChanged = true;
@@ -456,16 +457,21 @@ in
           numLockChanged = true;
           vpnChanged = true;
           nowPlaying = false;
+          nighLight = true;
         };
         vpn = {
           enabled = false;
           provider = [
             {
               name = "wireguard";
-              interface = "amn0";
+              interface = "wg0";
               displayName = "Wireguard (Your VPN)";
             }
           ];
+        };
+        nightLight = {
+          enabled = true;
+          temperature = 4500;
         };
       };
     };

@@ -4,6 +4,7 @@
 
   home.packages = with pkgs; [
     hyprpicker # color picker
+    hyprsunset # night mode
     playerctl
     cava # audio visualizer
     aubio # audio analysis
@@ -430,7 +431,7 @@
 
       utilities = {
         enabled = true;
-        maxToasts = 4;
+        maxToasts = 3;
         toasts = {
           audioInputChanged = true;
           audioOutputChanged = true;
@@ -443,6 +444,7 @@
           numLockChanged = true;
           vpnChanged = true;
           nowPlaying = false;
+          nighLight = true;
         };
         vpn = {
           enabled = true;
@@ -465,6 +467,10 @@
               ];
             }
           ];
+        };
+        nightLight = {
+          enabled = false;
+          temperature = 4500;
         };
       };
     };

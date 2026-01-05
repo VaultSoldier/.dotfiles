@@ -30,7 +30,7 @@
     };
 
     caelestia-shell = {
-      url = "github:VaultSoldier/shell";
+      url = "github:VaultSoldier/shell?ref=NightLight";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
