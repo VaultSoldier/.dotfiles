@@ -154,7 +154,7 @@
         ];
         persistent = true;
         popouts = {
-          activeWindow = true;
+          activeWindow = false;
           statusIcons = true;
           tray = true;
         };

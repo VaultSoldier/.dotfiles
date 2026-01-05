@@ -167,7 +167,7 @@ in
         ];
         persistent = true;
         popouts = {
-          activeWindow = true;
+          activeWindow = false;
           statusIcons = true;
           tray = true;
         };
@@ -367,6 +367,7 @@ in
           "org.kde.konsole"
           "org.kde.kwikdisk"
           "org.kde.kdf"
+          "menu-editor"
           "qt5ct"
           "qt6ct"
           "uuctl"
