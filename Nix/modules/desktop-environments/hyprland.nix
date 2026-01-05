@@ -6,16 +6,24 @@
 }:
 lib.mkIf config.desktop.hyprland.enable {
   xdg.portal = {
-    xdgOpenUsePortal = true;
     enable = true;
+    xdgOpenUsePortal = true;
     configPackages = with pkgs; [
       xdg-desktop-portal-hyprland
       kdePackages.xdg-desktop-portal-kde
     ];
     config = {
-      common = {
-        default = [ "hyprland;kde" ];
-        "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+      Hyprland = {
+        default = [ "hyprland" ];
+        "org.freedesktop.impl.portal.ScreenCast" = [ "hyprland" ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "hyprland" ];
+        "org.freedesktop.impl.portal.RemoteDesktop" = [ "hyprland" ];
+      };
+      KDE = {
+        default = [ "kde" ];
+        "org.freedesktop.impl.portal.ScreenCast" = [ "kde" ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "kde" ];
+        "org.freedesktop.impl.portal.RemoteDesktop" = [ "kde" ];
       };
     };
   };
