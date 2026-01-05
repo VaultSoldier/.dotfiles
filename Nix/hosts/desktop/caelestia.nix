@@ -41,15 +41,15 @@ in
         anim.durations.scale = 0.8;
         font = {
           family = {
-            material = "Material Symbols Rounded";
+            material = "Material Symbols Sharp";
             mono = "CaskaydiaCove NF";
             sans = "Rubik";
           };
           size.scale = 1;
         };
         padding.scale = 1;
-        rounding.scale = 1;
-        spacing.scale = 0.9;
+        rounding.scale = 0.6;
+        spacing.scale = 0.8;
         transparency = {
           enabled = false;
           base = 0.85;
@@ -93,11 +93,11 @@ in
           inhibitWhenAudio = true;
           timeouts = [
             {
-              timeout = 600;
+              timeout = 650;
               idleAction = "lock";
             }
             {
-              timeout = 350;
+              timeout = 300;
               idleAction = "dpms off";
               returnAction = "dpms on";
             }
@@ -113,13 +113,13 @@ in
       };
 
       background = {
-        desktopClock.enabled = true;
         enabled = true;
+        desktopClock.enabled = false;
         visualiser = {
           enabled = false;
           blur = false;
           autoHide = true;
-          rounding = 1;
+          rounding = 0.5;
           spacing = 1;
         };
       };
@@ -390,7 +390,7 @@ in
       osd = {
         enabled = true;
         enableBrightness = true;
-        enableMicrophone = false;
+        enableMicrophone = true;
         hideDelay = 2000;
       };
 
@@ -476,9 +476,8 @@ in
       };
     };
     cli = {
-      enable = true; # Also add caelestia-cli to path
+      enable = true; # Adds caelestia-cli to path
       settings = {
-
         record = {
           extraArgs = [ ];
         };

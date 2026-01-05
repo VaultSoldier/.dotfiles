@@ -28,15 +28,15 @@
         anim.durations.scale = 0.8;
         font = {
           family = {
-            material = "Material Symbols Rounded";
+            material = "Material Symbols Sharp";
             mono = "CaskaydiaCove NF";
             sans = "Rubik";
           };
           size.scale = 1;
         };
         padding.scale = 1;
-        rounding.scale = 1;
-        spacing.scale = 0.9;
+        rounding.scale = 0.6;
+        spacing.scale = 0.8;
         transparency = {
           enabled = false;
           base = 0.85;
@@ -100,7 +100,7 @@
       };
 
       background = {
-        desktopClock.enabled = true;
+        desktopClock.enabled = false;
         enabled = true;
         visualiser = {
           enabled = false;
