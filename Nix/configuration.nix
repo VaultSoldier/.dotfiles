@@ -25,11 +25,11 @@
   };
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
-  programs.adb.enable = true;
 
   services.udisks2.enable = true;
   environment.systemPackages = with pkgs; [
     xdg-user-dirs
+    android-tools
     fwupd
     cryfs
     file
