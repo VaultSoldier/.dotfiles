@@ -17,6 +17,8 @@ function M.Init()
 
   map('v', '<Tab>', '>gv', { noremap = true, silent = true })
   map('v', '<S-Tab>', '<gv', { noremap = true, silent = true })
+  map('i', '<Tab>', '<C-t>', { noremap = true, silent = true })
+  map('i', '<S-Tab>', '<C-d>', { noremap = true, silent = true })
 
   map('n', '<leader>tz', function()
     snacks.zen()
@@ -63,24 +65,7 @@ function M.Init()
   map('n', '<leader>e', '<Cmd>Neotree reveal<CR>')
   map('n', '<leader>ar', snacks.rename.rename_file, { desc = '[R]ename File' })
 
-  -- Buffers --
-  map('n', '<S-h>', ':BufferLineCyclePrev<CR>', { desc = 'Previous buffer', silent = true })
-  map('n', '<S-l>', ':BufferLineCycleNext<CR>', { desc = 'Next buffer', silent = true })
-
-  map('n', '<leader>x', function()
-    snacks.bufdelete()
-  end, { desc = '[X] Buffer Close' })
-
-  -- Buffer Movement (requires plugin like 'famiu/bufdelete.nvim' or custom function)
-  map('n', '[B', ':BufMoveLeft<CR>', { desc = 'Move buffer left' }) -- Requires plugin
-  map('n', ']B', ':BufMoveRight<CR>', { desc = 'Move buffer right' }) -- Requires plugin
-
-  -- Switch to buffer 1-9 with Alt+1-9
-  for i = 1, 9 do
-    map('n', string.format('<A-%s>', i), function()
-      require('bufferline').go_to(i)
-    end)
-  end
+  map('n', '<leader>n', picker.notifications, { desc = '[N]otification history' })
 
   -- Tabs --
   map('n', '<leader>ab', '<cmd>tabnew<CR>', { desc = 'tab new' })
@@ -88,7 +73,22 @@ function M.Init()
   map('n', '<Tab>', ':tabnext<CR>', { silent = true })
   map('n', '<S-Tab>', ':tabprevious<CR>', { silent = true })
 
-  map('n', '<leader>n', picker.notifications, { desc = '[N]otification history' })
+  -- Buffers --
+  map('n', '<S-h>', ':BufferLineCyclePrev<CR>', { desc = 'Previous buffer', silent = true })
+  map('n', '<S-l>', ':BufferLineCycleNext<CR>', { desc = 'Next buffer', silent = true })
+  map('n', '[B', ':BufferLineCyclePrev<CR>', { desc = 'Previous buffer', silent = true })
+  map('n', ']B', ':BufferLineCycleNext<CR>', { desc = 'Next buffer', silent = true })
+
+  -- Switch buffers with Alt+1-9
+  for i = 1, 9 do
+    map('n', string.format('<A-%s>', i), function()
+      require('bufferline').go_to(i)
+    end)
+  end
+
+  map('n', '<leader>x', function()
+    snacks.bufdelete()
+  end, { desc = '[X] Buffer Close' })
 
   -- sessions
   map('n', '<leader>sl', function()
