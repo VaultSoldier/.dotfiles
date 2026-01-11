@@ -469,7 +469,7 @@
           ];
         };
         nightLight = {
-          enabled = false;
+          enabled = true;
           temperature = 4500;
         };
       };
