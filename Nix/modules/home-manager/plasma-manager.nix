@@ -16,7 +16,7 @@
       Shortcuts.SaveAs = "Ctrl+Alt+S";
     };
     shortcuts = {
-      kwin."Window Close" = [ "Meta+C" "Alt+F4" ];
+      kwin."Window Close" = [ "Meta+Q" "Alt+F4" ];
       mediacontrol.previousmedia = [ "Meta+F2" "Media Previous" ];
       mediacontrol.nextmedia = [ "Meta+F3" "Media Next" ];
       mediacontrol.playpausemedia = [ "Media Play" "Meta+F1" ];
@@ -24,7 +24,7 @@
       mediacontrol.mediavolumeup = [ ];
 
       plasmashell."manage activities" = "";
-      "services/kitty.desktop"._launch = "Meta+Q";
+      "services/kitty.desktop"._launch = "Meta+T";
       "services/org.kde.konsole.desktop"._launch = [ ];
       "services/org.kde.spectacle.desktop".RectangularRegionScreenShot =
         [ "Meta+Shift+Print" "Ctrl+Shift+S" ];
