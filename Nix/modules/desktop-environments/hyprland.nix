@@ -7,11 +7,13 @@
 lib.mkIf config.desktop.hyprland.enable {
   xdg.portal = {
     enable = true;
-    xdgOpenUsePortal = true;
+    xdgOpenUsePortal = false;
     extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland
+      kdePackages.xdg-desktop-portal-kde
     ];
     configPackages = with pkgs; [
+      xdg-desktop-portal-hyprland
       kdePackages.xdg-desktop-portal-kde
     ];
     config = {
