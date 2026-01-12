@@ -49,6 +49,7 @@ lib.mkIf config.desktop.hyprland.enable {
     kdePackages.ark
     adwaita-icon-theme # gnome icons for apps
     adwaita-qt
+    jq
   ];
 
   programs.uwsm.enable = true;
