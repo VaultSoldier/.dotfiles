@@ -123,6 +123,8 @@
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.backupFileExtension = "bckp";
             home-manager.users.vs.imports = [ ./modules/home-manager ];
+
+            environment.systemPackages = [ affinity-nix.packages.x86_64-linux.v3 ];
           }
         ];
       };
