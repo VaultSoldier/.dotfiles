@@ -42,11 +42,6 @@ function M.Init()
   map('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
   map('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-  map('i', '<C-h>', '<Left>', { noremap = true, silent = true })
-  map('i', '<C-j>', '<Down>', { noremap = true, silent = true })
-  map('i', '<C-k>', '<Up>', { noremap = true, silent = true })
-  map('i', '<C-l>', '<Right>', { noremap = true, silent = true })
-
   map('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
   map('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
 
