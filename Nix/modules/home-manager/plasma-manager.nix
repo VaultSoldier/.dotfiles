@@ -2,6 +2,19 @@
 {
   imports = [ inputs.plasma-manager.homeModules.plasma-manager ];
 
+  # set .desktop for service hotkey
+  home.file = {
+    "/home/vs/.local/share/applications/net.local.kitty.desktop".text = ''
+      [Desktop Entry]
+      Exec=kitty /home/vs/.dotfiles/scripts/kitty-tmux.zsh
+      Name=kitty-tmux-wrapped
+      NoDisplay=true
+      StartupNotify=false
+      Type=Application
+      X-KDE-GlobalAccel-CommandShortcut=true
+    '';
+  };
+
   programs.plasma = {
     enable = true;
 
@@ -16,7 +29,9 @@
       Shortcuts.Help = "";
       Shortcuts.SaveAs = "Ctrl+Alt+S";
     };
+
     shortcuts = {
+      "services/net.local.kitty.desktop"._launch = "Meta+T";
       "KDE Keyboard Layout Switcher"."Switch to Next Keyboard Layout" = "Alt+Shift";
       kwin."Edit Tiles" = [ ];
       kwin."Window Close" = [
@@ -39,7 +54,6 @@
       mediacontrol.mediavolumeup = [ ];
 
       plasmashell."manage activities" = "";
-      "services/kitty.desktop"._launch = "Meta+T";
       "services/org.kde.konsole.desktop"._launch = [ ];
       "services/org.kde.spectacle.desktop".RectangularRegionScreenShot = [
         "Meta+Shift+Print"
