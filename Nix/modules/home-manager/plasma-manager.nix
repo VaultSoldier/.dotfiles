@@ -32,7 +32,9 @@
 
     shortcuts = {
       "services/net.local.kitty.desktop"._launch = "Meta+T";
+      "services/zen-twilight.desktop"._launch = "Meta+B";
       "KDE Keyboard Layout Switcher"."Switch to Next Keyboard Layout" = "Alt+Shift";
+      org_kde_powerdevil.powerProfile = [ "Battery" ];
       kwin."Edit Tiles" = [ ];
       kwin."Window Close" = [
         "Alt+F4"
