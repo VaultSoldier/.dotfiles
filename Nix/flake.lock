@@ -129,11 +129,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1768237369,
-        "narHash": "sha256-H0ZaHizs/km+hVDieosSsndtjsUDYv8dByT7do8K9Z4=",
+        "lastModified": 1768493595,
+        "narHash": "sha256-uL7CzLwtvitztiz7rIivU0KyCjQnEi6/8plwNK6n4mE=",
         "owner": "VaultSoldier",
         "repo": "shell",
-        "rev": "f3975278fa0add6334ab73b7198d8fcd7f2feea2",
+        "rev": "f26ac55692edf4eb0292740298d423b18cfe73ab",
         "type": "github"
       },
       "original": {
@@ -629,11 +629,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1768403292,
-        "narHash": "sha256-9DCTgR4Dhzzh5zldoHltJRx33tVuy5eHOd5T5+w05JI=",
+        "lastModified": 1768492720,
+        "narHash": "sha256-aHos307HyVtOriYZppyUjrkcEKQzyp9F5WzxpMjPFH8=",
         "owner": "nix-community",
         "repo": "stylix",
-        "rev": "3894cae75cf50d9a8f707768b229c90e2654d8bc",
+        "rev": "5287bc719dbb6efb26f48c1677a221c966a4a4d9",
         "type": "github"
       },
       "original": {
