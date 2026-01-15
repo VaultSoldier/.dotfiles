@@ -1,6 +1,6 @@
 { inputs, config, ... }:
 {
-  imports = [ inputs.zen-browser.homeModules.beta ];
+  imports = [ inputs.zen-browser.homeModules.twilight ];
   programs.zen-browser = {
     enable = true;
     profiles."default" = {
@@ -37,25 +37,25 @@
             id = "8c7b765f-f42f-4270-b25b-a2d695d59551";
             icon = "⭐️";
             container = containers."Space".id;
-            position = 1000;
+            position = 10;
           };
           "Coding" = {
             id = "0e403e6a-c3b4-4c84-9c94-3e3367f6e213";
             icon = "📀";
             container = containers."Coding".id;
-            position = 2000;
+            position = 20;
           };
           "Homelab" = {
             id = "eee83e86-c339-40e6-b6a4-38ac9e8b9a1e";
             icon = "🖥️";
             container = containers."Homelab".id;
-            position = 3000;
+            position = 30;
           };
           "Work" = {
             id = "97c2167f-8670-407c-a36a-f18ed3d225cc";
             icon = "💼";
             container = containers."Work".id;
-            position = 4000;
+            position = 40;
           };
         };
     };
