@@ -114,7 +114,6 @@
             desktop.caelestia.enable = true;
             system.flatpak.enable = true;
 
-            games.nexusmods.enable = false;
             games.osu-lazer.enable = false;
             games.lutris.enable = false;
 
