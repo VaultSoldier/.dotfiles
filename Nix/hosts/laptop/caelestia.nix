@@ -100,7 +100,22 @@
       };
 
       background = {
-        desktopClock.enabled = false;
+        desktopClock = {
+          enabled = false;
+          scale = 1.0;
+          position = "bottom-right";
+          shadow = {
+            enabled = true;
+            opacity = 0.7;
+            blur = 0.4;
+          };
+          background = {
+            enabled = false;
+            opacity = 0.7;
+            blur = true;
+          };
+          invertColors = false;
+        };
         enabled = true;
         visualiser = {
           enabled = false;
@@ -330,6 +345,19 @@
             command = [
               "systemctl"
               "suspend"
+            ];
+            enabled = true;
+            dangerous = false;
+          }
+          {
+            name = "Settings";
+            icon = "settings";
+            description = "Configure the shell";
+            command = [
+              "caelestia"
+              "shell"
+              "controlCenter"
+              "open"
             ];
             enabled = true;
             dangerous = false;
