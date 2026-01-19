@@ -20,9 +20,8 @@
 
   programs.caelestia = {
     enable = true;
-    systemd = {
-      enable = false;
-    };
+    systemd.enable = false;
+
     settings = {
       appearance = {
         anim.durations.scale = 0.8;
