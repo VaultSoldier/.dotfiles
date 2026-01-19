@@ -110,6 +110,7 @@
           home-manager.nixosModules.home-manager
 
           {
+            desktop.plasma6.enable = true;
             desktop.hyprland.enable = true;
             desktop.caelestia.enable = true;
             system.flatpak.enable = true;
