@@ -483,6 +483,7 @@ in
           dndChanged = true;
           gameModeChanged = true;
           kbLayoutChanged = false;
+          kbLimit = true;
           numLockChanged = true;
           vpnChanged = true;
           nowPlaying = false;
