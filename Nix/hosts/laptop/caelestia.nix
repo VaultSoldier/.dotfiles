@@ -467,7 +467,7 @@
           configLoaded = true;
           dndChanged = true;
           gameModeChanged = true;
-          kbLayoutChanged = true;
+          kbLayoutChanged = false;
           kbLimit = true;
           numLockChanged = true;
           vpnChanged = true;

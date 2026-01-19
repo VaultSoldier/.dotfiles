@@ -182,7 +182,7 @@
           showAudio = true;
           showBattery = false;
           showBluetooth = true;
-          showKbLayout = false;
+          showKbLayout = true;
           showMicrophone = false;
           showNetwork = false;
           showLockStatus = true;
