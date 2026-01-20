@@ -482,7 +482,7 @@
               name = "wireguard";
               interface = "wg-home";
               displayName = "Wireguard (HOME)";
-              enabled = false;
+              enabled = true;
               connectCmd = [
                 "nmcli"
                 "connection"
