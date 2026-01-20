@@ -185,6 +185,7 @@
           showKbLayout = true;
           showMicrophone = false;
           showNetwork = true;
+          showWifi = true;
           showLockStatus = true;
         };
         tray = {
@@ -481,6 +482,7 @@
               name = "wireguard";
               interface = "wg-home";
               displayName = "Wireguard (HOME)";
+              enabled = false;
               connectCmd = [
                 "nmcli"
                 "connection"

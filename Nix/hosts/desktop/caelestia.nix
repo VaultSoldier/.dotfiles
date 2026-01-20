@@ -184,7 +184,8 @@
           showBluetooth = true;
           showKbLayout = true;
           showMicrophone = false;
-          showNetwork = false;
+          showNetwork = true;
+          showWifi = false;
           showLockStatus = true;
         };
         tray = {
@@ -482,6 +483,7 @@
               name = "wireguard";
               interface = "wg0";
               displayName = "Wireguard (Your VPN)";
+              enabled = false;
             }
           ];
         };
