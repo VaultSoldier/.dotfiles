@@ -63,7 +63,7 @@ function M.Lsp(map)
       local check_cmd = {
         python,
         '-c',
-        "import importlib,sys; sys.exit(0 if importlib.util.find_spec('flet') else 1)",
+        'import flet',
       }
 
       vim.fn.system(check_cmd)
