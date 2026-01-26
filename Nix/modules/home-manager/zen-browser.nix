@@ -91,6 +91,13 @@
             IconURL = "https://nixos.org/favicon.ico";
             Alias = "@nix";
           }
+          {
+            Name = "NixOS Options";
+            URLTemplate = "https://search.nixos.org/options?query={searchTerms}";
+            Method = "GET";
+            IconURL = "https://nixos.org/favicon.ico";
+            Alias = "@nixo";
+          }
         ];
       };
       PictureInPicture = {
