@@ -14,6 +14,7 @@
   environment.systemPackages = with pkgs; [
     oh-my-posh
     zoxide # cd alternative
+    eza # ls alternative
     fzf
     ripgrep # faster grep alternative
     fd # fast alternative to find
