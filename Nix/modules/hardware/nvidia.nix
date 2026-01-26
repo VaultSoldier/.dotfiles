@@ -29,6 +29,9 @@
   # Containers passthrough
   hardware.nvidia-container-toolkit.enable = true;
 
+  environment.variables = {
+    __GL_SHADER_DISK_CACHE_SIZE = "12000000000"; # Increase Nvidia's shader cache size to 12GB
+  };
   environment.systemPackages = with pkgs; [ btop ];
   nixpkgs.overlays = [ (self: super: { btop = super.btop.override { cudaSupport = true; }; }) ];
 }
