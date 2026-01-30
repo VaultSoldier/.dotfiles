@@ -128,5 +128,40 @@
           }
         ];
       };
+
+      nixosConfigurations.bronze = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = inputs;
+
+        modules = [
+          ./configuration.nix
+          ./hosts/bronze
+          ./modules/system
+          ./modules/packages
+          ./modules/packages/games
+          ./modules/desktop-environments
+          ./modules/stylix
+          mikuboot.nixosModules.default
+          home-manager.nixosModules.home-manager
+
+          {
+            desktop.plasma6.enable = false;
+            desktop.hyprland.enable = true;
+            desktop.caelestia.enable = true;
+            system.flatpak.enable = true;
+
+            games.osu-lazer.enable = false;
+            games.lutris.enable = false;
+
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.backupFileExtension = "bckp";
+            home-manager.users.vs.imports = [ ./modules/home-manager ];
+
+            environment.systemPackages = [ affinity-nix.packages.x86_64-linux.v3 ];
+          }
+        ];
+      };
     };
 }
