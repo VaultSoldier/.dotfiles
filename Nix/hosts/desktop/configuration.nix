@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  networking.hostName = "desktop";
+  
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
 

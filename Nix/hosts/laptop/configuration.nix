@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  networking.hostName = "laptop";
+
   boot = {
     initrd.systemd.enable = true;
     initrd.kernelModules = [
