@@ -22,6 +22,9 @@
       "boot.shell_on_fail"
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
+      "pcie_aspm=off" # fixes QCA9377 wifi
+      "ath10k_core.skip_otp=y" # fixes QCA9377 wifi
+      "ath10k_core.nohwcrypt=1" # fixes QCA9377 wifi
     ];
   };
 

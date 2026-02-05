@@ -14,16 +14,24 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/fcdc8465-a9b0-46c0-b838-382a90f12346";
+    { device = "/dev/mapper/luks-e302746f-76e2-442a-8c66-7b53d5c11ab3";
       fsType = "ext4";
     };
 
+  boot.initrd.luks.devices."luks-e302746f-76e2-442a-8c66-7b53d5c11ab3".device = "/dev/disk/by-uuid/e302746f-76e2-442a-8c66-7b53d5c11ab3";
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/F7EE-2A9F";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
+
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/fde1f22f-f37b-4f4a-ae08-cd8fc317f856"; }
+    [ { device = "/dev/mapper/luks-25d105f0-c638-4d0f-8f3a-b90bf9e1f015"; }
     ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
+  
   services.fstrim.enable = lib.mkDefault true; # ssd TRIM
 }
