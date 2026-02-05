@@ -216,8 +216,8 @@
         };
       };
       border = {
-        rounding = 25;
-        thickness = 2;
+        rounding = 0;
+        thickness = 0;
       };
       dashboard = {
         enabled = true;
