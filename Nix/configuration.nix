@@ -17,6 +17,7 @@
     description = "John";
     extraGroups = [
       "networkmanager"
+      "plugdev"
       "wheel"
       "podman"
       "adbuser"
@@ -27,6 +28,7 @@
   programs.zsh.enable = true;
 
   services.udisks2.enable = true;
+  services.fwupd.enable = true;
   environment.systemPackages = with pkgs; [
     xdg-user-dirs
     android-tools
