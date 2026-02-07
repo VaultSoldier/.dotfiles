@@ -8,6 +8,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake/beta";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,6 +50,7 @@
       self,
       nixpkgs,
       home-manager,
+      sops-nix,
       plasma-manager,
       stylix,
       spicetify-nix,
@@ -75,6 +81,7 @@
           ./modules/stylix
           mikuboot.nixosModules.default
           home-manager.nixosModules.home-manager
+          sops-nix.nixosModules.sops
 
           {
             desktop.plasma6.enable = true;
@@ -108,6 +115,7 @@
           ./modules/stylix
           mikuboot.nixosModules.default
           home-manager.nixosModules.home-manager
+          sops-nix.nixosModules.sops
 
           {
             desktop.plasma6.enable = true;
@@ -143,6 +151,7 @@
           ./modules/stylix
           mikuboot.nixosModules.default
           home-manager.nixosModules.home-manager
+          sops-nix.nixosModules.sops
 
           {
             desktop.plasma6.enable = false;
