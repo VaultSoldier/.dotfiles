@@ -8,6 +8,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    tree-sitter
     nixfmt # nix language formatter
     lua5_1
     imagemagick
