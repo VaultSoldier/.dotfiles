@@ -1,5 +1,6 @@
 return { -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
+  build = ':TSUpdate', -- ensures parsers are updated
   config = function()
     local filetypes = {
       'python',
@@ -29,12 +30,11 @@ return { -- Highlight, edit, and navigate code
       'vim',
       'vimdoc',
     }
-    require('nvim-treesitter').install(filetypes)
-    vim.api.nvim_create_autocmd('FileType', {
-      pattern = filetypes,
-      callback = function()
-        vim.treesitter.start()
-      end,
-    })
+
+    require('nvim-treesitter.configs').setup {
+      ensure_installed = filetypes,
+      highlight = { enable = true },
+      indent = { enable = true },
+    }
   end,
 }
