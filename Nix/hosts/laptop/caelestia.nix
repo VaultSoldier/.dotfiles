@@ -23,6 +23,8 @@
     systemd.enable = false;
 
     settings = {
+      mediaGifSpeedAdjustment = 300;
+      sessionGifSpeed = 0.7;
       appearance = {
         anim.durations.scale = 0.8;
         font = {
