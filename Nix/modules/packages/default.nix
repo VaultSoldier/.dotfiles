@@ -7,6 +7,7 @@
     ./podman.nix
     ./dolphin.nix
     ./virt-manager.nix
+    ./syncthing.nix
     ./gui.nix
   ];
 
