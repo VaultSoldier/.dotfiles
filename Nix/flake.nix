@@ -18,11 +18,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    affinity-nix = {
-      url = "github:mrshmllow/affinity-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -95,8 +90,6 @@
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.backupFileExtension = "bckp";
             home-manager.users.vs.imports = [ ./modules/home-manager ];
-
-            environment.systemPackages = [ affinity-nix.packages.x86_64-linux.v3 ];
           }
         ];
       };
@@ -131,8 +124,6 @@
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.backupFileExtension = "bckp";
             home-manager.users.vs.imports = [ ./modules/home-manager ];
-
-            environment.systemPackages = [ affinity-nix.packages.x86_64-linux.v3 ];
           }
         ];
       };
