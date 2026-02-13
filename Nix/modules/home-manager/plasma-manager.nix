@@ -59,7 +59,7 @@
       "services/org.kde.konsole.desktop"._launch = [ ];
       "services/org.kde.spectacle.desktop".RectangularRegionScreenShot = [
         "Meta+Shift+Print"
-        "Ctrl+Shift+S"
+        "Meta+Ctrl+S"
       ];
       "services/org.kde.spectacle.desktop"._launch = "Print";
       "services/systemsettings.desktop"._launch = [
