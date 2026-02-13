@@ -25,8 +25,8 @@
     unrar
     ansible
     tealdeer
-    xorg.xlsclients # tool for checking xwayland clients
-    wineWowPackages.waylandFull
+    xlsclients
+    wineWow64Packages.waylandFull
     pulseaudio # pactl
     yt-dlp
     ffmpeg
