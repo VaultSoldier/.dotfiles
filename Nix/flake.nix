@@ -11,6 +11,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake/beta";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,9 +44,10 @@
       nixpkgs,
       home-manager,
       sops-nix,
-      plasma-manager,
-      stylix,
       spicetify-nix,
+      firefox-addons,
+      stylix,
+      plasma-manager,
       zen-browser,
       caelestia-shell,
       mikuboot,
