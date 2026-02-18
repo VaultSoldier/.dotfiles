@@ -11,6 +11,7 @@ in
     extraPackages = with pkgs; [
       kdePackages.qtbase
       kdePackages.qtwayland
+      kdePackages.qtmultimedia
     ];
     theme = "customized_sddm_astronaut";
     settings = {
@@ -21,5 +22,8 @@ in
     };
   };
 
-  environment.systemPackages = [ customized_sddm_astronaut ];
+  environment.systemPackages = [
+    pkgs.bibata-cursors
+    customized_sddm_astronaut
+  ];
 }
