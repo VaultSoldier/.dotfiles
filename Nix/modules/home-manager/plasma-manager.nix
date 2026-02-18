@@ -1,7 +1,8 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [ inputs.plasma-manager.homeModules.plasma-manager ];
 
+  home.packages = [ pkgs.bibata-cursors ];
   # set .desktop for service hotkey
   home.file = {
     "/home/vs/.local/share/applications/net.local.kitty.desktop".text = ''
