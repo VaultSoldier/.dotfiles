@@ -24,6 +24,7 @@
     };
     workspace.theme = "breeze-dark";
     workspace.lookAndFeel = "org.kde.breezedark.desktop";
+    workspace.cursor.theme = "Bibata-Modern-Classic";
 
     configFile.kdeglobals = {
       Shortcuts.Help = "";
