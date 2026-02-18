@@ -11,13 +11,12 @@ in
     extraPackages = with pkgs; [
       kdePackages.qtbase
       kdePackages.qtwayland
-      kdePackages.qtmultimedia
-      kdePackages.qtvirtualkeyboard
     ];
     theme = "customized_sddm_astronaut";
     settings = {
       Theme = {
         Current = "sddm-astronaut-theme";
+        CursorTheme = "Bibata-Modern-Classic";
       };
     };
   };
