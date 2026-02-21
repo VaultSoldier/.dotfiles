@@ -101,6 +101,8 @@
       };
 
       background = {
+        enabled = true;
+        wallpaperEnabled = true;
         desktopClock = {
           enabled = false;
           scale = 1.0;
@@ -117,7 +119,6 @@
           };
           invertColors = false;
         };
-        enabled = true;
         visualiser = {
           enabled = false;
           blur = false;
@@ -431,6 +432,7 @@
         ];
         weatherLocation = "Chelyabinsk";
         useFahrenheit = false;
+        useFahrenheitPerformance = false;
         useTwelveHourClock = false;
         smartScheme = true;
         visualiserBars = 45;
@@ -438,7 +440,14 @@
 
       session = {
         dragThreshold = 30;
+        enabled = true;
         vimKeybinds = true;
+        icons = {
+          logout = "logout";
+          shutdow = "power_settings_new";
+          hibernate = "downloading";
+          reboot = "cached";
+        };
         commands = {
           logout = [
             "uwsm"
