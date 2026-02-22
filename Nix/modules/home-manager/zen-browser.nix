@@ -66,7 +66,7 @@
 
     # WARN: Fails activation on schema changes to detect potential regressions
     # Find this in about:config or prefs.js of your profile
-    keyboardShortcutsVersion = 14;
+    keyboardShortcutsVersion = 16;
 
     # INFO: Finding Shortcut IDs
     # jq -c '.shortcuts[] | {id, key, keycode, action}' ~/.config/zen/default/zen-keyboard-shortcuts.json | fzf
