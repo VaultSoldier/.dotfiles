@@ -430,7 +430,7 @@
             to = "YT Music";
           }
         ];
-        weatherLocation = "Chelyabinsk";
+        weatherLocation = "Tyumen";
         useFahrenheit = false;
         useFahrenheitPerformance = false;
         useTwelveHourClock = false;
