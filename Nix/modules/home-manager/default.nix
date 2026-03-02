@@ -5,6 +5,7 @@
     ./plasma-manager.nix
     ./btop.nix
     ./git.nix
+    ./fzf.nix
     ./zen-browser.nix
     ./vesktop.nix
     ./spicetify.nix

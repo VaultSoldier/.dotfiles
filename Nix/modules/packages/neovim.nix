@@ -17,7 +17,6 @@
     gcc
     cargo
     ripgrep
-    fzf
     fd
   ];
 
