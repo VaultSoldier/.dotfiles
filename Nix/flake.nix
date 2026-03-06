@@ -90,6 +90,8 @@
             };
             system = {
               flatpak.enable = true;
+              zapret.enable = false;
+              wg.enable = false;
             };
 
             home-manager.users.vs.imports = [ ./hosts/desktop/home-manager.nix ];
@@ -117,6 +119,8 @@
             };
             system = {
               flatpak.enable = true;
+              zapret.enable = false;
+              wg.enable = true;
             };
 
             home-manager.users.vs.imports = [ ./hosts/laptop/home-manager.nix ];
@@ -142,6 +146,8 @@
             };
             system = {
               flatpak.enable = true;
+              zapret.enable = false;
+              wg.enable = true;
             };
 
             home-manager.users.vs.imports = [ ./hosts/bronze/home-manager.nix ];
