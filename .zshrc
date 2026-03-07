@@ -26,6 +26,7 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
 # ENV vars
 export EDITOR=nvim
 export PODMAN_COMPOSE_WARNING_LOGS=false
+export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
 export GOPATH="$XDG_DATA_HOME/go"
 export PYTHON_HISTORY="$XDG_STATE_HOME/python_history"
 export FZF_CTRL_R_OPTS="--bind 'ctrl-j:ignore,ctrl-k:ignore,alt-j:down,alt-k:up'"
