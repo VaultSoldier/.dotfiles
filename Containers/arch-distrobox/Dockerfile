@@ -1,6 +1,7 @@
 FROM archlinux:latest as base
 
 ENV GOPATH="/home/vs/.local/share/go"
+
 RUN pacman -Syu --needed --noconfirm base-devel sudo-rs git neovim htop zoxide ripgrep fzf noto-fonts-cjk wl-clipboard
 
 FROM base as user
@@ -9,9 +10,10 @@ RUN useradd -m vs && \
     usermod -aG wheel vs
 
 FROM user as build
-RUN pacman -Sy --needed --noconfirm python
-# Flutter dependencies
-RUN pacman -Sy --needed --noconfirm gcc gtk3 clang cmake ninja mesa-utils android-tools
+ARG PYTHON="python uv"
+ARG FLUTTER="gcc gtk3 clang cmake ninja mesa-utils android-tools"
+
+RUN pacman -Sy --needed --noconfirm ${PYTHON} ${FLUTTER}
 
 USER vs
 WORKDIR /tmp/yay
