@@ -8,7 +8,6 @@
   imports = [ inputs.zen-browser.homeModules.twilight ];
 
   programs.zen-browser.enable = true;
-  programs.zen-browser.suppressXdgMigrationWarning = true;
   programs.zen-browser.profiles."default" = {
     containersForce = true;
     spacesForce = true;
