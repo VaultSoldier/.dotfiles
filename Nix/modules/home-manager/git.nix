@@ -2,14 +2,14 @@
   programs.git = {
     enable = true;
     settings = {
-      user.name = "VaultSoldier";
-      user.email = "61462705+VaultSoldier@users.noreply.github.com";
-      user.signingkey = "git_id_ed25519";
-      init.defaultBranch = "dev";
       pull.rebase = true;
       commit.gpgsign = true;
-      gpg.format = "ssh";
+      init.defaultBranch = "dev";
+      user.name = "VaultSoldier";
+      user.email = "61462705+VaultSoldier@users.noreply.github.com";
+      user.signingkey = "~/.ssh/git_id_ed25519.pub";
       gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+      gpg.format = "ssh";
     };
   };
 }
