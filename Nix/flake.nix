@@ -64,7 +64,6 @@
         ./modules/system
         mikuboot.nixosModules.default
         home-manager.nixosModules.home-manager
-        sops-nix.nixosModules.sops
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
