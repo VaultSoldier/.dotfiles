@@ -1,5 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, mikuboot, ... }:
 {
+  imports = [ mikuboot.nixosModules.default ];
+
   networking.hostName = "laptop";
 
   boot = {

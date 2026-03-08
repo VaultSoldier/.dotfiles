@@ -1,7 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, mikuboot, ... }:
 {
+  imports = [ mikuboot.nixosModules.default ];
+
   networking.hostName = "desktop";
-  
+
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
 

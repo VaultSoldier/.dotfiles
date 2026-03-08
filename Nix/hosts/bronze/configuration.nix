@@ -1,5 +1,7 @@
-{ config, pkgs, ... }:
+{ pkgs, mikuboot, ... }:
 {
+  imports = [ mikuboot.nixosModules.default ];
+
   networking.hostName = "bronze";
 
   boot = {
