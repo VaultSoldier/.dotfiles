@@ -495,20 +495,39 @@
           provider = [
             {
               name = "wireguard";
-              interface = "wg-home";
-              displayName = "Wireguard (HOME)";
+              interface = "home";
+              displayName = "Wireguard (home)";
               enabled = true;
               connectCmd = [
-                "nmcli"
-                "connection"
-                "up"
-                "wg-home"
+                "sudo"
+                "systemctl"
+                "start"
+                "wg-quick-home"
               ];
               disconnectCmd = [
-                "nmcli"
-                "connection"
-                "down"
-                "wg-home"
+                "sudo"
+                "systemctl"
+                "stop"
+                "wg-quick-home"
+              ];
+            }
+
+            {
+              name = "wireguard";
+              interface = "home-nolan";
+              displayName = "Wireguard (home-nolan)";
+              enabled = false;
+              connectCmd = [
+                "sudo"
+                "systemctl"
+                "start"
+                "wg-quick-home-nolan"
+              ];
+              disconnectCmd = [
+                "sudo"
+                "systemctl"
+                "stop"
+                "wg-quick-home-nolan"
               ];
             }
           ];
