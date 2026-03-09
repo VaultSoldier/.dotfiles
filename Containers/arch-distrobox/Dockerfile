@@ -10,10 +10,11 @@ RUN useradd -m vs && \
     usermod -aG wheel vs
 
 FROM user as build
+ARG NVIM="npm"
 ARG PYTHON="python uv"
 ARG FLUTTER="gcc gtk3 clang cmake ninja mesa-utils android-tools"
 
-RUN pacman -Sy --needed --noconfirm ${PYTHON} ${FLUTTER}
+RUN pacman -Sy --needed --noconfirm ${NVIM} ${PYTHON} ${FLUTTER}
 
 USER vs
 WORKDIR /tmp/yay
