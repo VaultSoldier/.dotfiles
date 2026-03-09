@@ -25,8 +25,8 @@ alias zapret='sudo systemctl start zapret.service'
 alias zapretOff='sudo systemctl stop zapret.service'
 
 alias uphome='sudo systemctl start wg-quick-home'
-alias uphome-nolan='sudo systemctl start wg-quick-home-work'
-alias downvpn='sudo systemctl stop wg-quick-home wg-quick-home-work'
+alias uphome-nolan='sudo systemctl start wg-quick-home-nolan'
+alias downvpn='sudo systemctl stop wg-quick-home wg-quick-home-nolan'
 
 if command -v pacman &>/dev/null; then
   alias up="$DIR/update.sh"
