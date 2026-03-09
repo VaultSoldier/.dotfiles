@@ -41,6 +41,7 @@
     cryfs
     file
     git
+    gitleaks
     wget
     curl
   ];
