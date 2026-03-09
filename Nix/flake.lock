@@ -101,11 +101,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1773083823,
-        "narHash": "sha256-HhI0L7jWL5AvK3YMCA8CxxtWYdXUJ8IZ6mk9/YYfSbE=",
+        "lastModified": 1773088221,
+        "narHash": "sha256-qp+FxmGdaiX/vajRkRpRyOWOKCZqL27r5hpCdYARlH4=",
         "owner": "VaultSoldier",
         "repo": "shell",
-        "rev": "760728390ba62f55b8ae520861d8b80fd2402d31",
+        "rev": "081a2a710a725ed8d3f6c1a2c85140a379206912",
         "type": "github"
       },
       "original": {
