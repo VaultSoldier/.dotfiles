@@ -43,11 +43,11 @@
           ];
 
           preUp = ''
-            systemctl stop wg-quick-home-work
+            systemctl stop wg-quick-home-nolan
           '';
         };
 
-        home-work = {
+        home-nolan = {
           autostart = false;
           address = [
             "192.168.216.5/32"
@@ -90,6 +90,30 @@
           '';
         };
       };
+
+    security.sudo-rs.extraRules = [
+      {
+        users = [ "vs" ];
+        commands = [
+          {
+            command = "/run/current-system/sw/bin/systemctl start wg-quick-home";
+            options = [ "NOPASSWD" ];
+          }
+          {
+            command = "/run/current-system/sw/bin/systemctl stop wg-quick-home";
+            options = [ "NOPASSWD" ];
+          }
+          {
+            command = "/run/current-system/sw/bin/systemctl start wg-quick-home-nolan";
+            options = [ "NOPASSWD" ];
+          }
+          {
+            command = "/run/current-system/sw/bin/systemctl stop wg-quick-home-nolan";
+            options = [ "NOPASSWD" ];
+          }
+        ];
+      }
+    ];
 
     networking.firewall = {
       extraCommands = ''
