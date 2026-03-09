@@ -35,6 +35,7 @@
   services.udisks2.enable = true;
   services.fwupd.enable = true;
   environment.systemPackages = with pkgs; [
+    xdg-terminal-exec # TODO: remove later
     xdg-user-dirs
     android-tools
     fwupd
