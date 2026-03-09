@@ -12,6 +12,7 @@ return {
           -- To organize the imports.
           'ruff_organize_imports',
         },
+        go = { 'gofmt' },
         dart = { 'dart_format' },
         toml = { 'tombi' },
         lua = { 'stylua' },
@@ -28,6 +29,9 @@ return {
         nix = { 'nixfmt' },
       },
       formatters = {
+        gofmt = {
+          command = 'gofmt',
+        },
         dart_format = {
           command = 'dart',
           args = { 'format' },
