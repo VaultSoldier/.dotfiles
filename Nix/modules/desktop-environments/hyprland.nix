@@ -18,16 +18,17 @@ lib.mkIf config.desktop.hyprland.enable {
     ];
     config = {
       Hyprland = {
-        default = [ "hyprland" ];
+        default = [
+          "hyprland"
+          "gtk"
+        ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
         "org.freedesktop.impl.portal.ScreenCast" = [ "hyprland" ];
         "org.freedesktop.impl.portal.Screenshot" = [ "hyprland" ];
         "org.freedesktop.impl.portal.RemoteDesktop" = [ "hyprland" ];
       };
       KDE = {
         default = [ "kde" ];
-        "org.freedesktop.impl.portal.ScreenCast" = [ "kde" ];
-        "org.freedesktop.impl.portal.Screenshot" = [ "kde" ];
-        "org.freedesktop.impl.portal.RemoteDesktop" = [ "kde" ];
       };
     };
   };
