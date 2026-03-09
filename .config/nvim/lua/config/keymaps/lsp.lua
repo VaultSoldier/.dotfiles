@@ -1,10 +1,6 @@
 local M = {}
 
 function M.Init(map)
-  -- venv-selector
-  map('<leader>cps', '<cmd>VenvSelect<cr>', 'Pick venv')
-  map('<leader>cpc', '<cmd>VenvSelectCached<cr>', 'Load venv from cache')
-
   map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
   map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')

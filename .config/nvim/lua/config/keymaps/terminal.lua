@@ -16,10 +16,6 @@ function M.Init()
 end
 
 function M.Lsp(map)
-  -- venv-selector
-  map('<leader>cps', '<cmd>VenvSelect<cr>', 'Pick venv')
-  map('<leader>cpc', '<cmd>VenvSelectCached<cr>', 'Load venv from cache')
-
   map('<F10>', function()
     local file = vim.fn.shellescape(vim.fn.expand '%')
     local filetype = vim.bo.filetype
