@@ -10,7 +10,7 @@ RUN useradd -m vs && \
     usermod -aG wheel vs
 
 FROM user as build
-ARG NVIM="npm"
+ARG NVIM="tree-sitter-cli npm fd"
 ARG PYTHON="python uv"
 ARG FLUTTER="gcc gtk3 clang cmake ninja mesa-utils android-tools"
 
