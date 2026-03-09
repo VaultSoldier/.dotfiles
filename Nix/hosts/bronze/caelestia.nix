@@ -46,6 +46,7 @@
       };
 
       general = {
+        logo = "caelestia";
         apps = {
           terminal = [ "kitty" ];
           audio = [ "pavucontrol" ];
