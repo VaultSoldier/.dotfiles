@@ -10,6 +10,7 @@
     ./wireguard.nix
     ./zapret.nix
     ./flatpak.nix
+    ./nh.nix
   ];
 
   system.flatpak.enable = lib.mkDefault false;

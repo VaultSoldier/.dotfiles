@@ -5,6 +5,7 @@
     ./configuration.nix
     ./power-management.nix
     ./nvidia.nix
+    ./syncthing.nix
   ];
 
   options.desktop.caelestia.enable = lib.mkEnableOption "Enable caelestia";
