@@ -33,6 +33,8 @@ lib.mkIf config.desktop.hyprland.enable {
     };
   };
 
+  services.gnome.gnome-keyring.enable = true;
+
   # Enable XDG MIME and menu support
   xdg.mime.enable = true;
   xdg.menus.enable = true;
@@ -41,10 +43,6 @@ lib.mkIf config.desktop.hyprland.enable {
   # This copies the plasma-applications.menu file from plasma-workspace to /etc/xdg/menus/applications.menu
   environment.etc."/xdg/menus/applications.menu".text =
     builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
-
-  services = {
-    gnome.gnome-keyring.enable = true;
-  };
 
   environment.systemPackages = with pkgs; [
     kdePackages.ark
