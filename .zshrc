@@ -27,8 +27,16 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
 export EDITOR=nvim
 export PODMAN_COMPOSE_WARNING_LOGS=false
 export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
-export GOPATH="$XDG_DATA_HOME/go"
 export PYTHON_HISTORY="$XDG_STATE_HOME/python_history"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
+export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
+export NPM_CONFIG_PREFIX="$XDG_DATA_HOME/npm"
+export FLUTTER_ROOT="$XDG_DATA_HOME/flutter"
+export PUB_CACHE="$XDG_CACHE_HOME/pub"
+export ANDROID_HOME="$XDG_DATA_HOME/android"
+export ANDROID_SDK_ROOT="$XDG_DATA_HOME/android"
+export WINEPREFIX="$XDG_DATA_HOME/wine"
+export GOPATH="$XDG_DATA_HOME/go"
 export FZF_CTRL_R_OPTS="--bind 'ctrl-j:ignore,ctrl-k:ignore,alt-j:down,alt-k:up'"
 
 ######################################################################################
