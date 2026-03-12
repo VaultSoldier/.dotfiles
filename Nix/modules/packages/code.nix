@@ -2,6 +2,8 @@
 
 {
   environment.systemPackages = with pkgs; [
+    terraform
+    ansible
     dart
     clang
     gcc

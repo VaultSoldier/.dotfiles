@@ -20,7 +20,6 @@
     whois
     unzip
     unrar
-    ansible
     tealdeer
     xlsclients
     wineWow64Packages.waylandFull
