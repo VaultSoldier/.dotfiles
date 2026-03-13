@@ -6,6 +6,7 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         python = { 'ruff' },
+        terraform = { 'terraform' },
         markdown = { 'markdownlint' },
         dockerfile = { 'hadolint' },
         json = { 'jsonlint' },

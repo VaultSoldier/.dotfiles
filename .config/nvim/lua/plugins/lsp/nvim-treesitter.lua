@@ -9,6 +9,7 @@ return { -- Highlight, edit, and navigate code
       'c',
       'bash',
       'diff',
+      'terraform',
       'javascript',
       'javadoc',
       'html',
