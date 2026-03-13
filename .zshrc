@@ -54,8 +54,8 @@ export FZF_CTRL_R_OPTS="--bind 'ctrl-j:ignore,ctrl-k:ignore,alt-j:down,alt-k:up'
 bindkey -e
 
 # exceptions for backward-kill-word
-# removes [/ . $ -] from $WORDCHARS
-WORDCHARS=${WORDCHARS//[\/\.\$\-\=\"]}
+# removes [/ . $ - = " #] from $WORDCHARS
+WORDCHARS=${WORDCHARS//[\/\.\$\-\=\"\#]}
 
 # home/end
 bindkey "^[[H" beginning-of-line
