@@ -136,7 +136,7 @@
         modules = [
           {
             desktop = {
-              plasma6.enable = true;
+              plasma6.enable = false;
               hyprland.enable = true;
               caelestia.enable = true;
             };
