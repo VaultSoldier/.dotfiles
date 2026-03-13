@@ -10,7 +10,7 @@
     guiPasswordFile = "/run/secrets/syncthing_gui_pass";
 
     settings.options = {
-      localAnnounceEnabled = false;
+      localAnnounceEnabled = true;
       relaysEnabled = false;
       globalAnnounceEnabled = false;
     };
@@ -34,7 +34,17 @@
         };
         devices = [ "laptop" "work" ];
       };
-
+      wallpapers = {
+        path = "/home/vs/Pictures/Wallpapers";
+        versioning = {
+          type = "simple";
+          params = {
+            keep = "10";
+            cleanoutDays = "0";
+          };
+        };
+        devices = [ "laptop" "work" ];
+      };
       code = {
         path = "/home/vs/Documents/Code";
         versioning = {
@@ -46,7 +56,6 @@
         };
         devices = [ "laptop" "work" ];
       };
-
       obsidian_vault = {
         path = "/home/vs/Documents/Obsidian Vault";
         versioning = {
