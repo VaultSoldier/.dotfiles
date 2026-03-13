@@ -18,6 +18,8 @@
     settings.devices = {
       laptop.name = "laptop";
       laptop.id = "WPPJDMY-DHKNHLR-ZU5ZNGV-FSVEX2M-F3Y5UGL-EMNXNHA-QXS7VFZ-PCODEAR";
+      work.name = "work";
+      work.id = "VQ7YMTT-ZK226P4-HGYX4W5-ZRF4ZVO-OFRM7F5-Y3ZSLQC-DVMNYYW-46HCUA5";
     };
 
     settings.folders = {
@@ -30,7 +32,7 @@
             cleanoutDays = "0";
           };
         };
-        devices = [ "laptop" ];
+        devices = [ "laptop" "work" ];
       };
 
       code = {
@@ -42,7 +44,7 @@
             cleanoutDays = "0";
           };
         };
-        devices = [ "laptop" ];
+        devices = [ "laptop" "work" ];
       };
 
       obsidian_vault = {
@@ -54,7 +56,7 @@
             cleanoutDays = "0";
           };
         };
-        devices = [ "laptop" ];
+        devices = [ "laptop" "work" ];
       };
     };
   };

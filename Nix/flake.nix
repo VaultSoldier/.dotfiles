@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
     home-manager = {
@@ -42,6 +43,7 @@
     inputs@{
       self,
       nixpkgs,
+      nixos-hardware,
       home-manager,
       sops-nix,
       spicetify-nix,
@@ -124,6 +126,36 @@
             home-manager.users.vs.imports = [ ./hosts/laptop/home-manager.nix ];
           }
           ./hosts/laptop
+        ]
+        ++ commonModules;
+      };
+
+      nixosConfigurations.work = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = inputs;
+        modules = [
+          {
+            desktop = {
+              plasma6.enable = true;
+              hyprland.enable = true;
+              caelestia.enable = true;
+            };
+            games = {
+              steam.enable = false;
+              prismlauncher.enable = false;
+              osu-lazer.enable = false;
+              lutris.enable = false;
+            };
+            system = {
+              flatpak.enable = true;
+              zapret.enable = false;
+              wg.enable = true;
+            };
+
+            home-manager.users.vs.imports = [ ./hosts/work/home-manager.nix ];
+          }
+          ./hosts/work
+          nixos-hardware.nixosModules.msi-gs60
         ]
         ++ commonModules;
       };

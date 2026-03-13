@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 {
   # Enable OpenGL
   hardware.graphics = {
@@ -9,7 +8,7 @@
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [
-    "amdgpu"
+    "modesetting"
     "nvidia"
   ];
 
@@ -18,17 +17,15 @@
       enable = true;
       enableOffloadCmd = true;
     };
+    intelBusId = "PCI:0:2:0";
     nvidiaBusId = "PCI:1:0:0";
-    amdgpuBusId = "PCI:5:0:0";
   };
 
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = true;
-    powerManagement.finegrained = true;
-    open = true;
+    open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
   # Containers passthrough

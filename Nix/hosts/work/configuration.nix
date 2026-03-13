@@ -1,40 +1,28 @@
-{ pkgs, mikuboot, ... }:
+{ config, pkgs, ... }:
 {
-  imports = [ mikuboot.nixosModules.default ];
-
-  networking.hostName = "laptop";
+  networking.hostName = "work";
 
   boot = {
-    initrd.luks.devices."luks-48cb7628-9c63-4be2-8f34-b346002bc0aa" = {
-      device = "/dev/disk/by-uuid/48cb7628-9c63-4be2-8f34-b346002bc0aa";
-      crypttabExtraOpts = [ "tpm2-device=/dev/tpmrm0" ];
-    };
+    initrd.luks.devices."luks-b8abc530-b755-4eff-a41b-f58d9269ac56".device =
+      "/dev/disk/by-uuid/b8abc530-b755-4eff-a41b-f58d9269ac56";
     initrd.systemd.enable = true;
-    initrd.kernelModules = [
-      "tpm_tis"
-      "tpm_crb"
-      "tpm"
-      "nvme"
-    ];
 
     plymouth = {
       enable = true;
-      themePackages = [ pkgs.mikuboot ];
-      theme = "mikuboot";
     };
     loader.systemd-boot.enable = true;
 
     # Enable "Silent boot"
     consoleLogLevel = 3;
     initrd.verbose = false;
-    resumeDevice = "/dev/mapper/luks-48cb7628-9c63-4be2-8f34-b346002bc0aa";
+    resumeDevice = "/dev/mapper/luks-b8abc530-b755-4eff-a41b-f58d9269ac56";
     kernelParams = [
       "quiet"
       "splash"
       "boot.shell_on_fail"
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
-      "resume=/dev/mapper/luks-48cb7628-9c63-4be2-8f34-b346002bc0aa"
+      "resume=/dev/mapper/luks-b8abc530-b755-4eff-a41b-f58d9269ac56"
     ];
     loader.timeout = 0; # Hide the OS choice for bootloaders.
   };
@@ -46,5 +34,5 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   # WARN: DO NOT CHANGE!!!
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 }

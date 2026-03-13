@@ -16,4 +16,7 @@
   };
   sops.secrets.syncthing_laptop_key = { };
   sops.secrets.syncthing_laptop_cert = { };
+
+  sops.secrets.syncthing_work_key = { };
+  sops.secrets.syncthing_work_cert = { };
 }
