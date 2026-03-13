@@ -417,7 +417,7 @@
       paths = {
         mediaGif = "~/.dotfiles/assets/nekodance.gif";
         sessionGif = "~/.dotfiles/assets/nekolay.gif";
-        wallpaperDir = "~/Pictures/NCSync/Wallpapers";
+        wallpaperDir = "~/Pictures/Wallpapers";
       };
 
       services = {
