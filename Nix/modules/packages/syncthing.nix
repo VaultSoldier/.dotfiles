@@ -13,11 +13,13 @@
       localAnnounceEnabled = true;
       relaysEnabled = false;
       globalAnnounceEnabled = false;
+      urAccepted = -1;
     };
 
     settings.devices = {
       laptop.name = "laptop";
       laptop.id = "WPPJDMY-DHKNHLR-ZU5ZNGV-FSVEX2M-F3Y5UGL-EMNXNHA-QXS7VFZ-PCODEAR";
+
       work.name = "work";
       work.id = "VQ7YMTT-ZK226P4-HGYX4W5-ZRF4ZVO-OFRM7F5-Y3ZSLQC-DVMNYYW-46HCUA5";
     };
@@ -25,6 +27,10 @@
     settings.folders = {
       documents = {
         path = "/home/vs/Documents/DocSync";
+        ignorePatterns = [
+          ".venv"
+          "__pycache__"
+        ];
         versioning = {
           type = "simple";
           params = {
@@ -32,21 +38,17 @@
             cleanoutDays = "0";
           };
         };
-        devices = [ "laptop" "work" ];
-      };
-      wallpapers = {
-        path = "/home/vs/Pictures/Wallpapers";
-        versioning = {
-          type = "simple";
-          params = {
-            keep = "10";
-            cleanoutDays = "0";
-          };
-        };
-        devices = [ "laptop" "work" ];
+        devices = [
+          "laptop"
+          "work"
+        ];
       };
       code = {
         path = "/home/vs/Documents/Code";
+        ignorePatterns = [
+          ".venv"
+          "__pycache__"
+        ];
         versioning = {
           type = "simple";
           params = {
@@ -54,7 +56,10 @@
             cleanoutDays = "0";
           };
         };
-        devices = [ "laptop" "work" ];
+        devices = [
+          "laptop"
+          "work"
+        ];
       };
       obsidian_vault = {
         path = "/home/vs/Documents/Obsidian Vault";
@@ -65,7 +70,24 @@
             cleanoutDays = "0";
           };
         };
-        devices = [ "laptop" "work" ];
+        devices = [
+          "laptop"
+          "work"
+        ];
+      };
+      wallpapers = {
+        path = "/home/vs/Pictures/Wallpapers";
+        versioning = {
+          type = "simple";
+          params = {
+            keep = "10";
+            cleanoutDays = "0";
+          };
+        };
+        devices = [
+          "laptop"
+          "work"
+        ];
       };
     };
   };
