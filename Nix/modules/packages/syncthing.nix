@@ -26,7 +26,7 @@
 
     settings.folders = {
       documents = {
-        path = "/home/vs/Documents/DocSync";
+        path = "~/Documents/DocSync";
         ignorePatterns = [
           ".venv"
           "__pycache__"
@@ -44,7 +44,7 @@
         ];
       };
       code = {
-        path = "/home/vs/Documents/Code";
+        path = "~/Documents/Code";
         ignorePatterns = [
           ".venv"
           "__pycache__"
@@ -62,7 +62,7 @@
         ];
       };
       obsidian_vault = {
-        path = "/home/vs/Documents/Obsidian Vault";
+        path = "~/Documents/Obsidian Vault";
         versioning = {
           type = "simple";
           params = {
@@ -76,7 +76,25 @@
         ];
       };
       wallpapers = {
-        path = "/home/vs/Pictures/Wallpapers";
+        path = "~/Pictures/Wallpapers";
+        versioning = {
+          type = "simple";
+          params = {
+            keep = "10";
+            cleanoutDays = "0";
+          };
+        };
+        devices = [
+          "laptop"
+          "work"
+        ];
+      };
+      winbox_addresses = {
+        path = "~/.local/share/MikroTik/WinBox";
+        ignorePatterns = [
+          "**"
+          "!Addresses.cdb"
+        ];
         versioning = {
           type = "simple";
           params = {
