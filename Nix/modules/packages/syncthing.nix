@@ -92,8 +92,8 @@
       winbox_addresses = {
         path = "~/.local/share/MikroTik/WinBox";
         ignorePatterns = [
-          "**"
           "!Addresses.cdb"
+          "**"
         ];
         versioning = {
           type = "simple";
