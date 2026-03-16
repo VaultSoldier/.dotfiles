@@ -22,7 +22,7 @@ return {
         json = { 'prettier' },
         yaml = { 'prettier' },
         markdown = { 'markdownlint' },
-        terraform = { 'terraform' },
+        terraform = { 'terraform_fmt' },
         sh = { 'shfmt' },
         bash = { 'shfmt' },
         mksh = { 'shfmt' },
