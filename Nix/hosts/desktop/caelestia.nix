@@ -216,6 +216,7 @@
         };
         excludedScreens = [ "" ];
         activeWindow = {
+          compact = true;
           inverted = false;
         };
       };
@@ -396,7 +397,10 @@
         ];
       };
 
-      lock.recolourLogo = false;
+      lock = {
+        recolourLogo = false;
+        hideNotifs = false;
+      };
 
       notifs = {
         actionOnClick = false;
@@ -499,10 +503,36 @@
             }
           ];
         };
-        nightLight = {
-          enabled = true;
-          temperature = 4500;
-        };
+        quickToggles = [
+          {
+            id = "wifi";
+            enabled = true;
+          }
+          {
+            id = "bluetooth";
+            enabled = true;
+          }
+          {
+            id = "mic";
+            enabled = true;
+          }
+          {
+            id = "settings";
+            enabled = true;
+          }
+          {
+            id = "gameMode";
+            enabled = true;
+          }
+          {
+            id = "dnd";
+            enabled = true;
+          }
+          {
+            id = "vpn";
+            enabled = false;
+          }
+        ];
       };
     };
     cli = {
