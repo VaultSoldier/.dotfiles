@@ -37,6 +37,11 @@ export ANDROID_HOME="$XDG_DATA_HOME/android"
 export ANDROID_SDK_ROOT="$XDG_DATA_HOME/android"
 export WINEPREFIX="$XDG_DATA_HOME/wine"
 export GOPATH="$XDG_DATA_HOME/go"
+
+export ANSIBLE_HOME="$XDG_DATA_HOME/ansible"
+export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible/ansible.cfg"
+export ANSIBLE_GALAXY_CACHE_DIR="$XDG_CACHE_HOME/ansible/galaxy_cache"
+
 export FZF_CTRL_R_OPTS="--bind 'ctrl-j:ignore,ctrl-k:ignore,alt-j:down,alt-k:up'"
 
 ######################################################################################
