@@ -23,6 +23,7 @@ return {
         yaml = { 'prettier' },
         markdown = { 'markdownlint' },
         terraform = { 'terraform_fmt' },
+        ['yaml.ansible'] = { 'prettier' },
         sh = { 'shfmt' },
         bash = { 'shfmt' },
         mksh = { 'shfmt' },

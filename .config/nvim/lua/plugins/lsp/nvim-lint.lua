@@ -5,7 +5,6 @@ return {
     config = function()
       local lint = require 'lint'
 
-      -- Override terraform_validate to use `terraform` as the command
       local original = lint.linters.terraform_validate
       lint.linters.terraform_validate = function()
         local linter = original()
@@ -16,12 +15,13 @@ return {
       lint.linters_by_ft = {
         python = { 'ruff' },
         terraform = { 'terraform_validate' },
+        ['yaml.ansible'] = { 'ansible_lint' },
+        ansible = { 'ansible_lint' },
         markdown = { 'markdownlint' },
         dockerfile = { 'hadolint' },
         json = { 'jsonlint' },
         text = { 'vale' },
       }
-      lint.linters_by_ft = lint.linters_by_ft or {}
 
       local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
       vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {

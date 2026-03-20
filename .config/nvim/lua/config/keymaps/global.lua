@@ -54,6 +54,14 @@ function M.Init()
 
   map('x', '<leader>p', '"_dP')
 
+  -- conform --
+  map({ 'n', 'v' }, '<leader>af', function()
+    require('conform').format {
+      lsp_format = 'fallback',
+      timeout_ms = 1000,
+    }
+  end, { desc = 'Format file' })
+
   -- File operations --
   map('n', '<C-s>', '<cmd>w<CR>', { desc = 'Save', silent = true })
   map('n', '<leader>e', '<Cmd>Neotree reveal<CR>')

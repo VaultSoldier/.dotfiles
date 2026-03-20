@@ -109,7 +109,12 @@ return {
       jsonls = {},
       sqlls = {},
       terraformls = {},
-      yamlls = {},
+      yamlls = {
+        filetypes = { 'yaml' },
+        settings = {
+          redhat = { telemetry = { enabled = false } },
+        },
+      },
       dockerls = {},
       bashls = {},
       docker_compose_language_service = {},
@@ -162,6 +167,7 @@ return {
       'jsonlint',
       'vale',
       -- 'nixfmt', -- https://github.com/mason-org/mason.nvim/issues/2050
+      'ansible-lint',
       'shfmt',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
