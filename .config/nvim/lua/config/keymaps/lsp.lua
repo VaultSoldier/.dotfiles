@@ -21,6 +21,8 @@ function M.Init(map)
   map(']d', function()
     vim.diagnostic.jump { count = 1 }
   end, 'Go to next [D]iagnostic message')
+
+  map('<C-k>', vim.lsp.buf.hover, 'LSP: Hover documentation', { 'i' })
 end
 
 return M
