@@ -5,7 +5,6 @@ authorized_keys
 .env
 tags
 test.sh
-.config/nvim/lazy-lock.json
 .luarc.json
 spell/
 Containers/*/data 
