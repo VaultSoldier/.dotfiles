@@ -1,4 +1,5 @@
 local M = {}
+local harpoon = require 'harpoon'
 local snacks = require 'snacks'
 local picker = snacks.picker
 
@@ -99,6 +100,38 @@ function M.Init()
   map('n', '<leader>sd', function()
     require('nvim-possession').delete()
   end, { desc = '📌delete selected session' })
+
+  -- harpoon2 --
+  map('n', '<leader>H', function()
+    harpoon:list():add()
+  end, { desc = '[H]arpoon add' })
+  map('n', '<C-e>', function()
+    harpoon.ui:toggle_quick_menu(harpoon:list())
+  end)
+
+  -- Toggle previous & next buffers stored within Harpoon list
+  map('n', '<C-S-P>', function()
+    harpoon:list():prev()
+  end)
+  map('n', '<C-S-N>', function()
+    harpoon:list():next()
+  end)
+
+  map('n', '<leader>1', function()
+    harpoon:list():select(1)
+  end, { desc = 'which_key_ignore', silent = true })
+  map('n', '<leader>2', function()
+    harpoon:list():select(2)
+  end, { desc = 'which_key_ignore', silent = true })
+  map('n', '<leader>3', function()
+    harpoon:list():select(3)
+  end, { desc = 'which_key_ignore', silent = true })
+  map('n', '<leader>4', function()
+    harpoon:list():select(4)
+  end, { desc = 'which_key_ignore', silent = true })
+  map('n', '<leader>5', function()
+    harpoon:list():select(5)
+  end, { desc = 'which_key_ignore', silent = true })
 
   -- Toggle --
   map('n', 'tn', snacks.notifier.hide, { desc = 'Dismiss All [N]otifications' })
