@@ -1,13 +1,11 @@
 return {
   { 'tiagovla/scope.nvim', config = true },
-
   {
     'gennaro-tedesco/nvim-possession',
     lazy = false,
     dependencies = {
       {
         'ibhagwan/fzf-lua',
-        'tiagovla/scope.nvim',
         lazy = false,
         config = true,
       },
