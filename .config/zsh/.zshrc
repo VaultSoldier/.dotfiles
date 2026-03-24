@@ -1,27 +1,41 @@
-source $HOME/.zsh_aliases
+# XDG base dir fallback
+: "${XDG_CONFIG_HOME:=$HOME/.config}"
+: "${XDG_STATE_HOME:=$HOME/.local/state}"
+: "${XDG_CACHE_HOME:=$HOME/.cache}"
+: "${XDG_DATA_HOME:=$HOME/.local/share}"
 
-# load completions
-autoload -Uz compinit && compinit
+[[ -f "$XDG_CONFIG_HOME/zsh/zsh_aliases" ]] && source "$XDG_CONFIG_HOME/zsh/zsh_aliases"
+
+# Use XDG dirs for completion and history files
+[ -d "$XDG_STATE_HOME/zsh" ] || mkdir -p "$XDG_STATE_HOME/zsh"
+HISTFILE="$XDG_STATE_HOME/zsh/history"
+HISTSIZE=10000; SAVEHIST=10000
+
+setopt sharehistory hist_ignore_all_dups hist_save_no_dups hist_find_no_dups hist_ignore_space
+
+[ -d "$XDG_CACHE_HOME/zsh" ] || mkdir -p "$XDG_CACHE_HOME/zsh"
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 
 # dir for zinit and plugins
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
 # if there's no zinit, download it
 if [ ! -d "$ZINIT_HOME" ]; then
-   mkdir -p "$(dirname $ZINIT_HOME)"
+   mkdir -p "$(dirname "$ZINIT_HOME")"
    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
-# load zinit
+# load zinit + plugins FIRST
 source "${ZINIT_HOME}/zinit.zsh"
-
-# add plugins
-zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light MichaelAquilina/zsh-autoswitch-virtualenv
+zinit light zsh-users/zsh-syntax-highlighting
+
+autoload -Uz compinit
+compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 
 # Import oh-my-posh
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
+eval "$(oh-my-posh init zsh --config "$HOME/.config/ohmyposh/config.toml")"
 
 # ENV vars
 export EDITOR=nvim
@@ -84,7 +98,7 @@ bindkey '^[l' forward-char
 bindkey '^[j' down-history
 bindkey '^[k' up-history
 
-# alt + ctrl + jk
+# alt + ctrl + HL
 bindkey '^[^H' backward-word
 bindkey '^[^L' forward-word
 
@@ -108,28 +122,19 @@ bindkey -r '^A'
 #    \|_________|       \|___|/                            \|_________| #
 #########################################################################
 
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zmodload zsh/complist
+zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "=(#b)${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu-select=1
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:default' format '%F{blue}%B%d%b%f'
-
-# history
-HISTSIZE=3000
-SAVEHIST=$HISTSIZE
-HISTFILE=~/.zsh_history
-HISTDUP=erase
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
-
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(pay-respects zsh)"
 eval "$(fzf --zsh)"
+
+# blinking beam
+echo -ne '\e[6 q'
+precmd() { echo -ne '\e[6 q' }
 
 # ASCII - asciiart.eu
