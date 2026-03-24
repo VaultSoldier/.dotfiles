@@ -23,7 +23,7 @@ RUN git clone https://aur.archlinux.org/yay.git . && \
     makepkg -si --noconfirm && \
     rm -rf /tmp/yay
 
-RUN yay -S --noconfirm oh-my-posh
+RUN yay -S --noconfirm oh-my-posh pay-respect
 
 USER root
 RUN userdel vs
