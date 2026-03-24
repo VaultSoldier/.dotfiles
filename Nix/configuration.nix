@@ -36,13 +36,14 @@
   users.defaultUserShell = pkgs.zsh;
 
   environment.variables = {
-    ZDOTDIR="$HOME/.config/zsh";
+    ZDOTDIR = "$HOME/.config/zsh";
   };
 
   services.udisks2.enable = true;
   services.fwupd.enable = true;
 
   environment.systemPackages = with pkgs; [
+    man-pages
     fwupd
     cryfs
     file
