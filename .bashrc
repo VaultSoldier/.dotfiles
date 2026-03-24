@@ -12,6 +12,6 @@ HISTFILESIZE=2000
 PS1='[\u@\h \W]\$ '
 
 # aliases
-source $HOME/.zsh_aliases
+source $HOME/.config/zsh/zsh_aliases
 
 eval "$(zoxide init --cmd cd bash)"
