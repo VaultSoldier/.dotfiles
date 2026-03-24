@@ -9,6 +9,7 @@
     "nix-command"
     "flakes"
   ];
+
   nix.gc = {
     automatic = true;
     dates = "weekly";
@@ -29,14 +30,19 @@
       "kvm"
     ];
   };
-  users.defaultUserShell = pkgs.zsh;
+
+  # system-wide zsh
   programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
+  environment.variables = {
+    ZDOTDIR="$HOME/.config/zsh";
+  };
 
   services.udisks2.enable = true;
   services.fwupd.enable = true;
+
   environment.systemPackages = with pkgs; [
-    xdg-user-dirs
-    android-tools
     fwupd
     cryfs
     file
@@ -45,8 +51,4 @@
     wget
     curl
   ];
-  environment.variables = {
-    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
-    NIXOS_OZONE_WL = "1";
-  };
 }

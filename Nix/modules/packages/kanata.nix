@@ -35,8 +35,6 @@
           # Langtu LT75
           "/dev/input/by-id/usb-SONiX_LT75PR0-USB-event-kbd"
           "/dev/input/by-id/usb-05ac_LT75PRO-2.4G-event-kbd"
-          # Wireless msi keyboard-mouse combo
-          "/dev/input/by-id/usb-MOSART_Semi._MSI_FORGE_K200_WIRELESS_COMBO-event-kbd"
         ];
         extraDefCfg = "process-unmapped-keys yes";
         config = ''

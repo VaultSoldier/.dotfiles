@@ -10,10 +10,14 @@
     ./wireguard.nix
     ./zapret.nix
     ./flatpak.nix
-    ./nh.nix
   ];
 
   system.flatpak.enable = lib.mkDefault false;
   system.zapret.enable = lib.mkDefault false;
   system.wg.enable = lib.mkDefault false;
+
+  programs.nh = {
+    enable = true;
+    flake = "/home/vs/.dotfiles/Nix";
+  };
 }

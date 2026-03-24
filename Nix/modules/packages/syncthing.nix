@@ -1,5 +1,9 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    syncthingtray
+  ];
+
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
