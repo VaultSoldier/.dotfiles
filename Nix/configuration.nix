@@ -4,16 +4,19 @@
   nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;
   hardware.enableAllHardware = true;
-  nix.settings.use-xdg-base-directories = true;
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
+  nix = {
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+    settings.auto-optimise-store = true;
+    settings.use-xdg-base-directories = true;
   };
 
   xdg.menus.enable = true;
