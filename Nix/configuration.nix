@@ -48,6 +48,7 @@
     cryfs
     file
     git
+    git-extras
     gitleaks
     wget
     curl
