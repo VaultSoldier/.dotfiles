@@ -17,10 +17,14 @@
   xdg.enable = true;
   xdg.userDirs.createDirectories = true;
 
+  services.gpg-agent = {
+    enable = true;
+    pinentry.package = pkgs.pinentry-curses;
+  };
   # The home.packages option allows you to install Nix packages into your
   # environment.
-
   home.packages = with pkgs; [
+    gnupg
     pay-respects
     android-tools
 

@@ -39,6 +39,7 @@ eval "$(oh-my-posh init zsh --config "$HOME/.config/ohmyposh/config.toml")"
 
 # ENV vars
 export EDITOR=nvim
+export GPG_TTY=$(tty)
 export PODMAN_COMPOSE_WARNING_LOGS=false
 export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
 export PYTHON_HISTORY="$XDG_STATE_HOME/python_history"
