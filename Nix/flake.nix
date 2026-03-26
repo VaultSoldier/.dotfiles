@@ -90,7 +90,6 @@
             };
             system = {
               flatpak.enable = true;
-              zapret.enable = false;
               wg.enable = false;
             };
 
@@ -119,7 +118,6 @@
             };
             system = {
               flatpak.enable = true;
-              zapret.enable = false;
               wg.enable = true;
             };
 
@@ -148,7 +146,6 @@
             };
             system = {
               flatpak.enable = true;
-              zapret.enable = false;
               wg.enable = true;
             };
 
@@ -176,7 +173,6 @@
             };
             system = {
               flatpak.enable = true;
-              zapret.enable = false;
               wg.enable = true;
             };
 
