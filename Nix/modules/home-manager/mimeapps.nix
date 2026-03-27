@@ -59,6 +59,7 @@
       "application/vnd.openxmlformats-officedocument.presentationml.presentation" = [
         "onlyoffice-desktopeditors.desktop"
       ];
+      "application/pdf" = [ "onlyoffice-desktopeditors.desktop" ];
     };
   };
 }
