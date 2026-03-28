@@ -12,20 +12,16 @@ lib.mkIf config.desktop.hyprland.enable {
       xdg-desktop-portal-hyprland
       kdePackages.xdg-desktop-portal-kde
     ];
-    configPackages = with pkgs; [
-      xdg-desktop-portal-hyprland
-      kdePackages.xdg-desktop-portal-kde
-    ];
     config = {
-      Hyprland = {
+      hyprland = {
         default = [
           "hyprland"
-          "gtk"
+          "kde"
         ];
         "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
-        "org.freedesktop.impl.portal.ScreenCast" = [ "hyprland" ];
-        "org.freedesktop.impl.portal.Screenshot" = [ "hyprland" ];
-        "org.freedesktop.impl.portal.RemoteDesktop" = [ "hyprland" ];
+        "org.freedesktop.impl.portal.ScreenCast" = [ "Hyprland" ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "Hyprland" ];
+        "org.freedesktop.impl.portal.RemoteDesktop" = [ "Hyprland" ];
       };
       KDE = {
         default = [ "kde" ];
@@ -41,7 +37,7 @@ lib.mkIf config.desktop.hyprland.enable {
 
   # Fix for empty "Open With" menu in Dolphin when running under Hyprland
   # This copies the plasma-applications.menu file from plasma-workspace to /etc/xdg/menus/applications.menu
-  environment.etc."/xdg/menus/applications.menu".text =
+  environment.etc."xdg/menus/applications.menu".text =
     builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
   environment.systemPackages = with pkgs; [
