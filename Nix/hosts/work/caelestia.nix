@@ -439,7 +439,7 @@
             to = "YT Music";
           }
         ];
-        weatherLocation = "Tyumen";
+        weatherLocation = "";
         useFahrenheit = false;
         useFahrenheitPerformance = false;
         useTwelveHourClock = false;

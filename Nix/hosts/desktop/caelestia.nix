@@ -437,7 +437,7 @@
             to = "YT Music";
           }
         ];
-        weatherLocation = "Chelyabinsk";
+        weatherLocation = "";
         useFahrenheit = false;
         useFahrenheitPerformance = false;
         useTwelveHourClock = false;
