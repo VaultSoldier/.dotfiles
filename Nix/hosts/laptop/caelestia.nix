@@ -405,6 +405,7 @@
       };
 
       notifs = {
+        fullscreen = "off";
         actionOnClick = false;
         clearThreshold = 0.3;
         defaultExpireTimeout = 5000;
@@ -481,6 +482,7 @@
         enabled = true;
         maxToasts = 3;
         toasts = {
+          fullscreen = "important";
           audioInputChanged = true;
           audioOutputChanged = true;
           capsLockChanged = true;
