@@ -4,7 +4,6 @@
     ./hardware-configuration.nix
     ./configuration.nix
     ./power-management.nix
-    ./fprintd.nix
   ];
 
   options.desktop.caelestia.enable = lib.mkEnableOption "Enable caelestia";
