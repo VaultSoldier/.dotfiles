@@ -597,13 +597,13 @@
             telegram = {
               enable = true;
               match = [ { class = "telegram"; } ];
-              command = [ "telegram" ];
+              # command = [ "telegram" ];
               move = true;
             };
             nextcloud-talk = {
               enable = true;
               match = [ { class = "Nextcloud Talk"; } ];
-              command = [ "nextcloud-talk-desktop" ];
+              # command = [ "nextcloud-talk-desktop" ];
               move = true;
             };
           };
