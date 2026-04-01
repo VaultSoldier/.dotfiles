@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  networking.hostName = "agent_smith";
+  networking.hostName = "agentsmith";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot = {
