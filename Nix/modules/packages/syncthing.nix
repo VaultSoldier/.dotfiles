@@ -24,8 +24,8 @@
       laptop.name = "laptop";
       laptop.id = "WPPJDMY-DHKNHLR-ZU5ZNGV-FSVEX2M-F3Y5UGL-EMNXNHA-QXS7VFZ-PCODEAR";
 
-      work.name = "work";
-      work.id = "VQ7YMTT-ZK226P4-HGYX4W5-ZRF4ZVO-OFRM7F5-Y3ZSLQC-DVMNYYW-46HCUA5";
+      agentsmith.name = "agentsmith";
+      agentsmith.id = "VQ7YMTT-ZK226P4-HGYX4W5-ZRF4ZVO-OFRM7F5-Y3ZSLQC-DVMNYYW-46HCUA5";
     };
 
     settings.folders = {
@@ -44,7 +44,7 @@
         };
         devices = [
           "laptop"
-          "work"
+          "agentsmith"
         ];
       };
       code = {
@@ -62,7 +62,7 @@
         };
         devices = [
           "laptop"
-          "work"
+          "agentsmith"
         ];
       };
       obsidian_vault = {
@@ -76,7 +76,7 @@
         };
         devices = [
           "laptop"
-          "work"
+          "agentsmith"
         ];
       };
       wallpapers = {
@@ -90,7 +90,7 @@
         };
         devices = [
           "laptop"
-          "work"
+          "agentsmith"
         ];
       };
       winbox_addresses = {
@@ -108,7 +108,7 @@
         };
         devices = [
           "laptop"
-          "work"
+          "agentsmith"
         ];
       };
     };
