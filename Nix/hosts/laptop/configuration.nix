@@ -5,29 +5,28 @@
   networking.hostName = "laptop";
 
   boot = {
+    initrd.systemd.enable = true;
     initrd.luks.devices."luks-48cb7628-9c63-4be2-8f34-b346002bc0aa" = {
       device = "/dev/disk/by-uuid/48cb7628-9c63-4be2-8f34-b346002bc0aa";
       crypttabExtraOpts = [ "tpm2-device=/dev/tpmrm0" ];
     };
-    initrd.systemd.enable = true;
-    initrd.kernelModules = [
-      "tpm_tis"
-      "tpm_crb"
-      "tpm"
-      "nvme"
-    ];
 
     plymouth = {
       enable = true;
       themePackages = [ pkgs.mikuboot ];
       theme = "mikuboot";
     };
-    loader.systemd-boot.enable = true;
 
-    # Enable "Silent boot"
     consoleLogLevel = 3;
     initrd.verbose = false;
     resumeDevice = "/dev/mapper/luks-48cb7628-9c63-4be2-8f34-b346002bc0aa";
+
+    initrd.kernelModules = [
+      "tpm_tis"
+      "tpm_crb"
+      "tpm"
+      "nvme"
+    ];
     kernelParams = [
       "quiet"
       "splash"
@@ -35,7 +34,11 @@
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
       "resume=/dev/mapper/luks-48cb7628-9c63-4be2-8f34-b346002bc0aa"
+      # fix for LANGTU LT75PRO-2.4G FN being always active
+      "hid_apple.fnmode=2"
+      "hid_apple.swap_fn_leftctrl=0"
     ];
+    loader.systemd-boot.enable = true;
     loader.timeout = 0; # Hide the OS choice for bootloaders.
   };
 
