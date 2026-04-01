@@ -14,16 +14,9 @@
     nextcloud-client
     nextcloud-talk-desktop
     onlyoffice-desktopeditors
-    # rustdesk
-    (pkgs.symlinkJoin {
-      name = "obsidian";
-      buildInputs = [ pkgs.makeWrapper ];
-      paths = [ pkgs.obsidian ];
-      postBuild = ''
-        wrapProgram $out/bin/obsidian \
-        --append-flags "--vault $HOME/Documents/Obsidian Vault"
-      '';
-    })
+    #rustdesk
+    obsidian
+    open-scq30
   ];
 
   programs.amnezia-vpn.enable = true;
