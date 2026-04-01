@@ -1,7 +1,7 @@
 { config, lib, ... }:
 {
   options.system = {
-    fprintk.enable = lib.mkEnableOption "Enable fprint";
+    fprintd.enable = lib.mkEnableOption "Enable fprintd";
   };
 
   config = lib.mkIf config.system.fprintd.enable {
