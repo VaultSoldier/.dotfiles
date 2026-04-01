@@ -2,6 +2,8 @@
 {
   networking.hostName = "agentsmith";
 
+  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-elan;
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot = {
     initrd.systemd.enable = true;
