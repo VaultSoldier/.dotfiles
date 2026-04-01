@@ -2,7 +2,10 @@
 {
   imports = [ inputs.plasma-manager.homeModules.plasma-manager ];
 
-  home.packages = [ pkgs.bibata-cursors ];
+  home.packages = with pkgs; [
+    bibata-cursors
+    kdePackages.plasma-workspace
+  ];
   # set .desktop for service hotkey
   home.file = {
     "/home/vs/.local/share/applications/net.local.kitty.desktop".text = ''
@@ -26,6 +29,7 @@
     workspace.theme = "breeze-dark";
     workspace.lookAndFeel = "org.kde.breezedark.desktop";
     workspace.cursor.theme = "Bibata-Modern-Classic";
+    workspace.colorScheme = "Breeze Dark";
 
     configFile.kdeglobals = {
       Shortcuts.Help = "";

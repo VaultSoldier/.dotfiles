@@ -40,6 +40,11 @@ lib.mkIf config.desktop.hyprland.enable {
   environment.etc."xdg/menus/applications.menu".text =
     builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
+  # INFO: fixes missing breeze
+  environment.sessionVariables.XDG_DATA_DIRS = [
+    "${pkgs.kdePackages.breeze}/share"
+  ];
+
   environment.systemPackages = with pkgs; [
     kdePackages.ark
     adwaita-icon-theme # gnome icons for apps
