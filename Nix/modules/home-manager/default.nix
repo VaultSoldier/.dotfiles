@@ -15,7 +15,10 @@
   home.homeDirectory = "/home/vs";
 
   xdg.enable = true;
-  xdg.userDirs.createDirectories = true;
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+  };
 
   services.gpg-agent = {
     enable = true;
