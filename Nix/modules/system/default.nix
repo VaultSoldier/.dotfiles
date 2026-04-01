@@ -7,11 +7,13 @@
     ./security.nix
     ./network.nix
     ./sops.nix
-    ./wireguard.nix
     ./flatpak.nix
+    ./fprintd.nix
+    ./wireguard.nix
   ];
 
   system.flatpak.enable = lib.mkDefault false;
+  system.fprintd.enable = lib.mkDefault false;
   system.wg.enable = lib.mkDefault false;
 
   programs.nh = {
