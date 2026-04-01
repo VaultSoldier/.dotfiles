@@ -89,7 +89,7 @@
               lutris.enable = false;
             };
             system = {
-              flatpak.enable = true;
+              flatpak.enable = false;
               wg.enable = false;
             };
 
@@ -117,7 +117,6 @@
               lutris.enable = false;
             };
             system = {
-              flatpak.enable = true;
               wg.enable = true;
             };
 
@@ -128,7 +127,7 @@
         ++ commonModules;
       };
 
-      nixosConfigurations.work = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.agentsmith = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = inputs;
         modules = [
@@ -145,14 +144,14 @@
               lutris.enable = false;
             };
             system = {
-              flatpak.enable = true;
+              fprintd.enable = true;
               wg.enable = true;
             };
 
-            home-manager.users.vs.imports = [ ./hosts/work/home-manager.nix ];
+            home-manager.users.vs.imports = [ ./hosts/agentsmith/home-manager.nix ];
           }
-          ./hosts/work
-          nixos-hardware.nixosModules.msi-gs60
+          ./hosts/agentsmith
+          #nixos-hardware.nixosModules.msi-gs60
         ]
         ++ commonModules;
       };
@@ -172,7 +171,6 @@
               lutris.enable = false;
             };
             system = {
-              flatpak.enable = true;
               wg.enable = true;
             };
 
