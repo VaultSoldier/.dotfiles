@@ -131,7 +131,6 @@ zstyle ':completion:*:default' format '%F{blue}%B%d%b%f'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 eval "$(zoxide init --cmd cd zsh)"
-eval "$(pay-respects zsh)"
 eval "$(fzf --zsh)"
 
 # blinking beam

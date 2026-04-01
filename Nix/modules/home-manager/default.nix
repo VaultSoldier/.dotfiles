@@ -28,7 +28,6 @@
   # environment.
   home.packages = with pkgs; [
     gnupg
-    pay-respects
     android-tools
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
