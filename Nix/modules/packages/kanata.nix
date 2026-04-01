@@ -29,13 +29,7 @@
     enable = true;
     keyboards = {
       internalKeyboard = {
-        devices = [
-          # Laptop
-          "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
-          # Langtu LT75
-          "/dev/input/by-id/usb-SONiX_LT75PR0-USB-event-kbd"
-          "/dev/input/by-id/usb-05ac_LT75PRO-2.4G-event-kbd"
-        ];
+        devices = [];
         extraDefCfg = "process-unmapped-keys yes";
         config = ''
           (defsrc
