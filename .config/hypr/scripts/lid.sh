@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
+set -euo pipefail
+
+LOCK="/tmp/lid-handler.lock"
 LID="/proc/acpi/button/lid/LID/state"
 LAPTOP_DISPLAY="eDP-1"
 
+exec 9>"$LOCK"
+flock -n 9 || exit 1
+
 is_lid_closed() {
-	grep -q "closed" "$LID" 2>/dev/null ||
-		grep -q "closed" /proc/acpi/button/lid/LID/state 2>/dev/null
+	rg -q "closed" "$LID" 2>/dev/null
 }
 
 external_connected() {

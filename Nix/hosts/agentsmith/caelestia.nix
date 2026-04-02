@@ -87,11 +87,11 @@
             }
             {
               timeout = 250;
+              idleAction = "dpms off";
+              returnAction = "dpms on";
               # INFO: Temporary until lock screen crashes resolved
-              # idleAction = "dpms off";
-              # returnAction = "dpms on";
-              idleAction = "caelestia shell brightness set 0";
-              returnAction = "caelestia shell brightness set 100";
+              # idleAction = "caelestia shell brightness set 0";
+              # returnAction = "caelestia shell brightness set 100";
             }
             {
               timeout = 600;
