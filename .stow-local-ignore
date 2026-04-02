@@ -1,6 +1,6 @@
 README.md
 Nix
-scripts
+^/scripts
 assets
 known_hosts
 known_hosts.old
