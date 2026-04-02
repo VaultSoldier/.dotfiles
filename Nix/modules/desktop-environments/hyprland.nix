@@ -53,6 +53,8 @@ lib.mkIf config.desktop.hyprland.enable {
   ];
 
   programs.uwsm.enable = true;
+  hardware.i2c.enable = true; # needed for uwsm, ddcutil
+  users.users.vs.extraGroups = [ "i2c" ];
   programs.gpu-screen-recorder.enable = true;
   programs.hyprland = {
     enable = true;
