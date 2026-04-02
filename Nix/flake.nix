@@ -77,7 +77,7 @@
     {
       nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = inputs;
+        specialArgs = { inherit inputs; };
         modules = [
           {
             desktop = {
@@ -104,7 +104,7 @@
 
       nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = inputs;
+        specialArgs = { inherit inputs; };
         modules = [
           {
             desktop = {
@@ -129,7 +129,7 @@
 
       nixosConfigurations.agentsmith = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = inputs;
+        specialArgs = { inherit inputs; };
         modules = [
           {
             desktop = {
@@ -158,7 +158,7 @@
 
       nixosConfigurations.bronze = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = inputs;
+        specialArgs = { inherit inputs; };
         modules = [
           {
             desktop = {

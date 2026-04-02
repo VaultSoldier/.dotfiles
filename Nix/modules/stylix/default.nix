@@ -1,7 +1,7 @@
-{ stylix, ... }:
+{ inputs, ... }:
 {
   imports = [
-    stylix.nixosModules.stylix
+    inputs.stylix.nixosModules.stylix
     ./general-stylix.nix
   ];
   home-manager.users.vs.imports = [ ./hm-stylix.nix ];
