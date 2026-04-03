@@ -151,7 +151,7 @@
             home-manager.users.vs.imports = [ ./hosts/agentsmith/home-manager.nix ];
           }
           ./hosts/agentsmith
-          #nixos-hardware.nixosModules.msi-gs60
+          ./modules/hardware/intel.nix
         ]
         ++ commonModules;
       };
