@@ -1,8 +1,19 @@
 { inputs, pkgs, ... }:
+# INFO: temp fix https://github.com/caelestia-dots/shell/pull/1372
+let
+  material-symbols-caelestia = pkgs.material-symbols.overrideAttrs (attrs: {
+    postInstall = ''
+      ln -s "$out/share/fonts/TTF/MaterialSymbolsRounded.ttf" "$out/share/fonts/TTF/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf"
+      ln -s "$out/share/fonts/TTF/MaterialSymbolsOutlined.ttf" "$out/share/fonts/TTF/MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].ttf"
+      ln -s "$out/share/fonts/TTF/MaterialSymbolsSharp.ttf" "$out/share/fonts/TTF/MaterialSymbolsSharp[FILL,GRAD,opsz,wght].ttf"
+    '';
+  });
+in
 {
   imports = [ inputs.caelestia-shell.homeManagerModules.default ];
 
   home.packages = with pkgs; [
+    material-symbols-caelestia
     hyprpicker # color picker
     hyprsunset # night mode
     playerctl
@@ -29,7 +40,7 @@
         anim.durations.scale = 0.8;
         font = {
           family = {
-            material = "Material Symbols Sharp";
+            material = "Material Symbols Rounded";
             mono = "CaskaydiaCove NF";
             sans = "Rubik";
           };
@@ -39,9 +50,9 @@
         rounding.scale = 0.6;
         spacing.scale = 0.8;
         transparency = {
-          enabled = false;
-          base = 0.85;
-          layers = 0.4;
+          enabled = true;
+          base = 0.65;
+          layers = 0.2;
         };
       };
 
@@ -108,7 +119,7 @@
         enabled = true;
         wallpaperEnabled = true;
         desktopClock = {
-          enabled = false;
+          enabled = true;
           scale = 1.0;
           position = "bottom-right";
           shadow = {
