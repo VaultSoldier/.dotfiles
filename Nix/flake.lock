@@ -101,16 +101,16 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1775120328,
-        "narHash": "sha256-bCwDDvTa1+lOA9NxMMZ/o/3LxtLcGqh411rIFk+keXc=",
+        "lastModified": 1775191412,
+        "narHash": "sha256-jqWa3a0zMXEcOOsgjT4IdwPfdmoD/+KR3O9jjHJHg70=",
         "owner": "VaultSoldier",
         "repo": "shell",
-        "rev": "209231f92f8a12be45ec81c89da2c9a8da65f1a8",
+        "rev": "b85592356a22c9901c021ce17f5634b3d8ffe2fa",
         "type": "github"
       },
       "original": {
         "owner": "VaultSoldier",
-        "ref": "NightLight",
+        "ref": "custom",
         "repo": "shell",
         "type": "github"
       }

@@ -30,7 +30,7 @@
       inputs.home-manager.follows = "home-manager";
     };
     caelestia-shell = {
-      url = "github:VaultSoldier/shell?ref=NightLight";
+      url = "github:VaultSoldier/shell?ref=custom";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mikuboot = {
