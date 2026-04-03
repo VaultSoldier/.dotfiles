@@ -608,13 +608,11 @@ in
             telegram = {
               enable = true;
               match = [ { class = "telegram"; } ];
-              # command = [ "telegram" ];
               move = true;
             };
             nextcloud-talk = {
               enable = true;
               match = [ { class = "Nextcloud Talk"; } ];
-              # command = [ "nextcloud-talk-desktop" ];
               move = true;
             };
           };
@@ -657,9 +655,11 @@ in
           notes = {
             obsidian = {
               enable = true;
-              match = [ { class = "obsidian"; } ];
+              match = [
+                { class = "electron"; }
+                { initialTitle = "obsidian"; }
+              ];
               command = [
-                "app2unit"
                 "obsidian"
               ];
               move = true;
