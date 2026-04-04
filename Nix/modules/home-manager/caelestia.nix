@@ -542,7 +542,7 @@
     };
   };
 
-  cli = {
+  programs.caelestia.cli = {
     enable = true;
     settings = {
       record.extraArgs = lib.mkDefault [ ];
