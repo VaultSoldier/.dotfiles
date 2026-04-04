@@ -136,7 +136,11 @@
     };
 
     bar = {
-      clock.showIcon = lib.mkDefault true;
+      clock = {
+        background = lib.mkDefault false;
+        showDate = lib.mkDefault true;
+        showIcon = lib.mkDefault true;
+      };
       dragThreshold = lib.mkDefault 20;
       entries = lib.mkDefault [
         {
@@ -199,8 +203,8 @@
         showLockStatus = lib.mkDefault false;
       };
       tray = {
-        background = lib.mkDefault false;
         iconSubs = lib.mkDefault [ ];
+        background = lib.mkDefault false;
         recolour = lib.mkDefault false;
       };
       workspaces = {
