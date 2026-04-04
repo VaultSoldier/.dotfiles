@@ -282,34 +282,24 @@
           dangerous = false;
         }
         {
+          name = "Random";
+          icon = "casino";
+          description = "Switch to a random wallpaper";
+          command = [
+            "caelestia"
+            "wallpaper"
+            "-r"
+          ];
+          enabled = true;
+          dangerous = false;
+        }
+        {
           name = "Variant";
           icon = "colors";
           description = "Change the current scheme variant";
           command = [
             "autocomplete"
             "variant"
-          ];
-          enabled = true;
-          dangerous = false;
-        }
-        {
-          name = "Light";
-          icon = "light_mode";
-          description = "Change the scheme to light mode";
-          command = [
-            "setMode"
-            "light"
-          ];
-          enabled = true;
-          dangerous = false;
-        }
-        {
-          name = "Dark";
-          icon = "dark_mode";
-          description = "Change the scheme to dark mode";
-          command = [
-            "setMode"
-            "dark"
           ];
           enabled = true;
           dangerous = false;
@@ -391,10 +381,10 @@
       specialPrefix = lib.mkDefault "@";
       useFuzzy = {
         apps = lib.mkDefault true;
-        actions = lib.mkDefault false;
+        actions = lib.mkDefault true;
         schemes = lib.mkDefault false;
         variants = lib.mkDefault false;
-        wallpapers = lib.mkDefault false;
+        wallpapers = lib.mkDefault true;
       };
       showOnHover = lib.mkDefault false;
       hiddenApps = lib.mkDefault [
