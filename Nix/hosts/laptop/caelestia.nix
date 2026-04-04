@@ -573,7 +573,6 @@
     cli = {
       enable = true; # Also add caelestia-cli to path
       settings = {
-
         record = {
           extraArgs = [ ];
         };

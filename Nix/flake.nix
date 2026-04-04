@@ -155,30 +155,5 @@
         ]
         ++ commonModules;
       };
-
-      nixosConfigurations.bronze = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs; };
-        modules = [
-          {
-            desktop = {
-              plasma6.enable = false;
-              hyprland.enable = true;
-              caelestia.enable = true;
-            };
-            games = {
-              osu-lazer.enable = false;
-              lutris.enable = false;
-            };
-            system = {
-              wg.enable = true;
-            };
-
-            home-manager.users.vs.imports = [ ./hosts/bronze/home-manager.nix ];
-          }
-          ./hosts/bronze
-        ]
-        ++ commonModules;
-      };
     };
 }
