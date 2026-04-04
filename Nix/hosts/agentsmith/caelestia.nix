@@ -1,672 +1,73 @@
-{ inputs, pkgs, ... }:
-# INFO: temp fix https://github.com/caelestia-dots/shell/pull/1372
-let
-  material-symbols-caelestia = pkgs.material-symbols.overrideAttrs (attrs: {
-    postInstall = ''
-      ln -s "$out/share/fonts/TTF/MaterialSymbolsRounded.ttf" "$out/share/fonts/TTF/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf"
-      ln -s "$out/share/fonts/TTF/MaterialSymbolsOutlined.ttf" "$out/share/fonts/TTF/MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].ttf"
-      ln -s "$out/share/fonts/TTF/MaterialSymbolsSharp.ttf" "$out/share/fonts/TTF/MaterialSymbolsSharp[FILL,GRAD,opsz,wght].ttf"
-    '';
-  });
-in
+{ ... }:
 {
-  imports = [ inputs.caelestia-shell.homeManagerModules.default ];
-
-  home.packages = with pkgs; [
-    material-symbols-caelestia
-    hyprpicker # color picker
-    hyprsunset # night mode
-    playerctl
-    cava # audio visualizer
-    aubio # audio analysis
-    bluez # bluetooth
-    pavucontrol # audio control
-    brightnessctl # brightness control
-    cliphist # clipboard history
-    wl-clipboard # clipboard support
-    ddcutil
-    app2unit
-    file
-  ];
-
-  programs.caelestia = {
-    enable = true;
-    systemd.enable = false;
-
-    settings = {
-      mediaGifSpeedAdjustment = 300;
-      sessionGifSpeed = 0.7;
-      appearance = {
-        anim.durations.scale = 0.8;
-        font = {
-          family = {
-            material = "Material Symbols Rounded";
-            mono = "CaskaydiaCove NF";
-            sans = "Rubik";
-          };
-          size.scale = 1;
-        };
-        padding.scale = 1;
-        rounding.scale = 0.6;
-        spacing.scale = 0.8;
-        transparency = {
-          enabled = true;
-          base = 0.65;
-          layers = 0.2;
-        };
-      };
-
-      general = {
-        logo = "caelestia";
-        apps = {
-          terminal = [ "kitty" ];
-          audio = [ "pavucontrol" ];
-          explorer = [ "dolphin" ];
-          playback = [ "mpv" ];
-        };
-        battery = {
-          warnLevels = [
-            {
-              level = 20;
-              title = "Low battery";
-              message = "You might want to plug in a charger";
-              icon = "battery_android_frame_2";
-            }
-            {
-              level = 10;
-              title = "Did you see the previous message?";
-              message = "You should probably plug in a charger <b>now</b>";
-              icon = "battery_android_frame_1";
-            }
-            {
-              level = 5;
-              title = "Critical battery level";
-              message = "PLUG THE CHARGER RIGHT NOW!!";
-              icon = "battery_android_alert";
-              critical = true;
-            }
-          ];
-          criticalLevel = 3;
-        };
-        idle = {
-          lockBeforeSleep = true;
-          inhibitWhenAudio = true;
-          timeouts = [
-            {
-              timeout = 200;
-              idleAction = "lock";
-            }
-            {
-              timeout = 250;
-              idleAction = "dpms off";
-              returnAction = "dpms on";
-              # INFO: Temporary until lock screen crashes resolved
-              # idleAction = "caelestia shell brightness set 0";
-              # returnAction = "caelestia shell brightness set 100";
-            }
-            {
-              timeout = 600;
-              idleAction = [
-                "systemctl"
-                "suspend-then-hibernate"
-              ];
-            }
-          ];
-        };
-      };
-
-      background = {
-        enabled = true;
-        wallpaperEnabled = true;
-        desktopClock = {
-          enabled = true;
-          scale = 1.0;
-          position = "bottom-right";
-          shadow = {
-            enabled = true;
-            opacity = 0.7;
-            blur = 0.4;
-          };
-          background = {
-            enabled = false;
-            opacity = 0.7;
-            blur = true;
-          };
-          invertColors = false;
-        };
-        visualiser = {
-          enabled = false;
-          blur = false;
-          autoHide = true;
-          rounding = 1;
-          spacing = 1;
-        };
-      };
-
-      bar = {
-        clock.showIcon = true;
-        dragThreshold = 20;
-        entries = [
-          {
-            id = "logo";
-            enabled = true;
-          }
-          {
-            id = "workspaces";
-            enabled = true;
-          }
-          {
-            id = "spacer";
-            enabled = true;
-          }
-          {
-            id = "activeWindow";
-            enabled = true;
-          }
-          {
-            id = "spacer";
-            enabled = true;
-          }
-          {
-            id = "tray";
-            enabled = true;
-          }
-          {
-            id = "clock";
-            enabled = true;
-          }
-          {
-            id = "statusIcons";
-            enabled = true;
-          }
-          {
-            id = "power";
-            enabled = true;
-          }
+  programs.caelestia.settings = {
+    general.idle.timeouts = [
+      {
+        timeout = 200;
+        idleAction = "lock";
+      }
+      {
+        timeout = 250;
+        idleAction = "dpms off";
+        returnAction = "dpms on";
+      }
+      {
+        timeout = 600;
+        idleAction = [
+          "systemctl"
+          "suspend-then-hibernate"
         ];
-        persistent = true;
-        popouts = {
-          activeWindow = false;
-          statusIcons = true;
-          tray = true;
-        };
-        scrollActions = {
-          brightness = true;
-          workspaces = true;
-          volume = true;
-        };
-        showOnHover = true;
-        status = {
-          showAudio = true;
-          showBattery = true;
-          showBluetooth = true;
-          showKbLayout = true;
-          showMicrophone = false;
-          showNetwork = true;
-          showWifi = true;
-          showLockStatus = true;
-        };
-        tray = {
-          background = false;
-          iconSubs = [ ];
-          recolour = false;
-        };
-        workspaces = {
-          activeIndicator = true;
-          activeLabel = "󰮯";
-          activeTrail = false;
-          label = "  ";
-          occupiedBg = false;
-          occupiedLabel = "󰮯";
-          perMonitorWorkspaces = true;
-          showWindows = true;
-          shown = 5;
-          specialWorkspaceIcons = [
-            {
-              name = "notes";
-              icon = "sticky_note";
-            }
-          ];
-        };
-        excludedScreens = [ "" ];
-        activeWindow = {
-          compact = true;
-          inverted = false;
-        };
-      };
-      border = {
-        rounding = 25;
-        thickness = 2;
-      };
-      dashboard = {
-        enabled = true;
-        dragThreshold = 50;
-        mediaUpdateInterval = 500;
-        showOnHover = true;
-      };
-      launcher = {
-        actionPrefix = ">";
-        actions = [
-          {
-            name = "Calculator";
-            icon = "calculate";
-            description = "Do simple math equations (powered by Qalc)";
-            command = [
-              "autocomplete"
-              "calc"
-            ];
-            enabled = true;
-            dangerous = false;
-          }
-          {
-            name = "Scheme";
-            icon = "palette";
-            description = "Change the current colour scheme";
-            command = [
-              "autocomplete"
-              "scheme"
-            ];
-            enabled = true;
-            dangerous = false;
-          }
-          {
-            name = "Wallpaper";
-            icon = "image";
-            description = "Change the current wallpaper";
-            command = [
-              "autocomplete"
-              "wallpaper"
-            ];
-            enabled = true;
-            dangerous = false;
-          }
-          {
-            name = "Variant";
-            icon = "colors";
-            description = "Change the current scheme variant";
-            command = [
-              "autocomplete"
-              "variant"
-            ];
-            enabled = true;
-            dangerous = false;
-          }
-          {
-            name = "Light";
-            icon = "light_mode";
-            description = "Change the scheme to light mode";
-            command = [
-              "setMode"
-              "light"
-            ];
-            enabled = true;
-            dangerous = false;
-          }
-          {
-            name = "Dark";
-            icon = "dark_mode";
-            description = "Change the scheme to dark mode";
-            command = [
-              "setMode"
-              "dark"
-            ];
-            enabled = true;
-            dangerous = false;
-          }
-          {
-            name = "Shutdown";
-            icon = "power_settings_new";
-            description = "Shutdown the system";
-            command = [
-              "systemctl"
-              "poweroff"
-            ];
-            enabled = true;
-            dangerous = true;
-          }
-          {
-            name = "Reboot";
-            icon = "cached";
-            description = "Reboot the system";
-            command = [
-              "systemctl"
-              "reboot"
-            ];
-            enabled = true;
-            dangerous = true;
-          }
-          {
-            name = "Logout";
-            icon = "exit_to_app";
-            description = "Log out of the current session";
-            command = [
-              "uwsm"
-              "stop"
-            ];
-            enabled = true;
-            dangerous = true;
-          }
-          {
-            name = "Lock";
-            icon = "lock";
-            description = "Lock the current session";
-            command = [
-              "loginctl"
-              "lock-session"
-            ];
-            enabled = true;
-            dangerous = false;
-          }
-          {
-            name = "Sleep";
-            icon = "bedtime";
-            description = "Suspend";
-            command = [
-              "systemctl"
-              "suspend"
-            ];
-            enabled = true;
-            dangerous = false;
-          }
-          {
-            name = "Settings";
-            icon = "settings";
-            description = "Configure the shell";
-            command = [
-              "caelestia"
-              "shell"
-              "controlCenter"
-              "open"
-            ];
-            enabled = true;
-            dangerous = false;
-          }
-        ];
-        dragThreshold = 50;
-        vimKeybinds = true;
-        enableDangerousActions = true;
-        maxShown = 8;
-        maxWallpapers = 9;
-        specialPrefix = "@";
-        useFuzzy = {
-          apps = true;
-          actions = false;
-          schemes = false;
-          variants = false;
-          wallpapers = false;
-        };
-        showOnHover = false;
-        hiddenApps = [
-          "nvidia-settings"
-          "org.kde.konsole"
-          "org.kde.kwikdisk"
-          "org.kde.kdf"
-          "qt5ct"
-          "qt6ct"
-          "uuctl"
-          "htop"
-          "btop"
-          "nvim"
-        ];
-      };
+      }
+    ];
 
-      lock = {
-        recolourLogo = false;
-        hideNotifs = true;
-      };
-
-      notifs = {
-        fullscreen = "off";
-        actionOnClick = false;
-        clearThreshold = 0.3;
-        defaultExpireTimeout = 5000;
-        expandThreshold = 20;
-        openExpanded = false;
-        expire = true;
-      };
-
-      osd = {
-        enabled = true;
-        enableBrightness = true;
-        enableMicrophone = false;
-        hideDelay = 2000;
-      };
-
-      paths = {
-        mediaGif = "~/.dotfiles/assets/nekodance.gif";
-        sessionGif = "~/.dotfiles/assets/nekolay.gif";
-        wallpaperDir = "~/Pictures/Wallpapers";
-      };
-
-      services = {
-        audioIncrement = 0.1;
-        brightnessIncrement = 0.1;
-        maxVolume = 1.0;
-        showLyrics = true;
-        defaultPlayer = "Spotify";
-        gpuType = "";
-        playerAliases = [
-          {
-            from = "com.github.th_ch.youtube_music";
-            to = "YT Music";
-          }
-        ];
-        weatherLocation = "";
-        useFahrenheit = false;
-        useFahrenheitPerformance = false;
-        useTwelveHourClock = false;
-        smartScheme = true;
-        visualiserBars = 45;
-      };
-
-      session = {
-        dragThreshold = 30;
-        enabled = true;
-        vimKeybinds = true;
-        icons = {
-          logout = "logout";
-          shutdow = "power_settings_new";
-          hibernate = "downloading";
-          reboot = "cached";
-        };
-        commands = {
-          logout = [
-            "uwsm"
-            "stop"
-          ];
-          shutdown = [
-            "systemctl"
-            "poweroff"
-          ];
-          hibernate = [
-            "systemctl"
-            "hibernate"
-          ];
-          reboot = [
-            "systemctl"
-            "reboot"
-          ];
-        };
-      };
-
-      utilities = {
-        enabled = true;
-        maxToasts = 3;
-        toasts = {
-          fullscreen = "important";
-          audioInputChanged = true;
-          audioOutputChanged = true;
-          capsLockChanged = true;
-          chargingChanged = true;
-          configLoaded = true;
-          dndChanged = true;
-          gameModeChanged = true;
-          kbLayoutChanged = false;
-          kbLimit = true;
-          numLockChanged = true;
-          vpnChanged = true;
-          nowPlaying = false;
-          nighLight = true;
-        };
-        vpn = {
-          enabled = true;
-          provider = [
-            {
-              name = "wireguard";
-              interface = "home";
-              displayName = "Wireguard (home)";
-              enabled = false;
-              connectCmd = [
-                "sudo"
-                "systemctl"
-                "start"
-                "wg-quick-home"
-              ];
-              disconnectCmd = [
-                "sudo"
-                "systemctl"
-                "stop"
-                "wg-quick-home"
-              ];
-            }
-            {
-              name = "wireguard";
-              interface = "home-nolan";
-              displayName = "Wireguard (home-nolan)";
-              enabled = true;
-              connectCmd = [
-                "sudo"
-                "systemctl"
-                "start"
-                "wg-quick-home-nolan"
-              ];
-              disconnectCmd = [
-                "sudo"
-                "systemctl"
-                "stop"
-                "wg-quick-home-nolan"
-              ];
-            }
-          ];
-        };
-        quickToggles = [
-          {
-            id = "wifi";
-            enabled = true;
-          }
-          {
-            id = "bluetooth";
-            enabled = true;
-          }
-          {
-            id = "mic";
-            enabled = true;
-          }
-          {
-            id = "settings";
-            enabled = true;
-          }
-          {
-            id = "gameMode";
-            enabled = true;
-          }
-          {
-            id = "dnd";
-            enabled = true;
-          }
-          {
-            id = "vpn";
-            enabled = true;
-          }
-        ];
-      };
+    bar.status = {
+      showWifi = true;
+      showBluetooth = true;
+      showBattery = true;
+      showMicrophone = false;
     };
-    cli = {
-      enable = true; # Also add caelestia-cli to path
-      settings = {
 
-        record = {
-          extraArgs = [ ];
-        };
-        theme = {
-          enableTerm = false;
-          enableHypr = false;
-          enableDiscord = false;
-          enableSpicetify = false;
-          enableFuzzel = false;
-          enableBtop = false;
-          enableGtk = false;
-          enableQt = false;
-        };
-        toggles = {
-          communication = {
-            discord = {
-              enable = true;
-              match = [ { class = "vesktop"; } ];
-              move = true;
-            };
-            telegram = {
-              enable = true;
-              match = [ { class = "telegram"; } ];
-              move = true;
-            };
-            nextcloud-talk = {
-              enable = true;
-              match = [ { class = "Nextcloud Talk"; } ];
-              move = true;
-            };
-          };
-          music = {
-            spotify = {
-              enable = true;
-              match = [
-                { class = "Spotify"; }
-                { initialTitle = "Spotify"; }
-                { initialTitle = "Spotify Free"; }
-              ];
-              command = [ "spotify" ];
-              move = true;
-            };
-          };
-          sysmon = {
-            btop = {
-              enable = true;
-              match = [
-                {
-                  class = "btop";
-                  title = "btop";
-                  workspace = {
-                    name = "special:sysmon";
-                  };
-                }
-              ];
-              command = [
-                "kitty"
-                "--class"
-                "btop"
-                "--title"
-                "btop"
-                "zsh"
-                "-c"
-                "exec btop"
-              ];
-            };
-          };
-          notes = {
-            obsidian = {
-              enable = true;
-              match = [
-                { class = "electron"; }
-                { initialTitle = "obsidian"; }
-              ];
-              command = [
-                "obsidian"
-              ];
-              move = true;
-            };
-          };
-        };
-      };
+    osd = {
+      enableMicrophone = false;
     };
+
+    utilities.vpn.provider = [
+      {
+        name = "wireguard";
+        interface = "home-nolan";
+        displayName = "Wireguard (home-nolan)";
+        enabled = true;
+        connectCmd = [
+          "sudo"
+          "systemctl"
+          "start"
+          "wg-quick-home-nolan"
+        ];
+        disconnectCmd = [
+          "sudo"
+          "systemctl"
+          "stop"
+          "wg-quick-home-nolan"
+        ];
+      }
+      {
+        name = "wireguard";
+        interface = "home";
+        displayName = "Wireguard (home)";
+        enabled = false;
+        connectCmd = [
+          "sudo"
+          "systemctl"
+          "start"
+          "wg-quick-home"
+        ];
+        disconnectCmd = [
+          "sudo"
+          "systemctl"
+          "stop"
+          "wg-quick-home"
+        ];
+      }
+    ];
   };
 }

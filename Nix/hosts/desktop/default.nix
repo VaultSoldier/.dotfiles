@@ -10,7 +10,10 @@
   config = {
     desktop.caelestia.enable = lib.mkDefault false;
     home-manager.users.vs = lib.mkIf config.desktop.caelestia.enable {
-      imports = [ ./caelestia.nix ];
+      imports = [
+        ../../modules/home-manager/caelestia.nix
+        ./caelestia.nix
+      ];
     };
   };
 }
