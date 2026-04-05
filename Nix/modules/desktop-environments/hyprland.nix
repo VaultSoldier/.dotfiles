@@ -8,6 +8,7 @@ let
   scripts = with pkgs; [
     socat
     jq
+    bc
   ];
 in
 lib.mkIf config.desktop.hyprland.enable {
