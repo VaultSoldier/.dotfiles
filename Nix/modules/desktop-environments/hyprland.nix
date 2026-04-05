@@ -4,6 +4,12 @@
   pkgs,
   ...
 }:
+let
+  scripts = with pkgs; [
+    socat
+    jq
+  ];
+in
 lib.mkIf config.desktop.hyprland.enable {
   xdg.portal = {
     enable = true;
@@ -45,12 +51,14 @@ lib.mkIf config.desktop.hyprland.enable {
     "${pkgs.kdePackages.breeze}/share"
   ];
 
-  environment.systemPackages = with pkgs; [
-    kdePackages.ark
-    adwaita-icon-theme # gnome icons for apps
-    adwaita-qt
-    jq
-  ];
+  environment.systemPackages =
+    with pkgs;
+    [
+      kdePackages.ark
+      adwaita-icon-theme # gnome icons for apps
+      adwaita-qt
+    ]
+    ++ scripts;
 
   programs.uwsm.enable = true;
   hardware.i2c.enable = true; # needed for uwsm, ddcutil
