@@ -4,6 +4,21 @@
   lib,
   ...
 }:
+let
+  patchedCaelestiaShell =
+    inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.default.override
+      {
+        material-symbols = pkgs.material-symbols.overrideAttrs (old: {
+          nativeBuildInputs = builtins.filter (x: x != pkgs.rename) old.nativeBuildInputs;
+          installPhase = ''
+            runHook preInstall
+            install -Dm755 variablefont/*.ttf -t $out/share/fonts/TTF
+            install -Dm755 variablefont/*.woff2 -t $out/share/fonts/woff2
+            runHook postInstall
+          '';
+        });
+      };
+in
 {
   imports = [ inputs.caelestia-shell.homeManagerModules.default ];
 
@@ -25,6 +40,7 @@
 
   programs.caelestia = {
     enable = true;
+    package = patchedCaelestiaShell;
     systemd.enable = false;
   };
 
