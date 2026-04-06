@@ -26,7 +26,6 @@
             "192.168.216.5/32"
             "fc00:0:0:216::5/128"
           ];
-          listenPort = 51820;
           dns = [ "192.168.216.1" ];
           privateKeyFile = privateKey;
 
@@ -38,7 +37,7 @@
               ];
               publicKey = pubKey;
               endpoint = "${server_ip}:61302";
-              persistentKeepalive = 30;
+              persistentKeepalive = 15;
             }
           ];
 
@@ -53,7 +52,6 @@
             "192.168.216.5/32"
             "fc00:0:0:216::5/128"
           ];
-          listenPort = 51820;
           dns = [ "192.168.216.1" ];
           privateKeyFile = privateKey;
 
@@ -65,7 +63,7 @@
               ];
               publicKey = pubKey;
               endpoint = "${server_ip}:61302";
-              persistentKeepalive = 30;
+              persistentKeepalive = 15;
             }
           ];
 
