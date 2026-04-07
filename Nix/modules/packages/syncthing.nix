@@ -21,6 +21,10 @@
     };
 
     settings.devices = {
+      server.name = "server";
+      server.id = "QVNM4XW-CQAMBSL-HZAWZC3-A5LQSVE-FAFX3OA-WXGRUI6-X63YCIZ-NDCQTQN";
+      server.addresses = [ "tcp://192.168.11.150:22000" ];
+
       laptop.name = "laptop";
       laptop.id = "WPPJDMY-DHKNHLR-ZU5ZNGV-FSVEX2M-F3Y5UGL-EMNXNHA-QXS7VFZ-PCODEAR";
 
@@ -43,6 +47,7 @@
           };
         };
         devices = [
+          "server"
           "laptop"
           "agentsmith"
         ];
@@ -61,6 +66,7 @@
           };
         };
         devices = [
+          "server"
           "laptop"
           "agentsmith"
         ];
@@ -75,6 +81,7 @@
           };
         };
         devices = [
+          "server"
           "laptop"
           "agentsmith"
         ];
@@ -89,6 +96,7 @@
           };
         };
         devices = [
+          "server"
           "laptop"
           "agentsmith"
         ];
@@ -107,6 +115,7 @@
           };
         };
         devices = [
+          "server"
           "laptop"
           "agentsmith"
         ];
