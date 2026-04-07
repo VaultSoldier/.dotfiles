@@ -104,16 +104,16 @@ in
         inhibitWhenAudio = lib.mkDefault true;
         timeouts = lib.mkDefault [
           {
-            timeout = 650;
-            idleAction = "lock";
-          }
-          {
-            timeout = 300;
+            timeout = 600;
             idleAction = "dpms off";
             returnAction = "dpms on";
           }
           {
-            timeout = 1000;
+            timeout = 750;
+            idleAction = "lock";
+          }
+          {
+            timeout = 900;
             idleAction = [
               "systemctl"
               "suspend"

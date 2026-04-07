@@ -4,18 +4,18 @@
     general.idle.timeouts = [
       {
         timeout = 200;
-        idleAction = "lock";
+        idleAction = "dpms off";
+        returnAction = "dpms on";
       }
       {
         timeout = 250;
-        idleAction = "dpms off";
-        returnAction = "dpms on";
+        idleAction = "lock";
       }
       {
         timeout = 600;
         idleAction = [
           "systemctl"
-          "suspend-then-hibernate"
+          "hybrid-sleep"
         ];
       }
     ];
