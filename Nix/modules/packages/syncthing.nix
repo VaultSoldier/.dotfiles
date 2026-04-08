@@ -57,12 +57,19 @@
         ignorePatterns = [
           ".venv"
           "__pycache__"
+          "node_modules"
+          "build"
+          "out"
+          ".pytest_cache"
+          ".idea"
+          ".vscode"
+          "*.pyc"
+          ".DS_Store"
         ];
         versioning = {
-          type = "simple";
+          type = "staggered";
           params = {
-            keep = "10";
-            cleanoutDays = "0";
+            maxAge = "5356800";
           };
         };
         devices = [
@@ -74,10 +81,9 @@
       obsidian_vault = {
         path = "~/Documents/Obsidian Vault";
         versioning = {
-          type = "simple";
+          type = "staggered";
           params = {
-            keep = "10";
-            cleanoutDays = "0";
+            maxAge = "2764800";
           };
         };
         devices = [
@@ -89,10 +95,30 @@
       wallpapers = {
         path = "~/Pictures/Wallpapers";
         versioning = {
-          type = "simple";
+          type = "trashcan";
           params = {
-            keep = "10";
-            cleanoutDays = "0";
+            cleanoutDays = "32";
+          };
+        };
+        devices = [
+          "server"
+          "laptop"
+          "agentsmith"
+        ];
+      };
+      ssh = {
+        path = "~/.ssh";
+        ignorePatterns = [
+          "!*/"
+          "!*.pub"
+          "!allowed_signers"
+          "!config*"
+          "**"
+        ];
+        versioning = {
+          type = "staggered";
+          params = {
+            maxAge = "2764800";
           };
         };
         devices = [
@@ -108,10 +134,9 @@
           "**"
         ];
         versioning = {
-          type = "simple";
+          type = "staggered";
           params = {
-            keep = "10";
-            cleanoutDays = "0";
+            maxAge = "2764800";
           };
         };
         devices = [
