@@ -25,10 +25,8 @@
     isNormalUser = true;
     description = "John";
     extraGroups = [
-      "networkmanager"
       "plugdev"
       "wheel"
-      "podman"
       "adbuser"
       "kvm"
     ];

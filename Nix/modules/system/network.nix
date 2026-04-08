@@ -7,6 +7,8 @@
     networkmanager.enable = true;
   };
 
+  users.users.vs.extraGroups = [ "networkmanager" ];
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
