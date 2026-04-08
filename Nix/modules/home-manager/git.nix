@@ -14,7 +14,7 @@
 
     includes = [
       {
-        condition = "hasconfig:remote.*.url:ssh://git@gitlab.ssk-yamal.ru:*/**";
+        condition = "hasconfig:remote.*.url:ssh://git@gitlab.ssk-yamal.ru*/**";
         contents = {
           user.name = "agent_smith";
           user.email = "35-agent_smith@users.noreply.gitlab.ssk-yamal.ru";
