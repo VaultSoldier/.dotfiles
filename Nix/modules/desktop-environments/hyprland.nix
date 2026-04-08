@@ -51,10 +51,10 @@ lib.mkIf config.desktop.hyprland.enable {
   environment.sessionVariables.XDG_DATA_DIRS = [
     "${pkgs.kdePackages.breeze}/share"
   ];
-
   environment.systemPackages =
     with pkgs;
     [
+      gtk4.dev
       kdePackages.ark
       adwaita-icon-theme # gnome icons for apps
       adwaita-qt

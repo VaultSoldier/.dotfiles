@@ -36,5 +36,10 @@
       btop = super.btop.override { cudaSupport = true; };
     })
   ];
-  environment.systemPackages = with pkgs; [ btop ];
+  environment.systemPackages = with pkgs; [
+    (pkgs.writeShellScriptBin "nvidia-offload" ''
+      exec "$@"
+    '')
+    btop
+  ];
 }
