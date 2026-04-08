@@ -109,7 +109,6 @@
       ssh = {
         path = "~/.ssh";
         ignorePatterns = [
-          "!*/"
           "!*.pub"
           "!allowed_signers"
           "!config*"
