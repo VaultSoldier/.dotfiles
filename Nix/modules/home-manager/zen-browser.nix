@@ -112,6 +112,10 @@
         id = "addBookmarkAsKb";
         disabled = true;
       }
+      {
+        id = "key_inspector";
+        disabled = true;
+      }
     ];
 
     mods = [
