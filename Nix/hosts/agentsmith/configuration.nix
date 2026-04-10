@@ -33,6 +33,7 @@
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
       "resume=/dev/mapper/luks-d489ca0b-5100-4f98-aed8-4c862d04e403"
+      "NVreg_PreserveVideoMemoryAllocations=1"
       # fix for LANGTU LT75PRO-2.4G FN being always active
       "hid_apple.fnmode=2"
       "hid_apple.swap_fn_leftctrl=0"
