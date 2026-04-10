@@ -501,7 +501,63 @@
       };
       vpn = {
         enabled = lib.mkDefault true;
-        provider = lib.mkDefault [ ];
+        provider = lib.mkDefault [
+          {
+            name = "wireguard";
+            interface = "home-nolan";
+            displayName = "WG (ExitNode-Home-NoLan)";
+            enabled = true;
+            connectCmd = [
+              "sudo"
+              "systemctl"
+              "start"
+              "wg-quick-exit-home-nolan"
+            ];
+            disconnectCmd = [
+              "sudo"
+              "systemctl"
+              "stop"
+              "wg-quick-exit-home-nolan"
+            ];
+          }
+          {
+            name = "wireguard";
+            interface = "home";
+            displayName = "WG (Home)";
+            enabled = false;
+            connectCmd = [
+              "sudo"
+              "systemctl"
+              "start"
+              "wg-quick-exit-home"
+            ];
+            disconnectCmd = [
+              "sudo"
+              "systemctl"
+              "stop"
+              "wg-quick-exit-home"
+            ];
+          }
+          {
+            name = "wireguard";
+            interface = "Split-Home";
+            displayName = "WG (Split-Home)";
+            enabled = false;
+            connectCmd = [
+              "sudo"
+              "systemctl"
+              "start"
+              "wg-quick-split-home"
+            ];
+            disconnectCmd = [
+              "sudo"
+              "systemctl"
+              "stop"
+              "wg-quick-split-home"
+            ];
+          }
+
+        ];
       };
       quickToggles = lib.mkDefault [
         {

@@ -40,45 +40,6 @@
       thickness = 2;
     };
 
-    utilities.vpn.provider = [
-      {
-        name = "wireguard";
-        interface = "home";
-        displayName = "Wireguard (home)";
-        enabled = true;
-        connectCmd = [
-          "sudo"
-          "systemctl"
-          "start"
-          "wg-quick-home"
-        ];
-        disconnectCmd = [
-          "sudo"
-          "systemctl"
-          "stop"
-          "wg-quick-home"
-        ];
-      }
-      {
-        name = "wireguard";
-        interface = "home-nolan";
-        displayName = "Wireguard (home-nolan)";
-        enabled = false;
-        connectCmd = [
-          "sudo"
-          "systemctl"
-          "start"
-          "wg-quick-home-nolan"
-        ];
-        disconnectCmd = [
-          "sudo"
-          "systemctl"
-          "stop"
-          "wg-quick-home-nolan"
-        ];
-      }
-    ];
-
     utilities.quickToggles = [
       {
         id = "wifi";

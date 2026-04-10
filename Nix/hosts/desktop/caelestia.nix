@@ -62,8 +62,10 @@
 
     utilities.vpn = {
       enabled = false;
+      provider = [ ];
     };
-    utilities.quickToggles = [
+
+    utilities.vpn.utilities.quickToggles = [
       {
         id = "wifi";
         enabled = false;
