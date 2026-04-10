@@ -25,10 +25,6 @@ alias ssh-work-list="rg '^\s*Host\s+' ~/.ssh/config-work | awk '{print $2}'"
 alias zapret='sudo systemctl start zapret.service'
 alias zapretOff='sudo systemctl stop zapret.service'
 
-alias uphome='sudo systemctl start wg-quick-home'
-alias uphome-nolan='sudo systemctl start wg-quick-home-nolan'
-alias downvpn='sudo systemctl stop wg-quick-home wg-quick-home-nolan'
-
 if command -v pacman &>/dev/null; then
   alias up="$DIR/update.sh"
 fi
