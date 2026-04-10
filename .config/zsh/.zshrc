@@ -35,6 +35,7 @@ autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 
 # Import oh-my-posh
+export PATH="$PATH:$HOME/.local/bin"
 eval "$(oh-my-posh init zsh --config "$HOME/.config/ohmyposh/config.toml")"
 
 # ENV vars
