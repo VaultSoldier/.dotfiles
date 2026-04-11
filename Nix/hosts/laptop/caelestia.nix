@@ -15,7 +15,7 @@
         timeout = 600;
         idleAction = [
           "systemctl"
-          "hybrid-sleep"
+          "suspend-then-hibernate"
         ];
       }
     ];
@@ -34,41 +34,5 @@
       showBattery = true;
       showMicrophone = false;
     };
-
-    border = {
-      rounding = 25;
-      thickness = 2;
-    };
-
-    utilities.quickToggles = [
-      {
-        id = "wifi";
-        enabled = true;
-      }
-      {
-        id = "bluetooth";
-        enabled = true;
-      }
-      {
-        id = "mic";
-        enabled = true;
-      }
-      {
-        id = "settings";
-        enabled = true;
-      }
-      {
-        id = "gameMode";
-        enabled = true;
-      }
-      {
-        id = "dnd";
-        enabled = true;
-      }
-      {
-        id = "vpn";
-        enabled = true;
-      }
-    ];
   };
 }
