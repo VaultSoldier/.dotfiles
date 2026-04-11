@@ -504,8 +504,8 @@
         provider = lib.mkDefault [
           {
             name = "wireguard";
-            interface = "home-nolan";
-            displayName = "WG (ExitNode-Home-NoLan)";
+            interface = "exit-home-nolan";
+            displayName = "WG (ExitNode-HomeNoLan)";
             enabled = true;
             connectCmd = [
               "sudo"
@@ -522,8 +522,8 @@
           }
           {
             name = "wireguard";
-            interface = "home";
-            displayName = "WG (Home)";
+            interface = "exit-home";
+            displayName = "WG (ExitNode-Home)";
             enabled = false;
             connectCmd = [
               "sudo"
@@ -540,7 +540,7 @@
           }
           {
             name = "wireguard";
-            interface = "Split-Home";
+            interface = "split-home";
             displayName = "WG (Split-Home)";
             enabled = false;
             connectCmd = [
