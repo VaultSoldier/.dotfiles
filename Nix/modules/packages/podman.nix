@@ -15,12 +15,19 @@
 
   users.users.vs.extraGroups = [ "podman" ];
 
+  boot.binfmt = {
+    emulatedSystems = [
+      "aarch64-linux"
+      "armv7l-linux"
+    ];
+    preferStaticEmulators = true;
+  };
+
   environment.systemPackages = with pkgs; [
     dive
     podman-tui
     podman-desktop
     podman-compose
-
     distrobox
   ];
 }
