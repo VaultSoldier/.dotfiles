@@ -33,6 +33,10 @@
       url = "github:VaultSoldier/shell?ref=custom";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    awww = {
+      url = "git+https://codeberg.org/LGFae/awww";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     mikuboot = {
       url = "gitlab:evysgarden/mikuboot";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,14 +48,15 @@
       self,
       nixpkgs,
       nixos-hardware,
+      spicetify-nix,
       home-manager,
       sops-nix,
-      spicetify-nix,
       firefox-addons,
+      zen-browser,
       stylix,
       plasma-manager,
-      zen-browser,
       caelestia-shell,
+      awww,
       mikuboot,
       ...
     }:
