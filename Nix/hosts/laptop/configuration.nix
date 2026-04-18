@@ -4,6 +4,7 @@
 
   networking.hostName = "laptop";
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot = {
     initrd.systemd.enable = true;
     initrd.luks.devices."luks-48cb7628-9c63-4be2-8f34-b346002bc0aa" = {
