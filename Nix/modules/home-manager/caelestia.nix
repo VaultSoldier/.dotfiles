@@ -29,10 +29,13 @@
   };
 
   programs.caelestia.settings = {
-    mediaGifSpeedAdjustment = lib.mkDefault 300;
-    sessionGifSpeed = lib.mkDefault 0.7;
     appearance = {
-      anim.durations.scale = lib.mkDefault 0.8;
+      deformScale = lib.mkDefault 1;
+      anim = {
+        durations = {
+          scale = lib.mkDefault 0.8;
+        };
+      };
       font = {
         family = {
           material = lib.mkDefault "Material Symbols Rounded";
@@ -53,6 +56,8 @@
 
     general = {
       logo = lib.mkDefault "caelestia";
+      mediaGifSpeedAdjustment = lib.mkDefault 300;
+      sessionGifSpeed = lib.mkDefault 0.7;
       apps = {
         terminal = lib.mkDefault [ "kitty" ];
         audio = lib.mkDefault [ "pavucontrol" ];
