@@ -38,6 +38,7 @@
       };
       font = {
         family = {
+          clock = lib.mkDefault "Rubik";
           material = lib.mkDefault "Material Symbols Rounded";
           mono = lib.mkDefault "CaskaydiaCove NF";
           sans = lib.mkDefault "Rubik";
@@ -117,7 +118,7 @@
       wallpaperEnabled = lib.mkDefault true;
       desktopClock = {
         enabled = lib.mkDefault true;
-        scale = lib.mkDefault 1.0;
+        scale = lib.mkDefault 1;
         position = lib.mkDefault "bottom-right";
         shadow = {
           enabled = lib.mkDefault true;
@@ -432,13 +433,16 @@
     paths = {
       mediaGif = lib.mkDefault "~/.dotfiles/assets/nekodance.gif";
       sessionGif = lib.mkDefault "~/.dotfiles/assets/nekolay.gif";
+      noNotifsPic = lib.mkDefault "root:/assets/dino.png";
+      lockNoNotifsPic = lib.mkDefault "root:/assets/dino.png";
       wallpaperDir = lib.mkDefault "~/Pictures/Wallpapers";
+      lyricsDir = lib.mkDefault "~/Music/lyrics";
     };
 
     services = {
       audioIncrement = lib.mkDefault 0.1;
       brightnessIncrement = lib.mkDefault 0.1;
-      maxVolume = lib.mkDefault 1.0;
+      maxVolume = lib.mkDefault 1;
       showLyrics = lib.mkDefault true;
       defaultPlayer = lib.mkDefault "Spotify";
       gpuType = lib.mkDefault "";
