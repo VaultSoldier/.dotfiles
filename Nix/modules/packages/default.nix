@@ -6,7 +6,7 @@
     ./kanata.nix
     ./podman.nix
     ./dolphin.nix
-    # ./virt-manager.nix
+    ./virt-manager.nix
     ./gui.nix
   ];
 
