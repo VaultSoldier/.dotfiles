@@ -462,7 +462,7 @@
       vimKeybinds = true;
       icons = {
         logout = "logout";
-        shutdow = "power_settings_new";
+        shutdown = "power_settings_new";
         hibernate = "downloading";
         reboot = "cached";
       };
