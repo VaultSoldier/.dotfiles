@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 
 {
   # Enable OpenGL
@@ -37,9 +32,6 @@
     })
   ];
   environment.systemPackages = with pkgs; [
-    (pkgs.writeShellScriptBin "nvidia-offload" ''
-      exec "$@"
-    '')
     btop
   ];
 }

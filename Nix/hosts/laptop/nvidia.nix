@@ -1,10 +1,5 @@
 { config, pkgs, ... }:
 {
-  imports = [
-    ../../modules/hardware/nvidia-offload.nix
-  ];
-  nvidiaOffload.extraApps = [ ];
-
   # Enable OpenGL
   hardware.graphics = {
     enable = true;
