@@ -666,8 +666,7 @@
         notes.obsidian = {
           enable = true;
           match = [
-            { class = "electron"; }
-            { initialTitle = "obsidian"; }
+            { class = "obsidian"; }
           ];
           command = [ "obsidian" ];
           move = true;
