@@ -94,12 +94,6 @@
       };
       wallpapers = {
         path = "~/Pictures/Wallpapers";
-        versioning = {
-          type = "trashcan";
-          params = {
-            cleanoutDays = "32";
-          };
-        };
         devices = [
           "server"
           "laptop"
