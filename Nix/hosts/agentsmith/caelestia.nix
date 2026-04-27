@@ -21,7 +21,7 @@
     ];
 
     bar.status = {
-      showWifi = true;
+      showWifi = false;
       showBluetooth = true;
       showBattery = true;
       showMicrophone = false;
