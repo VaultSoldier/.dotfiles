@@ -2,9 +2,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./nvidia.nix
     ./configuration.nix
-    ./power-management.nix
+    ./nvidia.nix
     ./syncthing.nix
   ];
 

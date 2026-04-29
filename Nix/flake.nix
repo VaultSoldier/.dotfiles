@@ -123,6 +123,7 @@
             };
             system = {
               wg.enable = true;
+              power_management.enable = true;
             };
 
             home-manager.users.vs.imports = [ ./hosts/laptop/home-manager.nix ];
@@ -149,8 +150,8 @@
               lutris.enable = false;
             };
             system = {
-              fprintd.enable = true;
               wg.enable = true;
+              power_management.enable = true;
             };
 
             home-manager.users.vs.imports = [ ./hosts/agentsmith/home-manager.nix ];
