@@ -19,4 +19,7 @@
 
   sops.secrets.syncthing_agentsmith_key = { };
   sops.secrets.syncthing_agentsmith_cert = { };
+
+  sops.secrets.syncthing_desktop_key = { };
+  sops.secrets.syncthing_desktop_cert = { };
 }

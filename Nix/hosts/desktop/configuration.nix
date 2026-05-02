@@ -1,8 +1,16 @@
 { inputs, pkgs, ... }:
 {
-  imports = [ inputs.mikuboot.nixosModules.default ];
+  imports = [
+    inputs.mikuboot.nixosModules.default
+    ../../modules/packages/syncthing.nix
+  ];
 
   networking.hostName = "desktop";
+
+  services.syncthing = {
+    key = "/run/secrets/syncthing_desktop_key";
+    cert = "/run/secrets/syncthing_desktop_cert";
+  };
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;

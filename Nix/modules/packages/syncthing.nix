@@ -1,4 +1,12 @@
 { pkgs, ... }:
+let
+  all_devices = [
+    "server"
+    "desktop"
+    "laptop"
+    "agentsmith"
+  ];
+in
 {
   environment.systemPackages = with pkgs; [
     syncthingtray
@@ -21,15 +29,26 @@
     };
 
     settings.devices = {
-      server.name = "server";
-      server.id = "QVNM4XW-CQAMBSL-HZAWZC3-A5LQSVE-FAFX3OA-WXGRUI6-X63YCIZ-NDCQTQN";
-      server.addresses = [ "tcp://192.168.11.150:22000" ];
+      server = {
+        name = "server";
+        id = "QVNM4XW-CQAMBSL-HZAWZC3-A5LQSVE-FAFX3OA-WXGRUI6-X63YCIZ-NDCQTQN";
+        addresses = [ "tcp://192.168.11.150:22000" ];
+      };
 
-      laptop.name = "laptop";
-      laptop.id = "WPPJDMY-DHKNHLR-ZU5ZNGV-FSVEX2M-F3Y5UGL-EMNXNHA-QXS7VFZ-PCODEAR";
+      desktop = {
+        name = "desktop";
+        id = "TCHIGUY-RPIUII5-WBANBMS-KD4PKU4-V77TR37-3BQKPSM-7CTRZRS-DKVU2QF";
+      };
 
-      agentsmith.name = "agentsmith";
-      agentsmith.id = "VQ7YMTT-ZK226P4-HGYX4W5-ZRF4ZVO-OFRM7F5-Y3ZSLQC-DVMNYYW-46HCUA5";
+      laptop = {
+        name = "laptop";
+        id = "WPPJDMY-DHKNHLR-ZU5ZNGV-FSVEX2M-F3Y5UGL-EMNXNHA-QXS7VFZ-PCODEAR";
+      };
+
+      agentsmith = {
+        name = "agentsmith";
+        id = "VQ7YMTT-ZK226P4-HGYX4W5-ZRF4ZVO-OFRM7F5-Y3ZSLQC-DVMNYYW-46HCUA5";
+      };
     };
 
     settings.folders = {
@@ -46,11 +65,7 @@
             cleanoutDays = "0";
           };
         };
-        devices = [
-          "server"
-          "laptop"
-          "agentsmith"
-        ];
+        devices = all_devices;
       };
       code = {
         path = "~/Documents/Code";
@@ -72,11 +87,7 @@
             maxAge = "5356800";
           };
         };
-        devices = [
-          "server"
-          "laptop"
-          "agentsmith"
-        ];
+        devices = all_devices;
       };
       obsidian_vault = {
         path = "~/Documents/Obsidian Vault";
@@ -94,11 +105,7 @@
       };
       wallpapers = {
         path = "~/Pictures/Wallpapers";
-        devices = [
-          "server"
-          "laptop"
-          "agentsmith"
-        ];
+        devices = all_devices;
       };
       ssh = {
         path = "~/.ssh";
@@ -114,11 +121,7 @@
             maxAge = "2764800";
           };
         };
-        devices = [
-          "server"
-          "laptop"
-          "agentsmith"
-        ];
+        devices = all_devices;
       };
       winbox_addresses = {
         path = "~/.local/share/MikroTik/WinBox";
@@ -132,11 +135,7 @@
             maxAge = "2764800";
           };
         };
-        devices = [
-          "server"
-          "laptop"
-          "agentsmith"
-        ];
+        devices = all_devices;
       };
     };
   };

@@ -1,11 +1,20 @@
 { inputs, pkgs, ... }:
 {
-  imports = [ inputs.mikuboot.nixosModules.default ];
+  imports = [
+    inputs.mikuboot.nixosModules.default
+    ../../modules/packages/syncthing.nix
+  ];
+
+  services.syncthing = {
+    key = "/run/secrets/syncthing_laptop_key";
+    cert = "/run/secrets/syncthing_laptop_cert";
+  };
 
   networking.hostName = "laptop";
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+
     initrd.systemd.enable = true;
     initrd.luks.devices."luks-48cb7628-9c63-4be2-8f34-b346002bc0aa" = {
       device = "/dev/disk/by-uuid/48cb7628-9c63-4be2-8f34-b346002bc0aa";
@@ -35,9 +44,6 @@
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
       "resume=/dev/mapper/luks-48cb7628-9c63-4be2-8f34-b346002bc0aa"
-      # fix for LANGTU LT75PRO-2.4G FN being always active
-      "hid_apple.fnmode=2"
-      "hid_apple.swap_fn_leftctrl=0"
     ];
     loader.systemd-boot.enable = true;
     loader.timeout = 0; # Hide the OS choice for bootloaders.

@@ -55,4 +55,10 @@
     wget
     curl
   ];
+
+  boot.kernelParams = [
+    # fix for LANGTU LT75PRO-2.4G FN being always active
+    "hid_apple.fnmode=2"
+    "hid_apple.swap_fn_leftctrl=0"
+  ];
 }
