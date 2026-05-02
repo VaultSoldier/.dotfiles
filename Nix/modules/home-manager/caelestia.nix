@@ -57,6 +57,7 @@
 
     general = {
       logo = lib.mkDefault "caelestia";
+      showOverFullscreen = lib.mkDefault false;
       mediaGifSpeedAdjustment = lib.mkDefault 300;
       sessionGifSpeed = lib.mkDefault 0.7;
       apps = {
