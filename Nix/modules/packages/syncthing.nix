@@ -67,8 +67,8 @@ in
         };
         devices = all_devices;
       };
-      code = {
-        path = "~/Documents/Code";
+      projects = {
+        path = "~/Projects/";
         ignorePatterns = [
           ".venv"
           "__pycache__"
