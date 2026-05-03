@@ -15,7 +15,7 @@ ARG PYTHON="python uv"
 ARG DEVOPS="ansible terraform"
 ARG FLUTTER="gcc gtk3 clang cmake ninja mesa-utils android-tools"
 
-RUN pacman -Sy --needed --noconfirm ${NVIM} ${PYTHON} ${FLUTTER}
+RUN pacman -Sy --needed --noconfirm ${NVIM} ${PYTHON} ${FLUTTER} ${DEVOPS}
 
 USER vs
 WORKDIR /tmp/yay
