@@ -123,11 +123,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1778012801,
-        "narHash": "sha256-bKBXmo2wwQhlBGsLe0hwUO1f1vcxrid1kurwhUzy82A=",
+        "lastModified": 1778087181,
+        "narHash": "sha256-fVcteRe4H0o5LAbsd0ZOtmmvKAM3MGkeGtSMWbE0Osg=",
         "owner": "VaultSoldier",
         "repo": "shell",
-        "rev": "3a6e75963272b4812346cdc5b00e21ecf0b3c3da",
+        "rev": "d596a3feb5ff9f678b2393c20220f9eac4d15acf",
         "type": "github"
       },
       "original": {
@@ -145,11 +145,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1777953783,
-        "narHash": "sha256-ieumGMyM30TJw7wMD0+q/YVNRCCPR3XzMiDsqTMrQ38=",
+        "lastModified": 1778040175,
+        "narHash": "sha256-SSXJp3BMjO2LrW/VLjNdGGcjd3RFEyV4FemYA6OGrYw=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "ec6ea3926c5fbe08545fe90bbca49fbf3d51353c",
+        "rev": "3bd76b0f41e65661866bddcac57ebe83aeadb581",
         "type": "gitlab"
       },
       "original": {
