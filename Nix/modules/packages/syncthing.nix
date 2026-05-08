@@ -3,7 +3,6 @@ let
   all_devices = [
     "server"
     "desktop"
-    "laptop"
     "agentsmith"
   ];
 in
@@ -38,11 +37,6 @@ in
       desktop = {
         name = "desktop";
         id = "TCHIGUY-RPIUII5-WBANBMS-KD4PKU4-V77TR37-3BQKPSM-7CTRZRS-DKVU2QF";
-      };
-
-      laptop = {
-        name = "laptop";
-        id = "WPPJDMY-DHKNHLR-ZU5ZNGV-FSVEX2M-F3Y5UGL-EMNXNHA-QXS7VFZ-PCODEAR";
       };
 
       agentsmith = {
@@ -97,11 +91,7 @@ in
             maxAge = "2764800";
           };
         };
-        devices = [
-          "server"
-          "laptop"
-          "agentsmith"
-        ];
+        devices = all_devices;
       };
       wallpapers = {
         path = "~/Pictures/Wallpapers";

@@ -107,32 +107,6 @@
         ++ commonModules;
       };
 
-      nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs; };
-        modules = [
-          {
-            desktop = {
-              plasma6.enable = false;
-              hyprland.enable = true;
-              caelestia.enable = true;
-            };
-            games = {
-              osu-lazer.enable = false;
-              lutris.enable = false;
-            };
-            system = {
-              wg.enable = true;
-              power_management.enable = true;
-            };
-
-            home-manager.users.vs.imports = [ ./hosts/laptop/home-manager.nix ];
-          }
-          ./hosts/laptop
-        ]
-        ++ commonModules;
-      };
-
       nixosConfigurations.agentsmith = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
@@ -146,7 +120,7 @@
             games = {
               steam.enable = false;
               prismlauncher.enable = false;
-              osu-lazer.enable = false;
+              osu.enable = false;
               lutris.enable = false;
             };
             system = {

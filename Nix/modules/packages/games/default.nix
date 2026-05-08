@@ -11,5 +11,5 @@
   games.prismlauncher.enable = lib.mkDefault true;
   games.lutris.enable = lib.mkDefault false;
   games.osu.enable = lib.mkDefault false;
-  games.rpcs3.enable = lib.mkEnableOption false;
+  games.rpcs3.enable = lib.mkDefault false;
 }

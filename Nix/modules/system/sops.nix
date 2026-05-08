@@ -14,12 +14,9 @@
     group = "users";
     mode = "0440";
   };
-  sops.secrets.syncthing_laptop_key = { };
-  sops.secrets.syncthing_laptop_cert = { };
+  sops.secrets.syncthing_desktop_key = { };
+  sops.secrets.syncthing_desktop_cert = { };
 
   sops.secrets.syncthing_agentsmith_key = { };
   sops.secrets.syncthing_agentsmith_cert = { };
-
-  sops.secrets.syncthing_desktop_key = { };
-  sops.secrets.syncthing_desktop_cert = { };
 }
