@@ -91,7 +91,7 @@
               caelestia.enable = true;
             };
             games = {
-              lutris.enable = false;
+              osu.enable = true;
             };
             system = {
               flatpak.enable = false;
