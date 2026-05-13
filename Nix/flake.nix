@@ -91,7 +91,7 @@
               caelestia.enable = true;
             };
             packages = {
-              virtualisation = true;
+              virtualisation.enable = true;
             };
             games = {
               osu.enable = true;
