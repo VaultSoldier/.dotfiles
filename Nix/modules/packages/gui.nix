@@ -14,7 +14,8 @@
     nextcloud-client
     nextcloud-talk-desktop
     onlyoffice-desktopeditors
-    #rustdesk
+    # rustdesk
+    virt-viewer # spice viewer
     obsidian
     open-scq30
   ];

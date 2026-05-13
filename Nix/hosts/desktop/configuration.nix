@@ -1,9 +1,6 @@
 { inputs, pkgs, ... }:
 {
-  imports = [
-    inputs.mikuboot.nixosModules.default
-    ../../modules/packages/syncthing.nix
-  ];
+  imports = [ inputs.mikuboot.nixosModules.default ];
 
   networking.hostName = "desktop";
 

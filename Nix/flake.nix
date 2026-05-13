@@ -90,6 +90,9 @@
               hyprland.enable = true;
               caelestia.enable = true;
             };
+            packages = {
+              virtualisation = true;
+            };
             games = {
               osu.enable = true;
             };

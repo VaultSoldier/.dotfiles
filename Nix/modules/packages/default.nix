@@ -1,16 +1,18 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   imports = [
     ./code.nix
-    ./neovim.nix
-    ./kanata.nix
-    ./podman.nix
     ./dolphin.nix
-    ./virt-manager.nix
     ./gui.nix
+    ./kanata.nix
+    ./neovim.nix
+    ./podman.nix
+    ./syncthing.nix
+    ./virt-manager.nix
   ];
 
-  programs.tmux.enable = true;
+  packages.virtualisation.enable = lib.mkDefault false;
+
   environment.systemPackages = with pkgs; [
     oh-my-posh
     zoxide # cd alternative
@@ -34,4 +36,6 @@
     fastfetch
     ipfetch
   ];
+
+  programs.tmux.enable = true;
 }

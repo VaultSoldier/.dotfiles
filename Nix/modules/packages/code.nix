@@ -8,7 +8,7 @@
     gcc
     go
     nodejs
-    python313
+    python314
     uv
     sqlite
   ];

@@ -1,9 +1,19 @@
-{ pkgs, ... }:
 {
-  programs.virt-manager.enable = true;
-  users.groups.libvirtd.members = [ "vs" ];
-  virtualisation.libvirtd.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
+  options.packages = {
+    virtualisation.enable = lib.mkEnableOption "Enable virtualisation tools";
+  };
 
-  environment.systemPackages = with pkgs; [ virt-viewer ];
+  config = lib.mkIf config.packages.virtualisation.enable {
+    programs.virt-manager.enable = true;
+    virtualisation.libvirtd.enable = true;
+    virtualisation.spiceUSBRedirection.enable = true;
+    users.groups.libvirtd.members = [ "vs" ];
+    environment.systemPackages = with pkgs; [ virt-viewer ];
+  };
 }

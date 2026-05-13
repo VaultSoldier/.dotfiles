@@ -1,7 +1,5 @@
 { config, pkgs, ... }:
 {
-  imports = [ ../../modules/packages/syncthing.nix ];
-
   networking.hostName = "agentsmith";
 
   services.syncthing = {
