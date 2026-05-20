@@ -16,7 +16,6 @@ alias CombineAudio='pactl load-module module-combine-sink'
 alias CombineAudioOff='pactl unload-module module-combine-sink'
 alias get-extension-id="$DIR/firefox-extract-extension-id.sh"
 alias open='xdg-open'
-alias hx='helix'
 alias vi='nvim'
 alias tf='terraform'
 alias distrobox-arch='distrobox enter arch'
