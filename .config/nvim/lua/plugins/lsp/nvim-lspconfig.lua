@@ -166,7 +166,7 @@ return {
       'prettierd',
       'jsonlint',
       'vale',
-      -- 'nixfmt', -- https://github.com/mason-org/mason.nvim/issues/2050
+      'nixfmt',
       'ansible-lint',
       'shfmt',
     })
