@@ -14,10 +14,15 @@
     nextcloud-client
     nextcloud-talk-desktop
     onlyoffice-desktopeditors
-    # rustdesk
+    rustdesk
     virt-viewer # spice viewer
     obsidian
     open-scq30
+  ];
+
+  # TODO: remove when bitwarden updates
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-39.8.10"
   ];
 
   programs.amnezia-vpn.enable = true;
