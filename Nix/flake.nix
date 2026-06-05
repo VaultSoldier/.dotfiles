@@ -121,7 +121,7 @@
               caelestia.enable = true;
             };
             games = {
-              steam.enable = false;
+              steam.enable = true;
               prismlauncher.enable = false;
               osu.enable = false;
               lutris.enable = false;
