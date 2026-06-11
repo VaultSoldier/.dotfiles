@@ -31,23 +31,140 @@
   programs.caelestia.settings = {
     appearance = {
       deformScale = lib.mkDefault 1;
-      anim = {
-        durations = {
-          scale = lib.mkDefault 0.8;
-        };
-      };
-      font = {
-        family = {
-          clock = lib.mkDefault "Rubik";
-          material = lib.mkDefault "Material Symbols Rounded";
-          mono = lib.mkDefault "CaskaydiaCove NF";
-          sans = lib.mkDefault "Rubik";
-        };
-        size.scale = lib.mkDefault 1;
-      };
-      padding.scale = lib.mkDefault 1;
       rounding.scale = lib.mkDefault 0.6;
       spacing.scale = lib.mkDefault 0.8;
+      padding.scale = lib.mkDefault 1;
+
+      font = {
+        scale = lib.mkDefault 1;
+        clock = lib.mkDefault "Rubik";
+        workspaces = lib.mkDefault "Rubik";
+
+        headline.family = lib.mkDefault "GoogleSansFlex";
+        headline.large.size = lib.mkDefault 32;
+        headline.large.weight = lib.mkDefault 500;
+        headline.large.italic = lib.mkDefault false;
+        headline.large.vaxes = lib.mkDefault {
+          ROND = 25;
+        };
+
+        headline.medium.size = lib.mkDefault 28;
+        headline.medium.weight = lib.mkDefault 500;
+        headline.medium.italic = lib.mkDefault false;
+        headline.medium.vaxes = lib.mkDefault {
+          ROND = 25;
+        };
+
+        headline.small.size = lib.mkDefault 24;
+        headline.small.weight = lib.mkDefault 500;
+        headline.small.italic = lib.mkDefault false;
+        headline.small.vaxes = lib.mkDefault {
+          ROND = 25;
+        };
+
+        title.family = lib.mkDefault "GoogleSansFlex";
+        title.large.size = lib.mkDefault 22;
+        title.large.weight = lib.mkDefault 500;
+        title.large.italic = lib.mkDefault false;
+        title.large.vaxes = lib.mkDefault {
+          ROND = 25;
+        };
+        title.medium.size = lib.mkDefault 16;
+        title.medium.weight = lib.mkDefault 500;
+        title.medium.italic = lib.mkDefault false;
+        title.medium.vaxes = lib.mkDefault {
+          ROND = 25;
+        };
+        title.small.size = lib.mkDefault 14;
+        title.small.weight = lib.mkDefault 500;
+        title.small.italic = lib.mkDefault false;
+        title.small.vaxes = lib.mkDefault {
+          ROND = 25;
+        };
+
+        body.family = lib.mkDefault "GoogleSansFlex";
+        body.large.size = lib.mkDefault 16;
+        body.large.weight = lib.mkDefault 400;
+        body.large.italic = lib.mkDefault false;
+        body.large.vaxes = lib.mkDefault {
+          ROND = 25;
+        };
+        body.medium.size = lib.mkDefault 14;
+        body.medium.weight = lib.mkDefault 400;
+        body.medium.italic = lib.mkDefault false;
+        body.medium.vaxes = lib.mkDefault {
+          ROND = 25;
+        };
+        body.small.size = lib.mkDefault 12;
+        body.small.weight = lib.mkDefault 400;
+        body.small.italic = lib.mkDefault false;
+        body.small.vaxes = lib.mkDefault {
+          ROND = 25;
+        };
+
+        label.family = lib.mkDefault "GoogleSansFlex";
+        label.large.size = lib.mkDefault 14;
+        label.large.weight = lib.mkDefault 500;
+        label.large.italic = lib.mkDefault false;
+        label.large.vaxes = lib.mkDefault {
+          ROND = 25;
+        };
+
+        label.medium.size = lib.mkDefault 12;
+        label.medium.weight = lib.mkDefault 500;
+        label.medium.italic = lib.mkDefault false;
+        label.medium.vaxes = lib.mkDefault {
+          ROND = 25;
+        };
+
+        label.small.size = lib.mkDefault 11;
+        label.small.weight = lib.mkDefault 400;
+        label.small.italic = lib.mkDefault false;
+        label.small.vaxes = lib.mkDefault {
+          ROND = 25;
+        };
+
+        mono.family = lib.mkDefault "CaskaydiaCove NF";
+        mono.large.size = lib.mkDefault 16;
+        mono.large.weight = lib.mkDefault 400;
+        mono.large.italic = lib.mkDefault false;
+        mono.large.vaxes = lib.mkDefault { };
+
+        mono.medium.size = lib.mkDefault 14;
+        mono.medium.weight = lib.mkDefault 400;
+        mono.medium.italic = lib.mkDefault false;
+        mono.medium.vaxes = lib.mkDefault { };
+
+        mono.small.size = lib.mkDefault 12;
+        mono.small.weight = lib.mkDefault 400;
+        mono.small.italic = lib.mkDefault false;
+        mono.small.vaxes = lib.mkDefault { };
+
+        icon.family = lib.mkDefault "Material Symbols Rounded";
+        icon.extraLarge.size = lib.mkDefault 36;
+        icon.extraLarge.weight = lib.mkDefault 400;
+        icon.extraLarge.italic = lib.mkDefault false;
+        icon.extraLarge.vaxes = lib.mkDefault { };
+
+        icon.large.size = lib.mkDefault 24;
+        icon.large.weight = lib.mkDefault 400;
+        icon.large.italic = lib.mkDefault false;
+        icon.large.vaxes = lib.mkDefault { };
+
+        icon.medium.size = lib.mkDefault 18;
+        icon.medium.weight = lib.mkDefault 400;
+        icon.medium.italic = lib.mkDefault false;
+        icon.medium.vaxes = lib.mkDefault { };
+
+        icon.small.size = lib.mkDefault 15;
+        icon.small.weight = lib.mkDefault 400;
+        icon.small.italic = lib.mkDefault false;
+        icon.small.vaxes = lib.mkDefault { };
+      };
+
+      anim = {
+        durations.scale = lib.mkDefault 0.8;
+      };
       transparency = {
         enabled = lib.mkDefault true;
         base = lib.mkDefault 0.70;
@@ -143,12 +260,65 @@
     };
 
     bar = {
+      persistent = lib.mkDefault true;
+      showOnHover = lib.mkDefault true;
+      dragThreshold = lib.mkDefault 20;
+      scrollActions = {
+        brightness = lib.mkDefault true;
+        workspaces = lib.mkDefault true;
+        volume = lib.mkDefault true;
+      };
+      popouts = {
+        activeWindow = lib.mkDefault false;
+        statusIcons = lib.mkDefault true;
+        tray = lib.mkDefault true;
+      };
+      workspaces = {
+        shown = lib.mkDefault 5;
+        activeIndicator = lib.mkDefault true;
+        occupiedBg = lib.mkDefault false;
+        showWindows = lib.mkDefault false;
+        showWindowsOnSpecialWorkspaces = lib.mkDefault false;
+        maxWindowIcons = lib.mkDefault 1;
+        activeTrail = lib.mkDefault false;
+        activeLabel = lib.mkDefault "󰮯";
+        label = lib.mkDefault "";
+        occupiedLabel = lib.mkDefault "󰮯";
+        perMonitorWorkspaces = lib.mkDefault true;
+        specialWorkspaceIcons = lib.mkDefault [
+          {
+            name = "notes";
+            icon = "sticky_note";
+          }
+        ];
+      };
+      activeWindow = {
+        compact = lib.mkDefault true;
+        inverted = lib.mkDefault false;
+        showOnHover = lib.mkDefault true;
+      };
+      tray = {
+        background = lib.mkDefault false;
+        recolour = lib.mkDefault false;
+        compact = lib.mkDefault false;
+        iconSubs = lib.mkDefault [ ];
+        hiddenIcons = lib.mkDefault [ ];
+      };
+      status = {
+        showAudio = lib.mkDefault true;
+        showBattery = lib.mkDefault false;
+        showBluetooth = lib.mkDefault true;
+        showKbLayout = lib.mkDefault true;
+        showMicrophone = lib.mkDefault false;
+        showNetwork = lib.mkDefault true;
+        showWifi = lib.mkDefault false;
+        showLockStatus = lib.mkDefault false;
+      };
       clock = {
         background = lib.mkDefault false;
         showDate = lib.mkDefault true;
         showIcon = lib.mkDefault true;
       };
-      dragThreshold = lib.mkDefault 20;
       entries = lib.mkDefault [
         {
           id = "logo";
@@ -187,73 +357,63 @@
           enabled = true;
         }
       ];
-      persistent = lib.mkDefault true;
-      showOnHover = lib.mkDefault true;
-      popouts = {
-        activeWindow = lib.mkDefault false;
-        statusIcons = lib.mkDefault true;
-        tray = lib.mkDefault true;
-      };
-      scrollActions = {
-        brightness = lib.mkDefault true;
-        workspaces = lib.mkDefault true;
-        volume = lib.mkDefault true;
-      };
-      status = {
-        showAudio = lib.mkDefault true;
-        showBattery = lib.mkDefault false;
-        showBluetooth = lib.mkDefault true;
-        showKbLayout = lib.mkDefault true;
-        showMicrophone = lib.mkDefault false;
-        showNetwork = lib.mkDefault true;
-        showWifi = lib.mkDefault false;
-        showLockStatus = lib.mkDefault false;
-      };
-      tray = {
-        iconSubs = lib.mkDefault [ ];
-        background = lib.mkDefault false;
-        recolour = lib.mkDefault false;
-      };
-      workspaces = {
-        activeIndicator = lib.mkDefault true;
-        activeLabel = lib.mkDefault "󰮯";
-        activeTrail = lib.mkDefault false;
-        label = lib.mkDefault "";
-        occupiedBg = lib.mkDefault false;
-        occupiedLabel = lib.mkDefault "󰮯";
-        perMonitorWorkspaces = lib.mkDefault true;
-        showWindows = lib.mkDefault false;
-        showWindowsOnSpecialWorkspaces = lib.mkDefault false;
-        maxWindowIcons = lib.mkDefault 1;
-        shown = lib.mkDefault 5;
-        specialWorkspaceIcons = lib.mkDefault [
-          {
-            name = "notes";
-            icon = "sticky_note";
-          }
-        ];
-      };
       excludedScreens = lib.mkDefault [ "" ];
-      activeWindow = {
-        compact = lib.mkDefault true;
-        inverted = lib.mkDefault false;
-      };
     };
-
     border = {
-      rounding = lib.mkDefault 25;
       thickness = lib.mkDefault 2;
+      rounding = lib.mkDefault 25;
+      smoothing = lib.mkDefault 20;
     };
-
     dashboard = {
       enabled = lib.mkDefault true;
-      dragThreshold = lib.mkDefault 50;
-      mediaUpdateInterval = lib.mkDefault 500;
       showOnHover = lib.mkDefault true;
+      showDashboard = lib.mkDefault true;
+      showMedia = lib.mkDefault true;
+      showPerformance = lib.mkDefault true;
+      showWeather = lib.mkDefault true;
+      mediaUpdateInterval = lib.mkDefault 500;
+      resourceUpdateInterval = lib.mkDefault 1000;
+      dragThreshold = lib.mkDefault 50;
+      performance = {
+        showBattery = lib.mkDefault true;
+        showGpu = lib.mkDefault true;
+        showCpu = lib.mkDefault true;
+        showMemory = lib.mkDefault true;
+        showStorage = lib.mkDefault true;
+        showNetwork = lib.mkDefault true;
+      };
     };
-
     launcher = {
+      enabled = lib.mkDefault true;
+      showOnHover = lib.mkDefault false;
+      maxShown = lib.mkDefault 8;
+      maxWallpapers = lib.mkDefault 9;
+      specialPrefix = lib.mkDefault "@";
       actionPrefix = lib.mkDefault ">";
+      enableDangerousActions = lib.mkDefault true;
+      dragThreshold = lib.mkDefault 50;
+      vimKeybinds = lib.mkDefault true;
+      favouriteApps = lib.mkDefault [ ];
+      hiddenApps = lib.mkDefault [
+        "nvidia-settings"
+        "org.kde.konsole"
+        "org.kde.kwikdisk"
+        "org.kde.kdf"
+        "menu-editor"
+        "qt5ct"
+        "qt6ct"
+        "uuctl"
+        "htop"
+        "btop"
+        "nvim"
+      ];
+      useFuzzy = {
+        apps = lib.mkDefault true;
+        actions = lib.mkDefault true;
+        schemes = lib.mkDefault false;
+        variants = lib.mkDefault false;
+        wallpapers = lib.mkDefault true;
+      };
       actions = lib.mkDefault [
         {
           name = "Calculator";
@@ -289,6 +449,17 @@
           dangerous = false;
         }
         {
+          name = "Variant";
+          icon = "colors";
+          description = "Change the current scheme variant";
+          command = [
+            "autocomplete"
+            "variant"
+          ];
+          enabled = true;
+          dangerous = false;
+        }
+        {
           name = "Random";
           icon = "casino";
           description = "Switch to a random wallpaper";
@@ -296,17 +467,6 @@
             "caelestia"
             "wallpaper"
             "-r"
-          ];
-          enabled = true;
-          dangerous = false;
-        }
-        {
-          name = "Variant";
-          icon = "colors";
-          description = "Change the current scheme variant";
-          command = [
-            "autocomplete"
-            "variant"
           ];
           enabled = true;
           dangerous = false;
@@ -373,98 +533,65 @@
           command = [
             "caelestia"
             "shell"
-            "controlCenter"
+            "nexus"
             "open"
           ];
           enabled = true;
           dangerous = false;
         }
       ];
-      dragThreshold = lib.mkDefault 50;
-      vimKeybinds = true;
-      enableDangerousActions = lib.mkDefault true;
-      maxShown = lib.mkDefault 8;
-      maxWallpapers = lib.mkDefault 9;
-      specialPrefix = lib.mkDefault "@";
-      useFuzzy = {
-        apps = lib.mkDefault true;
-        actions = lib.mkDefault true;
-        schemes = lib.mkDefault false;
-        variants = lib.mkDefault false;
-        wallpapers = lib.mkDefault true;
-      };
-      showOnHover = lib.mkDefault false;
-      hiddenApps = lib.mkDefault [
-        "nvidia-settings"
-        "org.kde.konsole"
-        "org.kde.kwikdisk"
-        "org.kde.kdf"
-        "menu-editor"
-        "qt5ct"
-        "qt6ct"
-        "uuctl"
-        "htop"
-        "btop"
-        "nvim"
-      ];
     };
-
     lock = {
-      recolourLogo = lib.mkDefault false;
+      recolourLogo = lib.mkDefault true;
+      enableFprint = lib.mkDefault false;
+      maxFprintTries = lib.mkDefault 6;
       hideNotifs = lib.mkDefault true;
     };
-
-    notifs = {
-      fullscreen = lib.mkDefault "off";
-      actionOnClick = lib.mkDefault false;
-      clearThreshold = lib.mkDefault 0.3;
-      defaultExpireTimeout = lib.mkDefault 5000;
-      expandThreshold = lib.mkDefault 20;
-      openExpanded = lib.mkDefault false;
-      expire = lib.mkDefault true;
+    nexus = {
+      wallpapersPerRow = lib.mkDefault 4;
+      networkRescanInterval = lib.mkDefault 15000;
     };
-
+    notifs = {
+      expire = lib.mkDefault true;
+      fullscreen = lib.mkDefault "off";
+      defaultExpireTimeout = lib.mkDefault 5000;
+      fullscreenExpireTimeout = lib.mkDefault 2000;
+      clearThreshold = lib.mkDefault 0.3;
+      expandThreshold = lib.mkDefault 20;
+      actionOnClick = lib.mkDefault false;
+      groupPreviewNum = lib.mkDefault 3;
+      openExpanded = lib.mkDefault false;
+    };
     osd = {
       enabled = lib.mkDefault true;
       enableBrightness = lib.mkDefault true;
       enableMicrophone = lib.mkDefault false;
       hideDelay = lib.mkDefault 2000;
     };
-
-    paths = {
-      mediaGif = lib.mkDefault "~/.dotfiles/assets/nekodance.gif";
-      sessionGif = lib.mkDefault "~/.dotfiles/assets/nekolay.gif";
-      noNotifsPic = lib.mkDefault "root:/assets/dino.png";
-      lockNoNotifsPic = lib.mkDefault "root:/assets/dino.png";
-      wallpaperDir = lib.mkDefault "~/Pictures/Wallpapers";
-      lyricsDir = lib.mkDefault "~/Music/lyrics";
-    };
-
     services = {
+      weatherLocation = lib.mkDefault "";
+      useFahrenheit = lib.mkDefault false;
+      useFahrenheitPerformance = lib.mkDefault false;
+      useTwelveHourClock = lib.mkDefault false;
+      gpuType = lib.mkDefault "";
+      visualiserBars = lib.mkDefault 45;
       audioIncrement = lib.mkDefault 0.1;
       brightnessIncrement = lib.mkDefault 0.1;
       maxVolume = lib.mkDefault 1;
-      showLyrics = lib.mkDefault true;
+      smartScheme = lib.mkDefault true;
+      lyricsBackend = lib.mkDefault "Auto";
       defaultPlayer = lib.mkDefault "Spotify";
-      gpuType = lib.mkDefault "";
       playerAliases = lib.mkDefault [
         {
           from = "com.github.th_ch.youtube_music";
           to = "YT Music";
         }
       ];
-      weatherLocation = lib.mkDefault "";
-      useFahrenheit = lib.mkDefault false;
-      useFahrenheitPerformance = lib.mkDefault false;
-      useTwelveHourClock = lib.mkDefault false;
-      smartScheme = lib.mkDefault true;
-      visualiserBars = lib.mkDefault 45;
     };
-
     session = {
-      dragThreshold = lib.mkDefault 30;
       enabled = lib.mkDefault true;
-      vimKeybinds = true;
+      dragThreshold = lib.mkDefault 30;
+      vimKeybinds = lib.mkDefault true;
       icons = {
         logout = "logout";
         shutdown = "power_settings_new";
@@ -490,22 +617,25 @@
         ];
       };
     };
-
+    sidebar = {
+      enabled = lib.mkDefault true;
+      dragThreshold = lib.mkDefault 80;
+    };
     utilities = {
       enabled = lib.mkDefault true;
       maxToasts = lib.mkDefault 2;
       toasts = {
         fullscreen = lib.mkDefault "important";
-        audioInputChanged = lib.mkDefault true;
-        audioOutputChanged = lib.mkDefault true;
-        capsLockChanged = lib.mkDefault true;
-        chargingChanged = lib.mkDefault true;
         configLoaded = lib.mkDefault true;
-        dndChanged = lib.mkDefault true;
+        chargingChanged = lib.mkDefault true;
         gameModeChanged = lib.mkDefault true;
+        dndChanged = lib.mkDefault true;
+        audioOutputChanged = lib.mkDefault true;
+        audioInputChanged = lib.mkDefault true;
+        capsLockChanged = lib.mkDefault true;
+        numLockChanged = lib.mkDefault true;
         kbLayoutChanged = lib.mkDefault false;
         kbLimit = lib.mkDefault true;
-        numLockChanged = lib.mkDefault true;
         vpnChanged = lib.mkDefault true;
         nowPlaying = lib.mkDefault false;
       };
@@ -599,6 +729,14 @@
           enabled = true;
         }
       ];
+    };
+    paths = {
+      mediaGif = lib.mkDefault "~/.dotfiles/assets/nekodance.gif";
+      sessionGif = lib.mkDefault "~/.dotfiles/assets/nekolay.gif";
+      noNotifsPic = lib.mkDefault "root:/assets/dino.png";
+      lockNoNotifsPic = lib.mkDefault "root:/assets/dino.png";
+      wallpaperDir = lib.mkDefault "~/Pictures/Wallpapers";
+      lyricsDir = lib.mkDefault "~/Music/lyrics";
     };
   };
 
