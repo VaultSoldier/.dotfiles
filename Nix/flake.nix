@@ -34,7 +34,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     awww = {
-      url = "git+https://codeberg.org/LGFae/awww";
+      url = "https://codeberg.org/LGFae/awww/archive/main.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mikuboot = {
