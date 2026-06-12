@@ -1,8 +1,14 @@
 { inputs, pkgs, ... }:
+let
+  hostname = "desktop";
+in
 {
   imports = [ inputs.mikuboot.nixosModules.default ];
 
-  networking.hostName = "desktop";
+  networking.hostName = hostname;
+  environment.variables = {
+    HOSTNAME = hostname;
+  };
 
   services.syncthing = {
     key = "/run/secrets/syncthing_desktop_key";

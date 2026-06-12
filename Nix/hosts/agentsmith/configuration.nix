@@ -1,6 +1,12 @@
 { config, pkgs, ... }:
+let
+  hostname = "agentsmith";
+in
 {
-  networking.hostName = "agentsmith";
+  networking.hostName = hostname;
+  environment.variables = {
+    HOSTNAME = hostname;
+  };
 
   services.syncthing = {
     key = "/run/secrets/syncthing_agentsmith_key";
