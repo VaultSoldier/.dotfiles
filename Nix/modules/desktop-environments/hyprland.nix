@@ -54,7 +54,7 @@ lib.mkIf config.desktop.hyprland.enable {
   environment.systemPackages =
     with pkgs;
     [
-      gtk4.dev
+      libnotify # notify-send
       kdePackages.ark
       adwaita-icon-theme # gnome icons for apps
       adwaita-qt
