@@ -242,14 +242,14 @@ hl.bind(
 	{ submap_universal = true, locked = true, repeating = true }
 )
 
-hl.bind(mainMod .. " + F1", hl.dsp.exec_cmd("playerctl play-pause"), { submap_universal = true, locked = true })
-hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("playerctl previous"), { submap_universal = true, locked = true })
-hl.bind(mainMod .. " + F3", hl.dsp.exec_cmd("playerctl next"), { submap_universal = true, locked = true })
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { submap_universal = true, locked = true })
-hl.bind("XF86AudioStop", hl.dsp.exec_cmd("playerctl stop"), { submap_universal = true, locked = true })
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { submap_universal = true, locked = true })
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { submap_universal = true, locked = true })
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { submap_universal = true, locked = true })
+hl.bind(mainMod .. " + F1", hl.dsp.global("caelestia:mediaToggle"), { submap_universal = true, locked = true })
+hl.bind(mainMod .. " + F2", hl.dsp.global("caelestia:mediaPrev"), { submap_universal = true, locked = true })
+hl.bind(mainMod .. " + F3", hl.dsp.global("caelestia:mediaNext"), { submap_universal = true, locked = true })
+hl.bind("XF86AudioPlay", hl.dsp.global("caelestia:mediaToggle"), { submap_universal = true, locked = true })
+hl.bind("XF86AudioPause", hl.dsp.global("caelestia:mediaToggle"), { submap_universal = true, locked = true })
+hl.bind("XF86AudioPrev", hl.dsp.global("caelestia:mediaPrev"), { submap_universal = true, locked = true })
+hl.bind("XF86AudioNext", hl.dsp.global("caelestia:mediaNext"), { submap_universal = true, locked = true })
+hl.bind("XF86AudioStop", hl.dsp.global("caelestia:mediaStop"), { submap_universal = true, locked = true })
 
 -- Special workspaces
 hl.bind("CTRL + SHIFT + ESCAPE", hl.dsp.exec_cmd("caelestia toggle sysmon"), { submap_universal = true })
