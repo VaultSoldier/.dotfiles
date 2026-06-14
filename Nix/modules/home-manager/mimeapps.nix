@@ -7,7 +7,11 @@
       "x-scheme-handler/file" = [ "org.kde.dolphin.desktop" ];
       "x-directory/normal" = [ "org.kde.dolphin.desktop" ];
       "inode/directory" = [ "org.kde.dolphin.desktop" ];
+      "application/vnd.microsoft.portable-executable" = [ "wine.desktop" ];
       "application/x-ms-dos-executable" = [ "wine.desktop" ];
+      "application/x-msdownload" = "wine.desktop";
+      "application/x-msi" = [ "wine.desktop" ];
+
       ### TEXT EDITOR ###
       "text/plain" = [ "nvim.desktop" ];
       "text/markdown" = [ "nvim.desktop" ];
