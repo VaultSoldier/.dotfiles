@@ -24,28 +24,40 @@ RESIZE_TYPE="fit"
 export AWWW_TRANSITION_FPS="${AWWW_TRANSITION_FPS:-60}"
 export AWWW_TRANSITION_STEP="${AWWW_TRANSITION_STEP:-2}"
 
+STATEFILE="${XDG_RUNTIME_DIR:-/tmp}/awww_last_wallpaper"
+CURRENT="$(cat "$STATEFILE" 2>/dev/null)"
+
 pick_random() {
-	find "$1" -type f |
+	local dir="$1"
+	local current="$2"
+	find "$dir" -type f |
+		grep -Fxv "$current" |
 		while read -r img; do
 			echo "$(</dev/urandom tr -dc a-zA-Z0-9 | head -c 8):$img"
 		done |
 		sort -n | cut -d':' -f2- | head -n1
 }
 
+
 if $ONE_TIME; then
-	img="$(pick_random "$1")"
+	img="$(pick_random "$1" "$CURRENT")"
 	awww img --resize="$RESIZE_TYPE" "$img"
+	echo "$img" > "$STATEFILE"
 	exit 0
 fi
 
 while true; do
-	find "$1" -type f |
-		while read -r img; do
-			echo "$(</dev/urandom tr -dc a-zA-Z0-9 | head -c 8):$img"
-		done |
-		sort -n | cut -d':' -f2- |
-		while read -r img; do
-			awww img --resize="$RESIZE_TYPE" "$img"
-			sleep "${2:-$DEFAULT_INTERVAL}"
-		done
+	while read -r img; do
+		awww img --resize="$RESIZE_TYPE" "$img"
+		CURRENT="$img"
+		echo "$img" > "$STATEFILE"
+		sleep "${2:-$DEFAULT_INTERVAL}"
+	done < <(
+		find "$1" -type f |
+			grep -Fxv "$CURRENT" |
+			while read -r img; do
+				echo "$(</dev/urandom tr -dc a-zA-Z0-9 | head -c 8):$img"
+			done |
+			sort -n | cut -d':' -f2-
+	)
 done
