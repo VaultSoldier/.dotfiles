@@ -30,7 +30,7 @@ CURRENT="$(cat "$STATEFILE" 2>/dev/null)"
 pick_random() {
 	local dir="$1"
 	local current="$2"
-	find "$dir" -type f |
+	find "$dir" -type f -not -path '*/.*' |
 		grep -Fxv "$current" |
 		while read -r img; do
 			echo "$(</dev/urandom tr -dc a-zA-Z0-9 | head -c 8):$img"
