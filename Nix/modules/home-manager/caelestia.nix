@@ -1,9 +1,13 @@
 {
   inputs,
+  config,
   pkgs,
   lib,
   ...
 }:
+let
+  home = config.home.homeDirectory;
+in
 {
   imports = [ inputs.caelestia-shell.homeManagerModules.default ];
 
@@ -233,7 +237,7 @@
 
     background = {
       enabled = lib.mkDefault true;
-      wallpaperEnabled = lib.mkDefault true;
+      wallpaperEnabled = lib.mkDefault false;
       desktopClock = {
         enabled = lib.mkDefault true;
         scale = lib.mkDefault 1;
@@ -412,7 +416,7 @@
         actions = lib.mkDefault true;
         schemes = lib.mkDefault false;
         variants = lib.mkDefault false;
-        wallpapers = lib.mkDefault true;
+        wallpapers = lib.mkDefault false;
       };
       actions = lib.mkDefault [
         {
@@ -445,7 +449,7 @@
             "autocomplete"
             "wallpaper"
           ];
-          enabled = true;
+          enabled = false;
           dangerous = false;
         }
         {
@@ -464,9 +468,9 @@
           icon = "casino";
           description = "Switch to a random wallpaper";
           command = [
-            "caelestia"
-            "wallpaper"
-            "-r"
+            "${home}/.config/hypr/scripts/awww_randomize.sh"
+            "--once"
+            "${home}/Pictures/Wallpapers"
           ];
           enabled = true;
           dangerous = false;
