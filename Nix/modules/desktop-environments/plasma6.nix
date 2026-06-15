@@ -17,7 +17,6 @@ lib.mkIf config.desktop.plasma6.enable {
   ];
 
   environment.systemPackages = with pkgs; [
-    kdePackages.kcolorchooser # A small utility to select a color
     kdePackages.kolourpaint # Easy-to-use paint program
     kdePackages.ksystemlog # KDE SystemLog Application
     wl-clipboard # Command-line copy/paste utilities for Wayland
