@@ -17,7 +17,7 @@
     rustdesk
     virt-viewer # spice viewer
     obsidian
-    open-scq30
+    # open-scq30
   ];
 
   # TODO: remove when bitwarden updates
