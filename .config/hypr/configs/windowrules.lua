@@ -16,17 +16,6 @@ hl.window_rule({
 	opacity = 0.85,
 })
 
-hl.layer_rule({
-	match = { namespace = "caelestia-drawers" },
-	blur = true,
-	ignore_alpha = 0.5,
-})
-hl.layer_rule({
-	match = { namespace = "caelestia-background" },
-	blur = true,
-	ignore_alpha = 0.5,
-})
-
 local function opacity_rule(class, value)
 	hl.window_rule({ match = { class = class }, opacity = value })
 end
