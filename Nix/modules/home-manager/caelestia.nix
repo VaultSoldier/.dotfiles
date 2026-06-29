@@ -620,9 +620,9 @@ in
       };
     };
     sidebar = {
-      enabled = lib.mkdefault true;
-      showOnHover = lib.mkdefault false;
-      minHoverThreshold = lib.mkdefault 200;
+      enabled = lib.mkDefault true;
+      showOnHover = lib.mkDefault false;
+      minHoverThreshold = lib.mkDefault 200;
       dragThreshold = lib.mkDefault 80;
     };
     utilities = {
