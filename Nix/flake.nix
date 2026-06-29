@@ -37,10 +37,6 @@
       url = "https://codeberg.org/LGFae/awww/archive/main.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mikuboot = {
-      url = "gitlab:evysgarden/mikuboot";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -57,7 +53,6 @@
       plasma-manager,
       caelestia-shell,
       awww,
-      mikuboot,
       ...
     }:
     let

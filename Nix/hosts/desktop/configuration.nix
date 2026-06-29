@@ -3,8 +3,6 @@ let
   hostname = "desktop";
 in
 {
-  imports = [ inputs.mikuboot.nixosModules.default ];
-
   networking.hostName = hostname;
   environment.variables = {
     HOSTNAME = hostname;
@@ -20,8 +18,6 @@ in
 
     plymouth = {
       enable = true;
-      themePackages = [ pkgs.mikuboot ];
-      theme = "mikuboot";
     };
 
     loader = {

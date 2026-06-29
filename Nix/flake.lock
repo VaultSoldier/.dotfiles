@@ -302,27 +302,6 @@
         "type": "github"
       }
     },
-    "mikuboot": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "utils": "utils"
-      },
-      "locked": {
-        "lastModified": 1752335637,
-        "narHash": "sha256-u7tvFX8KGMB+AmBDLzmYouPfFhijRq6AY1RAYk+GFkY=",
-        "owner": "evysgarden",
-        "repo": "mikuboot",
-        "rev": "772b12f6a63286e1b7e0e2fdc74aff14320957df",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "evysgarden",
-        "repo": "mikuboot",
-        "type": "gitlab"
-      }
-    },
     "nixos-hardware": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -458,7 +437,6 @@
         "caelestia-shell": "caelestia-shell",
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
-        "mikuboot": "mikuboot",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "plasma-manager": "plasma-manager",
@@ -512,7 +490,7 @@
     "spicetify-nix": {
       "inputs": {
         "nixpkgs": "nixpkgs_3",
-        "systems": "systems_2"
+        "systems": "systems"
       },
       "locked": {
         "lastModified": 1782633406,
@@ -541,7 +519,7 @@
           "nixpkgs"
         ],
         "nur": "nur",
-        "systems": "systems_3",
+        "systems": "systems_2",
         "tinted-kitty": "tinted-kitty",
         "tinted-schemes": "tinted-schemes",
         "tinted-tmux": "tinted-tmux",
@@ -577,21 +555,6 @@
       }
     },
     "systems_2": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_3": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
@@ -667,24 +630,6 @@
       "original": {
         "owner": "tinted-theming",
         "repo": "base16-zed",
-        "type": "github"
-      }
-    },
-    "utils": {
-      "inputs": {
-        "systems": "systems"
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
         "type": "github"
       }
     },
