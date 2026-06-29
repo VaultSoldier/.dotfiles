@@ -214,6 +214,7 @@ in
       idle = {
         lockBeforeSleep = lib.mkDefault true;
         inhibitWhenAudio = lib.mkDefault true;
+        inhibitWhenCharging = lib.mkDefault false;
         timeouts = lib.mkDefault [
           {
             timeout = 600;
@@ -223,6 +224,9 @@ in
           {
             timeout = 750;
             idleAction = "lock";
+            inhibitWhenAudio = false;
+            inhibitWhenCharging = false;
+            respectInhibitors = true;
           }
           {
             timeout = 900;
@@ -542,6 +546,7 @@ in
       ];
     };
     lock = {
+      enabled = lib.mkDefault true;
       recolourLogo = lib.mkDefault true;
       enableFprint = lib.mkDefault false;
       maxFprintTries = lib.mkDefault 6;
@@ -615,7 +620,9 @@ in
       };
     };
     sidebar = {
-      enabled = lib.mkDefault true;
+      enabled = lib.mkdefault true;
+      showOnHover = lib.mkdefault false;
+      minHoverThreshold = lib.mkdefault 200;
       dragThreshold = lib.mkDefault 80;
     };
     utilities = {
