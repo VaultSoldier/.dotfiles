@@ -227,7 +227,6 @@ in
           {
             timeout = 900;
             idleAction = [
-              "systemctl"
               "suspend"
             ];
           }
@@ -480,7 +479,6 @@ in
           icon = "power_settings_new";
           description = "Shutdown the system";
           command = [
-            "systemctl"
             "poweroff"
           ];
           enabled = true;
@@ -491,7 +489,6 @@ in
           icon = "cached";
           description = "Reboot the system";
           command = [
-            "systemctl"
             "reboot"
           ];
           enabled = true;
@@ -524,7 +521,6 @@ in
           icon = "bedtime";
           description = "Suspend";
           command = [
-            "systemctl"
             "suspend"
           ];
           enabled = true;
@@ -608,15 +604,12 @@ in
           "stop"
         ];
         shutdown = lib.mkDefault [
-          "systemctl"
           "poweroff"
         ];
         hibernate = lib.mkDefault [
-          "systemctl"
           "hibernate"
         ];
         reboot = lib.mkDefault [
-          "systemctl"
           "reboot"
         ];
       };

@@ -14,7 +14,6 @@
       {
         timeout = 600;
         idleAction = [
-          "systemctl"
           "suspend-then-hibernate"
         ];
       }

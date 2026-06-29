@@ -14,7 +14,6 @@
       {
         timeout = 1000;
         idleAction = [
-          "systemctl"
           "suspend"
         ];
       }
@@ -47,15 +46,12 @@
         "stop"
       ];
       shutdown = [
-        "systemctl"
         "poweroff"
       ];
-      hibernate = [
-        "systemctl"
-        "hibernate"
+      suspend = [
+        "suspend"
       ];
       reboot = [
-        "systemctl"
         "reboot"
       ];
     };
