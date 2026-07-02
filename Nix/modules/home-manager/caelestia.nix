@@ -550,6 +550,9 @@ in
       recolourLogo = lib.mkDefault true;
       enableFprint = lib.mkDefault false;
       maxFprintTries = lib.mkDefault 6;
+      enableHowdy = lib.mkDefault false;
+      maxHowdyTries = lib.mkDefault 3;
+      triggerHowdyOnWake = lib.mkDefault false;
       hideNotifs = lib.mkDefault true;
     };
     nexus = {
