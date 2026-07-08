@@ -2,6 +2,7 @@
 {
   imports = [
     ./audio.nix
+    ./builders.nix
     ./locale.nix
     ./sddm.nix
     ./security.nix
