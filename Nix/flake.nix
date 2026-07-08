@@ -3,6 +3,7 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    colmena.url = "github:zhaofengli/colmena";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -43,6 +44,7 @@
     inputs@{
       self,
       nixpkgs,
+      colmena,
       nixos-hardware,
       spicetify-nix,
       home-manager,
@@ -75,6 +77,27 @@
       ];
     in
     {
+      colmenaHive = colmena.lib.makeHive {
+        meta = {
+          nixpkgs = import nixpkgs {
+            system = "x86_64-linux";
+            overlays = [ ];
+          };
+        };
+
+        nixbuild =
+          {
+            name,
+            nodes,
+            pkgs,
+            ...
+          }:
+          {
+            imports = [ ./hosts/nixbuild ];
+            networking.hostName = "nixbuild";
+          };
+      };
+
       nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
