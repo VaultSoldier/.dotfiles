@@ -5,7 +5,7 @@
     settings = {
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
-      PermitRootLogin = "no";
+      PermitRootLogin = "prohibit-password";
       AllowUsers = lib.mkDefault [
         "vs"
       ];
