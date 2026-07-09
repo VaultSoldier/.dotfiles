@@ -93,6 +93,9 @@
             ...
           }:
           {
+            deployment = {
+              targetHost = "nixbuild";
+            };
             imports = [ ./hosts/nixbuild ];
             networking.hostName = "nixbuild";
           };
