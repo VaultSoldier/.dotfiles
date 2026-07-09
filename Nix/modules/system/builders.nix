@@ -1,9 +1,16 @@
 { ... }: {
+  programs.ssh.extraConfig = ''
+    Host nixbuild-root
+      HostName 192.168.11.127
+      User root
+      StrictHostKeyChecking ask
+      IdentityFile /run/secrets/build_key
+  '';
+
   nix.buildMachines = [
     {
-      hostName = "nixbuild";
+      hostName = "nixbuild-root";
       system = "x86_64-linux";
-      sshUser = "build";
       maxJobs = 12;
       speedFactor = 1;
       supportedFeatures = [ ];
