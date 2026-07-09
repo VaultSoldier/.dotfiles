@@ -10,13 +10,17 @@
 
   sops.secrets.wireguard_key = { };
   sops.secrets.syncthing_gui_pass = {
+    mode = "0440";
     owner = "vs";
     group = "users";
-    mode = "0440";
+  };
+  sops.secrets.build_key = {
+    mode = "0400";
+    owner = "root";
+    group = "root";
   };
   sops.secrets.syncthing_desktop_key = { };
   sops.secrets.syncthing_desktop_cert = { };
-
   sops.secrets.syncthing_agentsmith_key = { };
   sops.secrets.syncthing_agentsmith_cert = { };
 }
