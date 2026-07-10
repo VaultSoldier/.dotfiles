@@ -8,7 +8,4 @@
 
   stylix.enable = true;
   stylix.targets.plymouth.enable = false;
-
-  # TODO: Remove when fixed
-  stylix.targets.kmscon.enable = false;
 }
