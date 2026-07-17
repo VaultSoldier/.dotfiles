@@ -47,7 +47,6 @@
   environment.systemPackages = with pkgs; [
     man-pages
     fwupd
-    cryfs
     file
     git
     git-extras
