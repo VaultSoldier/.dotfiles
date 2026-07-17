@@ -22,6 +22,7 @@
 
   # TODO: remove when bitwarden updates
   nixpkgs.config.permittedInsecurePackages = [
+    "electron-40.10.5"
     "electron-39.8.10"
   ];
 
