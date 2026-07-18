@@ -126,6 +126,7 @@
     extensions.packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
       bitwarden
       ublock-origin
+      privacy-badger
       ublacklist
       sponsorblock
       canvasblocker
