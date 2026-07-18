@@ -76,7 +76,7 @@ bindkey -e
 
 # exceptions for backward-kill-word
 # removes [/ . $ - = " #] from $WORDCHARS
-WORDCHARS=${WORDCHARS//[\/\.\$\-\=\"\#]}
+WORDCHARS=${WORDCHARS//[\/\.\$\-\=\"\#\*]}
 
 # home/end
 bindkey "^[[H" beginning-of-line
