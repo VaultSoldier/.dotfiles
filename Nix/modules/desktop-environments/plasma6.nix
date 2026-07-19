@@ -7,6 +7,7 @@
 lib.mkIf config.desktop.plasma6.enable {
   services = {
     desktopManager.plasma6.enable = true;
+    fwupd.enable = true;
   };
 
   environment.plasma6.excludePackages = with pkgs; [
@@ -21,4 +22,5 @@ lib.mkIf config.desktop.plasma6.enable {
     kdePackages.ksystemlog # KDE SystemLog Application
     wl-clipboard # Command-line copy/paste utilities for Wayland
   ];
+
 }

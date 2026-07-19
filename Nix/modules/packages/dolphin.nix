@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   services.gvfs.enable = true; # mtp
+  services.udisks2.enable = true;
 
   environment.systemPackages = with pkgs; [
     kdePackages.dolphin

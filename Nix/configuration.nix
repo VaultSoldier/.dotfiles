@@ -41,9 +41,7 @@
     ZDOTDIR = "$HOME/.config/zsh";
   };
 
-  services.udisks2.enable = true;
-  services.fwupd.enable = true;
-
+  programs.nano.enable = false;
   environment.systemPackages = with pkgs; [
     man-pages
     fwupd
@@ -54,7 +52,6 @@
     wget
     curl
   ];
-  programs.nano.enable = false;
 
   boot.kernelParams = [
     # fix for LANGTU LT75PRO-2.4G FN being always active
