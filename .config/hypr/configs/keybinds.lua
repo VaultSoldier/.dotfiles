@@ -116,8 +116,7 @@ hl.define_submap("resize", function()
 end)
 
 -- Launcher
--- hl.bind(mainMod .. " + R", hl.dsp.global("caelestia:launcher"), { submap_universal = true })
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("caelestia shell drawers toggle launcher"), { submap_universal = true })
+hl.bind(mainMod .. " + R", hl.dsp.global("caelestia:launcher"), { submap_universal = true })
 
 -- Window
 hl.bind(mainMod .. " + Q", hl.dsp.window.close(), { submap_universal = true })
