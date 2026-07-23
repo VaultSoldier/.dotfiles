@@ -54,6 +54,8 @@ hl.config({
 	-- See https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/ for more
 	scrolling = {
 		fullscreen_on_one_column = true,
+		column_width = 0.5,
+		wrap_swapcol = false,
 	},
 
 	misc = {
