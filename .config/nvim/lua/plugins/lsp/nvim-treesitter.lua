@@ -19,7 +19,6 @@ return { -- Highlight, edit, and navigate code
       'lua',
       'luadoc',
       'desktop',
-      'hyprlang',
       'markdown',
       'markdown_inline',
       'dockerfile',
