@@ -19,12 +19,17 @@
       }
     ];
 
-    bar.status = {
-      showWifi = false;
-      showBluetooth = true;
-      showBattery = true;
-      showMicrophone = false;
-    };
+    bar.statusIcons = [
+      /*nixfmt:disable*/
+      { id = "lockStatus"; enabled = false; }
+      { id = "audio"; enabled = true; }
+      { id = "microphone"; enabled = false; }
+      { id = "kbLayout"; enabled = true; }
+      { id = "network"; enabled = true; }
+      { id = "bluetooth"; enabled = true; }
+      { id = "battery"; enabled = true; }
+      /*nixfmt:enable*/
+    ];
 
     osd = {
       enableMicrophone = false;

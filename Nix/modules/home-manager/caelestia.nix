@@ -18,7 +18,7 @@ in
     cava # audio visualizer
     aubio # audio analysis
     bluez # bluetooth
-    pavucontrol # audio control
+    pwvucontrol # audio control
     brightnessctl # brightness control
     cliphist # clipboard history
     wl-clipboard # clipboard support
@@ -183,7 +183,7 @@ in
       sessionGifSpeed = lib.mkDefault 0.7;
       apps = {
         terminal = lib.mkDefault [ "kitty" ];
-        audio = lib.mkDefault [ "pavucontrol" ];
+        audio = lib.mkDefault [ "pwvucontrol" ];
         explorer = lib.mkDefault [ "dolphin" ];
         playback = lib.mkDefault [ "mpv" ];
       };
@@ -298,6 +298,16 @@ in
             icon = "sticky_note";
           }
         ];
+        ignoredTags = lib.mkDefault [
+          "hide_in_bar"
+          "xwl_popup"
+        ];
+        windowIcons = lib.mkDefault [
+          {
+            regex = "steam(_app_(default|[0-9]+))?";
+            icon = "sports_esports";
+          }
+        ];
       };
       activeWindow = {
         compact = lib.mkDefault true;
@@ -311,58 +321,34 @@ in
         iconSubs = lib.mkDefault [ ];
         hiddenIcons = lib.mkDefault [ ];
       };
-      status = {
-        showAudio = lib.mkDefault true;
-        showBattery = lib.mkDefault false;
-        showBluetooth = lib.mkDefault true;
-        showKbLayout = lib.mkDefault true;
-        showMicrophone = lib.mkDefault false;
-        showNetwork = lib.mkDefault true;
-        showWifi = lib.mkDefault false;
-        showLockStatus = lib.mkDefault false;
-      };
+      statusIcons = lib.mkDefault [
+        /*nixfmt:disable*/
+        { id = "lockStatus"; enabled = false; }
+        { id = "audio"; enabled = true; }
+        { id = "microphone"; enabled = false; }
+        { id = "kbLayout"; enabled = true; }
+        { id = "network"; enabled = true; }
+        { id = "bluetooth"; enabled = true; }
+        { id = "battery"; enabled = false; }
+        /*nixfmt:enable*/
+      ];
       clock = {
         background = lib.mkDefault false;
         showDate = lib.mkDefault true;
         showIcon = lib.mkDefault true;
       };
       entries = lib.mkDefault [
-        {
-          id = "logo";
-          enabled = true;
-        }
-        {
-          id = "workspaces";
-          enabled = true;
-        }
-        {
-          id = "spacer";
-          enabled = true;
-        }
-        {
-          id = "activeWindow";
-          enabled = true;
-        }
-        {
-          id = "spacer";
-          enabled = true;
-        }
-        {
-          id = "tray";
-          enabled = true;
-        }
-        {
-          id = "clock";
-          enabled = true;
-        }
-        {
-          id = "statusIcons";
-          enabled = true;
-        }
-        {
-          id = "power";
-          enabled = true;
-        }
+        /*nixfmt:disable*/
+        { id = "logo"; enabled = true; }
+        { id = "workspaces"; enabled = true; }
+        { id = "spacer"; enabled = true; }
+        { id = "activeWindow"; enabled = true; }
+        { id = "spacer"; enabled = true; }
+        { id = "tray"; enabled = true; }
+        { id = "clock"; enabled = true; }
+        { id = "statusIcons"; enabled = true; }
+        { id = "power"; enabled = true; }
+        /*nixfmt:enable*/
       ];
       excludedScreens = lib.mkDefault [ "" ];
     };
@@ -534,12 +520,9 @@ in
           name = "Settings";
           icon = "settings";
           description = "Configure the shell";
-          command = [
-            "caelestia"
-            "shell"
-            "nexus"
-            "open"
-          ];
+          /*nixfmt:disable*/
+          command = [ "caelestia" "shell" "nexus" "open" ];
+          /*nixfmt:enable*/
           enabled = true;
           dangerous = false;
         }
@@ -547,6 +530,7 @@ in
     };
     lock = {
       enabled = lib.mkDefault true;
+      useWallpaper = lib.mkDefault false;
       recolourLogo = lib.mkDefault true;
       enableFprint = lib.mkDefault false;
       maxFprintTries = lib.mkDefault 6;
@@ -607,19 +591,12 @@ in
         reboot = "cached";
       };
       commands = {
-        logout = lib.mkDefault [
-          "uwsm"
-          "stop"
-        ];
-        shutdown = lib.mkDefault [
-          "poweroff"
-        ];
-        hibernate = lib.mkDefault [
-          "hibernate"
-        ];
-        reboot = lib.mkDefault [
-          "reboot"
-        ];
+        /*nixfmt:disable*/
+        logout = lib.mkDefault [ "uwsm" "stop" ];
+        shutdown = lib.mkDefault [ "poweroff" ];
+        hibernate = lib.mkDefault [ "hibernate" ];
+        reboot = lib.mkDefault [ "reboot" ];
+        /*nixfmt:enable*/
       };
     };
     sidebar = {
@@ -707,34 +684,15 @@ in
         ];
       };
       quickToggles = lib.mkDefault [
-        {
-          id = "wifi";
-          enabled = true;
-        }
-        {
-          id = "bluetooth";
-          enabled = true;
-        }
-        {
-          id = "mic";
-          enabled = true;
-        }
-        {
-          id = "settings";
-          enabled = true;
-        }
-        {
-          id = "gameMode";
-          enabled = true;
-        }
-        {
-          id = "dnd";
-          enabled = true;
-        }
-        {
-          id = "vpn";
-          enabled = true;
-        }
+        /*nixfmt:disable*/
+        { id = "wifi"; enabled = true; }
+        { id = "bluetooth"; enabled = true; }
+        { id = "mic"; enabled = true; }
+        { id = "settings"; enabled = true; }
+        { id = "gameMode"; enabled = true; }
+        { id = "dnd"; enabled = true; }
+        { id = "vpn"; enabled = true; }
+        /*nixfmt:enable*/
       ];
     };
     paths = {
@@ -798,16 +756,9 @@ in
               workspace.name = "special:sysmon";
             }
           ];
-          command = [
-            "kitty"
-            "--class"
-            "btop"
-            "--title"
-            "btop"
-            "zsh"
-            "-c"
-            "exec btop"
-          ];
+          /*nixfmt:disable*/
+          command = [ "kitty" "--app-id" "btop" "-T" "btop" "zsh" "-c" "exec btop" ];
+          /*nixfmt:enable*/
         };
         notes.obsidian = {
           enable = true;
