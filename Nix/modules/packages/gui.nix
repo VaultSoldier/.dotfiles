@@ -20,16 +20,17 @@
     # open-scq30
   ];
 
-  # TODO: remove when bitwarden updates
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-39.8.10"
-  ];
-
   programs.amnezia-vpn.enable = true;
+
   programs.winbox = {
     enable = true;
     package = pkgs.winbox4;
     openFirewall = true;
+  };
+
+  programs.throne = {
+    enable = true;
+    tunMode.enable = true;
   };
 
   # onlyoffice has trouble with symlinks: https://github.com/ONLYOFFICE/DocumentServer/issues/1859
