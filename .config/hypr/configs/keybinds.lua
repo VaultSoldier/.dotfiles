@@ -137,7 +137,7 @@ hl.bind(
 )
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("app2unit -- " .. browser), { submap_universal = true })
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("app2unit -- " .. editor), { submap_universal = true })
-hl.bind("CTRL+ALT+V", hl.dsp.exec_cmd("app2unit -- pavucontrol"), { submap_universal = true })
+hl.bind("CTRL+ALT+V", hl.dsp.exec_cmd("app2unit -- pwvucontrol"), { submap_universal = true })
 
 -- Utilities
 hl.bind(mainMod .. " + CTRL+S", hl.dsp.global("caelestia:screenshotFreezeClip"), { submap_universal = true })
