@@ -13,7 +13,7 @@ if hostname == "desktop" then
 	hl.monitor({
 		output = "desc:LG Electronics LG FULL HD 503NDFV8J979",
 		mode = "1920x1080@60",
-		position = "2560x200",
+		position = "-1920x150",
 		scale = 1,
 	})
 	hl.monitor({
