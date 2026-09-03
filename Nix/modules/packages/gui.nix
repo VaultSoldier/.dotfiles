@@ -20,17 +20,21 @@
     # open-scq30
   ];
 
-  programs.amnezia-vpn.enable = true;
-
+  programs.amnezia-vpn = {
+    enable = true;
+  };
   programs.winbox = {
     enable = true;
     package = pkgs.winbox4;
     openFirewall = true;
   };
-
   programs.throne = {
     enable = true;
     tunMode.enable = true;
+  };
+  programs.localsend = {
+    enable = true;
+    openFirewall = true;
   };
 
   # onlyoffice has trouble with symlinks: https://github.com/ONLYOFFICE/DocumentServer/issues/1859
