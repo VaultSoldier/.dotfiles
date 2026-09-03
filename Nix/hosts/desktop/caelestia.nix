@@ -44,19 +44,10 @@
       weatherLocation = "Chelyabinsk";
     };
 
-    session.commands = {
-      logout = [
-        "uwsm"
-        "stop"
-      ];
-      shutdown = [
-        "poweroff"
-      ];
-      suspend = [
+    session = {
+      icons.hibernate = "moon_stars";
+      commands.hibernate = [
         "suspend"
-      ];
-      reboot = [
-        "reboot"
       ];
     };
 

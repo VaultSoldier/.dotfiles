@@ -585,10 +585,10 @@ in
       dragThreshold = lib.mkDefault 30;
       vimKeybinds = lib.mkDefault true;
       icons = {
-        logout = "logout";
-        shutdown = "power_settings_new";
-        hibernate = "downloading";
-        reboot = "cached";
+        logout = lib.mkDefault "logout";
+        shutdown = lib.mkDefault "power_settings_new";
+        hibernate = lib.mkDefault "downloading";
+        reboot = lib.mkDefault "cached";
       };
       commands = {
         /*nixfmt:disable*/
