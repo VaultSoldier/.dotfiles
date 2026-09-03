@@ -15,19 +15,20 @@
     networking.wireguard.enable = true;
     networking.wg-quick.interfaces =
       let
-        server_ip = "hf409axs4qe.sn.mynetname.net";
-        privateKey = "/run/secrets/wireguard_key";
-        pubKey = "q2WjzV7OcpyxCpGQGKU80e65RrZDi1MdKVtc++LqFBk=";
+        server_endpoint = "hj20a9erp9b.vpn.mynetname.net";
+        privateKey_full = "/run/secrets/wg_full_key";
+        privateKey_alwaysOn = "/run/secrets/wg_alwayson_key";
+        pubKey = "sZyVXC7ma/OrExzPnGrO/pAsDxMvrkn7iljTpRx3Oh8=";
       in
       {
         split-home = {
-          autostart = true;
+          autostart = false;
           address = [
             "192.168.216.5/32"
             "fc00:0:0:216::5/128"
           ];
           dns = [ "192.168.216.1" ];
-          privateKeyFile = privateKey;
+          privateKeyFile = privateKey_alwaysOn;
 
           peers = [
             {
@@ -37,7 +38,7 @@
                 "192.168.216.0/24"
               ];
               publicKey = pubKey;
-              endpoint = "${server_ip}:61302";
+              endpoint = "${server_endpoint}:47842";
               persistentKeepalive = 15;
             }
           ];
@@ -46,11 +47,11 @@
         exit-home = {
           autostart = false;
           address = [
-            "192.168.216.5/32"
-            "fc00:0:0:216::5/128"
+            "192.168.216.4/32"
+            "fc00:0:0:216::4/128"
           ];
           dns = [ "192.168.216.1" ];
-          privateKeyFile = privateKey;
+          privateKeyFile = privateKey_full;
 
           peers = [
             {
@@ -59,62 +60,10 @@
                 "::/0"
               ];
               publicKey = pubKey;
-              endpoint = "${server_ip}:61302";
+              endpoint = "${server_endpoint}:47842";
               persistentKeepalive = 15;
             }
           ];
-
-          preUp = ''
-            systemctl stop wg-quick-exit-home-nolan
-            systemctl stop wg-quick-split-home
-          '';
-          postDown = ''
-            systemctl start wg-quick-split-home
-          '';
-        };
-
-        exit-home-nolan = {
-          autostart = false;
-          address = [
-            "192.168.216.5/32"
-            "fc00:0:0:216::5/128"
-          ];
-          dns = [ "192.168.216.1" ];
-          privateKeyFile = privateKey;
-
-          peers = [
-            {
-              allowedIPs = [
-                "0.0.0.0/0"
-                "::/0"
-              ];
-              publicKey = pubKey;
-              endpoint = "${server_ip}:61302";
-              persistentKeepalive = 15;
-            }
-          ];
-
-          preUp = ''
-            systemctl stop wg-quick-exit-home
-            systemctl stop wg-quick-split-home
-          '';
-          preDown = ''
-            ip rule del to 10.0.0.0/8      lookup main priority 50
-            ip rule del to 172.16.0.0/12   lookup main priority 50
-            ip rule del to 192.168.20.0/24 lookup main priority 50
-            ip rule del to 192.168.1.0/24  lookup main priority 50
-            ip rule del to 127.0.0.0/8    lookup main priority 50
-          '';
-          postUp = ''
-            ip rule add to 10.0.0.0/8      lookup main priority 50
-            ip rule add to 172.16.0.0/12   lookup main priority 50
-            ip rule add to 192.168.20.0/24 lookup main priority 50
-            ip rule add to 192.168.1.0/24  lookup main priority 50
-            ip rule add to 127.0.0.0/8    lookup main priority 50
-          '';
-          postDown = ''
-            systemctl start wg-quick-split-home
-          '';
         };
       };
 
@@ -131,8 +80,7 @@
 
     environment.shellAliases = {
       vpn-full = "sudo systemctl start wg-quick-exit-home";
-      vpn-nolan = "sudo systemctl start wg-quick-exit-home-nolan";
-      vpn-off = "sudo systemctl stop wg-quick-exit-home && sudo systemctl stop wg-quick-exit-home-nolan";
+      vpn-off = "sudo systemctl stop wg-quick-exit-home";
       vpn-alwayson = "sudo systemctl start wg-quick-split-home";
       vpn-alwaysoff = "sudo systemctl stop wg-quick-split-home";
     };
@@ -155,14 +103,6 @@
           }
           {
             command = "/run/current-system/sw/bin/systemctl stop wg-quick-exit-home";
-            options = [ "NOPASSWD" ];
-          }
-          {
-            command = "/run/current-system/sw/bin/systemctl start wg-quick-exit-home-nolan";
-            options = [ "NOPASSWD" ];
-          }
-          {
-            command = "/run/current-system/sw/bin/systemctl stop wg-quick-exit-home-nolan";
             options = [ "NOPASSWD" ];
           }
         ];

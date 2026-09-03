@@ -628,20 +628,20 @@ in
         provider = lib.mkDefault [
           {
             name = "wireguard";
-            interface = "exit-home-nolan";
-            displayName = "WG (ExitNode-HomeNoLan)";
+            interface = "split-home";
+            displayName = "WG (Split-Home)";
             enabled = true;
             connectCmd = [
               "sudo"
               "systemctl"
               "start"
-              "wg-quick-exit-home-nolan"
+              "wg-quick-split-home"
             ];
             disconnectCmd = [
               "sudo"
               "systemctl"
               "stop"
-              "wg-quick-exit-home-nolan"
+              "wg-quick-split-home"
             ];
           }
           {
@@ -662,25 +662,6 @@ in
               "wg-quick-exit-home"
             ];
           }
-          {
-            name = "wireguard";
-            interface = "split-home";
-            displayName = "WG (Split-Home)";
-            enabled = false;
-            connectCmd = [
-              "sudo"
-              "systemctl"
-              "start"
-              "wg-quick-split-home"
-            ];
-            disconnectCmd = [
-              "sudo"
-              "systemctl"
-              "stop"
-              "wg-quick-split-home"
-            ];
-          }
-
         ];
       };
       quickToggles = lib.mkDefault [

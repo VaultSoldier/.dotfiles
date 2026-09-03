@@ -8,7 +8,8 @@
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/vs/.config/sops/age/keys.txt";
 
-  sops.secrets.wireguard_key = { };
+  sops.secrets.wg_full_key = { };
+  sops.secrets.wg_alwayson_key = { };
   sops.secrets.syncthing_gui_pass = {
     mode = "0440";
     owner = "vs";
