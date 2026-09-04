@@ -34,7 +34,7 @@
       };
       WorkSecond = {
         color = "red";
-        icon = "office";
+        icon = "dollar";
         id = 5;
       };
     };
