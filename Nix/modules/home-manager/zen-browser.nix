@@ -32,6 +32,11 @@
         icon = "briefcase";
         id = 4;
       };
+      WorkSecond = {
+        color = "red";
+        icon = "office";
+        id = 5;
+      };
     };
     spaces =
       let
@@ -61,6 +66,12 @@
           icon = "💼";
           container = containers."Work".id;
           position = 4000;
+        };
+        "WorkSecond" = {
+          id = "f2dc613a-c205-4069-9e66-32b317ed32f0";
+          icon = "🏢";
+          container = containers."WorkSecond".id;
+          position = 5000;
         };
       };
 
