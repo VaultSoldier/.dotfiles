@@ -43,6 +43,7 @@ opacity_rule("spotify", 0.80)
 opacity_rule("org.telegram.desktop", 0.85)
 
 for _, match in ipairs({
+	{ class = "bitwarden" },
 	{ class = "Bitwarden" },
 	{ class = "zen", title = "^(.*)Extension:(.*)Bitwarden(.*)$" },
 }) do
