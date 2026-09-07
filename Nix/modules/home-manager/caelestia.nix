@@ -705,7 +705,7 @@ in
           discord = {
             enable = true;
             match = [ { class = "vesktop"; } ];
-            move = true;
+            move = false;
           };
           telegram = {
             enable = true;
