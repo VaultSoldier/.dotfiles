@@ -120,6 +120,7 @@
             system = {
               flatpak.enable = false;
               wg.enable = false;
+              ssh.enable = true;
             };
 
             home-manager.users.vs.imports = [ ./hosts/desktop/home-manager.nix ];
@@ -149,6 +150,7 @@
             };
             system = {
               wg.enable = true;
+              ssh.enable = true;
               power_management.enable = true;
             };
 

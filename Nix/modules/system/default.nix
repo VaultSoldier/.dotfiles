@@ -7,6 +7,7 @@
     ./sddm.nix
     ./security.nix
     ./network.nix
+    ./openssh.nix
     ./power-management.nix
     ./sops.nix
     ./flatpak.nix
@@ -18,6 +19,7 @@
   system.fprintd.enable = lib.mkDefault false;
   system.power_management.enable = lib.mkDefault false;
   system.wg.enable = lib.mkDefault false;
+  system.ssh.enable = lib.mkDefault true;
 
   programs.nh = {
     enable = true;

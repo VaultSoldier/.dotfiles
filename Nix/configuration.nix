@@ -31,6 +31,9 @@
       "adbuser"
       "kvm"
     ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICFl6mK/MgyQ/PM1/JKllrjldJjYuN4BKPgMfcIb6wPR"
+    ];
   };
 
   # system-wide zsh
