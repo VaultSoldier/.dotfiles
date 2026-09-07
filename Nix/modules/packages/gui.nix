@@ -1,10 +1,38 @@
 { pkgs, ... }:
+let
+  termix-appimage = pkgs.fetchurl {
+    url = "https://github.com/Termix-SSH/Termix/releases/download/release-2.7.1-tag/termix_linux_x64_appimage.AppImage";
+    sha256 = "0mxdsccjmp1yla8rclqpzgygfxp8xh3i84qz6nbgj2kxmm4km4ad";
+  };
+
+  termix = pkgs.appimageTools.wrapType2 {
+    pname = "termix";
+    version = "2.7.1";
+    src = termix-appimage;
+  };
+
+  termix-desktop = pkgs.makeDesktopItem {
+    name = "termix";
+    desktopName = "Termix";
+    comment = "Self-hosted SSH and remote desktop management";
+    exec = "${termix}/bin/termix %U";
+    icon = "termix";
+    terminal = false;
+    type = "Application";
+    categories = [
+      "Network"
+      "RemoteAccess"
+      "Utility"
+    ];
+  };
+in
 {
   environment.systemPackages = with pkgs; [
+    termix
+    termix-desktop
     mpv
     kitty
     kdePackages.gwenview
-    filezilla
     qbittorrent
     sqlitebrowser
     dbeaver-bin
