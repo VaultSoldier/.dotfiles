@@ -20,7 +20,8 @@ alias vi='nvim'
 alias tf='terraform'
 alias distrobox-arch='distrobox enter arch'
 alias ssh-list="rg '^\s*Host\s+' ~/.ssh/config | awk '{print $2}'"
-alias ssh-work-list="rg '^\s*Host\s+' ~/.ssh/config-work | awk '{print $2}'"
+alias ssh-ssk-list="rg '^\s*Host\s+' ~/.ssh/config-ssk | awk '{print $2}'"
+alias ssh-har-list="rg '^\s*Host\s+' ~/.ssh/config-har | awk '{print $2}'"
 alias zapret='sudo systemctl start zapret.service'
 alias zapretOff='sudo systemctl stop zapret.service'
 
