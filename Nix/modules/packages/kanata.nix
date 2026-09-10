@@ -35,7 +35,8 @@
           (defvar
            tap-time 200
            hold-time 200
-           rapid-hold-time 150
+           rapid-tap-time 160
+           rapid-hold-time 140
           )
 
           (defsrc
@@ -51,10 +52,10 @@
            ;; hold      -> real Alt, fires as soon as another key is pressed (fast combos)
            ;; tap once  -> normal Alt tap
            ;; tap twice -> press+hold Alt AND toggle the fnrow layer
-           lalt (tap-hold-press $tap-time $rapid-hold-time
+           lalt (tap-hold-press $rapid-tap-time $rapid-hold-time
                   (tap-dance $tap-time (lalt (multi lalt (layer-toggle fnrow))))
                   lalt)
-           lmet (tap-hold-press $tap-time $rapid-hold-time
+           lmet (tap-hold-press $rapid-tap-time $rapid-hold-time
                   (tap-dance $tap-time (lmet (multi lmet (layer-toggle fnrow))))
                   lmet)
           )
