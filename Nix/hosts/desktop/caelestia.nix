@@ -41,7 +41,7 @@
 
     services = {
       gpuType = "nvidia";
-      weatherLocation = "Chelyabinsk";
+      weatherLocation = "Tyumen";
     };
 
     session = {
