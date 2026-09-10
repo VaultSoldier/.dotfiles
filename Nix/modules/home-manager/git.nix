@@ -21,6 +21,14 @@
           user.signingkey = "~/.ssh/pubkeys-ssk/work_id_ed25519.pub";
         };
       }
+      {
+        condition = "hasconfig:remote.*.url:ssh://git@gitlab.nvmeit.ru/**";
+        contents = {
+          user.name = "ldn";
+          user.email = "3-ldn@users.noreply.gitlab.nvmeit.ru";
+          user.signingkey = "~/.ssh/pubkeys-har/har_git_id_ed25519.pub";
+        };
+      }
     ];
   };
 }
