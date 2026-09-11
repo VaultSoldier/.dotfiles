@@ -45,6 +45,7 @@ in
     rustdesk
     virt-viewer # spice viewer
     obsidian
+    easyeffects
     # open-scq30
   ];
 
