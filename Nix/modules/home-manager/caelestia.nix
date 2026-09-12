@@ -744,7 +744,7 @@ in
         notes.obsidian = {
           enable = true;
           match = [
-            { class = "md.Obsidian"; }
+            { class = "md.obsidian.Obsidian"; }
           ];
           command = [ "obsidian" ];
           move = true;
