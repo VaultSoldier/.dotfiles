@@ -46,18 +46,19 @@
           )
 
           (defalias
-           caps (tap-hold $tap-time $hold-time esc (layer-toggle arrow))
-           del del  ;; Alias for the true delete key action
+           caps (tap-hold $tap-time $hold-time (unmod (lsft rsft) esc) (layer-toggle arrow))
+           del del
 
-           ;; hold      -> real Alt, fires as soon as another key is pressed (fast combos)
-           ;; tap once  -> normal Alt tap
-           ;; tap twice -> press+hold Alt AND toggle the fnrow layer
            lalt (tap-hold-press $rapid-tap-time $rapid-hold-time
                   (tap-dance $tap-time (lalt (multi lalt (layer-toggle fnrow))))
                   lalt)
            lmet (tap-hold-press $rapid-tap-time $rapid-hold-time
                   (tap-dance $tap-time (lmet (multi lmet (layer-toggle fnrow))))
                   lmet)
+          )
+
+          (defoverrides
+           (lsft esc) (lsft grv)
           )
 
           (deflayer base
