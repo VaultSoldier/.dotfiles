@@ -51,6 +51,7 @@
     file
     git
     git-extras
+    git-crypt
     gitleaks
     wget
     curl
