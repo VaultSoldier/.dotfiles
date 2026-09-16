@@ -284,18 +284,38 @@ in
         shown = lib.mkDefault 5;
         activeIndicator = lib.mkDefault true;
         occupiedBg = lib.mkDefault false;
+        showUnoccupied = lib.mkDefault true;
         showWindows = lib.mkDefault false;
         showWindowsOnSpecialWorkspaces = lib.mkDefault false;
         maxWindowIcons = lib.mkDefault 1;
         activeTrail = lib.mkDefault false;
-        activeLabel = lib.mkDefault "󰮯";
+        displayType = lib.mkDefault "shapes";
+        specialDisplayType = lib.mkDefault "icons";
         label = lib.mkDefault "";
         occupiedLabel = lib.mkDefault "󰮯";
-        perMonitorWorkspaces = lib.mkDefault true;
+        activeLabel = lib.mkDefault "󰮯";
+        capitalisation = lib.mkDefault "preserve";
+        workspaceIcons = lib.mkDefault [ ];
         specialWorkspaceIcons = lib.mkDefault [
+          {
+            name = "special";
+            icon = "star";
+          }
+          {
+            name = "communication";
+            icon = "forum";
+          }
+          {
+            name = "music";
+            icon = "music_cast";
+          }
           {
             name = "notes";
             icon = "sticky_note";
+          }
+          {
+            name = "sysmon";
+            icon = "monitor_heart";
           }
         ];
         ignoredTags = lib.mkDefault [
@@ -562,10 +582,11 @@ in
     };
     services = {
       weatherLocation = lib.mkDefault "";
-      useFahrenheit = lib.mkDefault false;
-      useFahrenheitPerformance = lib.mkDefault false;
+      weatherUnits = lib.mkDefault "Celsius";
+      sensorUnits = lib.mkDefault "Celsius";
       useTwelveHourClock = lib.mkDefault false;
-      gpuType = lib.mkDefault "";
+      dataUnits = lib.mkDefault "Binary";
+      gpuType = lib.mkDefault "Auto";
       visualiserBars = lib.mkDefault 45;
       audioIncrement = lib.mkDefault 0.1;
       brightnessIncrement = lib.mkDefault 0.1;
