@@ -1,10 +1,15 @@
 { pkgs, ... }:
 
 {
+  users.users.vs.extraGroups = [ "podman" ];
+
   virtualisation = {
     containers.enable = true;
-    containers.registries = {
-      search = [ "docker.io" ];
+    containers.registries.settings = {
+      registry = [
+        { location = "docker.io"; }
+        { location = "quay.io"; }
+      ];
     };
     podman = {
       enable = true;
@@ -12,8 +17,6 @@
       defaultNetwork.settings.dns_enabled = true;
     };
   };
-
-  users.users.vs.extraGroups = [ "podman" ];
 
   boot.binfmt = {
     emulatedSystems = [
@@ -26,7 +29,7 @@
   environment.systemPackages = with pkgs; [
     dive
     podman-tui
-    podman-desktop
+    #podman-desktop
     podman-compose
     distrobox
   ];
