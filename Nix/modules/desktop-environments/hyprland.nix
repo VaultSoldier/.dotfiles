@@ -66,7 +66,7 @@ lib.mkIf config.desktop.hyprland.enable {
 
   systemd.user.services.polkit-kde-authentication-agent-1 = {
     description = "KDE PolicyKit authentication agent";
-    wantedBy = [ "graphical-session.target" ];
+    # Do not autostart via graphical-session.target.
     partOf = [ "graphical-session.target" ];
     serviceConfig = {
       Type = "simple";
