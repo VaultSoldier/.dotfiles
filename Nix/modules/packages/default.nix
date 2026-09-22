@@ -32,9 +32,10 @@
     speedtest-cli
     stow
     htop
-    ncdu # gui du
+    ncdu # tui du
     fastfetch
     ipfetch
+    pi-coding-agent
   ];
 
   programs.tmux.enable = true;
