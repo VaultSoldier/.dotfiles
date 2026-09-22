@@ -127,6 +127,20 @@ in
         };
         devices = all_devices;
       };
+      pi_auth = {
+        path = "~/.pi/agent";
+        ignorePatterns = [
+          "!auth.json"
+          "**"
+        ];
+        versioning = {
+          type = "staggered";
+          params = {
+            maxAge = "2764800";
+          };
+        };
+        devices = all_devices;
+      };
     };
   };
 }
