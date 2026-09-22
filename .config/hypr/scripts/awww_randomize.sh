@@ -21,8 +21,9 @@ fi
 
 # See awww-img(1)
 RESIZE_TYPE="crop"
-export AWWW_TRANSITION_FPS="${AWWW_TRANSITION_FPS:-60}"
-export AWWW_TRANSITION_STEP="${AWWW_TRANSITION_STEP:-2}"
+TRANSITION_TYPE="wipe"
+export AWWW_TRANSITION_FPS="${AWWW_TRANSITION_FPS:-180}"
+export AWWW_TRANSITION_STEP="${AWWW_TRANSITION_STEP:-12}"
 
 STATEFILE="${XDG_RUNTIME_DIR:-/tmp}/awww_last_wallpaper"
 CURRENT="$(cat "$STATEFILE" 2>/dev/null)"
@@ -41,14 +42,14 @@ pick_random() {
 
 if $ONE_TIME; then
 	img="$(pick_random "$1" "$CURRENT")"
-	awww img --resize="$RESIZE_TYPE" "$img"
+	awww img --resize="$RESIZE_TYPE" --transition-type="$TRANSITION_TYPE" "$img"
 	echo "$img" > "$STATEFILE"
 	exit 0
 fi
 
 while true; do
 	while read -r img; do
-		awww img --resize="$RESIZE_TYPE" "$img"
+		awww img --resize="$RESIZE_TYPE" --transition-type="$TRANSITION_TYPE" "$img"
 		CURRENT="$img"
 		echo "$img" > "$STATEFILE"
 		sleep "${2:-$DEFAULT_INTERVAL}"
