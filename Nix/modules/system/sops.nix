@@ -20,6 +20,11 @@
     owner = "root";
     group = "root";
   };
+  sops.secrets.bitwarden_master_password = {
+    mode = "0400";
+    owner = "vs";
+    group = "users";
+  };
   sops.secrets.syncthing_desktop_key = { };
   sops.secrets.syncthing_desktop_cert = { };
   sops.secrets.syncthing_agentsmith_key = { };

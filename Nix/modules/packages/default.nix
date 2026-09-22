@@ -1,6 +1,7 @@
 { pkgs, lib, ... }:
 {
   imports = [
+    ./bitwarden.nix
     ./code.nix
     ./dolphin.nix
     ./gui.nix

@@ -38,7 +38,6 @@ in
     dbeaver-bin
     chromium
     telegram-desktop
-    bitwarden-desktop
     nextcloud-client
     nextcloud-talk-desktop
     onlyoffice-desktopeditors
