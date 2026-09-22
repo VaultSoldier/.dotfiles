@@ -49,8 +49,8 @@ in
       documents = {
         path = "~/Documents/DocSync";
         ignorePatterns = [
-          ".venv"
-          "__pycache__"
+          "(?d).venv"
+          "(?d)__pycache__"
         ];
         versioning = {
           type = "simple";
@@ -64,14 +64,14 @@ in
       projects = {
         path = "~/Projects/";
         ignorePatterns = [
-          ".venv"
-          "__pycache__"
-          "node_modules"
-          "build"
-          "out"
-          ".pytest_cache"
-          ".idea"
-          ".vscode"
+          "(?d).venv"
+          "(?d)__pycache__"
+          "(?d)node_modules"
+          "(?d)build"
+          "(?d)out"
+          "(?d).pytest_cache"
+          "(?d).idea"
+          "(?d).vscode"
           "*.pyc"
           ".DS_Store"
         ];
