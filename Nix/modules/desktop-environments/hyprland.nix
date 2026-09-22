@@ -58,10 +58,23 @@ lib.mkIf config.desktop.hyprland.enable {
       inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
       libnotify # notify-send
       kdePackages.ark
+      kdePackages.polkit-kde-agent-1
       adwaita-icon-theme # gnome icons for apps
       adwaita-qt
     ]
     ++ scripts;
+
+  systemd.user.services.polkit-kde-authentication-agent-1 = {
+    description = "KDE PolicyKit authentication agent";
+    wantedBy = [ "graphical-session.target" ];
+    partOf = [ "graphical-session.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecCondition = "${pkgs.bash}/bin/bash -lc 'case \"$XDG_CURRENT_DESKTOP\" in *Hyprland*|hyprland) exit 0;; *) exit 1;; esac'";
+      ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+      Restart = "on-abnormal";
+    };
+  };
 
   programs.uwsm.enable = true;
   hardware.i2c.enable = true; # needed for uwsm, ddcutil
