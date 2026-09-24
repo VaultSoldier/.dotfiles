@@ -131,6 +131,7 @@ in
         path = "~/.pi/agent";
         ignorePatterns = [
           "!auth.json"
+          "!models.json"
           "**"
         ];
         versioning = {
