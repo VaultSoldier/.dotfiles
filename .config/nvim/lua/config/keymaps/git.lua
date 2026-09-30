@@ -30,6 +30,11 @@ function M.Init(map)
   map('n', '<leader>hR', gitsigns.reset_buffer, { desc = 'git [R]eset buffer' })
   map('n', '<leader>hp', gitsigns.preview_hunk, { desc = 'git [p]review hunk' })
   map('n', '<leader>hb', gitsigns.blame_line, { desc = 'git [b]lame line' })
+  map('n', '<leader>ha', function()
+    for i = 1, vim.api.nvim_buf_line_count(0) do
+      gitsigns.blame_line { line = i, virt_line = false }
+    end
+  end, { desc = '[a]ll line blame' })
   map('n', '<leader>hd', gitsigns.diffthis, { desc = 'git [d]iff against index' })
 
   map('n', '<leader>hD', function()
