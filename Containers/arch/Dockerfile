@@ -12,7 +12,7 @@ RUN reflector \
 
 ENV GOPATH="/home/vs/.local/share/go"
 RUN pacman -Syu --needed --noconfirm base-devel sudo unzip go github-cli man-db tealdeer \ 
-    tmux git git-zsh-completion neovim ripgrep zoxide fzf stow tmux npm imagemagick zsh
+    tmux git git-zsh-completion neovim tree-sitter-cli ripgrep zoxide fzf stow tmux npm imagemagick zsh
 
 FROM base as user
 RUN useradd -m vs && \
@@ -34,7 +34,7 @@ RUN yay -S --noconfirm oh-my-posh
 
 # Zsh setup
 RUN sh -c "$(curl -fsSL https://git.io/zinit-install)" && \
-    echo 'source ~/.zshrc' >> ~/.zshenv
+    echo 'source ~/.config/zsh/.zshrc' >> ~/.zshenv
 
 # Dotfiles
 RUN git clone https://github.com/VaultSoldier/.dotfiles.git ~/.dotfiles && \
