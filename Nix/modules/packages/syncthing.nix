@@ -132,6 +132,8 @@ in
         ignorePatterns = [
           "!auth.json"
           "!models.json"
+          "!settings.json"
+          "!npm/**"
           "**"
         ];
         versioning = {
