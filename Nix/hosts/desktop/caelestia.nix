@@ -13,21 +13,19 @@
       }
       {
         timeout = 1000;
-        idleAction = [
-          "suspend"
-        ];
+        idleAction = [ "suspend" ];
       }
     ];
 
     bar.statusIcons = [
       /*nixfmt:disable*/
-      { id = "lockStatus"; enabled = false; }
-      { id = "audio"; enabled = true; }
-      { id = "microphone"; enabled = false; }
-      { id = "kbLayout"; enabled = true; }
-      { id = "network"; enabled = true; }
-      { id = "bluetooth"; enabled = true; }
-      { id = "battery"; enabled = false; }
+      { enabled = false; id = "lockStatus"; }
+      { enabled = true; id = "audio"; }
+      { enabled = false; id = "microphone"; }
+      { enabled = true; id = "kbLayout"; }
+      { enabled = true; id = "network"; }
+      { enabled = true; id = "bluetooth"; }
+      { enabled = false; id = "battery"; }
       /*nixfmt:enable*/
     ];
     bar.tray = {
@@ -35,20 +33,17 @@
       iconSubs = [ ];
     };
 
-    osd = {
-      enableMicrophone = true;
-    };
+    lock.enableSessionControls = true;
+    osd.enableMicrophone = true;
 
     services = {
-      gpuType = "nvidia";
       weatherLocation = "Tyumen";
+      gpuType = "nvidia";
     };
 
     session = {
       icons.hibernate = "moon_stars";
-      commands.hibernate = [
-        "suspend"
-      ];
+      commands.hibernate = [ "suspend" ];
     };
 
     utilities.vpn = {
@@ -57,34 +52,15 @@
     };
 
     utilities.quickToggles = [
-      {
-        id = "wifi";
-        enabled = false;
-      }
-      {
-        id = "bluetooth";
-        enabled = true;
-      }
-      {
-        id = "mic";
-        enabled = true;
-      }
-      {
-        id = "settings";
-        enabled = true;
-      }
-      {
-        id = "gameMode";
-        enabled = true;
-      }
-      {
-        id = "dnd";
-        enabled = true;
-      }
-      {
-        id = "vpn";
-        enabled = false;
-      }
+      /*nixfmt:disable*/
+      { enabled = false; id = "wifi"; }
+      { enabled = true; id = "bluetooth"; }
+      { enabled = true; id = "mic"; }
+      { enabled = true; id = "settings"; }
+      { enabled = true; id = "gameMode"; }
+      { enabled = true; id = "dnd"; }
+      { enabled = false; id = "vpn"; }
+      /*nixfmt:enable*/
     ];
   };
 }

@@ -285,6 +285,7 @@ in
         activeIndicator = lib.mkDefault true;
         occupiedBg = lib.mkDefault false;
         showUnoccupied = lib.mkDefault true;
+        perMonitor = lib.mkDefault true;
         showWindows = lib.mkDefault false;
         showWindowsOnSpecialWorkspaces = lib.mkDefault false;
         maxWindowIcons = lib.mkDefault 1;
@@ -558,6 +559,7 @@ in
       maxHowdyTries = lib.mkDefault 3;
       triggerHowdyOnWake = lib.mkDefault false;
       hideNotifs = lib.mkDefault true;
+      enableSessionControls = lib.mkDefault true;
     };
     nexus = {
       wallpapersPerRow = lib.mkDefault 4;
@@ -584,7 +586,7 @@ in
       weatherLocation = lib.mkDefault "";
       weatherUnits = lib.mkDefault "Celsius";
       sensorUnits = lib.mkDefault "Celsius";
-      useTwelveHourClock = lib.mkDefault false;
+      clockFormat = lib.mkDefault "TwentyFourHour";
       dataUnits = lib.mkDefault "Binary";
       gpuType = lib.mkDefault "Auto";
       visualiserBars = lib.mkDefault 45;
@@ -628,6 +630,7 @@ in
     };
     utilities = {
       enabled = lib.mkDefault true;
+      vpn.selectedProvider = lib.mkDefault "split-home";
       maxToasts = lib.mkDefault 2;
       toasts = {
         fullscreen = lib.mkDefault "important";
@@ -648,10 +651,10 @@ in
         enabled = lib.mkDefault true;
         provider = lib.mkDefault [
           {
+            id = "split-home";
             name = "wireguard";
             interface = "split-home";
             displayName = "WG (Split-Home)";
-            enabled = true;
             connectCmd = [
               "sudo"
               "systemctl"
@@ -666,10 +669,10 @@ in
             ];
           }
           {
+            id = "exit-home";
             name = "wireguard";
             interface = "exit-home";
             displayName = "WG (ExitNode-Home)";
-            enabled = false;
             connectCmd = [
               "sudo"
               "systemctl"
