@@ -22,7 +22,23 @@
         };
       }
       {
+        condition = "hasconfig:remote.*.url:git@gitlab.ssk-yamal.ru*:*/**";
+        contents = {
+          user.name = "agent_smith";
+          user.email = "35-agent_smith@users.noreply.gitlab.ssk-yamal.ru";
+          user.signingkey = "~/.ssh/pubkeys-ssk/work_id_ed25519.pub";
+        };
+      }
+      {
         condition = "hasconfig:remote.*.url:ssh://git@gitlab.nvmeit.ru/**";
+        contents = {
+          user.name = "ldn";
+          user.email = "3-ldn@users.noreply.gitlab.nvmeit.ru";
+          user.signingkey = "~/.ssh/pubkeys-har/har_git_id_ed25519.pub";
+        };
+      }
+      {
+        condition = "hasconfig:remote.*.url:git@gitlab.nvmeit.ru:*/**";
         contents = {
           user.name = "ldn";
           user.email = "3-ldn@users.noreply.gitlab.nvmeit.ru";
