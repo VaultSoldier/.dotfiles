@@ -1,16 +1,20 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 let
+  # separate instance so the package set doesn't inherit the nixos-unstable config
+  nixpkgs-stable = import inputs.nixpkgs-stable {
+    system = pkgs.system;
+    config.allowUnfree = true;
+  };
+
   termix-appimage = pkgs.fetchurl {
     url = "https://github.com/Termix-SSH/Termix/releases/download/release-2.7.1-tag/termix_linux_x64_appimage.AppImage";
     sha256 = "0mxdsccjmp1yla8rclqpzgygfxp8xh3i84qz6nbgj2kxmm4km4ad";
   };
-
   termix = pkgs.appimageTools.wrapType2 {
     pname = "termix";
     version = "2.7.1";
     src = termix-appimage;
   };
-
   termix-desktop = pkgs.makeDesktopItem {
     name = "termix";
     desktopName = "Termix";
@@ -41,11 +45,11 @@ in
     nextcloud-client
     nextcloud-talk-desktop
     onlyoffice-desktopeditors
-    rustdesk
+    nixpkgs-stable.rustdesk
     virt-viewer # spice viewer
     obsidian
     easyeffects
-    # open-scq30
+    open-scq30
   ];
 
   programs.amnezia-vpn = {

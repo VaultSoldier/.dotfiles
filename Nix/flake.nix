@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-26.05";
     flake-parts.url = "github:hercules-ci/flake-parts";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     colmena.url = "github:zhaofengli/colmena";
