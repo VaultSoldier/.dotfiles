@@ -1,17 +1,17 @@
 { ... }:
-{ 
+let
+  fdCommand = ''
+    fd --type f
+       --exclude .git --exclude node_modules --exclude .nix-profile
+       --exclude "$HOME/.wine/dosdevices/z" --exclude "$HOME/.wine/drive_c"
+       --exclude "$HOME/.steam/steam/steamapps/compatdata" --exclude "$HOME/.steam/steam/steamrt64/steam-runtime-steamrt"
+  '';
+in
+{
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
-    defaultCommand = ''
-      fd --type f --exclude 
-          "$HOME/.wine/dosdevices/z" "$HOME/.wine/drive_c"
-          "$HOME/.steam/steam/steamapps/compatdata" "$HOME/.steam/steam/steamrt64/steam-runtime-steamrt"
-    '';
-    fileWidget.command = ''
-      fd --type f --exclude 
-          "$HOME/.wine/dosdevices/z" "$HOME/.wine/drive_c"
-          "$HOME/.steam/steam/steamapps/compatdata" "$HOME/.steam/steam/steamrt64/steam-runtime-steamrt"
-    '';
+    defaultCommand = fdCommand;
+    fileWidget.command = fdCommand;
   };
 }

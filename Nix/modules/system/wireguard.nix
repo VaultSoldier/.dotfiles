@@ -69,6 +69,9 @@
       };
 
     networking.firewall = {
+      # rpfilter drops replies that arrive on an interface inconsistent with
+      # the routing table (asymmetric routing via the wg interface); exempt
+      # UDP 61302 in both directions so that traffic keeps flowing.
       extraCommands = ''
         ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 61302 -j RETURN
         ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 61302 -j RETURN

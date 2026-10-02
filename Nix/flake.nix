@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     flake-parts.url = "github:hercules-ci/flake-parts";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     colmena.url = "github:zhaofengli/colmena";
@@ -47,7 +46,6 @@
       flake-parts,
       nixpkgs,
       colmena,
-      nixos-hardware,
       spicetify-nix,
       home-manager,
       sops-nix,
