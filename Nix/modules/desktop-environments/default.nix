@@ -18,6 +18,5 @@
   config.environment.variables = {
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     NIXOS_OZONE_WL = "1";
-    ZDOTDIR="$HOME/.config/zsh";
   };
 }
