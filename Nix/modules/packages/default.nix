@@ -9,6 +9,7 @@
     ./neovim.nix
     ./podman.nix
     ./syncthing.nix
+    ./termix.nix
     ./virt-manager.nix
   ];
 
