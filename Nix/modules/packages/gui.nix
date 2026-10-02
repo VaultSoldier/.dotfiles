@@ -7,12 +7,12 @@ let
   };
 
   termix-appimage = pkgs.fetchurl {
-    url = "https://github.com/Termix-SSH/Termix/releases/download/release-2.7.1-tag/termix_linux_x64_appimage.AppImage";
-    sha256 = "0mxdsccjmp1yla8rclqpzgygfxp8xh3i84qz6nbgj2kxmm4km4ad";
+    url = "https://github.com/Termix-SSH/Termix/releases/download/release-2.9.0-tag/termix_linux_x64_appimage.AppImage";
+    sha256 = "sha256-txRP3cK7V61gRXZT8MR9b5mYDWoEY0fEz+gyPauaKOA=";
   };
   termix = pkgs.appimageTools.wrapType2 {
     pname = "termix";
-    version = "2.7.1";
+    version = "2.9.0";
     src = termix-appimage;
   };
   termix-desktop = pkgs.makeDesktopItem {
