@@ -3,9 +3,8 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  networking = {
-    networkmanager.enable = true;
-  };
+  services.avahi.enable = true;
+  networking.networkmanager.enable = true;
 
   users.users.vs.extraGroups = [ "networkmanager" ];
 
@@ -21,9 +20,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
   networking.firewall.allowedTCPPorts = [ ];
   networking.firewall.allowedUDPPorts = [ ];
