@@ -6,7 +6,7 @@
       StrictHostKeyChecking ask
       IdentityFile /run/secrets/build_key
 
-    Host ssk-nixbuild-root
+    Host ssk-tf-nixos-build-root
       HostName 10.100.11.154
       User root
       StrictHostKeyChecking ask
@@ -23,10 +23,10 @@
         supportedFeatures = [ ];
       }
       {
-        hostName = "ssk-nixbuild-root";
+        hostName = "ssk-tf-nixos-build-root";
         system = "x86_64-linux";
         maxJobs = 12;
-        speedFactor = 2;
+        speedFactor = 5;
         supportedFeatures = [ ];
       }
     ];

@@ -113,11 +113,11 @@
               }:
               {
                 deployment = {
-                  targetHost = "ssk-nixbuild";
+                  targetHost = "ssk-tf-nixos-build";
                   targetUser = "root";
                 };
                 imports = [ ./hosts/ssk-nixbuild ];
-                networking.hostName = "ssk-nixbuild";
+                networking.hostName = "tf-nixos-build";
               };
           };
 
