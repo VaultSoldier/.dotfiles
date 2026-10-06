@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   imports = [ ../packages/neovim.nix ];
 
   environment.systemPackages = with pkgs; [
@@ -21,8 +21,10 @@
     "root"
   ];
 
-  users.users."root".openssh.authorizedKeys.keys = [
+  users.users."root".openssh.authorizedKeys.keys = lib.mkDefault [
+    # id_ed25519
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICFl6mK/MgyQ/PM1/JKllrjldJjYuN4BKPgMfcIb6wPR"
+    # nixos_builders_id_ed25519
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFOGNmRtpH21mg+LKkUdcuczVEoppkl5Gwtiyv+uKehJ"
   ];
   users.users."vs".openssh.authorizedKeys.keys = [
@@ -34,7 +36,10 @@
     dates = "weekly";
     options = "--delete-older-than 30d";
   };
-  nix.settings.auto-optimise-store = true;
+  nix.settings = {
+    auto-optimise-store = true;
+    experimental-features = [ "nix-command" "flakes" ];
+  };
 
   networking.firewall.allowedTCPPorts = [ ];
   networking.firewall.allowedUDPPorts = [ ];
