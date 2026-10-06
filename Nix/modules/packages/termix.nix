@@ -1,11 +1,11 @@
 { pkgs, ... }:
 let
-  version = "2.9.0";
+  version = "2.9.2";
   tag = "release-${version}-tag";
 
   termix-appimage = pkgs.fetchurl {
     url = "https://github.com/Termix-SSH/Termix/releases/download/${tag}/termix_linux_x64_appimage.AppImage";
-    sha256 = "sha256-txRP3cK7V61gRXZT8MR9b5mYDWoEY0fEz+gyPauaKOA=";
+    sha256 = "sha256-6s67Sbe88l9TbJDd12if98taTA6eAJoI4sbXybtiX9g=";
   };
   termix = pkgs.appimageTools.wrapType2 {
     pname = "termix";
