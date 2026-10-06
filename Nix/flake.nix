@@ -103,6 +103,22 @@
                 imports = [ ./hosts/nixbuild ];
                 networking.hostName = "nixbuild";
               };
+
+            ssk-nixbuild =
+              {
+                name,
+                nodes,
+                pkgs,
+                ...
+              }:
+              {
+                deployment = {
+                  targetHost = "ssk-nixbuild";
+                  targetUser = "root";
+                };
+                imports = [ ./hosts/ssk-nixbuild ];
+                networking.hostName = "ssk-nixbuild";
+              };
           };
 
           nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
