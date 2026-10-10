@@ -3,13 +3,13 @@
     Host nixbuild-root
       HostName 192.168.11.127
       User root
-      StrictHostKeyChecking ask
+      StrictHostKeyChecking accept-new
       IdentityFile /run/secrets/build_key
 
     Host ssk-tf-nixos-build-root
       HostName 10.100.11.154
       User root
-      StrictHostKeyChecking ask
+      StrictHostKeyChecking accept-new
       IdentityFile /run/secrets/build_key
   '';
 
