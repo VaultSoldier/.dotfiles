@@ -10,6 +10,7 @@
 
   sops.secrets.wg_full_key = { };
   sops.secrets.wg_alwayson_key = { };
+  sops.secrets.wg_work_key = { };
   sops.secrets.syncthing_gui_pass = {
     mode = "0440";
     owner = "vs";

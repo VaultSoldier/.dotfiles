@@ -18,6 +18,7 @@
         server_endpoint = "hj20a9erp9b.vpn.mynetname.net";
         privateKey_full = "/run/secrets/wg_full_key";
         privateKey_alwaysOn = "/run/secrets/wg_alwayson_key";
+        privateKey_work = "/run/secrets/wg_work_key";
         pubKey = "sZyVXC7ma/OrExzPnGrO/pAsDxMvrkn7iljTpRx3Oh8=";
       in
       {
@@ -66,6 +67,32 @@
             }
           ];
         };
+
+        exit-work = {
+          autostart = false;
+          listenPort = 51820;
+          address = [
+            "192.168.216.7/32"
+            "fc00:0:0:216::7/128"
+          ];
+          dns = [ "192.168.216.1" ];
+          privateKeyFile = privateKey_work;
+
+          peers = [
+            # Default route: everything goes through this tunnel except the
+            # subnets claimed by split-home (alwayson) — its more specific /24
+            # routes win in the kernel routing table while both are up.
+            {
+              allowedIPs = [
+                "0.0.0.0/0"
+                "::/0"
+              ];
+              publicKey = "jRnN+5bbk2D410ASvKUxdtw/qEZ87uU03SUwxmOOK0Q=";
+              endpoint = "hjr0azpe3x8.vpn.mynetname.net:50865";
+              persistentKeepalive = 30;
+            }
+          ];
+        };
       };
 
     networking.firewall = {
@@ -85,6 +112,8 @@
     environment.shellAliases = {
       vpn-full = "sudo systemctl start wg-quick-exit-home";
       vpn-off = "sudo systemctl stop wg-quick-exit-home";
+      vpn-work = "sudo systemctl start wg-quick-exit-work";
+      vpn-work-off = "sudo systemctl stop wg-quick-exit-work";
       vpn-alwayson = "sudo systemctl start wg-quick-split-home";
       vpn-alwaysoff = "sudo systemctl stop wg-quick-split-home";
     };
@@ -107,6 +136,14 @@
           }
           {
             command = "/run/current-system/sw/bin/systemctl stop wg-quick-exit-home";
+            options = [ "NOPASSWD" ];
+          }
+          {
+            command = "/run/current-system/sw/bin/systemctl start wg-quick-exit-work";
+            options = [ "NOPASSWD" ];
+          }
+          {
+            command = "/run/current-system/sw/bin/systemctl stop wg-quick-exit-work";
             options = [ "NOPASSWD" ];
           }
         ];
