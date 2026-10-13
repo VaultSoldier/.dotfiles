@@ -1,11 +1,11 @@
 { pkgs, ... }:
 let
-  version = "2.9.2";
-  tag = "release-${version}-tag";
+  version = "26.10.1";
+  tag = "v${version}";
 
   termix-appimage = pkgs.fetchurl {
     url = "https://github.com/Termix-SSH/Termix/releases/download/${tag}/termix_linux_x64_appimage.AppImage";
-    sha256 = "sha256-6s67Sbe88l9TbJDd12if98taTA6eAJoI4sbXybtiX9g=";
+    sha256 = "sha256-DVEFLMYs7M4Z616C9bLJW4sjwXckCWsLp8gWsVCOniI=";
   };
   termix = pkgs.appimageTools.wrapType2 {
     pname = "termix";
@@ -40,18 +40,18 @@ let
         };
       svg = pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/Termix-SSH/Termix/${tag}/public/icon.svg";
-        sha256 = "sha256-2vof0LhtaI85IbipZ9+1MKlL/qHwcrRal6KpGOMlzXE=";
+        sha256 = "sha256-/khZwx7HJwJoLE1CEblGUvM8TM40ct6bu8rZ6uwBi98=";
       };
       sizes = {
-        "16x16" = "sha256-thCbcfTuPLAXwJyhUbJMhj2EKX9bL2s4x+1W8oZ2KQ8=";
-        "24x24" = "sha256-j91GMM8FbJXvB0soZ+JjV0T9J9CK8D5cjyuyfPPXlow=";
-        "32x32" = "sha256-vjj3pGTFFW53gHgq6TzsdCZXM50EESXvH7eQmCPLXQI=";
-        "48x48" = "sha256-wU/aBt0xLmGcLREf57jmSycdnPq/XL8rso5O4/mSnoE=";
-        "64x64" = "sha256-YcjB1/JMLVDxJPbGqX50U7bYna1xxF4wDjiodxg2epY=";
-        "128x128" = "sha256-bhUwOIGoqjzDVnBDDb/9mWcoiUdPEgcBVptPSv8AhvE=";
-        "256x256" = "sha256-UxRpRUd1OEMQkU9QL6MHsd4o2Uz+3H91K8wlOvTcsf0=";
-        "512x512" = "sha256-HBgIJ59SJ+qBPWEGJYjhbSDUvZ9orC/e4rrDjGvzyjg=";
-        "1024x1024" = "sha256-vOra/ol/UXy0JGPtgCDsyzK37wzYevnOpIr5TS48nLk=";
+        "16x16" = "sha256-pbpnL2YVnEOCFDT/NXeffJJiiGNqKKd5jCUMCEcnKBE=";
+        "24x24" = "sha256-ld/eokEgNx+wddPRSuuL+mtcZ/9E2Kshzxe6xCfjUGw=";
+        "32x32" = "sha256-I5nzOyqTkjBbuaRZAb1e+w//5dfW0Ee6GZkjpT/QyyQ=";
+        "48x48" = "sha256-gpkYjml5CKDx2LV61Po38ASaNjQdU2XLbPQLHW6GBms=";
+        "64x64" = "sha256-ksmRris2ZI5NZErBM+ffEa0k3+8xwjaFvpfSvyZDXMg=";
+        "128x128" = "sha256-MdSzgozIPW/JANrsBrkpWNn3Z9yt681cWng0KGqI6Ko=";
+        "256x256" = "sha256-3q+a/qrbILNHEYj1JX+cYou0CVRkSfTTK19ck6bUafM=";
+        "512x512" = "sha256-TYCkoV9Ciov6H4VDSgQjAbQM8oQWfg6iKs6zSDybLUA=";
+        "1024x1024" = "sha256-AY4ETdVqu9ajAXB2COydJfNU16FicW6W2F9KPJuCLGo=";
       };
       installPngs = pkgs.lib.concatStringsSep "\n" (
         pkgs.lib.mapAttrsToList (size: sha256: ''
