@@ -21,6 +21,7 @@
 
     session = {
       icons.hibernate = "bedtime";
+      commands.hibernate = [ "suspend" ];
     };
 
     bar.statusIcons = [
