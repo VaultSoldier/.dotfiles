@@ -19,6 +19,10 @@
       }
     ];
 
+    session = {
+      icons.hibernate = "bedtime";
+    };
+
     bar.statusIcons = [
       /*nixfmt:disable*/
       { id = "lockStatus"; enabled = false; }
