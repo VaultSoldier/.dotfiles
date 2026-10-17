@@ -1,12 +1,21 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
+let
+  # Temporary pin: nixos-unstable 55bfb4d's lix 2.95.4 passes -Dmimalloc=disabled,
+  # an option lix 2.95.4's meson doesn't have. release-26.05 builds 2.95.4 without
+  # the flag. Drop once the fix (nixpkgs 982cb88) lands on nixos-unstable.
+  nixpkgs-stable = import inputs.nixpkgs-stable {
+    system = pkgs.system;
+    config.allowUnfree = true;
+  };
+in
 {
   nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;
   hardware.enableAllHardware = true;
 
   nix = {
-    package = pkgs.lixPackageSets.stable.lix;
+    package = nixpkgs-stable.lixPackageSets.latest.lix;
     settings.experimental-features = [
       "nix-command"
       "flakes"
