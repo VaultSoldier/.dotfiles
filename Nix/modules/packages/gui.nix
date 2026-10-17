@@ -1,11 +1,4 @@
-{ pkgs, inputs, ... }:
-let
-  # separate instance so the package set doesn't inherit the nixos-unstable config
-  nixpkgs-stable = import inputs.nixpkgs-stable {
-    system = pkgs.system;
-    config.allowUnfree = true;
-  };
-in
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     mpv
@@ -19,7 +12,7 @@ in
     nextcloud-client
     nextcloud-talk-desktop
     onlyoffice-desktopeditors
-    nixpkgs-stable.rustdesk
+    rustdesk
     virt-viewer # spice viewer
     obsidian
     easyeffects
