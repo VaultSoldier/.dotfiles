@@ -15,3 +15,6 @@ PS1='[\u@\h \W]\$ '
 source $HOME/.config/zsh/zsh_aliases
 
 eval "$(zoxide init --cmd cd bash)"
+
+# qmd (pi memory search)
+export PATH="$HOME/.local/npm/bin:$PATH"

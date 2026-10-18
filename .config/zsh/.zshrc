@@ -139,3 +139,6 @@ echo -ne '\e[6 q'
 precmd() { echo -ne '\e[6 q' }
 
 # ASCII - asciiart.eu
+
+# qmd (pi memory search)
+export PATH="$HOME/.local/npm/bin:$PATH"
