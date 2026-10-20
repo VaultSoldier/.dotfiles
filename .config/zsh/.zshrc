@@ -54,6 +54,11 @@ export ANDROID_SDK_ROOT="$XDG_DATA_HOME/android"
 export WINEPREFIX="$XDG_DATA_HOME/wine"
 export GOPATH="$XDG_DATA_HOME/go"
 
+case ":${LD_LIBRARY_PATH}:" in
+  *":/run/current-system/sw/lib:"*) ;;
+  *) export LD_LIBRARY_PATH="/run/current-system/sw/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" ;;
+esac
+
 export ANSIBLE_HOME="$XDG_DATA_HOME/ansible"
 export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible/ansible.cfg"
 export ANSIBLE_GALAXY_CACHE_DIR="$XDG_CACHE_HOME/ansible/galaxy_cache"
