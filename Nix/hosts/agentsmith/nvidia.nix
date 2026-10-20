@@ -38,5 +38,11 @@
       btop = super.btop.override { cudaSupport = true; };
     })
   ];
-  environment.systemPackages = with pkgs; [ btop ];
+  environment.systemPackages = with pkgs; [ btop vulkan-loader ];
+
+  environment.sessionVariables = {
+    LD_LIBRARY_PATH = [ "/run/current-system/sw/lib" ];
+    VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/nvidia_icd.json";
+    QMD_LLAMA_GPU = "vulkan";
+  };
 }
