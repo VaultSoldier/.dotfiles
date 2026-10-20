@@ -9,6 +9,7 @@
     ./zen-browser.nix
     ./vesktop.nix
     ./spicetify.nix
+    ./artcraft.nix
   ];
 
   home.username = "vs";

@@ -39,6 +39,10 @@
       url = "https://codeberg.org/LGFae/awww/archive/main.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    artcraft = {
+      url = "github:devitek/artcraft-nixos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -56,6 +60,7 @@
       plasma-manager,
       caelestia-shell,
       awww,
+      artcraft,
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {

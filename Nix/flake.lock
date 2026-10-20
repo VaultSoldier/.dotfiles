@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "artcraft": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792526650,
+        "narHash": "sha256-+TSxr0v7exbgY4fVKX694Z+00Gnqqi6z/XShJaoSQB8=",
+        "owner": "devitek",
+        "repo": "artcraft-nixos",
+        "rev": "d2fde5272a2351c599dc38c9ea0d48c8be7453fa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "devitek",
+        "repo": "artcraft-nixos",
+        "type": "github"
+      }
+    },
     "awww": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -515,6 +535,7 @@
     },
     "root": {
       "inputs": {
+        "artcraft": "artcraft",
         "awww": "awww",
         "caelestia-shell": "caelestia-shell",
         "colmena": "colmena",
