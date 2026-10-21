@@ -15,7 +15,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     firefox-addons = {
-      url = "git+https://gitlab.com/rycee/nur-expressions?dir=pkgs/firefox-addons";
+      url = "gitlab:rycee/nur-expressions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
@@ -81,7 +81,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.backupFileExtension = "bckp";
+              home-manager.backupFileExtension = null;
               home-manager.users.vs.imports = [ ./modules/home-manager ];
             }
           ];

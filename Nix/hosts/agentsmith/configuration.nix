@@ -42,7 +42,6 @@ in
       "boot.shell_on_fail"
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
-      "resume=/dev/mapper/luks-d489ca0b-5100-4f98-aed8-4c862d04e403"
       "NVreg_PreserveVideoMemoryAllocations=1"
     ];
     loader.systemd-boot.enable = true;
