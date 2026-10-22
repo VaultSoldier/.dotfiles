@@ -119,11 +119,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791872769,
-        "narHash": "sha256-ABBs8c8xMKXds+/R+TRiW1HBKNgEjKmTJ8aC4pslkRA=",
+        "lastModified": 1792556705,
+        "narHash": "sha256-NAnI62Q32IJWlx3lwQTmnXNrVfxMWmecgMiBBTEHofg=",
         "owner": "caelestia-dots",
         "repo": "cli",
-        "rev": "ff8cae38bd4bea8d1827a0a6971d6763d58c570e",
+        "rev": "9b031447f64a55d4f9ddfee728aa9144cf7c1ed2",
         "type": "github"
       },
       "original": {
@@ -142,11 +142,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1791936565,
-        "narHash": "sha256-6nYNTfCcQZ2C77HXwEXb+4SyPMyMwXDpqBYbaWS9QSE=",
+        "lastModified": 1792627516,
+        "narHash": "sha256-CVQlVVlGRDRq3Qa18GIqceupest6KtV9rXac+9huNq8=",
         "owner": "VaultSoldier",
         "repo": "shell",
-        "rev": "6e52029e4402f428f3440233783e0ee2a1d8977a",
+        "rev": "511d01805552bdf65d725e4e2592261f32c1ea6c",
         "type": "github"
       },
       "original": {
@@ -184,6 +184,7 @@
         ]
       },
       "locked": {
+        "dir": "pkgs/firefox-addons",
         "lastModified": 1792555376,
         "narHash": "sha256-yxkbLP4U7JtnILwFglDoNev3pVRxXZnbo0LvFfV2RIg=",
         "owner": "rycee",
@@ -192,6 +193,7 @@
         "type": "gitlab"
       },
       "original": {
+        "dir": "pkgs/firefox-addons",
         "owner": "rycee",
         "repo": "nur-expressions",
         "type": "gitlab"
@@ -420,11 +422,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1792619247,
-        "narHash": "sha256-RkPLzlaGP2pFZiNmgQ7+BUPu4BmKosfU2lHpVqMACDw=",
+        "lastModified": 1792626250,
+        "narHash": "sha256-WTvRxobsFUIJF9YmppSmxfaZTS2WqbjafOQPrVmNFUg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e2dee51fb09168171a3a0758b0a88a638118a1a7",
+        "rev": "0e1bd8ec40f9fe4eec8fe1c819673bf4a4c7de2b",
         "type": "github"
       },
       "original": {
@@ -518,11 +520,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791448974,
-        "narHash": "sha256-lPbqsyAD5ZoGFMZ1eqAlTULfeP5Nwhy+XvOowF7BE+E=",
+        "lastModified": 1792625903,
+        "narHash": "sha256-KhsHX6l7sVShxlExiCtsuw8O3Et8B6pPHjgGrzfi1iQ=",
         "ref": "refs/heads/master",
-        "rev": "4f508be500dea6e5732cc3d50382a0048b17e7b1",
-        "revCount": 868,
+        "rev": "4bc0b72f852e3f6fb6fdcaf5395019a7809172a8",
+        "revCount": 878,
         "type": "git",
         "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
       },
