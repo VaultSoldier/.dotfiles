@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
@@ -55,7 +54,6 @@ lib.mkIf config.desktop.hyprland.enable {
   environment.systemPackages =
     with pkgs;
     [
-      inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
       libnotify # notify-send
       kdePackages.ark
       kdePackages.polkit-kde-agent-1

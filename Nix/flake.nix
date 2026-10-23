@@ -35,10 +35,6 @@
       url = "github:VaultSoldier/shell?ref=custom";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    awww = {
-      url = "https://codeberg.org/LGFae/awww/archive/main.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     artcraft = {
       url = "github:devitek/artcraft-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -59,7 +55,6 @@
       stylix,
       plasma-manager,
       caelestia-shell,
-      awww,
       artcraft,
       ...
     }:
