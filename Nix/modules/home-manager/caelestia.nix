@@ -241,7 +241,7 @@ in
     background = {
       enabled = lib.mkDefault true;
       wallpaperEnabled = lib.mkDefault true;
-      wallpaperTransition = lib.mkDefault "Crossfade"; # other modes: Morph, Glitch, InkSplash, VoronoiShatter, ...
+      wallpaperTransition = lib.mkDefault "Pixelate";
       desktopClock = {
         enabled = lib.mkDefault true;
         scale = lib.mkDefault 1;
