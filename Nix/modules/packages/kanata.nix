@@ -57,8 +57,12 @@
                   lmet)
           )
 
-          (defoverrides
-           (lsft esc) (lsft grv)
+          ;; (defoverridesv2 <input> <output> <without-mods> <excluded-layers>)*
+          ;; Shift+Esc -> Shift+Grave (~), but only while no CTRL is held:
+          ;; Ctrl+Shift+Esc must pass through as real ESC.
+          (defoverridesv2
+           (lsft esc) (lsft grv) (lctl rctl) ()
+           (lsft grv) (lsft grv) () ()
           )
 
           (deflayer base
