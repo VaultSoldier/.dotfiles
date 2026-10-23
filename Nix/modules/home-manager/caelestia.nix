@@ -240,7 +240,8 @@ in
 
     background = {
       enabled = lib.mkDefault true;
-      wallpaperEnabled = lib.mkDefault false;
+      wallpaperEnabled = lib.mkDefault true;
+      wallpaperTransition = lib.mkDefault "Crossfade"; # other modes: Morph, Glitch, InkSplash, VoronoiShatter, ...
       desktopClock = {
         enabled = lib.mkDefault true;
         scale = lib.mkDefault 1;
@@ -459,7 +460,7 @@ in
             "autocomplete"
             "wallpaper"
           ];
-          enabled = false;
+          enabled = true;
           dangerous = false;
         }
         {
@@ -477,11 +478,9 @@ in
           name = "Random";
           icon = "casino";
           description = "Switch to a random wallpaper";
-          command = [
-            "${home}/.config/hypr/scripts/awww_randomize.sh"
-            "--once"
-            "${home}/Pictures/Wallpapers"
-          ];
+          /*nixfmt:disable*/
+          command = [ "caelestia" "wallpaper" "-r" ];
+          /*nixfmt:enable*/
           enabled = true;
           dangerous = false;
         }
@@ -708,6 +707,16 @@ in
       wallpaperDir = lib.mkDefault "~/Pictures/Wallpapers";
       lyricsDir = lib.mkDefault "~/Music/lyrics";
     };
+  };
+
+  systemd.user.services.random-wallpaper = {
+    Unit.Description = "Rotate caelestia wallpaper every 2 hours";
+    Service = {
+      Type = "simple";
+      ExecStart = "${home}/.config/hypr/scripts/random_wallpaper.sh";
+      Restart = "on-failure";
+    };
+    Install.WantedBy = [ "graphical-session.target" ];
   };
 
   programs.caelestia.cli = {
