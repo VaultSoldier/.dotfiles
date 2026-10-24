@@ -4,7 +4,6 @@
     enable = true;
     defaultApplications = {
       "x-scheme-handler/terminal" = "kitty.desktop";
-      "x-scheme-handler/file" = [ "org.kde.dolphin.desktop" ];
       "x-directory/normal" = [ "org.kde.dolphin.desktop" ];
       "inode/directory" = [ "org.kde.dolphin.desktop" ];
       "application/vnd.microsoft.portable-executable" = [ "wine.desktop" ];
