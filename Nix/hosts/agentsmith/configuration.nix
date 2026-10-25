@@ -16,7 +16,6 @@ in
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
 
-    initrd.systemd.enable = true;
     initrd.luks.devices."luks-d489ca0b-5100-4f98-aed8-4c862d04e403" = {
       device = "/dev/disk/by-uuid/d489ca0b-5100-4f98-aed8-4c862d04e403";
       crypttabExtraOpts = [ "tpm2-device=/dev/tpmrm0" ];
@@ -33,7 +32,6 @@ in
       "nvme"
     ];
     consoleLogLevel = 3;
-    initrd.verbose = false;
     resumeDevice = "/dev/mapper/luks-d489ca0b-5100-4f98-aed8-4c862d04e403";
 
     kernelParams = [

@@ -31,7 +31,6 @@ in
       timeout = 0; # Hide the OS choice for bootloaders.
     };
 
-    initrd.verbose = false;
     consoleLogLevel = 3;
     kernelParams = [
       "quiet"
