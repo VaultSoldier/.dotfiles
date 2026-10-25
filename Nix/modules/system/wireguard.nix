@@ -79,9 +79,6 @@
           privateKeyFile = privateKey_work;
 
           peers = [
-            # Default route: everything goes through this tunnel except the
-            # subnets claimed by split-home (alwayson) — its more specific /24
-            # routes win in the kernel routing table while both are up.
             {
               allowedIPs = [
                 "0.0.0.0/0"
