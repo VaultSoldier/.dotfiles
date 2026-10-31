@@ -37,7 +37,7 @@ hl.config({
 			enabled = true,
 			size = 6,
 			passes = 3,
-			vibrancy = -40,
+			vibrancy = 0.40,
 		},
 	},
 
