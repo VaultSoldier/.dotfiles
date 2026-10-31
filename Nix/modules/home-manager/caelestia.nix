@@ -410,6 +410,7 @@ in
       vimKeybinds = lib.mkDefault true;
       favouriteApps = lib.mkDefault [ ];
       hiddenApps = lib.mkDefault [
+        "kdesystemsettings" # legacy duplicate of systemsettings
         "nvidia-settings"
         "org.kde.konsole"
         "org.kde.kwikdisk"
