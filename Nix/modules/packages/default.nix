@@ -33,7 +33,6 @@
     trash-cli
     speedtest-cli
     stow
-    htop
     ncdu # tui du
     fastfetch
     ipfetch
