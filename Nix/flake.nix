@@ -42,145 +42,15 @@
   };
 
   outputs =
-    inputs@{
-      self,
-      flake-parts,
-      nixpkgs,
-      colmena,
-      spicetify-nix,
-      home-manager,
-      sops-nix,
-      firefox-addons,
-      zen-browser,
-      stylix,
-      plasma-manager,
-      caelestia-shell,
-      artcraft,
-      ...
-    }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" ];
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } (
+      { ... }: {
+        systems = [ "x86_64-linux" ];
 
-      flake =
-        let
-          system = "x86_64-linux";
-          commonModules = [
-            ./configuration.nix
-            ./modules/desktop-environments
-            ./modules/packages/games
-            ./modules/packages
-            ./modules/stylix
-            ./modules/system
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.backupFileExtension = null;
-              home-manager.users.vs.imports = [ ./modules/home-manager ];
-            }
-          ];
-        in
-        {
-          colmenaHive = colmena.lib.makeHive {
-            meta = {
-              nixpkgs = import nixpkgs {
-                system = "x86_64-linux";
-                overlays = [ ];
-              };
-            };
-            nixbuild =
-              {
-                name,
-                nodes,
-                pkgs,
-                ...
-              }:
-              {
-                deployment = {
-                  targetHost = "nixbuild";
-                };
-                imports = [ ./hosts/nixbuild ];
-                networking.hostName = "nixbuild";
-              };
-
-            ssk-nixbuild =
-              {
-                name,
-                nodes,
-                pkgs,
-                ...
-              }:
-              {
-                deployment = {
-                  targetHost = "ssk-tf-nixos-build";
-                  targetUser = "root";
-                };
-                imports = [ ./hosts/ssk-nixbuild ];
-                networking.hostName = "tf-nixos-build";
-              };
-          };
-
-          nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
-            inherit system;
-            specialArgs = { inherit inputs; };
-            modules = [
-              {
-                desktop = {
-                  plasma6.enable = true;
-                  hyprland.enable = true;
-                  caelestia.enable = true;
-                };
-                packages = {
-                  virtualisation.enable = true;
-                };
-                games = {
-                  osu.enable = true;
-                };
-                system = {
-                  flatpak.enable = false;
-                  wg.enable = false;
-                  ssh.enable = true;
-                };
-
-                home-manager.users.vs.imports = [ ./hosts/desktop/home-manager.nix ];
-              }
-              ./hosts/desktop
-              ./modules/hardware/nvidia.nix
-              ./modules/hardware/fifine-am8.nix
-            ]
-            ++ commonModules;
-          };
-
-          nixosConfigurations.agentsmith = nixpkgs.lib.nixosSystem {
-            inherit system;
-            specialArgs = { inherit inputs; };
-            modules = [
-              {
-                desktop = {
-                  plasma6.enable = false;
-                  hyprland.enable = true;
-                  caelestia.enable = true;
-                };
-                games = {
-                  steam.enable = true;
-                  prismlauncher.enable = false;
-                  osu.enable = false;
-                  lutris.enable = false;
-                };
-                system = {
-                  wg.enable = true;
-                  ssh.enable = true;
-                  power_management.enable = true;
-                };
-
-                home-manager.users.vs.imports = [ ./hosts/agentsmith/home-manager.nix ];
-              }
-              ./hosts/agentsmith
-              ./modules/hardware/intel.nix
-            ]
-            ++ commonModules;
-          };
-        };
-    };
+        imports = [
+          ./flake-modules/colmena.nix
+          ./flake-modules/nixos.nix
+        ];
+      }
+    );
 }
