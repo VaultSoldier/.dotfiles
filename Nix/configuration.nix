@@ -42,6 +42,7 @@
 
   environment.variables = {
     ZDOTDIR = "$HOME/.config/zsh";
+    WINEPREFIX = "$HOME/.local/share/wine";
   };
 
   programs.nano.enable = false;
