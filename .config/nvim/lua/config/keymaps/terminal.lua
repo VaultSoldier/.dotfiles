@@ -16,6 +16,18 @@ function M.Init()
 end
 
 function M.Lsp(map)
+  -- Interpreter recorded by venv-selector for the current project, if any
+  -- (falls back to nil when the plugin is absent or the cached venv is gone).
+  local function selected_python()
+    local ok, venvs = pcall(require, 'venv-selector')
+    if ok then
+      local python = venvs.python()
+      if python and vim.fn.executable(python) == 1 then
+        return python
+      end
+    end
+  end
+
   map('<F10>', function()
     local file = vim.fn.shellescape(vim.fn.expand '%')
     local filetype = vim.bo.filetype
@@ -27,7 +39,9 @@ function M.Lsp(map)
     end
 
     if filetype == 'python' then
-      run 'python3'
+      -- Use the venv-selected interpreter when available, else system python3
+      local python = selected_python()
+      run(python and vim.fn.shellescape(python) or 'python3')
     elseif filetype == 'sh' then
       run 'bash'
     elseif filetype == 'html' then
@@ -52,8 +66,8 @@ function M.Lsp(map)
       local main_abs = vim.fn.fnamemodify(main_file, ':p')
       local main_dir = vim.fn.fnamemodify(main_abs, ':h')
 
-      -- Choose python executable (prefer python3)
-      local python = vim.fn.executable 'python3' == 1 and 'python3' or 'python'
+      -- Choose python executable (prefer the venv selected by venv-selector)
+      local python = selected_python() or (vim.fn.executable 'python3' == 1 and 'python3' or 'python')
 
       -- Check whether flet is importable with the chosen python
       local check_cmd = {
