@@ -79,87 +79,86 @@ return {
       end,
     })
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
-
-    local servers = {
-      pyright = {
-        settings = {
-          pyright = {
-            disableOrganizeImports = true,
+    -- Per-server settings. mason-lspconfig auto-enables installed servers via
+    -- vim.lsp.enable() (nvim >= 0.11), so settings must be registered with
+    -- vim.lsp.config() *before* setup() runs below — the old `handlers` API
+    -- was removed from mason-lspconfig and never applied these settings.
+    vim.lsp.config('pyright', {
+      settings = {
+        pyright = {
+          disableOrganizeImports = true,
+        },
+        python = {
+          analysis = {
+            typeCheckingMode = 'basic',
+            autoSearchPaths = true,
+            useLibraryCodeForTypes = true,
+            diagnosticMode = 'workspace',
           },
-          python = {
-            analysis = {
-              typeCheckingMode = 'basic',
-              autoSearchPaths = true,
-              useLibraryCodeForTypes = true,
-              diagnosticMode = 'workspace',
+        },
+      },
+    })
+    vim.lsp.config('ruff', {
+      init_options = {
+        settings = {
+          logLevel = 'info',
+        },
+      },
+    })
+    vim.lsp.config('yamlls', {
+      filetypes = { 'yaml' },
+      settings = {
+        redhat = { telemetry = { enabled = false } },
+      },
+    })
+    vim.lsp.config('html', {
+      filetypes = { 'html', 'twig', 'hbs' },
+    })
+    vim.lsp.config('lua_ls', {
+      settings = {
+        Lua = {
+          runtime = { version = 'LuaJIT' },
+          workspace = {
+            checkThirdParty = false,
+            library = {
+              '${3rd}/luv/library',
+              unpack(vim.api.nvim_get_runtime_file('', true)),
             },
           },
-        },
-      },
-      ruff = {
-        init_options = {
-          settings = {
-            logLevel = 'info',
+          completion = {
+            callSnippet = 'Replace',
           },
+          telemetry = { enable = false },
+          diagnostics = { disable = { 'missing-fields' } },
         },
       },
-      tombi = {}, -- toml
-      jsonls = {},
-      sqlls = {},
-      terraformls = {},
-      yamlls = {
-        filetypes = { 'yaml' },
-        settings = {
-          redhat = { telemetry = { enabled = false } },
-        },
-      },
-      dockerls = {},
-      bashls = {},
-      docker_compose_language_service = {},
-      tailwindcss = {},
-      html = { filetypes = { 'html', 'twig', 'hbs' } },
-      cssls = {},
-      clangd = {},
-      gopls = {},
-      nil_ls = {},
-      lua_ls = {
-        -- cmd = {...},
-        -- filetypes { ...},
-        -- capabilities = {},
-        settings = {
-          Lua = {
-            runtime = { version = 'LuaJIT' },
-            workspace = {
-              checkThirdParty = false,
-              library = {
-                '${3rd}/luv/library',
-                unpack(vim.api.nvim_get_runtime_file('', true)),
-              },
-            },
-            completion = {
-              callSnippet = 'Replace',
-            },
-            telemetry = { enable = false },
-            diagnostics = { disable = { 'missing-fields' } },
-          },
-        },
-      },
-      ts_ls = {},
-    }
+    })
 
     -- `mason` had to be setup earlier: to configure its options see the
     -- `dependencies` table for `nvim-lspconfig` above.
-    local ensure_installed = vim.tbl_filter(function(name)
-      return name ~= 'dartls' -- exclude Dart, since it's bundled
-    end, vim.tbl_keys(servers or {}))
-
-    vim.list_extend(ensure_installed, {
-      'pyright',
+    -- Dart (dartls) is excluded — its LSP ships with the flutter-tools plugin.
+    local ensure_installed = {
+      -- LSP servers
+      'pyright', -- Python
       'ruff', -- Python Formatter/Linter/LSP
+      'tombi', -- toml
+      'jsonls',
+      'sqlls',
+      'terraformls',
+      'yamlls',
+      'dockerls',
+      'bashls',
+      'docker_compose_language_service',
+      'tailwindcss',
+      'html',
+      'cssls',
+      'clangd',
+      'gopls',
+      'nil_ls',
+      'lua_ls',
+      'ts_ls',
+      -- Formatters / linters used by nvim-lint and conform
       'stylua',
-      'tombi',
       'prettier',
       'markdownlint',
       'hadolint',
@@ -169,22 +168,11 @@ return {
       'nixfmt',
       'ansible-lint',
       'shfmt',
-    })
+    }
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     require('mason-lspconfig').setup {
       ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-      automatic_installation = false,
-      handlers = {
-        function(server_name)
-          local server = servers[server_name] or {}
-          -- This handles overriding only values explicitly passed
-          -- by the server configuration above. Useful when disabling
-          -- certain features of an LSP (for example, turning off formatting for ts_ls)
-          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-          require('lspconfig')[server_name].setup(server)
-        end,
-      },
     }
   end,
 }
