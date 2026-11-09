@@ -75,7 +75,8 @@ function M.Lsp(map)
       local cur_win = vim.api.nvim_get_current_win()
 
       snacks.terminal.toggle(cmd .. '; $SHELL', {
-        win = { position = 'bottom', interactive = false },
+        interactive = false, -- top-level terminal option: no auto-insert/start-insert/auto-close
+        win = { position = 'bottom' },
       })
 
       -- restore win focus
