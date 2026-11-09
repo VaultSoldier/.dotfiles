@@ -13,8 +13,6 @@ return {
       end
 
       lint.linters_by_ft = {
-        -- python linting is handled by the ruff LSP server (see nvim-lspconfig.lua);
-        -- running nvim-lint 'ruff' as well produced duplicate Bxxx diagnostics.
         terraform = { 'terraform_validate' },
         ['yaml.ansible'] = { 'ansible_lint' },
         ansible = { 'ansible_lint' },
