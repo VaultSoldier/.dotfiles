@@ -28,6 +28,7 @@ return { -- Highlight, edit, and navigate code
       'query',
       'vim',
       'vimdoc',
+      'yaml',
     }
     require('nvim-treesitter').install(filetypes)
     vim.api.nvim_create_autocmd('FileType', {
