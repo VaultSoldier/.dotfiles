@@ -4,8 +4,11 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/release-26.05";
     flake-parts.url = "github:hercules-ci/flake-parts";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    colmena.url = "github:zhaofengli/colmena";
 
+    colmena = {
+      url = "github:zhaofengli/colmena";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
