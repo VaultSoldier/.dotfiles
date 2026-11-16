@@ -64,7 +64,50 @@ function M.Init()
 
   -- File operations --
   map('n', '<C-s>', '<cmd>w<CR>', { desc = 'Save', silent = true })
-  map('n', '<leader>e', '<Cmd>Neotree reveal<CR>')
+  -- Defer opening the tree while a session restore is pending.
+  -- Defer the open until the session file's own `doautoall
+  -- SessionLoadPost` fires; a short timer un-wedges the map if the restore
+  -- never starts. 
+  local session_loading = false
+  local session_was_loaded = false
+  vim.api.nvim_create_autocmd('SessionLoadPre', { callback = function() session_loading = true end })
+  vim.api.nvim_create_autocmd('SessionLoadPost', {
+    callback = function()
+      session_loading = false
+      session_was_loaded = true
+    end,
+  })
+
+  local function session_restore_pending()
+    if session_loading then return true end
+    if session_was_loaded or vim.fn.argc() ~= 0 then return false end
+    local ok, utils = pcall(require, 'nvim-possession.utils')
+    if not ok or not utils or not utils.list_sessions then return false end
+    return #utils.list_sessions(require 'nvim-possession.config', vim.fn.getcwd()) > 0
+  end
+
+  local function neotree_reveal()
+    if session_restore_pending() then
+      local opened = false
+      local function open()
+        if not opened then
+          opened = true
+          vim.cmd('Neotree reveal')
+        end
+      end
+      -- open once the source (and the session's post_hook) have fully finished
+      vim.api.nvim_create_autocmd('SessionLoadPost', { once = true, callback = function() vim.schedule(open) end })
+      -- failsafe: un-wedge the map if the restore never starts (it's also fine
+      -- to wait when it is merely in flight — the SessionLoadPost autocmd above
+      -- will open the tree then)
+      vim.defer_fn(function()
+        if not session_loading and not session_was_loaded and vim.fn.argc() == 0 then open() end
+      end, 3000)
+    else
+      vim.cmd('Neotree reveal')
+    end
+  end
+  map('n', '<leader>e', neotree_reveal, { desc = 'Toggle Neo-tree (reveal)' })
   map('n', '<leader>ar', snacks.rename.rename_file, { desc = '[R]ename File' })
 
   map('n', '<leader>n', picker.notifications, { desc = '[N]otification history' })
