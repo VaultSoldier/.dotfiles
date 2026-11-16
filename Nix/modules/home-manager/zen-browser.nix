@@ -64,12 +64,10 @@
         };
       };
 
-    # WARN: Fails activation on schema changes to detect potential regressions
-    # Find this in about:config or prefs.js of your profile
-    keyboardShortcutsVersion = 21;
-
     # INFO: Finding Shortcut IDs
-    # jq -c '.shortcuts[] | {id, key, keycode, action}' ~/.config/zen/default/zen-keyboard-shortcuts.json | fzf
+    # change the shortcut once in about:keyboard, then read the entry it produced:
+    # jq -c 'to_entries[]' ~/.config/zen/default/customKeys.json
+    # Zen's own ids are `zen-*`, Firefox's are `key_*` / `*Kb`
     keyboardShortcuts = [
       {
         id = "zen-compact-mode-toggle";
