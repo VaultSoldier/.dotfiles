@@ -2,15 +2,56 @@ vim.g.have_nerd_font = true
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+local ansible_markers = {
+  'ansible.cfg',
+  '.ansible.cfg',
+  'requirements.yml',
+  'requirements.yaml',
+  'group_vars',
+  'host_vars',
+  'molecule',
+}
+local ansible_cache = {} --- @type table<string, boolean>
+
+---@param dir string
+---@return boolean
+local function in_ansible_project(dir)
+  if ansible_cache[dir] == nil then
+    local vcs = vim.fs.root(dir, { '.git', '.hg', '.svn' })
+    ansible_cache[dir] = #vim.fs.find(ansible_markers, {
+      path = dir,
+      upward = true,
+      limit = 1,
+      stop = vcs and vim.fs.dirname(vcs) or nil,
+    }) > 0
+  end
+  return ansible_cache[dir]
+end
+
+--- Filetype function for the ambiguous patterns; {path} is absolute
+---@param path? string
+---@return string?
+local function ansible_ft(path)
+  return (path and in_ansible_project(vim.fs.dirname(path)) and 'yaml.ansible') or nil
+end
+
 vim.filetype.add {
   pattern = {
-    ['.*/playbooks/.*%.ya?ml'] = 'yaml.ansible',
-    ['.*/tasks/.*%.ya?ml'] = 'yaml.ansible',
-    ['.*/handlers/.*%.ya?ml'] = 'yaml.ansible',
-    ['.*/roles/.*/.*%.ya?ml'] = 'yaml.ansible',
-    ['.*/defaults/.*%.ya?ml'] = 'yaml.ansible',
-    ['.*/vars/.*%.ya?ml'] = 'yaml.ansible',
-    ['.*ansible.*%.ya?ml'] = 'yaml.ansible',
+    -- unambiguous by path alone
+    ['.*/playbooks/.*%.ya?ml'] = { 'yaml.ansible', { priority = 10 } },
+    -- anything under roles/<role>/ (tasks, handlers, vars, defaults, meta, ...)
+    ['.*/roles/[^/]+/.*%.ya?ml'] = { 'yaml.ansible', { priority = 10 } },
+    ['.*/group_vars/.*%.ya?ml'] = { 'yaml.ansible', { priority = 10 } },
+    ['.*/host_vars/.*%.ya?ml'] = { 'yaml.ansible', { priority = 10 } },
+    ['.*ansible.*%.ya?ml'] = { 'yaml.ansible', { priority = 10 } },
+    -- ambiguous directory names: only inside something that looks like ansible
+    ['.*/tasks/.*%.ya?ml'] = { ansible_ft, { priority = 5 } },
+    ['.*/handlers/.*%.ya?ml'] = { ansible_ft, { priority = 5 } },
+    ['.*/vars/.*%.ya?ml'] = { ansible_ft, { priority = 5 } },
+    ['.*/defaults/.*%.ya?ml'] = { ansible_ft, { priority = 5 } },
+    ['.*/site%.ya?ml'] = { ansible_ft, { priority = 5 } },
+    ['.*/inventories/.*%.ya?ml'] = { ansible_ft, { priority = 5 } },
+    ['.*/inventory/.*%.ya?ml'] = { ansible_ft, { priority = 5 } },
   },
 }
 
