@@ -39,7 +39,7 @@ in
           osu.enable = true;
         };
         system = {
-          flatpak.enable = false;
+          flatpak.enable = true;
           wg.enable = false;
           ssh.enable = true;
         };
@@ -73,6 +73,7 @@ in
           wg.enable = true;
           ssh.enable = true;
           power_management.enable = true;
+          flatpak.enable = true;
         };
 
         home-manager.users.vs.imports = [ ../hosts/agentsmith/home-manager.nix ];
