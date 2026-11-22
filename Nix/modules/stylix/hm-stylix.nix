@@ -10,4 +10,7 @@
   stylix.targets.zen-browser.enable = false;
   stylix.targets.vesktop.enable = false;
   stylix.targets.spicetify.enable = false;
+  # home-manager removed programs.wayprompt (nixpkgs dropped the wayprompt pkg),
+  # but stylix still themes it -> "option definition no longer has any effect".
+  stylix.targets.wayprompt.enable = false;
 }
