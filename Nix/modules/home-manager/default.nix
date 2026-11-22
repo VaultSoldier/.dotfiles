@@ -10,6 +10,7 @@
     ./vesktop.nix
     ./spicetify.nix
     ./artcraft.nix
+    ./wayvnc.nix
   ];
 
   home.username = "vs";
