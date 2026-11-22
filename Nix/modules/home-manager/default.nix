@@ -75,6 +75,13 @@
   #  /etc/profiles/per-user/vs/etc/profile.d/hm-session-vars.sh
   #
 
+  home.sessionVariables = {
+    SSH_AUTH_SOCK = "${config.home.homeDirectory}/.bitwarden-ssh-agent.sock";
+  };
+
+  xdg.configFile."autostart/bitwarden.desktop".source =
+    "${pkgs.bitwarden-desktop}/share/applications/bitwarden.desktop";
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
