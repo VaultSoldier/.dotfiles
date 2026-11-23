@@ -46,7 +46,7 @@ if hostname == "agentsmith" then
 	hl.monitor({
 		output = "desc:Samsung Display Corp. 0x4171",
 		mode = "2880x1800@90",
-		position = "320x1440",
+		position = "2900x1440",
 		scale = 1.5,
 	})
 end
