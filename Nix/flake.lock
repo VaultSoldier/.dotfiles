@@ -496,6 +496,7 @@
         "plasma-manager": "plasma-manager",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix",
+        "split-monitor-workspaces": "split-monitor-workspaces",
         "stylix": "stylix",
         "zen-browser": "zen-browser"
       }
@@ -536,6 +537,23 @@
       "original": {
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
+        "type": "github"
+      }
+    },
+    "split-monitor-workspaces": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1794256210,
+        "narHash": "sha256-fy4pK/cuzazLOGdHR/597Yvik+2xbO/O6hehWtbd65k=",
+        "owner": "zjeffer",
+        "repo": "split-monitor-workspaces",
+        "rev": "5fd2f066d12e727365535bb13beec78f8dbe4157",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zjeffer",
+        "ref": "release/0.57.x",
+        "repo": "split-monitor-workspaces",
         "type": "github"
       }
     },

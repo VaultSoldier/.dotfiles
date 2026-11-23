@@ -42,6 +42,10 @@
       url = "github:devitek/artcraft-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    split-monitor-workspaces = {
+      url = "github:zjeffer/split-monitor-workspaces/release/0.57.x";
+      flake = false;
+    };
   };
 
   outputs =

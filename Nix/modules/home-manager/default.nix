@@ -11,6 +11,7 @@
     ./spicetify.nix
     ./artcraft.nix
     ./wayvnc.nix
+    ./hypr-plugins.nix
   ];
 
   home.username = "vs";
