@@ -80,6 +80,72 @@ hl.bind(
 hl.bind(mainMod .. " + SHIFT + k", hl.dsp.window.move({ direction = "u" }))
 hl.bind(mainMod .. " + SHIFT + j", hl.dsp.window.move({ direction = "d" }))
 
+-----------------------
+----- MONITORS --------
+-----------------------
+
+-- Nearest monitor in a geometric direction (follows the layout in monitors.lua,
+-- not monitor ids/order). Returns an HL.Monitor, which is a valid monitor selector.
+local MONITOR_DIRS = {
+	LEFT = { -1, 0 },
+	RIGHT = { 1, 0 },
+	UP = { 0, -1 },
+	DOWN = { 0, 1 },
+}
+
+local function monitor_in_direction(key)
+	local v = MONITOR_DIRS[key]
+	local cur = hl.get_active_monitor()
+
+	if not v or not cur then
+		return nil
+	end
+
+	local best, best_dist = nil, nil
+
+	for _, m in ipairs(hl.get_monitors()) do
+		if m.name ~= cur.name then
+			local dx = m.x + m.width / 2 - (cur.x + cur.width / 2)
+			local dy = m.y + m.height / 2 - (cur.y + cur.height / 2)
+
+			if dx * v[1] + dy * v[2] > 0 then
+				local dist = dx * dx + dy * dy
+				if not best_dist or dist < best_dist then
+					best, best_dist = m, dist
+				end
+			end
+		end
+	end
+
+	return best
+end
+
+for key in pairs(MONITOR_DIRS) do
+	-- SUPER + arrow: focus the neighbouring monitor.
+	hl.bind(mainMod .. " + " .. key, function()
+		local m = monitor_in_direction(key)
+		if m then
+			hl.dispatch(hl.dsp.focus({ monitor = m }))
+		end
+	end)
+
+	-- SUPER + SHIFT + arrow: move the window there and follow it.
+	hl.bind(mainMod .. " + SHIFT + " .. key, function()
+		local m = monitor_in_direction(key)
+		if m then
+			hl.dispatch(hl.dsp.window.move({ monitor = m }))
+		end
+	end)
+
+	-- SUPER + CTRL + arrow: move the window there, stay put.
+	hl.bind(mainMod .. " + CTRL + " .. key, function()
+		local m = monitor_in_direction(key)
+		if m then
+			hl.dispatch(hl.dsp.window.move({ monitor = m, follow = false }))
+		end
+	end)
+end
+
 hl.bind(
 	mainMod .. " + bracketright",
 	layout_bind({
