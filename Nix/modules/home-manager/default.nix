@@ -74,14 +74,25 @@
   # or
   #
   #  /etc/profiles/per-user/vs/etc/profile.d/hm-session-vars.sh
-  #
+
+  # pam_kwallet5 only auto-unlocks a wallet named exactly "kdewallet"
+  xdg.configFile."kwalletrc" = {
+    force = true;
+    text = ''
+      [Wallet]
+      Default Wallet=kdewallet
+        First Use=false
+    '';
+  };
+
+  xdg.configFile."autostart/bitwarden.desktop" = {
+    force = true;
+    source = "${pkgs.bitwarden-desktop}/share/applications/bitwarden.desktop";
+  };
 
   home.sessionVariables = {
     SSH_AUTH_SOCK = "${config.home.homeDirectory}/.bitwarden-ssh-agent.sock";
   };
-
-  xdg.configFile."autostart/bitwarden.desktop".source =
-    "${pkgs.bitwarden-desktop}/share/applications/bitwarden.desktop";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
