@@ -17,12 +17,11 @@
       ];
       enabledCustomApps = with spicePkgs.apps; [
         newReleases
-        ncsVisualizer
         marketplace
       ];
       enabledSnippets = with spicePkgs.snippets; [ pointer ];
 
-      theme = spicePkgs.themes.text;
+      # theme = spicePkgs.themes.text;
       # colorScheme = "mocha";
     };
 }
