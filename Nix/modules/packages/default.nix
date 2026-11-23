@@ -1,6 +1,7 @@
 { pkgs, lib, ... }:
 {
   imports = [
+    ./ansible.nix
     ./bitwarden.nix
     ./code.nix
     ./dolphin.nix
@@ -13,6 +14,7 @@
     ./virt-manager.nix
   ];
 
+  packages.bitwarden.enable = lib.mkDefault true;
   packages.virtualisation.enable = lib.mkDefault false;
 
   environment.systemPackages = with pkgs; [

@@ -61,41 +61,19 @@ let
     export BW_SESSION
     exec ${pkgs.bitwarden-cli}/bin/bw "$@"
   '';
-
-  bwGetPassword = itemName: ''
-    set -euo pipefail
-    exec bw-sops get password "${itemName}"
-  '';
-
-  ansible-vault-pass = pkgs.writeShellScriptBin "ansible-vault-pass" (bwGetPassword "ansible vaults");
 in
 {
-  options.packages.bitwarden = {
-    enable = lib.mkEnableOption "Bitwarden tools" // {
-      default = true;
-    };
-    desktop.enable = lib.mkEnableOption "Bitwarden Desktop" // {
-      default = true;
-    };
-    ansible.enable = lib.mkEnableOption "Bitwarden-backed Ansible password helpers" // {
-      default = true;
-    };
-  };
+  options.packages.bitwarden.enable = lib.mkEnableOption "Bitwarden";
 
   config = lib.mkIf config.packages.bitwarden.enable {
     environment.systemPackages = [
       pkgs.bitwarden-cli
+      pkgs.bitwarden-desktop
       bw-unlock-sops
       bw-sops
-    ]
-    ++ lib.optional config.packages.bitwarden.desktop.enable pkgs.bitwarden-desktop
-    ++ lib.optionals config.packages.bitwarden.ansible.enable [
-      ansible-vault-pass
     ];
 
-    environment.sessionVariables = lib.mkIf config.packages.bitwarden.ansible.enable {
-      ANSIBLE_VAULT_PASSWORD_FILE = "/run/current-system/sw/bin/ansible-vault-pass";
-    };
+    environment.sessionVariables.SSH_AUTH_SOCK = "$HOME/.bitwarden-ssh-agent.sock";
 
     environment.shellAliases = {
       bw = "bw-sops";

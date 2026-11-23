@@ -2,7 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    ansible
     terraform
     dart
     clang

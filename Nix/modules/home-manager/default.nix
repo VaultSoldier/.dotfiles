@@ -90,10 +90,6 @@
     source = "${pkgs.bitwarden-desktop}/share/applications/bitwarden.desktop";
   };
 
-  home.sessionVariables = {
-    SSH_AUTH_SOCK = "${config.home.homeDirectory}/.bitwarden-ssh-agent.sock";
-  };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
