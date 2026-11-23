@@ -4,6 +4,8 @@ local fileManager = "dolphin"
 local browser = "zen-twilight"
 local editor = "kitty tmux new-session -s '|NVIM|pid_$$' 'nvim; exec zsh'"
 
+local smw = require("plugins.split-monitor-workspaces")
+
 local function layout_bind(bind_table)
 	return function()
 		local workspace = hl.get_active_special_workspace() or hl.get_active_workspace()
@@ -258,18 +260,22 @@ hl.bind(mainMod .. " +M", hl.dsp.exec_cmd("caelestia toggle music"), { submap_un
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("special"), { submap_universal = true })
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:special" }), { submap_universal = true })
 
--- Workspace switching
-for i = 1, 9 do
-	local key = i
-	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }), { submap_universal = true })
-	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }), { submap_universal = true })
-	hl.bind(
-		mainMod .. " + CTRL + " .. key,
-		hl.dsp.window.move({ workspace = i, follow = false }),
-		{ submap_universal = true }
-	)
+-- Workspace switching: per-monitor ranges (split-monitor-workspaces), so on a
+-- multi-monitor setup SUPER+1 jumps to workspace 1 of *this* monitor.
+for i = 1, smw.get_amount_of_workspaces() do
+	local key = tostring(i)
+	if key == "10" then
+		key = "0"
+	end
+	hl.bind(mainMod .. " + " .. key, smw.workspace(key), { submap_universal = true })
+	hl.bind(mainMod .. " + SHIFT + " .. key, smw.move_to_workspace(key), { submap_universal = true })
+	hl.bind(mainMod .. " + CTRL + " .. key, smw.move_to_workspace_silent(key), { submap_universal = true })
 end
 
--- Scroll through existing workspaces with mainMod + scroll
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }), { submap_universal = true })
-hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }), { submap_universal = true })
+-- First empty workspace on the current monitor (SUPER+E is the file manager).
+hl.bind(mainMod .. " + SHIFT + E", smw.move_to_workspace("empty"), { submap_universal = true })
+hl.bind(mainMod .. " + CTRL + E", smw.workspace("empty"), { submap_universal = true })
+
+-- Scroll through existing workspaces with mainMod + scroll (current monitor only)
+hl.bind(mainMod .. " + mouse_down", smw.cycle_workspaces("next"), { submap_universal = true })
+hl.bind(mainMod .. " + mouse_up", smw.cycle_workspaces("prev"), { submap_universal = true })

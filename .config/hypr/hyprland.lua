@@ -1,5 +1,39 @@
 -- https://wiki.hyprland.org/Configuring/
 require("monitors")
+
+----------------------
+----- SMW PLUGIN -----
+----------------------
+
+local cfg_dir = os.getenv("HOME") .. "/.config/hypr"
+package.path = package.path
+	.. ";./plugins/?.lua;./plugins/?/init.lua"
+	.. ";"
+	.. cfg_dir
+	.. "/plugins/?.lua;"
+	.. cfg_dir
+	.. "/plugins/?/init.lua"
+
+local smw = require("plugins.split-monitor-workspaces")
+
+smw.setup({
+	-- Workspaces per monitor: SUPER+3 always means "the 3rd workspace of the
+	-- monitor I am on", regardless of the absolute workspace id.
+	workspace_count = 9,
+	keep_focused = true,
+	enable_persistent_workspaces = true,
+
+	-- Who owns the lowest ids; unlisted monitors keep the order Hyprland reports them
+	-- (names as shown by `hyprctl monitors`).
+	-- monitor_priority = { "desc:AOC Q32P2WG5B PPNM6HA016359", "desc:XMD Mi TV 0x00000001" },
+
+	-- Smaller range for a specific monitor:
+	-- max_workspaces = { ["desc:XMD Mi TV 0x00000001"] = 4 },
+
+	-- Keep ranges across hotplug (useful for the TV / docking setups):
+	-- restore_workspaces_on_monitor_reconnect = true,
+})
+
 require("configs.keybinds")
 require("configs.autostart")
 require("configs.env")
