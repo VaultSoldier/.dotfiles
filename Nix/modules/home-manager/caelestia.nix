@@ -556,9 +556,10 @@ in
       recolourLogo = lib.mkDefault true;
       enableFprint = lib.mkDefault false;
       maxFprintTries = lib.mkDefault 6;
-      enableHowdy = lib.mkDefault false;
-      maxHowdyTries = lib.mkDefault 3;
-      triggerHowdyOnWake = lib.mkDefault false;
+      enableFaceAuth = lib.mkDefault false;
+      faceAuthProvider = lib.mkDefault "howdy";
+      maxFaceAuthTries = lib.mkDefault 3;
+      triggerFaceAuthOnWake = lib.mkDefault false;
       hideNotifs = lib.mkDefault true;
       enableSessionControls = lib.mkDefault true;
     };
