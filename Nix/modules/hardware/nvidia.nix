@@ -25,7 +25,7 @@
   environment.variables = {
     __GL_SHADER_DISK_CACHE_SIZE = "12000000000"; # Increase Nvidia's shader cache size to 12GB
   };
-  nixpkgs.config.cudaSupport = true;
+
   nixpkgs.overlays = [
     (self: super: {
       btop = super.btop.override { cudaSupport = true; };

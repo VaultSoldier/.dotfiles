@@ -32,13 +32,15 @@
   # Containers passthrough
   hardware.nvidia-container-toolkit.enable = true;
 
-  nixpkgs.config.cudaSupport = true;
   nixpkgs.overlays = [
     (self: super: {
       btop = super.btop.override { cudaSupport = true; };
     })
   ];
-  environment.systemPackages = with pkgs; [ btop vulkan-loader ];
+  environment.systemPackages = with pkgs; [
+    btop
+    vulkan-loader
+  ];
 
   environment.sessionVariables = {
     LD_LIBRARY_PATH = [ "/run/current-system/sw/lib" ];
