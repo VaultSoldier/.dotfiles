@@ -7,7 +7,11 @@
 {
   imports = [ inputs.zen-browser.homeModules.twilight ];
 
-  programs.zen-browser.enable = true;
+  programs.zen-browser = {
+    enable = true;
+    nativeMessagingHosts = [ pkgs.firefoxpwa ];
+  };
+
   programs.zen-browser.profiles."default" = {
     containersForce = true;
     spacesForce = true;
