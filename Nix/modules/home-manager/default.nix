@@ -81,7 +81,7 @@
     text = ''
       [Wallet]
       Default Wallet=kdewallet
-        First Use=false
+      First Use=false
     '';
   };
 
