@@ -4,12 +4,11 @@ local scripts = home .. "/.config/hypr/scripts/"
 hl.on("hyprland.start", function()
 	hl.exec_cmd("mpris-proxy") -- Forward bluetooth media commands to MPRIS
 	hl.exec_cmd("awww-daemon")
-	hl.exec_cmd(scripts .. "awww_randomize.sh ".. home .. "/Pictures/Wallpapers " .. "7200")
+	hl.exec_cmd(scripts .. "awww_randomize.sh " .. home .. "/Pictures/Wallpapers " .. "7200")
 	hl.exec_cmd("caelestia resizer -d")
 	hl.exec_cmd("QT_QPA_PLATFORMTHEME=kde caelestia shell -d")
 	hl.exec_cmd("systemctl --user start polkit-kde-authentication-agent-1.service")
-	hl.exec_cmd("systemctl --user start kwalletd6.service") -- KDE Wallet daemon;
-	hl.exec_cmd("systemctl --user start ksecretd.service") -- exposes org.freedesktop.secrets (Secret Service) from KWallet
+	hl.exec_cmd("systemctl --user start plasma-kwallet-pam.service")
 	hl.exec_cmd("wl-paste --type text --watch cliphist store")
 	hl.exec_cmd("wl-paste --type image --watch cliphist store")
 	hl.exec_cmd("bitwarden")

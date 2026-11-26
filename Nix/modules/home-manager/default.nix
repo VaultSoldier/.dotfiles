@@ -82,6 +82,7 @@
       [Wallet]
       Default Wallet=kdewallet
       First Use=false
+      Close When Idle=false
     '';
   };
 

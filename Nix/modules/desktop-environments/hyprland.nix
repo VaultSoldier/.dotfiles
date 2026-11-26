@@ -5,7 +5,7 @@
   ...
 }:
 let
-  scripts = with pkgs; [
+  scripts_pkgs = with pkgs; [
     socat
     jq
     bc
@@ -18,7 +18,7 @@ lib.mkIf config.desktop.hyprland.enable {
     extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland
       kdePackages.xdg-desktop-portal-kde
-      kdePackages.kwallet # portal impl for org.freedesktop.impl.portal.Secret (was provided by gnome-keyring)
+      kdePackages.kwallet
     ];
     config = {
       hyprland = {
@@ -28,8 +28,6 @@ lib.mkIf config.desktop.hyprland.enable {
         ];
         "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
         # INFO: Secret portal (used by Chromium/Electron safeStorage as a key store)
-        # was served by gnome-keyring; kwallet's impl has UseIn=kde so name it
-        # explicitly for the Hyprland session.
         "org.freedesktop.impl.portal.Secret" = [ "kwallet" ];
         "org.freedesktop.impl.portal.ScreenCast" = [ "Hyprland" ];
         "org.freedesktop.impl.portal.Screenshot" = [ "Hyprland" ];
@@ -76,33 +74,22 @@ lib.mkIf config.desktop.hyprland.enable {
       kdePackages.kwallet # kwalletd6 + ksecretd (Secret Service on top of KWallet)
       kdePackages.kwalletmanager # GUI for the wallet: create it / change its password
     ]
-    ++ scripts;
+    ++ scripts_pkgs;
 
-  systemd.user.services.kwalletd6 = {
-    description = "KDE Wallet daemon";
-    # Do not autostart via graphical-session.target.
+  systemd.user.services.plasma-kwallet-pam = {
+    description = "Feed the SDDM login password to the PAM-started ksecretd (KWallet unlock)";
     partOf = [ "graphical-session.target" ];
     serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.kdePackages.kwallet}/bin/kwalletd6";
-      Restart = "on-failure";
-    };
-  };
-
-  systemd.user.services.ksecretd = {
-    description = "KDE Wallet Secret Service compatibility daemon";
-    partOf = [ "graphical-session.target" ];
-    after = [ "kwalletd6.service" ];
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.kdePackages.kwallet}/bin/ksecretd";
-      Restart = "on-failure";
+      Type = "oneshot";
+      RemainAfterExit = true;
+      Slice = "background.slice";
+      Environment = [ "PAM_KWALLET5_LOGIN=%t/kwallet5.socket" ];
+      ExecStart = "${pkgs.kdePackages.kwallet-pam}/libexec/pam_kwallet_init";
     };
   };
 
   systemd.user.services.polkit-kde-authentication-agent-1 = {
     description = "KDE PolicyKit authentication agent";
-    # Do not autostart via graphical-session.target.
     partOf = [ "graphical-session.target" ];
     serviceConfig = {
       Type = "simple";
