@@ -7,6 +7,7 @@
     kdePackages.dolphin
     kdePackages.konsole
     kdePackages.kdialog
+    kdePackages.ark
     kdePackages.kio
     kdePackages.kdf # kwikdisk
     kdePackages.kio-fuse

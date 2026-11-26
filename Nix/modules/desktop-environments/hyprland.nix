@@ -67,7 +67,6 @@ lib.mkIf config.desktop.hyprland.enable {
     with pkgs;
     [
       libnotify # notify-send
-      kdePackages.ark
       kdePackages.polkit-kde-agent-1
       adwaita-icon-theme # gnome icons for apps
       adwaita-qt
