@@ -42,6 +42,13 @@ require("configs.style")
 require("configs.windowrules")
 
 hl.config({
+	render = {
+		-- Hyprland >= 0.57 offers an HDR "preferred image description" to whatever window is
+		-- fullscreen on an EDID-HDR-capable output. Chromium/CEF follows it and drags the output
+		-- into a wide-gamut 10-bit pipeline even for plain SDR content
+		cm_auto_hdr = 0,
+	},
+
 	binds = {
 		window_direction_monitor_fallback = false,
 	},
