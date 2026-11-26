@@ -42,10 +42,6 @@ require("configs.style")
 require("configs.windowrules")
 
 hl.config({
-	debug = {
-		full_cm_proto = true,
-	},
-
 	binds = {
 		window_direction_monitor_fallback = false,
 	},
