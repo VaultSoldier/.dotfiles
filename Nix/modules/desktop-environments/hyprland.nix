@@ -93,7 +93,6 @@ lib.mkIf config.desktop.hyprland.enable {
     partOf = [ "graphical-session.target" ];
     serviceConfig = {
       Type = "simple";
-      ExecCondition = "${pkgs.bash}/bin/bash -lc 'case \"$XDG_CURRENT_DESKTOP\" in *Hyprland*|hyprland) exit 0;; *) exit 1;; esac'";
       ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
       Restart = "on-abnormal";
     };
