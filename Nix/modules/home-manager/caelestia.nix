@@ -264,6 +264,7 @@ in
         autoHide = lib.mkDefault true;
         rounding = lib.mkDefault 0.5;
         spacing = lib.mkDefault 1;
+        centerGap = lib.mkDefault 0.2;
       };
     };
 
